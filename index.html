@@ -8,6 +8,9 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #1e1e1e;
+            /* New: Medical Pattern Background (EKG, Cross, Nerve Cell) */
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%233498db' stroke-width='1.5' fill='none' stroke-opacity='0.08'%3E%3C!-- EKG --%3E%3Cpolyline points='20,160 40,160 50,130 65,180 85,120 100,160 120,160' stroke-linejoin='round' /%3E%3C!-- Medical Cross --%3E%3Cpath d='M150,40 h10 v-10 h10 v10 h10 v10 h-10 v10 h-10 v-10 h-10 z' fill='%233498db' fill-opacity='0.03' /%3E%3C!-- Nerve Cell --%3E%3Ccircle cx='50' cy='50' r='8' /%3E%3Cpath d='M50,58 v20 M44,44 l-12,-12 M56,44 l12,-12 M58,50 h15' stroke-linecap='round' /%3E%3C/g%3E%3C/svg%3E");
+            background-size: 250px 250px;
             color: #f0f2f5;
             display: flex;
             justify-content: center;
@@ -98,11 +101,38 @@
             background: #2d2d2d;
             max-width: 900px;
             width: 100%;
-            padding: 2.5rem;
+            padding: 3.5rem 2.5rem 2.5rem 2.5rem; /* Increased top padding for the back button */
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: none; 
+            position: relative; /* Allows absolute positioning inside this container */
         }
+        
+        /* New: Back Button Styles */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: transparent;
+            border: none;
+            color: #8c9ba5;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+            padding: 0;
+        }
+        .back-btn:hover {
+            color: #3498db;
+        }
+        .back-btn svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 6px;
+        }
+
         .sim-header {
             color: #fff;
             border-bottom: 2px solid #3498db;
@@ -205,6 +235,15 @@
 
     <!-- SIMULATOR SCREEN -->
     <div id="simulator-screen" class="simulator-container">
+        <!-- New: Back Button -->
+        <button class="back-btn" onclick="goHome()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back
+        </button>
+
         <h2 class="sim-header">⚡ Advanced Neuro PBL Simulator</h2>
         
         <div id="case-text" class="clinical-history"></div>
@@ -220,6 +259,12 @@
         document.getElementById('home-screen').style.display = 'none';
         document.getElementById('simulator-screen').style.display = 'block';
         generateCase(); 
+    }
+
+    // New: Function to return to the home screen
+    function goHome() {
+        document.getElementById('simulator-screen').style.display = 'none';
+        document.getElementById('home-screen').style.display = 'flex';
     }
 
     const occupations = ["software engineer", "medical student", "construction worker", "teacher", "professional athlete", "barista", "mechanic", "carpenter", "surgeon"];
