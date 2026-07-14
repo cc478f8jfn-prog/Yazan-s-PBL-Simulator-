@@ -5,584 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yazan's PBL Simulator</title>
     <style>
+        :root {
+            --bg-color: #121212;
+            --panel-bg: #1e1e1e;
+            --border-color: #333;
+            --accent-color: #3498db;
+            --accent-hover: #2980b9;
+            --text-main: #e0e0e0;
+            --text-muted: #888;
+            --correct-color: #2ecc71;
+            --incorrect-color: #e74c3c;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1e1e1e;
-            /* New: Medical Pattern Background (EKG, Cross, Nerve Cell) */
-            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%233498db' stroke-width='1.5' fill='none' stroke-opacity='0.08'%3E%3C!-- EKG --%3E%3Cpolyline points='20,160 40,160 50,130 65,180 85,120 100,160 120,160' stroke-linejoin='round' /%3E%3C!-- Medical Cross --%3E%3Cpath d='M150,40 h10 v-10 h10 v10 h10 v10 h-10 v10 h-10 v-10 h-10 z' fill='%233498db' fill-opacity='0.03' /%3E%3C!-- Nerve Cell --%3E%3Ccircle cx='50' cy='50' r='8' /%3E%3Cpath d='M50,58 v20 M44,44 l-12,-12 M56,44 l12,-12 M58,50 h15' stroke-linecap='round' /%3E%3C/g%3E%3C/svg%3E");
-            background-size: 250px 250px;
-            color: #f0f2f5;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        /* --- HOME SCREEN STYLES --- */
-        #home-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
             height: 100vh;
-            padding: 3rem 2rem;
-            box-sizing: border-box;
-        }
-        .top-header-area {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-top: 1rem;
-        }
-        .welcome-text {
-            font-size: 1.3rem;
-            color: #8c9ba5;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-            text-transform: lowercase;
-        }
-        .main-title {
-            font-size: 3.5rem;
-            color: #3498db;
-            margin: 0;
-            text-align: center;
-            letter-spacing: 2px;
-        }
-        .start-box {
-            background: #2d2d2d;
-            border: 3px solid #3498db;
-            color: #f0f2f5;
-            padding: 50px 40px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .start-box:hover {
-            background: #3498db;
-            color: #fff;
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.4);
-        }
-        .footer-area {
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-        .contact-badge {
-            display: inline-flex;
-            align-items: center;
-            background: #2d2d2d;
-            border: 1px solid #3498db;
-            color: #3498db;
-            padding: 10px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-        .contact-badge:hover {
-            background: #3498db;
-            color: #fff;
-        }
-        .contact-badge svg {
-            margin-right: 8px;
-            width: 16px;
-            height: 16px;
+            overflow: hidden;
         }
 
-        /* --- SIMULATOR SCREEN STYLES --- */
-        .simulator-container {
-            background: #2d2d2d;
-            max-width: 900px;
+        .container {
             width: 100%;
-            padding: 3.5rem 2.5rem 2.5rem 2.5rem; /* Increased top padding for the back button */
+            max-width: 900px;
+            height: 90vh;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: none; 
-            position: relative; /* Allows absolute positioning inside this container */
-        }
-        
-        /* New: Back Button Styles */
-        .back-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: transparent;
-            border: none;
-            color: #8c9ba5;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
             display: flex;
-            align-items: center;
-            transition: color 0.2s;
-            padding: 0;
-        }
-        .back-btn:hover {
-            color: #3498db;
-        }
-        .back-btn svg {
-            width: 20px;
-            height: 20px;
-            margin-right: 6px;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        .sim-header {
-            color: #fff;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 0;
-            font-size: 1.8rem;
+        .header {
+            padding: 15px 25px;
+            background-color: #181818;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .clinical-history {
-            background: #3d3d3d;
-            padding: 20px;
-            border-left: 5px solid #3498db;
-            margin-bottom: 20px;
-            font-size: 1.15rem;
-            line-height: 1.6;
-            border-radius: 0 8px 8px 0;
-        }
-        .diagnostic-viewer {
-            background: #000;
-            color: #4af626;
-            padding: 25px 20px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border: 1px solid #555;
-            line-height: 1.5;
-        }
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+
+        .header-left {
+            display: flex;
+            align-items: center;
             gap: 15px;
-            margin-bottom: 20px;
         }
-        button.option-btn {
-            background: #444;
-            border: 2px solid #555;
+
+        .header img.logo-panel {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .header h1 {
+            font-size: 1.2rem;
+            margin: 0;
             color: #fff;
-            padding: 15px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
         }
-        button.option-btn:hover {
-            background: #3498db;
-            border-color: #3498db;
+
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
-        button.option-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+
+        .home-screen img.logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 12px rgba(52, 152, 219, 0.4));
         }
-        .feedback {
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: none;
-            font-size: 1.1rem;
-            line-height: 1.6;
+
+        .home-screen h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+            color: #fff;
         }
-        .correct-feedback { background: rgba(39, 174, 96, 0.2); color: #2ecc71; border: 1px solid #27ae60; }
-        .incorrect-feedback { background: rgba(231, 76, 60, 0.2); color: #e74c3c; border: 1px solid #c0392b; }
-        .next-btn {
-            background: #3498db;
+
+        .home-screen p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .start-btn {
+            background-color: var(--accent-color);
             color: white;
             border: none;
-            padding: 15px 24px;
-            font-size: 1.2rem;
+            padding: 12px 30px;
+            font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            display: none;
-            width: 100%;
             transition: background 0.2s;
         }
-        .next-btn:hover { background: #2980b9; }
+
+        .start-btn:hover {
+            background-color: var(--accent-hover);
+        }
     </style>
 </head>
 <body>
 
-    <!-- HOME SCREEN -->
-    <div id="home-screen">
-        <div class="top-header-area">
-            <div class="welcome-text">welcome to</div>
-            <h1 class="main-title">Yazan's PBL Simulator</h1>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <img src="logo_panel" alt="Panel Logo" class="logo-panel">
+                <h1>Yazan's PBL Simulator</h1>
+            </div>
         </div>
-        
-        <button class="start-box" onclick="launchSimulator()">Upper Limb Nerve Injuries</button>
-        
-        <div class="footer-area">
-            <a href="mailto:yazan.w.q7@icloud.com" class="contact-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Contact Me
-            </a>
+        <div class="content">
+            <div class="home-screen">
+                <img src="logo" alt="Main Logo" class="logo">
+                <h2>Upper Limb Nerve Injuries</h2>
+                <p>Practice clinical problem-solving cases interactively.</p>
+                <button class="start-btn" onclick="alert('Simulation starting...')">Start Case</button>
+            </div>
         </div>
     </div>
-
-    <!-- SIMULATOR SCREEN -->
-    <div id="simulator-screen" class="simulator-container">
-        <!-- New: Back Button -->
-        <button class="back-btn" onclick="goHome()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            Back
-        </button>
-
-        <h2 class="sim-header">⚡ Advanced Neuro PBL Simulator</h2>
-        
-        <div id="case-text" class="clinical-history"></div>
-        <div id="diagnostic-text" class="diagnostic-viewer"></div>
-        <div id="options-container" class="options-grid"></div>
-        <div id="feedback-box" class="feedback"></div>
-
-        <button id="next-button" class="next-btn" onclick="generateCase()">Load Next Case</button>
-    </div>
-
-<script>
-    function launchSimulator() {
-        document.getElementById('home-screen').style.display = 'none';
-        document.getElementById('simulator-screen').style.display = 'block';
-        generateCase(); 
-    }
-
-    // New: Function to return to the home screen
-    function goHome() {
-        document.getElementById('simulator-screen').style.display = 'none';
-        document.getElementById('home-screen').style.display = 'flex';
-    }
-
-    const occupations = ["software engineer", "medical student", "construction worker", "teacher", "professional athlete", "barista", "mechanic", "carpenter", "surgeon"];
-    const sides = ["right", "left"];
-    const genders = [{id: "male", pro: "He", pos: "his"}, {id: "female", pro: "She", pos: "her"}];
-
-    const lesionTemplates = [
-        {
-            mechanism: "fell asleep with {pos} arm draped over a park bench after a party",
-            exam: "demonstrates a profound 'wrist drop'. {pro} cannot extend the wrist or digits at the MCP joints. Sensory loss is noted over the posterior forearm and dorsal hand. Triceps reflex is completely normal.",
-            diagnostic: "EMG: Denervation in brachioradialis and extensor carpi radialis longus. Normal signal in triceps brachii.",
-            options: ["Radial Nerve (Spiral Groove)", "Radial Nerve (Axilla)", "Posterior Interosseous Nerve", "Median Nerve (Elbow)"],
-            answer: 0,
-            explanation: "Classic 'Saturday Night Palsy'. Compression in the spiral groove affects the nerve AFTER the branches to the triceps have already exited in the axilla, hence preserved elbow extension but lost wrist/finger extension."
-        },
-        {
-            mechanism: "has been using axillary crutches improperly for the past 3 weeks",
-            exam: "presents with weakness in extending the elbow, wrist, and fingers. The triceps reflex is absent. Sensory loss extends down the posterior aspect of the entire arm, forearm, and dorsal hand.",
-            diagnostic: "EMG: Denervation potentials noted in the triceps brachii, brachioradialis, and distal extensors.",
-            options: ["Radial Nerve (Spiral Groove)", "Posterior Cord Lesion", "Radial Nerve (Axilla)", "C7 Radiculopathy"],
-            answer: 2,
-            explanation: "High radial nerve compression in the axilla knocks out the triceps (absent reflex) in addition to causing a wrist drop. This distinguishes it from a spiral groove lesion."
-        },
-        {
-            mechanism: "suffered a direct blow to the proximal lateral forearm during a hockey game",
-            exam: "cannot extend the fingers at the MCP joints or extend the thumb. Crucially, wrist extension is preserved but deviates radially. Sensation is entirely normal.",
-            diagnostic: "NCV: Normal Sensory Nerve Action Potentials (SNAPs) in the superficial radial nerve. Motor block at the Arcade of Frohse.",
-            options: ["Radial Nerve (Spiral Groove)", "Superficial Radial Nerve", "Posterior Interosseous Nerve (PIN)", "Anterior Interosseous Nerve (AIN)"],
-            answer: 2,
-            explanation: "PIN syndrome (compression at the supinator/Arcade of Frohse). It is a pure motor branch. ECRL is spared (innervated before the split), causing radial deviation upon wrist extension. No sensory loss."
-        },
-        {
-            mechanism: "has been wearing a tightly fitted smartwatch continuously",
-            exam: "complains of burning pain and numbness over the dorsal-lateral aspect of the hand. Motor examination of the hand and wrist is completely 5/5.",
-            diagnostic: "Ultrasound: Focal entrapment of a nerve branch emerging between the brachioradialis and extensor carpi radialis longus tendons.",
-            options: ["Posterior Interosseous Nerve", "Superficial Radial Nerve", "Median Nerve (Carpal Tunnel)", "Ulnar Nerve (Guyon's)"],
-            answer: 1,
-            explanation: "Wartenberg's Syndrome. Compression of the superficial sensory branch of the radial nerve. Pure sensory deficit over the anatomic snuffbox and dorsal web space with absolutely zero motor weakness."
-        },
-        {
-            mechanism: "sustained a displaced supracondylar fracture of the humerus",
-            exam: "When asked to make a fist, the index and middle fingers remain extended (Hand of Benediction). There is sensory loss over the lateral palm and lateral 3.5 digits.",
-            diagnostic: "Radiograph: Severe anterior displacement of the proximal humeral fragment.\nEMG: Denervation in pronator teres, FCR, and lateral FDP.",
-            options: ["Median Nerve (High Lesion)", "Ulnar Nerve (Elbow)", "Anterior Interosseous Nerve", "Median Nerve (Wrist)"],
-            answer: 0,
-            explanation: "High median nerve injury knocks out the FDS and the lateral half of the FDP, making it impossible to flex digits 2 and 3 when attempting a fist."
-        },
-        {
-            mechanism: "presents with insidious onset of volar forearm pain",
-            exam: "is unable to form an 'OK' sign, instead pinching the pads of the thumb and index finger flatly together. Sensation in the hand is completely normal.",
-            diagnostic: "EMG: Isolated denervation of the Flexor Pollicis Longus (FPL) and the pronator quadratus.",
-            options: ["Median Nerve (High Lesion)", "Posterior Interosseous Nerve", "Anterior Interosseous Nerve (AIN)", "Recurrent Motor Branch of Median"],
-            answer: 2,
-            explanation: "AIN syndrome. The AIN is a pure motor branch supplying the deep volar compartment (FPL, lateral FDP, pronator quadratus). Injury destroys flexion of the distal phalanges of the thumb and index finger."
-        },
-        {
-            mechanism: "has been assembling furniture tightly gripping screwdrivers for 12 hours",
-            exam: "complains of numbness in the thumb, index, and middle fingers, AND numbness over the fleshy base of the thumb (thenar eminence). Phalen's test at the wrist is negative.",
-            diagnostic: "Exam: Provocative testing by resisting forearm pronation reproduces the pain and tingling.",
-            options: ["Carpal Tunnel Syndrome", "Pronator Teres Syndrome", "Anterior Interosseous Nerve", "Thoracic Outlet Syndrome"],
-            answer: 1,
-            explanation: "Pronator syndrome traps the median nerve high in the forearm. The key differentiator from Carpal Tunnel is sensory loss over the thenar eminence (Palmar cutaneous branch), which branches OFF before the carpal tunnel."
-        },
-        {
-            mechanism: "works long shifts typing at an unergonomic desk setup",
-            exam: "reports waking up at night shaking {pos} hand due to burning pain in the index and middle fingers. Sensation over the thenar eminence is preserved.",
-            diagnostic: "NCV: Prolonged distal latency across the flexor retinaculum. Normal conduction velocity in the forearm.",
-            options: ["Pronator Teres Syndrome", "C6 Radiculopathy", "Ulnar Tunnel Syndrome", "Carpal Tunnel Syndrome"],
-            answer: 3,
-            explanation: "Classic CTS. Night pain is a hallmark. The palmar cutaneous branch passes OVER the flexor retinaculum, so sensation to the base of the thumb (thenar eminence) is perfectly spared."
-        },
-        {
-            mechanism: "accidentally fell on broken glass, sustaining a laceration to the base of the palm",
-            exam: "has normal sensation throughout all fingers. However, {pro} is entirely unable to oppose the thumb to the pinky finger, and the thumb rests in the same plane as the other fingers (Ape Hand).",
-            diagnostic: "Surgical Exploration: Transection of a nerve branch lying superficially over the thenar musculature.",
-            options: ["Median Nerve (Main Trunk)", "Recurrent Branch of Median Nerve", "Deep Branch of Ulnar Nerve", "Anterior Interosseous Nerve"],
-            answer: 1,
-            explanation: "The recurrent motor branch (the 'million dollar nerve') of the median nerve supplies the thenar compartment (Opponens pollicis, Abductor pollicis brevis, superficial flexor pollicis brevis). It has no sensory fibers."
-        },
-        {
-            mechanism: "sustained a severe fracture to the medial epicondyle of the humerus",
-            exam: "presents with a resting 'Claw Hand' posture affecting the ring and small fingers. {pro} has sensory loss over the medial aspect of the hand, both dorsally and volarly.",
-            diagnostic: "NCV: Motor block at the elbow. Absent SNAPs in the dorsal ulnar cutaneous nerve distribution.",
-            options: ["Ulnar Nerve (Guyon's Canal)", "Ulnar Nerve (Elbow)", "Median Nerve (Elbow)", "Lower Trunk (Brachial Plexus)"],
-            answer: 1,
-            explanation: "High ulnar nerve lesion at the elbow. It affects both volar and dorsal sensation (because the dorsal ulnar cutaneous branch splits off in the distal forearm). It paradoxically causes a LESS severe claw than a wrist lesion (Ulnar Paradox) due to FDP paralysis."
-        },
-        {
-            mechanism: "is an avid long-distance cyclist who rides 100 miles a week",
-            exam: "demonstrates weakness in finger abduction (spreading fingers) and a positive Froment's sign. Sensation is lost on the palmar aspect of the pinky, but dorsal hand sensation is intact.",
-            diagnostic: "EMG: Denervation of the interossei and adductor pollicis. Normal signal in the flexor carpi ulnaris.",
-            options: ["Ulnar Nerve (Elbow)", "C8 Radiculopathy", "Ulnar Nerve (Guyon's Canal)", "Deep Motor Branch of Ulnar Nerve"],
-            answer: 2,
-            explanation: "Handlebar palsy at Guyon's canal. Dorsal hand sensation is preserved because the dorsal cutaneous branch originates proximal to the wrist. Positive Froment's indicates loss of adductor pollicis."
-        },
-        {
-            mechanism: "was violently thrown from a horse, landing on the top of the shoulder while the neck was forced in the opposite direction",
-            exam: "The {side} arm hangs limply by the side, medially rotated, with the forearm pronated (Waiter's tip position).",
-            diagnostic: "MRI: Avulsion injury of the C5 and C6 nerve roots.",
-            options: ["Klumpke's Palsy", "Erb-Duchenne Palsy", "Axillary Nerve Injury", "Radial Nerve Palsy"],
-            answer: 1,
-            explanation: "Upper trunk lesion (Erb's Palsy). Knocks out the suprascapular (loss of lateral rotation), axillary (loss of abduction), and musculocutaneous nerves (loss of flexion/supination)."
-        },
-        {
-            mechanism: "slipped from a tree and grabbed a branch overhead to arrest the fall",
-            exam: "presents with a total clawing of all four fingers and sensory loss along the medial aspect of the arm. The ipsilateral pupil is constricted and the eyelid is drooping.",
-            diagnostic: "Clinical: Atrophy of all intrinsic hand muscles. Positive Horner's Syndrome.",
-            options: ["Erb's Palsy", "Klumpke's Palsy", "Thoracic Outlet Syndrome", "Pancoast Tumor"],
-            answer: 1,
-            explanation: "Lower trunk lesion (C8-T1). Upward traction tears the lower roots, paralyzing all intrinsic hand muscles. Involvement of T1 damages the sympathetic chain, causing Horner's syndrome."
-        },
-        {
-            mechanism: "underwent an axillary lymph node dissection for breast cancer staging",
-            exam: "complains of shoulder weakness. When asked to push against the wall, the medial border of the scapula wings outward prominently.",
-            diagnostic: "EMG: Denervation isolated to the serratus anterior muscle.",
-            options: ["Thoracodorsal Nerve", "Spinal Accessory Nerve", "Long Thoracic Nerve", "Suprascapular Nerve"],
-            answer: 2,
-            explanation: "The long thoracic nerve runs superficially along the lateral chest wall, making it highly vulnerable during axillary surgery. Denervation of serratus anterior causes scapular winging."
-        },
-        {
-            mechanism: "underwent a biopsy of an enlarged lymph node in the posterior triangle of the neck",
-            exam: "cannot shrug the {side} shoulder against resistance. The shoulder appears drooped, and there is mild lateral winging of the scapula.",
-            diagnostic: "EMG: Denervation of the trapezius muscle. Serratus anterior function is normal.",
-            options: ["Long Thoracic Nerve", "Spinal Accessory Nerve", "Dorsal Scapular Nerve", "Thoracodorsal Nerve"],
-            answer: 1,
-            explanation: "The spinal accessory nerve (CN XI) traverses the posterior triangle of the neck superficially. Iatrogenic injury during biopsy paralyzes the trapezius, causing shoulder droop and lateral (rotary) winging."
-        },
-        {
-            mechanism: "suffered an anterior dislocation of the glenohumeral joint during a rugby tackle",
-            exam: "The joint was reduced, but the patient now has an area of numbness over the lateral deltoid (regimental badge area) and weakness in arm abduction past 15 degrees.",
-            diagnostic: "Radiograph: Joint is relocated. No fracture.\nExam: Deltoid atrophy is developing.",
-            options: ["Suprascapular Nerve", "Musculocutaneous Nerve", "Axillary Nerve", "Radial Nerve"],
-            answer: 2,
-            explanation: "The axillary nerve wraps tightly around the surgical neck of the humerus. It is the most commonly injured nerve in anterior shoulder dislocations, paralyzing the deltoid and teres minor."
-        },
-        {
-            mechanism: "sustained a deep stab wound to the anterior aspect of the mid-arm",
-            exam: "cannot flex the elbow when the forearm is supinated. There is sensory loss strictly over the lateral aspect of the forearm.",
-            diagnostic: "Exploration: Laceration traversing the belly of the coracobrachialis and biceps brachii muscles.",
-            options: ["Median Nerve", "Radial Nerve", "Musculocutaneous Nerve", "Ulnar Nerve"],
-            answer: 2,
-            explanation: "The musculocutaneous nerve pierces the coracobrachialis, supplies the anterior arm compartment (biceps, brachialis), and terminates as the lateral antebrachial cutaneous nerve (sensation to lateral forearm)."
-        },
-        {
-            mechanism: "sustained a severe gunshot wound traversing the high axilla",
-            exam: "exhibits complete loss of elbow flexion and severe weakness in forearm pronation and wrist flexion. Sensation is completely lost over the lateral forearm and the lateral palm.",
-            diagnostic: "EMG: Denervation of biceps brachii, brachialis, and pronator teres. Triceps function is completely spared.",
-            options: ["Lateral Cord Lesion", "Medial Cord Lesion", "Musculocutaneous Nerve Trunk", "Upper Trunk Lesion"],
-            answer: 0,
-            explanation: "The lateral cord gives rise to the musculocutaneous nerve (biceps/brachialis, lateral forearm sensation) and the lateral root of the median nerve (pronator teres, FCR, lateral palm sensation). This combination of deficits perfectly isolates a lateral cord injury."
-        },
-        {
-            mechanism: "was involved in a severe crush injury to the axillary region",
-            exam: "presents with total paralysis of all intrinsic hand muscles and weakness in finger flexion. Sensory loss covers the entire medial aspect of the forearm and hand. No Horner's syndrome is present.",
-            diagnostic: "NCV: Absent signals in the main ulnar nerve and the medial brachial/antebrachial cutaneous nerves.",
-            options: ["Lower Trunk Lesion", "Medial Cord Lesion", "Ulnar Nerve Trunk", "T1 Radiculopathy"],
-            answer: 1,
-            explanation: "The medial cord supplies the ulnar nerve, the medial root of the median nerve, and the medial cutaneous nerves of the arm/forearm. It mimics a lower trunk lesion, but typically spares the T1 sympathetic chain (no Horner's syndrome)."
-        },
-        {
-            mechanism: "has been relying heavily on poorly fitted axillary crutches after breaking a leg",
-            exam: "is unable to extend the elbow, wrist, or fingers. Additionally, {pro} cannot abduct the shoulder past 15 degrees and has weakness in medial rotation.",
-            diagnostic: "EMG: Denervation in the deltoid, triceps brachii, and latissimus dorsi.",
-            options: ["Radial Nerve (High Axilla)", "Posterior Cord Lesion", "Upper Trunk Lesion", "C7 Radiculopathy"],
-            answer: 1,
-            explanation: "Deep axillary crutch compression can crush the entire Posterior Cord. This knocks out the Radial nerve (triceps/wrist extensors), Axillary nerve (deltoid), and Thoracodorsal nerve (latissimus dorsi)."
-        },
-        {
-            mechanism: "is a young violinist presenting with arm pain, hand clumsiness, and a sensation of a 'cold hand'",
-            exam: "demonstrates wasting of the thenar and hypothenar eminences. Sensation is diminished along the medial aspect of the forearm. Symptoms worsen significantly when the arm is elevated overhead.",
-            diagnostic: "Radiograph: Presence of bilateral C7 cervical ribs.\nDoppler: Diminished radial pulse during Adson's maneuver.",
-            options: ["Ulnar Nerve Entrapment", "C8/T1 Radiculopathy", "Thoracic Outlet Syndrome", "Pancoast Tumor"],
-            answer: 2,
-            explanation: "Neurogenic Thoracic Outlet Syndrome (TOS) typically involves compression of the lower trunk (C8-T1) by a cervical rib or scalene muscles. It presents with intrinsic hand weakness, medial forearm numbness, and positional vascular changes."
-        },
-        {
-            mechanism: "is a professional volleyball player complaining of deep, dull posterior shoulder pain",
-            exam: "demonstrates visible atrophy of the supraspinatus and infraspinatus fossae. {pro} has weakness in initiating shoulder abduction and external rotation. Sensation is perfectly normal.",
-            diagnostic: "MRI: A paralabral ganglion cyst is compressing a nerve at the suprascapular notch.",
-            options: ["Axillary Nerve", "Suprascapular Nerve (Suprascapular Notch)", "Spinal Accessory Nerve", "Suprascapular Nerve (Spinoglenoid Notch)"],
-            answer: 1,
-            explanation: "Entrapment at the suprascapular notch affects BOTH the supraspinatus (abduction initiation) and infraspinatus (external rotation). It is a pure motor nerve, hence no sensory loss."
-        },
-        {
-            mechanism: "is a baseball pitcher who reports painless weakness in the throwing arm",
-            exam: "has isolated weakness in external rotation of the shoulder. Supraspinatus strength (initiating abduction) and all shoulder sensation are completely intact.",
-            diagnostic: "Ultrasound: Ganglion cyst compressing a nerve branch specifically at the spinoglenoid notch.",
-            options: ["Axillary Nerve", "Suprascapular Nerve (Suprascapular Notch)", "Suprascapular Nerve (Spinoglenoid Notch)", "Lower Subscapular Nerve"],
-            answer: 2,
-            explanation: "After innervating the supraspinatus, the suprascapular nerve travels laterally through the spinoglenoid notch to reach the infraspinatus. Entrapment here causes isolated infraspinatus weakness (a pure external rotation deficit)."
-        },
-        {
-            mechanism: "sustained a penetrating stab wound to the scalene triangle of the neck",
-            exam: "exhibits a laterally winged scapula. The scapula rests further from the midline on the {side} side, and {pro} struggles to retract the shoulder blades together.",
-            diagnostic: "EMG: Denervation of the rhomboid major and minor muscles. Serratus anterior and trapezius signals are completely normal.",
-            options: ["Long Thoracic Nerve", "Spinal Accessory Nerve", "Dorsal Scapular Nerve", "Thoracodorsal Nerve"],
-            answer: 2,
-            explanation: "The dorsal scapular nerve (C5) innervates the rhomboids. Paralysis causes lateral winging (the scapula slides away from the spine) because the serratus anterior's lateral pull becomes unopposed. (Contrast with long thoracic injury, which causes medial winging)."
-        },
-        {
-            mechanism: "recently underwent a complicated latissimus dorsi flap surgery for breast reconstruction",
-            exam: "complains of weakness when using crutches, doing pull-ups, or pushing up from a chair. Internal rotation and adduction of the shoulder are noticeably weak.",
-            diagnostic: "EMG: Denervation strictly isolated to the latissimus dorsi muscle.",
-            options: ["Upper Subscapular Nerve", "Axillary Nerve", "Thoracodorsal Nerve", "Lower Subscapular Nerve"],
-            answer: 2,
-            explanation: "The thoracodorsal nerve (middle subscapular nerve) supplies the latissimus dorsi. It is highly vulnerable during axillary dissections and reconstructive flap surgeries."
-        },
-        {
-            mechanism: "sustained a traction injury to the posterior axilla during a rock climbing fall",
-            exam: "has normal shoulder abduction and external rotation. However, {pro} exhibits weakness in internal rotation. The subscapularis tests normal, but the teres major is significantly atrophied.",
-            diagnostic: "EMG: Denervation of the teres major. Normal signal in the subscapularis and latissimus dorsi.",
-            options: ["Upper Subscapular Nerve", "Lower Subscapular Nerve", "Thoracodorsal Nerve", "Axillary Nerve"],
-            answer: 1,
-            explanation: "The lower subscapular nerve innervates the lower portion of the subscapularis AND the teres major. The upper subscapular nerve only innervates the subscapularis. Isolated teres major weakness points directly to the lower subscapular nerve."
-        },
-        {
-            mechanism: "is an elite bodybuilder presenting with chronic, poorly localized posterior shoulder pain",
-            exam: "has point tenderness over the posterior shoulder and paresthesia over the lateral deltoid. Weakness is noted primarily in shoulder abduction and external rotation.",
-            diagnostic: "MRI: Hypertrophy of the teres minor and long head of the triceps is compressing a neurovascular bundle in the posterior axilla.",
-            options: ["Suprascapular Nerve", "Posterior Cord", "Axillary Nerve (Quadrangular Space)", "Radial Nerve"],
-            answer: 2,
-            explanation: "Quadrangular space syndrome involves compression of the axillary nerve and posterior circumflex humeral artery by hypertrophied muscles (teres minor, teres major, long head of triceps, and the surgical neck of the humerus)."
-        },
-        {
-            mechanism: "is a mechanic who repeatedly uses the heel of {pos} hand as a hammer to lock in tight car parts",
-            exam: "demonstrates severe atrophy of the interossei and a positive Froment's sign. Astonishingly, sensation in the ring and small fingers is completely intact.",
-            diagnostic: "NCV: Normal sensory conduction to digits 4 and 5. Delayed motor conduction specifically to the first dorsal interosseous and adductor pollicis.",
-            options: ["Ulnar Nerve (Main Trunk at Wrist)", "Deep Motor Branch of Ulnar Nerve", "Superficial Sensory Branch of Ulnar Nerve", "C8 Radiculopathy"],
-            answer: 1,
-            explanation: "Compression deep within Guyon's canal (often from a hook of hamate fracture or repetitive blunt trauma) can selectively hit the deep motor branch AFTER the superficial sensory branch has split off. This causes pure motor intrinsic weakness with zero sensory loss."
-        },
-        {
-            mechanism: "works as a truck driver, habitually resting {pos} left elbow on the hard window sill for 10 hours a day",
-            exam: "complains of numbness in the small finger and ulnar half of the ring finger. Tinel's sign is positive at the elbow. {pro} has early clawing of digits 4 and 5.",
-            diagnostic: "EMG/NCV: Conduction block localized between the medial epicondyle and the olecranon. Denervation is noted in the flexor carpi ulnaris.",
-            options: ["Guyon's Canal Syndrome", "Cubital Tunnel Syndrome", "Medial Cord Lesion", "Lower Trunk Lesion"],
-            answer: 1,
-            explanation: "Cubital tunnel syndrome is chronic ulnar nerve compression at the elbow. Unlike wrist lesions (Guyon's), it denervates the Flexor Carpi Ulnaris and the ulnar half of the FDP, and sensory loss involves the dorsal hand (because the dorsal cutaneous branch splits proximal to the wrist)."
-        },
-        {
-            mechanism: "presents with aching volar forearm pain and numbness in the radial 3.5 digits",
-            exam: "has weakness in forearm pronation, wrist flexion, and thumb opposition. A hard, bony spur is palpable on the anteromedial aspect of the distal humerus just above the elbow.",
-            diagnostic: "Radiograph: An Avian spur (supracondylar process) is present on the distal humerus.",
-            options: ["Pronator Teres Syndrome", "Carpal Tunnel Syndrome", "Median Nerve (Ligament of Struthers)", "Anterior Interosseous Nerve Syndrome"],
-            answer: 2,
-            explanation: "The Ligament of Struthers runs from a congenital supracondylar process down to the medial epicondyle. Median nerve compression here is HIGH (above the elbow), distinguishing it from Pronator Syndrome because it knocks out the Pronator Teres muscle itself."
-        },
-        {
-            mechanism: "suffered a deep penetrating knife wound to the anterior upper arm",
-            exam: "cannot flex the elbow when the forearm is in full supination. The biceps reflex is completely absent. There is a distinct strip of sensory loss along the lateral aspect of the forearm.",
-            diagnostic: "NCV: Absent Sensory Nerve Action Potentials (SNAPs) in the lateral antebrachial cutaneous nerve. Motor denervation of the biceps and brachialis.",
-            options: ["Musculocutaneous Nerve", "Radial Nerve", "Median Nerve", "Lateral Cord"],
-            answer: 0,
-            explanation: "The musculocutaneous nerve supplies the anterior compartment of the arm (coracobrachialis, biceps, brachialis) and terminates as the lateral antebrachial cutaneous nerve. Testing elbow flexion in supination isolates the biceps muscle from the brachioradialis."
-        }
-    ];
-
-    let lastIndex = -1;
-
-    function generateCase() {
-        document.getElementById('feedback-box').style.display = 'none';
-        document.getElementById('next-button').style.display = 'none';
-
-        let templateIndex;
-        do {
-            templateIndex = Math.floor(Math.random() * lesionTemplates.length);
-        } while (templateIndex === lastIndex && lesionTemplates.length > 1);
-        lastIndex = templateIndex;
-        
-        let template = lesionTemplates[templateIndex];
-
-        let age = Math.floor(Math.random() * 52) + 18;
-        let genderObj = genders[Math.floor(Math.random() * genders.length)];
-        let occupation = occupations[Math.floor(Math.random() * occupations.length)];
-        let side = sides[Math.floor(Math.random() * sides.length)];
-
-        let vignette = `A ${age}-year-old ${genderObj.id} ${occupation} ${template.mechanism}. On examination, ${genderObj.pro.toLowerCase()} ${template.exam}`;
-        vignette = vignette.replace(/{pro}/g, genderObj.pro).replace(/{pos}/g, genderObj.pos).replace(/{side}/g, side);
-
-        document.getElementById('case-text').innerHTML = `<strong>Patient File:</strong><br><br>${vignette}`;
-        document.getElementById('diagnostic-text').innerHTML = `[INVESTIGATIONS]<br>${template.diagnostic}`;
-
-        const optionsContainer = document.getElementById('options-container');
-        optionsContainer.innerHTML = '';
-
-        template.options.forEach((opt, idx) => {
-            let btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.textContent = opt;
-            btn.onclick = () => checkAnswer(idx, btn, template);
-            optionsContainer.appendChild(btn);
-        });
-    }
-
-    function checkAnswer(selectedIndex, btn, template) {
-        let buttons = document.querySelectorAll('.option-btn');
-        buttons.forEach(b => b.disabled = true);
-        
-        let feedback = document.getElementById('feedback-box');
-        
-        if (selectedIndex === template.answer) {
-            btn.style.background = '#27ae60';
-            btn.style.borderColor = '#2ecc71';
-            feedback.className = 'feedback correct-feedback';
-            feedback.innerHTML = `<strong>✓ Spot On.</strong><br><br>${template.explanation}`;
-        } else {
-            btn.style.background = '#c0392b';
-            btn.style.borderColor = '#e74c3c';
-            buttons[template.answer].style.background = '#27ae60';
-            buttons[template.answer].style.borderColor = '#2ecc71';
-            feedback.className = 'feedback incorrect-feedback';
-            feedback.innerHTML = `<strong>✗ Incorrect Localization.</strong><br><br>${template.explanation}`;
-        }
-        
-        feedback.style.display = 'block';
-        document.getElementById('next-button').style.display = 'block';
-    }
-</script>
 
 </body>
 </html>
