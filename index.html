@@ -28,211 +28,48 @@
             padding: 2rem;
             box-sizing: border-box;
         }
-        .top-header-area {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .welcome-text {
-            font-size: 1.2rem;
-            color: #8c9ba5;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-            text-transform: lowercase;
-        }
-        .main-title {
-            font-size: 3rem;
-            color: #3498db;
-            margin: 0;
-            letter-spacing: 2px;
-        }
+        .top-header-area { text-align: center; margin-bottom: 2rem; }
+        .welcome-text { font-size: 1.2rem; color: #8c9ba5; margin-bottom: 5px; letter-spacing: 1px; text-transform: lowercase; }
+        .main-title { font-size: 3rem; color: #3498db; margin: 0; letter-spacing: 2px; }
         
-        /* Layout for Columns */
-        .limbs-container {
-            display: flex;
-            gap: 15px;
-            width: 100%;
-            max-width: 1250px;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        .limb-column {
-            flex: 1;
-            min-width: 250px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background: rgba(45, 45, 45, 0.6);
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #444;
-        }
-        .limb-column h2 {
-            text-align: center;
-            color: #fff;
-            margin-top: 0;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
-            font-size: 1.3rem;
-        }
+        .limbs-container { display: flex; gap: 15px; width: 100%; max-width: 1250px; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
+        .limb-column { flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 12px; background: rgba(45, 45, 45, 0.6); padding: 15px; border-radius: 12px; border: 1px solid #444; }
+        .limb-column h2 { text-align: center; color: #fff; margin-top: 0; margin-bottom: 10px; border-bottom: 2px solid #3498db; padding-bottom: 8px; font-size: 1.3rem; }
 
-        .start-box {
-            background: #2d2d2d;
-            border: 2px solid #3498db;
-            color: #f0f2f5;
-            padding: 10px 12px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        .start-box:hover {
-            background: #3498db;
-            color: #fff;
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-        }
+        .start-box { background: #2d2d2d; border: 2px solid #3498db; color: #f0f2f5; padding: 10px 12px; font-size: 0.95rem; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; text-align: center; }
+        .start-box:hover { background: #3498db; color: #fff; transform: scale(1.03); box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); }
         
-        .footer-area {
-            text-align: center;
-            margin-top: 1rem;
-        }
-        .contact-badge {
-            display: inline-flex;
-            align-items: center;
-            background: #2d2d2d;
-            border: 1px solid #3498db;
-            color: #3498db;
-            padding: 10px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-        .contact-badge:hover {
-            background: #3498db;
-            color: #fff;
-        }
-        .contact-badge svg {
-            margin-right: 8px;
-            width: 16px;
-            height: 16px;
-        }
+        .footer-area { text-align: center; margin-top: 1rem; }
+        .contact-badge { display: inline-flex; align-items: center; background: #2d2d2d; border: 1px solid #3498db; color: #3498db; padding: 10px 18px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 0.95rem; transition: all 0.2s ease; }
+        .contact-badge:hover { background: #3498db; color: #fff; }
+        .contact-badge svg { margin-right: 8px; width: 16px; height: 16px; }
 
         /* --- SIMULATOR SCREEN STYLES --- */
-        .simulator-container {
-            background: #2d2d2d;
-            max-width: 900px;
-            width: 100%;
-            padding: 3.5rem 2.5rem 2.5rem 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: none; 
-            position: relative;
-        }
-        .back-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: transparent;
-            border: none;
-            color: #8c9ba5;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            transition: color 0.2s;
-            padding: 0;
-        }
+        .simulator-container { background: #2d2d2d; max-width: 900px; width: 100%; padding: 3.5rem 2.5rem 2.5rem 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: none; position: relative; }
+        .back-btn { position: absolute; top: 20px; left: 20px; background: transparent; border: none; color: #8c9ba5; font-size: 1rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; transition: color 0.2s; padding: 0; }
         .back-btn:hover { color: #3498db; }
         .back-btn svg { width: 20px; height: 20px; margin-right: 6px; }
 
-        .sim-header {
-            color: #fff;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 0;
-            font-size: 1.8rem;
-        }
-        .clinical-history {
-            background: #3d3d3d;
-            padding: 20px;
-            border-left: 5px solid #3498db;
-            margin-bottom: 20px;
-            font-size: 1.15rem;
-            line-height: 1.6;
-            border-radius: 0 8px 8px 0;
-        }
-        .diagnostic-viewer {
-            background: #000;
-            color: #4af626;
-            padding: 25px 20px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border: 1px solid #555;
-            line-height: 1.5;
-        }
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        button.option-btn {
-            background: #444;
-            border: 2px solid #555;
-            color: #fff;
-            padding: 15px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+        .sim-header { color: #fff; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-top: 0; font-size: 1.8rem; }
+        .clinical-history { background: #3d3d3d; padding: 20px; border-left: 5px solid #3498db; margin-bottom: 20px; font-size: 1.15rem; line-height: 1.6; border-radius: 0 8px 8px 0; }
+        .diagnostic-viewer { background: #000; color: #4af626; padding: 25px 20px; font-family: 'Courier New', Courier, monospace; font-size: 1.1rem; border-radius: 8px; margin-bottom: 25px; border: 1px solid #555; line-height: 1.5; }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        button.option-btn { background: #444; border: 2px solid #555; color: #fff; padding: 15px; font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
         button.option-btn:hover { background: #3498db; border-color: #3498db; }
         button.option-btn:disabled { opacity: 0.6; cursor: not-allowed; }
         
-        .feedback {
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: none;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
+        .feedback { padding: 20px; border-radius: 8px; margin-bottom: 20px; display: none; font-size: 1.1rem; line-height: 1.6; }
         .correct-feedback { background: rgba(39, 174, 96, 0.2); color: #2ecc71; border: 1px solid #27ae60; }
         .incorrect-feedback { background: rgba(231, 76, 60, 0.2); color: #e74c3c; border: 1px solid #c0392b; }
         
-        .next-btn {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 15px 24px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            display: none;
-            width: 100%;
-            transition: background 0.2s;
-        }
+        .next-btn { background: #3498db; color: white; border: none; padding: 15px 24px; font-size: 1.2rem; font-weight: bold; border-radius: 8px; cursor: pointer; display: none; width: 100%; transition: background 0.2s; }
         .next-btn:hover { background: #2980b9; }
 
-        @media (max-width: 768px) {
-            .options-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .options-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <!-- HOME SCREEN -->
     <div id="home-screen">
         <div class="top-header-area">
             <div class="welcome-text">welcome to</div>
@@ -240,7 +77,6 @@
         </div>
         
         <div class="limbs-container">
-            <!-- Upper Limb Column -->
             <div class="limb-column">
                 <h2>Upper Limb</h2>
                 <button class="start-box" onclick="launchSimulator('upper', 'nerves')">Nerves Injuries</button>
@@ -248,8 +84,6 @@
                 <button class="start-box" onclick="launchSimulator('upper', 'bones')">Bone Injuries</button>
                 <button class="start-box" onclick="launchSimulator('upper', 'general')">General Injuries</button>
             </div>
-
-            <!-- Lower Limb Column -->
             <div class="limb-column">
                 <h2>Lower Limb</h2>
                 <button class="start-box" onclick="launchSimulator('lower', 'nerves')">Nerves Injuries</button>
@@ -257,8 +91,6 @@
                 <button class="start-box" onclick="launchSimulator('lower', 'bones')">Bone Injuries</button>
                 <button class="start-box" onclick="launchSimulator('lower', 'general')">General Injuries</button>
             </div>
-
-            <!-- Embryology Column -->
             <div class="limb-column">
                 <h2>Embryology</h2>
                 <button class="start-box" onclick="launchSimulator('embryology', 'level1')">Level 1: Basics & Weeks</button>
@@ -266,8 +98,6 @@
                 <button class="start-box" onclick="launchSimulator('embryology', 'level3')">Level 3: Structural Defects</button>
                 <button class="start-box" onclick="launchSimulator('embryology', 'level4')">Level 4: Advanced Pathology</button>
             </div>
-
-            <!-- Physiology Column (NEW) -->
             <div class="limb-column">
                 <h2>Physiology</h2>
                 <button class="start-box" onclick="launchSimulator('physiology', 'body_fluids')">Body Fluids & Blood</button>
@@ -275,19 +105,8 @@
                 <button class="start-box" onclick="launchSimulator('physiology', 'immune')">Immune System</button>
             </div>
         </div>
-        
-        <div class="footer-area">
-            <a href="mailto:yazan.w.q7@icloud.com" class="contact-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Contact Me
-            </a>
-        </div>
     </div>
 
-    <!-- SIMULATOR SCREEN -->
     <div id="simulator-screen" class="simulator-container">
         <button class="back-btn" onclick="goHome()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -296,14 +115,11 @@
             </svg>
             Back
         </button>
-
         <h2 id="sim-title" class="sim-header">⚡ Clinical PBL Simulator</h2>
-        
         <div id="case-text" class="clinical-history"></div>
         <div id="diagnostic-text" class="diagnostic-viewer"></div>
         <div id="options-container" class="options-grid"></div>
         <div id="feedback-box" class="feedback"></div>
-
         <button id="next-button" class="next-btn" onclick="generateCase()">Load Next Case</button>
     </div>
 
@@ -311,200 +127,103 @@
     let currentRegion = 'upper';
     let currentCategory = 'nerves';
 
-    const occupations = ["software engineer", "medical student", "construction worker", "teacher", "professional athlete", "barista", "mechanic", "carpenter"];
-    const sides = ["right", "left"];
-    const genders = [{id: "male", pro: "He", pos: "his"}, {id: "female", pro: "She", pos: "her"}];
+    // --- MASSIVE RANDOMIZATION DICTIONARIES ---
+    const randDict = {
+        occupations: ["software engineer", "medical student", "construction worker", "high school teacher", "professional athlete", "barista", "auto mechanic", "carpenter", "sous chef", "commercial pilot", "freelance artist", "delivery driver", "registered nurse", "farmer", "tailor", "accountant", "electrician", "paramedic", "architect", "retail manager", "photographer", "lawyer", "musician", "baker", "plumber"],
+        genders: [{id: "male", pro: "He", pos: "his"}, {id: "female", pro: "She", pos: "her"}],
+        kidGenders: [{id: "boy", pro: "He", pos: "his"}, {id: "girl", pro: "She", pos: "her"}],
+        timings: ["just this morning", "2 hours ago", "last night", "yesterday afternoon", "2 days ago", "a few hours ago"],
+        settings: ["while at work", "at home", "during a local sports match", "at the gym", "while commuting", "during a weekend trip"],
+        infantAges: ["newborn", "2-day-old", "1-week-old", "1-month-old"],
+        deliveries: ["normal vaginal delivery", "C-section", "prolonged labor delivery"],
+        prenatal: ["with routine prenatal care", "with limited prenatal care", "who missed several ultrasound appointments"],
+        presenting: ["shortly after birth", "during the first feeding", "on the second day of life", "at the first pediatric checkup", "in the neonatal ICU"],
+        sides: ["right", "left"]
+    };
 
-    // ALL CLINICAL CASES ORGANIZED BY REGION AND CATEGORY
+    function getRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+    function getAge(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+    // --- DATA BANK ---
     const casesData = {
         upper: {
             nerves: [
-                {
-                    mechanism: "fell asleep with {pos} arm draped over a park bench after a party",
-                    exam: "demonstrates a profound 'wrist drop'. {pro} cannot extend the wrist or digits at the MCP joints. Sensory loss is noted over the posterior forearm and dorsal hand. Triceps reflex is completely normal.",
-                    diagnostic: "EMG: Denervation in brachioradialis and extensor carpi radialis longus. Normal signal in triceps brachii.",
-                    options: ["Radial Nerve (Spiral Groove)", "Radial Nerve (Axilla)", "Posterior Interosseous Nerve", "Median Nerve (Elbow)"],
-                    answer: 0,
-                    explanation: "Classic 'Saturday Night Palsy'. Compression in the spiral groove affects the nerve AFTER the branches to the triceps have exited."
-                },
-                {
-                    mechanism: "works long shifts typing at an unergonomic desk setup",
-                    exam: "reports waking up at night shaking {pos} hand due to burning pain in the index and middle fingers. Sensation over the thenar eminence is preserved.",
-                    diagnostic: "NCV: Prolonged distal latency across the flexor retinaculum.",
-                    options: ["Pronator Teres Syndrome", "C6 Radiculopathy", "Ulnar Tunnel Syndrome", "Carpal Tunnel Syndrome"],
-                    answer: 3,
-                    explanation: "Classic Carpal Tunnel Syndrome. The palmar cutaneous branch passes OVER the flexor retinaculum, so sensation to the base of the thumb is spared."
-                }
+                { mechanism: "falling asleep with {pos} arm draped over a park bench", exam: "demonstrates a profound 'wrist drop'. {pro} cannot extend the wrist or digits at the MCP joints. Sensory loss is noted over the posterior forearm.", diagnostic: "EMG: Denervation in brachioradialis and extensor carpi radialis. Normal signal in triceps brachii.", options: ["Radial Nerve (Spiral Groove)", "Radial Nerve (Axilla)", "Posterior Interosseous Nerve", "Median Nerve (Elbow)"], answer: 0, explanation: "Classic 'Saturday Night Palsy'. Compression in the spiral groove affects the nerve AFTER branches to the triceps have exited." },
+                { mechanism: "typing for 10 straight hours at an unergonomic desk setup", exam: "reports waking up shaking {pos} hand due to burning pain in the index and middle fingers. Sensation over the thenar eminence is preserved.", diagnostic: "NCV: Prolonged distal latency across the flexor retinaculum.", options: ["Pronator Teres Syndrome", "C6 Radiculopathy", "Ulnar Tunnel Syndrome", "Carpal Tunnel Syndrome"], answer: 3, explanation: "Carpal Tunnel Syndrome affects the median nerve. The palmar cutaneous branch passes OVER the flexor retinaculum, sparing sensation to the thumb base." },
+                { mechanism: "sustaining a severe fracture to the medial epicondyle of the humerus after a fall", exam: "presents with numbness over the pinky finger and medial half of the ring finger. {pro} struggles to hold a piece of paper between {pos} fingers.", diagnostic: "Physical Exam: Positive Froment's sign and clawing of the 4th and 5th digits at rest.", options: ["Ulnar Nerve Injury", "Median Nerve Injury", "Radial Nerve Injury", "Musculocutaneous Nerve Injury"], answer: 0, explanation: "The ulnar nerve runs directly posterior to the medial epicondyle (cubital tunnel) and supplies intrinsic hand muscles and sensation to the medial 1.5 digits." },
+                { mechanism: "dislocating {pos} shoulder anteriorly", exam: "shows flattening of the shoulder contour and loss of sensation over the lateral aspect of the upper arm.", diagnostic: "X-Ray: Anterior dislocation. Physical Exam: Weakness in shoulder abduction beyond 15 degrees.", options: ["Suprascapular Nerve", "Thoracodorsal Nerve", "Axillary Nerve", "Long Thoracic Nerve"], answer: 2, explanation: "The axillary nerve wraps around the surgical neck of the humerus and is highly susceptible to injury during anterior shoulder dislocations." }
             ],
             muscles: [
-                {
-                    mechanism: "heard a loud 'pop' while attempting a heavy deadlift at the gym",
-                    exam: "complains of sudden anterior elbow pain. Physical exam reveals a prominent bulge in the distal anterior arm ('Popeye muscle') and weak forearm supination.",
-                    diagnostic: "Ultrasound/MRI: Complete retraction of a tendon belly in the anterior compartment of the arm.",
-                    options: ["Distal Biceps Tendon Rupture", "Proximal Biceps Long Head Tendon Rupture", "Brachialis Muscle Tear", "Triceps Tendon Avulsion"],
-                    answer: 1,
-                    explanation: "Biceps long head rupture yields the characteristic 'Popeye' deformity."
-                }
+                { mechanism: "attempting a heavy deadlift", exam: "complains of sudden anterior elbow pain. Physical exam reveals a prominent bulge in the distal anterior arm ('Popeye muscle').", diagnostic: "Ultrasound: Complete retraction of a tendon belly in the anterior compartment of the arm.", options: ["Distal Biceps Tendon Rupture", "Proximal Biceps Long Head Rupture", "Brachialis Tear", "Triceps Tendon Avulsion"], answer: 1, explanation: "Biceps long head rupture yields the characteristic 'Popeye' deformity due to muscle belly retraction." },
+                { mechanism: "throwing a heavy object forcefully", exam: "has a positive 'Drop Arm Test' where {pro} is unable to smoothly lower the arm from full abduction.", diagnostic: "MRI: Full-thickness tear of the superior aspect of the rotator cuff musculature.", options: ["Supraspinatus Tear", "Infraspinatus Tear", "Teres Minor Tear", "Subscapularis Tear"], answer: 0, explanation: "The supraspinatus is the most commonly torn rotator cuff muscle, crucial for the first 15 degrees of abduction and stabilizing the humerus." },
+                { mechanism: "undergoing an invasive lateral chest wall procedure", exam: "presents with a distinct 'winging' of the scapula when asked to push against a wall.", diagnostic: "Clinical Exam: Weakness in protracting the scapula upward.", options: ["Serratus Anterior (Long Thoracic Nerve)", "Latissimus Dorsi (Thoracodorsal Nerve)", "Pectoralis Major (Medial Pectoral Nerve)", "Trapezius (Spinal Accessory Nerve)"], answer: 0, explanation: "Injury to the long thoracic nerve paralyzes the serratus anterior, causing a winged scapula." }
             ],
             bones: [
-                {
-                    mechanism: "fell on an outstretched hand (FOOSH) during a snowboarding accident",
-                    exam: "presents with severe tenderness specifically in the anatomical snuffbox. X-rays taken on the day of the injury appear completely normal.",
-                    diagnostic: "MRI (Day 3): Shows a fine radiolucent line across the waist of a proximal carpal bone.",
-                    options: ["Lunate Dislocation", "Scaphoid Fracture", "Colles Fracture", "Trapezium Fracture"],
-                    answer: 1,
-                    explanation: "Scaphoid fractures classically present with snuffbox tenderness and require careful imaging to prevent avascular necrosis."
-                }
+                { mechanism: "falling on an outstretched hand (FOOSH)", exam: "presents with severe tenderness specifically in the anatomical snuffbox. Initial X-rays appear normal.", diagnostic: "MRI (Day 3): Shows a fine radiolucent line across the waist of a proximal carpal bone.", options: ["Lunate Dislocation", "Scaphoid Fracture", "Colles Fracture", "Trapezium Fracture"], answer: 1, explanation: "Scaphoid fractures classically present with snuffbox tenderness and require careful imaging to prevent avascular necrosis." },
+                { mechanism: "falling directly on the point of the shoulder", exam: "presents holding the arm close to the chest. A palpable step-off is felt over the middle third of the collarbone.", diagnostic: "X-Ray: Displacement of the medial fragment upwards due to the pull of the SCM muscle.", options: ["Acromioclavicular Separation", "Scapular Fracture", "Clavicle Fracture", "Humeral Head Fracture"], answer: 2, explanation: "The clavicle is the most commonly fractured bone. The medial segment is pulled superiorly by the sternocleidomastoid muscle." },
+                { mechanism: "falling backward onto a hard floor", exam: "presents with wrist pain. The wrist has a distinct 'dinner fork' deformity.", diagnostic: "X-Ray: Transverse fracture of the distal radius with dorsal displacement of the distal fragment.", options: ["Smith's Fracture", "Colles' Fracture", "Barton's Fracture", "Galeazzi Fracture"], answer: 1, explanation: "A Colles' fracture is a distal radius fracture with dorsal displacement, creating a classic dinner fork deformity." }
             ],
             general: [
-                {
-                    mechanism: "was tackled aggressively from behind during a rugby match",
-                    exam: "is holding the arm slightly abducted and externally rotated. The lateral shoulder appears 'squared off' rather than rounded.",
-                    diagnostic: "X-Ray: The humeral head lies inferior and medial to the glenoid fossa.",
-                    options: ["Posterior Shoulder Dislocation", "Acromioclavicular Joint Separation", "Anterior Shoulder Dislocation", "Clavicle Fracture"],
-                    answer: 2,
-                    explanation: "Anterior shoulder dislocation is the most common joint dislocation, presenting with a 'squared off' shoulder appearance."
-                }
+                { mechanism: "being tackled aggressively from behind", exam: "is holding the arm slightly abducted and externally rotated. The lateral shoulder appears 'squared off'.", diagnostic: "X-Ray: The humeral head lies inferior and medial to the glenoid fossa.", options: ["Posterior Shoulder Dislocation", "AC Joint Separation", "Anterior Shoulder Dislocation", "Clavicle Fracture"], answer: 2, explanation: "Anterior shoulder dislocation is the most common joint dislocation, presenting with a 'squared off' shoulder appearance." },
+                { mechanism: "having {pos} arm abruptly pulled upward by the hand", exam: "holds the arm slightly flexed and pronated, refusing to use it. No swelling or bruising is visible.", diagnostic: "Clinical Exam: Pain upon supination. Diagnosis is confirmed by a click felt during reduction.", options: ["Radial Head Fracture", "Nursemaid's Elbow (Subluxation of Radial Head)", "Supracondylar Fracture", "Olecranon Bursitis"], answer: 1, explanation: "Nursemaid's elbow occurs when the radial head slips out of the annular ligament due to sudden axial traction." }
             ]
         },
         lower: {
             nerves: [
-                {
-                    mechanism: "woke up with a distinct 'foot drop' and steppage gait after wearing a tight knee brace",
-                    exam: "{pro} cannot dorsiflex or evert the foot. Sensory loss is present on the anterolateral lower leg and dorsum of the foot.",
-                    diagnostic: "NCV: Conduction block at the lateral aspect of the knee. Normal plantarflexion and inversion strength.",
-                    options: ["Tibial Nerve", "Deep Peroneal Nerve", "Common Peroneal Nerve", "Superficial Peroneal Nerve"],
-                    answer: 2,
-                    explanation: "Common Peroneal nerve wraps around the neck of the fibula, making it vulnerable to compression."
-                }
+                { mechanism: "waking up with a distinct 'foot drop' after wearing a tight knee brace", exam: "{pro} cannot dorsiflex or evert the foot. Sensory loss is present on the anterolateral lower leg.", diagnostic: "NCV: Conduction block at the lateral aspect of the fibular neck.", options: ["Tibial Nerve", "Deep Peroneal Nerve", "Common Peroneal Nerve", "Superficial Peroneal Nerve"], answer: 2, explanation: "Common Peroneal nerve wraps around the neck of the fibula, making it vulnerable to compression (Foot drop)." },
+                { mechanism: "receiving a deep intramuscular injection in the superomedial quadrant of the buttock", exam: "presents with a positive Trendelenburg sign (pelvis sags on the contralateral side when standing on the affected leg).", diagnostic: "Physical Exam: Weakness in hip abduction.", options: ["Sciatic Nerve", "Superior Gluteal Nerve", "Inferior Gluteal Nerve", "Obturator Nerve"], answer: 1, explanation: "The superior gluteal nerve supplies the gluteus medius/minimus. Injury causes the contralateral hip to drop (Trendelenburg sign)." },
+                { mechanism: "suffering a deep penetrating wound to the posterior thigh", exam: "shows complete loss of movement in all muscles below the knee and loss of hamstring function.", diagnostic: "EMG: Denervation in both the tibial and common fibular nerve distributions.", options: ["Femoral Nerve", "Obturator Nerve", "Sciatic Nerve", "Pudendal Nerve"], answer: 2, explanation: "The sciatic nerve innervates the posterior thigh and all compartments of the leg and foot." }
             ],
             muscles: [
-                {
-                    mechanism: "felt a sudden sharp 'snap' in the lower calf while pushing off forcefully during tennis",
-                    exam: "is unable to plantarflex the foot. Thompson squeeze test is positive. A palpable defect is present.",
-                    diagnostic: "Ultrasound: Full-thickness gap in a large tendon 4 cm proximal to the calcaneal insertion.",
-                    options: ["Gastrocnemius Muscle Strain", "Achilles Tendon Rupture", "Plantaris Tendon Rupture", "Tibial Nerve Injury"],
-                    answer: 1,
-                    explanation: "Achilles tendon rupture is marked by a palpable gap and a positive Thompson squeeze test."
-                }
+                { mechanism: "pushing off forcefully during a run, feeling a sharp 'snap' in the calf", exam: "is unable to plantarflex the foot. Thompson squeeze test is positive. A palpable defect is present.", diagnostic: "Ultrasound: Full-thickness gap in a large tendon 4 cm proximal to the calcaneal insertion.", options: ["Gastrocnemius Strain", "Achilles Tendon Rupture", "Plantaris Tendon Rupture", "Tibial Nerve Injury"], answer: 1, explanation: "Achilles tendon rupture is marked by a palpable gap and a positive Thompson squeeze test." },
+                { mechanism: "sprinting and suddenly grabbing the back of {pos} thigh", exam: "presents with extensive bruising over the posterior thigh and profound weakness resisting knee flexion.", diagnostic: "MRI: High-grade partial tear at the ischial tuberosity origin.", options: ["Quadriceps Strain", "Hamstring Tear", "Adductor Longus Tear", "Iliopsoas Tear"], answer: 1, explanation: "Hamstring muscles originate on the ischial tuberosity. Eccentric loading can tear the muscle fibers." }
             ],
             bones: [
-                {
-                    mechanism: "is an elderly patient who slipped on a wet bathroom floor",
-                    exam: "The {side} leg appears shortened and is prominently externally rotated. {pro} is unable to bear any weight.",
-                    diagnostic: "X-Ray: Disruption of the bony trabeculae just distal to the femoral head.",
-                    options: ["Intertrochanteric Fracture", "Femoral Shaft Fracture", "Femoral Neck Fracture", "Posterior Hip Dislocation"],
-                    answer: 2,
-                    explanation: "A shortened and externally rotated leg after a fall is classic for a femoral neck or hip fracture."
-                }
+                { mechanism: "slipping on a wet surface", exam: "The {side} leg appears shortened and is prominently externally rotated. {pro} is unable to bear weight.", diagnostic: "X-Ray: Disruption of the bony trabeculae just distal to the femoral head.", options: ["Intertrochanteric Fracture", "Femoral Shaft Fracture", "Femoral Neck Fracture", "Posterior Hip Dislocation"], answer: 2, explanation: "A shortened and externally rotated leg after a fall is classic for a femoral neck fracture." },
+                { mechanism: "being struck by a heavy object directly on the lateral side of the knee", exam: "presents with severe lateral knee pain and immediate numbness over the dorsum of the foot.", diagnostic: "X-Ray: Fracture of the proximal lateral bone of the leg.", options: ["Tibial Plateau Fracture", "Fibular Neck Fracture", "Patellar Fracture", "Femoral Condyle Fracture"], answer: 1, explanation: "Fibular neck fractures are dangerous because they frequently compress or sever the common peroneal nerve." }
             ],
             general: [
-                {
-                    mechanism: "was pivoting rapidly to change direction in a football match when {pos} knee buckled with a loud 'pop'",
-                    exam: "The knee became severely swollen within 2 hours. The Lachman test is strongly positive.",
-                    diagnostic: "MRI: Complete mid-substance tear of a major stabilizing intra-articular ligament.",
-                    options: ["MCL Tear", "PCL Tear", "Medial Meniscus Tear", "ACL Tear"],
-                    answer: 3,
-                    explanation: "ACL tears classically present with a 'pop', rapid swelling, and a positive Lachman test."
-                }
+                { mechanism: "pivoting rapidly when {pos} knee buckled with a loud 'pop'", exam: "The knee became severely swollen within 2 hours. The Lachman test is strongly positive.", diagnostic: "MRI: Complete mid-substance tear of a major stabilizing intra-articular ligament.", options: ["MCL Tear", "PCL Tear", "Medial Meniscus Tear", "ACL Tear"], answer: 3, explanation: "ACL tears classically present with a 'pop', rapid swelling (hemarthrosis), and a positive Lachman test." },
+                { mechanism: "squatting deep when {pro} felt a catch and locked sensation in the knee", exam: "reports pain on the medial joint line. McMurray's test elicits a painful 'click'.", diagnostic: "MRI: Linear fluid signal extending through the articular surface of the fibrocartilage pad.", options: ["Medial Meniscus Tear", "Lateral Collateral Ligament Tear", "Patellar Tendon Rupture", "Baker's Cyst"], answer: 0, explanation: "Meniscus tears present with locking, catching, joint line tenderness, and a positive McMurray test." }
             ]
         },
         embryology: {
             level1: [
-                {
-                    mechanism: "undergoes normal fertilization and early cleavage divisions in the fallopian tube",
-                    exam: "reaches the uterine cavity as a solid ball of cells approximately 3 days post-fertilization.",
-                    diagnostic: "Histology: Outer layer of blastomeres forming tight junctions with an inner cell mass.",
-                    options: ["Morula", "Blastocyst", "Zygote", "Gastrula"],
-                    answer: 0,
-                    explanation: "The 12-16 cell stage is called the morula before it becomes a blastocyst."
-                }
+                { mechanism: "The embryo undergoes normal fertilization and early cleavage divisions in the fallopian tube.", exam: "reaches the uterine cavity as a solid ball of cells approximately 3 days post-fertilization.", diagnostic: "Histology: Outer layer of blastomeres forming tight junctions.", options: ["Morula", "Blastocyst", "Zygote", "Gastrula"], answer: 0, explanation: "The 12-16 cell stage is called the morula before it becomes a fluid-filled blastocyst." },
+                { mechanism: "Routine blood tests show elevated human chorionic gonadotropin (hCG) around day 8 post-fertilization.", exam: "The blastocyst is currently embedding into the endometrial lining.", diagnostic: "Histology: Which cells are actively secreting this hormone?", options: ["Cytotrophoblast", "Syncytiotrophoblast", "Epiblast", "Hypoblast"], answer: 1, explanation: "The syncytiotrophoblast invades the endometrium and secretes hCG to maintain the corpus luteum." },
+                { mechanism: "The pregnancy is currently in the third week of development.", exam: "A critical process begins with the formation of the primitive streak on the epiblast surface.", diagnostic: "Observation: Cells invaginate to form three distinct germ layers.", options: ["Cleavage", "Compaction", "Gastrulation", "Neurulation"], answer: 2, explanation: "Gastrulation is the defining event of week 3, converting the bilaminar disc into a trilaminar disc." }
             ],
             level2: [
-                {
-                    mechanism: "is a newborn evaluated for a facial anomaly during the first check-up",
-                    exam: "has a unilateral cleft on the upper lip extending towards the nose with an intact palate.",
-                    diagnostic: "Clinical observation: Failure of specific facial prominences to fuse properly during weeks 4-7.",
-                    options: ["Maxillary & Medial Nasal Prominences", "Palatine Shelves", "Lateral & Medial Nasal Prominences", "Mandibular Prominences"],
-                    answer: 0,
-                    explanation: "Cleft lip happens when the maxillary and medial nasal prominences fail to fuse."
-                }
+                { mechanism: "shows a unilateral cleft on the upper lip extending towards the nose with an intact palate.", exam: "Further imaging confirms no other midline defects.", diagnostic: "Observation: Failure of specific facial prominences to fuse properly.", options: ["Maxillary & Medial Nasal Prominences", "Palatine Shelves", "Lateral & Medial Nasal Prominences", "Mandibular Prominences"], answer: 0, explanation: "Cleft lip happens when the maxillary and medial nasal prominences fail to fuse." },
+                { mechanism: "was identified with elevated alpha-fetoprotein (AFP) in maternal serum.", exam: "Postnatal examination shows failure of the cranial neuropore to close.", diagnostic: "Maternal History: Lack of folic acid supplementation during the first month.", options: ["Spina Bifida Occulta", "Meningocele", "Anencephaly", "Encephalocele"], answer: 2, explanation: "Anencephaly is a lethal neural tube defect caused by failure of the cranial neuropore to close (requires folic acid)." }
             ],
             level3: [
-                {
-                    mechanism: "is an infant exhibiting poor feeding and rapid breathing",
-                    exam: "A harsh holosystolic murmur is auscultated best at the left lower sternal border. The infant is non-cyanotic.",
-                    diagnostic: "Echocardiogram: Left-to-right shunt through a defect in the membranous interventricular septum.",
-                    options: ["Atrial Septal Defect", "Ventricular Septal Defect", "Tetralogy of Fallot", "Patent Ductus Arteriosus"],
-                    answer: 1,
-                    explanation: "Ventricular Septal Defect (VSD) is the most common congenital heart anomaly."
-                }
+                { mechanism: "exhibits poor feeding, sweating, and rapid breathing.", exam: "A harsh holosystolic murmur is auscultated best at the left lower sternal border.", diagnostic: "Echocardiogram: Left-to-right shunt through a defect in the membranous interventricular septum.", options: ["Atrial Septal Defect", "Ventricular Septal Defect", "Tetralogy of Fallot", "Patent Ductus Arteriosus"], answer: 1, explanation: "Ventricular Septal Defect (VSD) is the most common congenital heart anomaly." },
+                { mechanism: "presents with severe limb shortening (phocomelia) where hands attach almost directly to the trunk.", exam: "The mother took an unprescribed anti-nausea drug during weeks 4-8.", diagnostic: "Genetic panels normal. Structural defect due to targeted disruption of the Apical Ectodermal Ridge (AER).", options: ["Alcohol Syndrome", "Thalidomide Embryopathy", "Folic Acid Deficiency", "Rubella Infection"], answer: 1, explanation: "Thalidomide classically disrupts AER signaling, causing severe limb reduction defects (Meromelia/Phocomelia)." }
             ],
             level4: [
-                {
-                    mechanism: "is a cyanotic newborn presenting with severe hypoxia shortly after birth",
-                    exam: "Chest X-ray reveals a classic 'boot-shaped' heart and severe cyanosis.",
-                    diagnostic: "Echocardiogram: Right ventricular hypertrophy, pulmonary stenosis, overriding aorta, and VSD.",
-                    options: ["Transposition of Great Arteries", "Tetralogy of Fallot", "Truncus Arteriosus", "Tricuspid Atresia"],
-                    answer: 1,
-                    explanation: "Tetralogy of Fallot consists of four classic anatomical heart defects resulting from conotruncal malalignment."
-                }
+                { mechanism: "presents with severe hypoxia and deep cyanosis.", exam: "Chest X-ray reveals a classic 'boot-shaped' heart and decreased pulmonary vascular markings.", diagnostic: "Echo: Right ventricular hypertrophy, pulmonary stenosis, overriding aorta, and VSD.", options: ["Transposition of Great Arteries", "Tetralogy of Fallot", "Truncus Arteriosus", "Tricuspid Atresia"], answer: 1, explanation: "Tetralogy of Fallot consists of four classic anatomical heart defects resulting from conotruncal malalignment." },
+                { mechanism: "shows immediate respiratory distress and excessive drooling.", exam: "An attempted nasogastric tube coils in the upper chest. Air is visible in the stomach on X-ray.", diagnostic: "Imaging: Esophagus ends in a blind pouch, lower segment communicates with the trachea.", options: ["Duodenal Atresia", "Diaphragmatic Hernia", "Tracheoesophageal Fistula", "Pyloric Stenosis"], answer: 2, explanation: "Tracheoesophageal fistula with esophageal atresia stems from abnormal septation of the primitive foregut." }
             ]
         },
         physiology: {
             body_fluids: [
-                {
-                    mechanism: "presents with severe watery diarrhea and vomiting for three days",
-                    exam: "exhibits dry mucous membranes, poor skin turgor, low blood pressure, and concentrated dark urine. Total body water is reduced, primarily affecting the extracellular fluid (ECF) volume.",
-                    diagnostic: "Lab results: Elevated serum osmolarity, high hematocrit due to hemoconcentration, normal total body solute count with low volume.",
-                    options: ["Hypotonic Hydration (Water Intoxication)", "Isotonic ECF Volume Contraction (Dehydration)", "Hypertonic Cellular Swelling", "Edema via Increased Hydrostatic Pressure"],
-                    answer: 1,
-                    explanation: "Loss of isotonic fluids (like gastrointestinal fluids) leads to ECF volume contraction without significant shift between ICF and ECF initially."
-                },
-                {
-                    mechanism: "complains of chronic fatigue, cold intolerance, and pale conjunctiva",
-                    exam: "Complete Blood Count shows low hemoglobin levels, small microcytic red blood cells, and reduced mean corpuscular volume (MCV).",
-                    diagnostic: "Iron panel: Low serum ferritin and low serum iron levels indicating deficient erythropoiesis.",
-                    options: ["Pernicious Anemia (B12 Deficiency)", "Iron Deficiency Anemia", "Hemolytic Anemia", "Polycythemia Vera"],
-                    answer: 1,
-                    explanation: "Iron deficiency anemia results in microcytic, hypochromic red blood cells because iron is essential for heme synthesis in bone marrow."
-                }
+                { mechanism: "experiencing severe watery diarrhea and vomiting for three days", exam: "exhibits dry mucous membranes, low blood pressure, and dark urine. Total body water is reduced.", diagnostic: "Lab results: Elevated serum osmolarity. Fluid is lost primarily from the ECF.", options: ["Hypotonic Hydration", "Isotonic Dehydration", "Hypertonic Cellular Swelling", "Edema"], answer: 1, explanation: "Loss of isotonic GI fluids leads to ECF volume contraction (dehydration) without immediate intracellular shifting." },
+                { mechanism: "complaining of chronic fatigue, cold intolerance, and pale conjunctiva", exam: "CBC shows low hemoglobin, small microcytic red blood cells, and reduced MCV.", diagnostic: "Iron panel: Low serum ferritin and iron levels.", options: ["Pernicious Anemia (B12)", "Iron Deficiency Anemia", "Hemolytic Anemia", "Aplastic Anemia"], answer: 1, explanation: "Iron is essential for heme synthesis. Deficiency results in microcytic, hypochromic red blood cells." },
+                { mechanism: "giving birth as an Rh-negative mother to a second Rh-positive baby", exam: "The newborn presents with severe jaundice, anemia, and hepatosplenomegaly.", diagnostic: "Direct Coombs Test: Positive for maternal anti-Rh IgG antibodies on infant's RBCs.", options: ["ABO Incompatibility", "Hemolytic Disease of the Newborn", "Physiological Jaundice", "Thalassemia"], answer: 1, explanation: "Maternal IgG antibodies cross the placenta and attack the fetal Rh-positive RBCs, causing hemolysis." },
+                { mechanism: "presenting with severe knee swelling (hemarthrosis) after a minor bump", exam: "has a family history of a maternal uncle who bled easily.", diagnostic: "Coagulation Profile: Prolonged PTT, normal PT, and normal bleeding time. Deficient Factor VIII.", options: ["Hemophilia A", "Hemophilia B", "Von Willebrand Disease", "Vitamin K Deficiency"], answer: 0, explanation: "Hemophilia A is an X-linked recessive deficiency of clotting Factor VIII." }
             ],
             nervous_muscular: [
-                {
-                    mechanism: "complains of progressive muscle weakness that worsens with repetitive activity and improves after rest",
-                    exam: "shows bilateral ptosis (drooping eyelids) and facial muscle weakness. Reflexes and sensation are completely normal.",
-                    diagnostic: "Serology: Presence of circulating antibodies directed against postsynaptic nicotinic acetylcholine receptors at the neuromuscular junction.",
-                    options: ["Myasthenia Gravis", "Lambert-Eaton Syndrome", "Botulism", "Multiple Sclerosis"],
-                    answer: 0,
-                    explanation: "Myasthenia Gravis is an autoimmune condition blocking or destroying ACh receptors on the motor end plate, reducing end-plate potentials."
-                },
-                {
-                    mechanism: "receives a local anesthetic injection prior to a minor skin procedure",
-                    exam: "experiences temporary loss of pain sensation in the local area due to blocked nerve impulse propagation.",
-                    diagnostic: "Electrophysiology: Voltage-gated sodium channels are reversibly blocked, preventing the depolarization phase of the action potential.",
-                    options: ["Blocking Potassium Efflux", "Blocking Voltage-Gated Sodium Channels", "Enhancing GABA Receptors", "Blocking Calcium Influx"],
-                    answer: 1,
-                    explanation: "Local anesthetics work by binding to and blocking voltage-gated sodium channels, stopping nerve fibers from firing action potentials."
-                }
+                { mechanism: "complaining of progressive muscle weakness that worsens with repetitive activity and improves after rest", exam: "shows bilateral ptosis (drooping eyelids) and facial muscle weakness.", diagnostic: "Serology: Antibodies against postsynaptic nicotinic acetylcholine receptors.", options: ["Myasthenia Gravis", "Lambert-Eaton Syndrome", "Botulism", "Multiple Sclerosis"], answer: 0, explanation: "Myasthenia Gravis is an autoimmune condition blocking ACh receptors on the motor end plate." },
+                { mechanism: "receiving a local anesthetic (Lidocaine) injection prior to a minor skin procedure", exam: "experiences temporary loss of pain sensation in the local area.", diagnostic: "Electrophysiology: The drug prevents the depolarization phase of the action potential.", options: ["Blocking K+ Efflux", "Blocking Voltage-Gated Na+ Channels", "Enhancing GABA", "Blocking Ca2+ Influx"], answer: 1, explanation: "Local anesthetics bind to and block voltage-gated sodium channels, stopping nerve fibers from firing action potentials." },
+                { mechanism: "consuming improperly canned homemade vegetables", exam: "presents with descending flaccid paralysis, diplopia (double vision), and dry mouth.", diagnostic: "Toxin Analysis: Cleavage of SNARE proteins at the presynaptic terminal, preventing ACh release.", options: ["Tetanus", "Botulism", "Polio", "Myasthenia Gravis"], answer: 1, explanation: "Botulinum toxin blocks the release of Acetylcholine from presynaptic terminals by destroying SNARE proteins." },
+                { mechanism: "being examined post-mortem 6 hours after death", exam: "The body is extremely stiff and joints cannot be passively flexed.", diagnostic: "Cellular Mechanism: Lack of a specific nucleotide to detach myosin heads from actin filaments.", options: ["Calcium Depletion", "ATP Depletion (Rigor Mortis)", "Glycogen Depletion", "Sodium Accumulation"], answer: 1, explanation: "Rigor mortis occurs because ATP is required to break the cross-bridge between actin and myosin." }
             ],
             immune: [
-                {
-                    mechanism: "develops sudden hives, itching, and wheezing shortly after consuming peanuts",
-                    exam: "Vital signs show low blood pressure and rapid pulse. The reaction is driven by rapid mast cell degranulation.",
-                    diagnostic: "Serum test: Elevated allergen-specific IgE antibodies bound to high-affinity Fc receptors on mast cells and basophils.",
-                    options: ["Type I Hypersensitivity (Anaphylaxis)", "Type II Cytotoxic Hypersensitivity", "Type III Immune Complex Disease", "Type IV Cell-Mediated Hypersensitivity"],
-                    answer: 0,
-                    explanation: "Type I hypersensitivity is an immediate allergic reaction mediated by IgE antibodies causing rapid release of histamine and inflammatory mediators."
-                },
-                {
-                    mechanism: "develops a red, swollen, and warm localized reaction 48 hours after touching poison ivy leaves",
-                    exam: "presents with delayed skin blistering and localized dermatitis at the contact site.",
-                    diagnostic: "Biopsy: Infiltration of sensitized T-lymphocytes and macrophages rather than circulating antibodies.",
-                    options: ["Type I Hypersensitivity", "Type II Hypersensitivity", "Type III Hypersensitivity", "Type IV Delayed-Type Hypersensitivity"],
-                    answer: 3,
-                    explanation: "Type IV hypersensitivity is cell-mediated (T-cells), taking 48-72 hours to develop, unlike immediate antibody-mediated responses."
-                }
+                { mechanism: "developing sudden hives, itching, and wheezing shortly after consuming peanuts", exam: "Vital signs show low blood pressure and rapid pulse.", diagnostic: "Serum test: Elevated allergen-specific IgE binding to mast cells and basophils.", options: ["Type I Hypersensitivity", "Type II Cytotoxic", "Type III Immune Complex", "Type IV Cell-Mediated"], answer: 0, explanation: "Type I hypersensitivity is an immediate allergic reaction mediated by IgE and rapid histamine release." },
+                { mechanism: "developing a red, swollen, blistering rash 48 hours after hiking in the woods", exam: "presents with localized dermatitis precisely where plants brushed against the skin.", diagnostic: "Biopsy: Infiltration of sensitized T-lymphocytes and macrophages (no antibodies involved).", options: ["Type I Hypersensitivity", "Type II Hypersensitivity", "Type III Hypersensitivity", "Type IV Hypersensitivity"], answer: 3, explanation: "Type IV hypersensitivity is cell-mediated (T-cells), taking 48-72 hours to develop (e.g., Poison Ivy)." },
+                { mechanism: "recovering from a viral infection 6 months ago and re-exposed to the exact same virus today", exam: "remains completely asymptomatic despite heavy exposure.", diagnostic: "Serology: High levels of circulating, high-affinity IgG antibodies against the virus.", options: ["Primary Immune Response", "Secondary (Memory) Immune Response", "Innate Immunity Activation", "Passive Immunization"], answer: 1, explanation: "The secondary response (memory B and T cells) produces rapid, high-affinity IgG to neutralize the pathogen before symptoms appear." },
+                { mechanism: "presenting with recurrent bacterial, fungal, and viral infections since 6 months of age", exam: "Thymus shadow is completely absent on chest X-ray.", diagnostic: "Flow Cytometry: Profound lack of mature T-cells, severely compromising both cellular and humoral immunity.", options: ["DiGeorge Syndrome", "Severe Combined Immunodeficiency (SCID)", "X-linked Agammaglobulinemia", "Selective IgA Deficiency"], answer: 1, explanation: "SCID is a severe genetic defect leading to a lack of functional T-cells (and often B-cells), making the patient extremely vulnerable to all infections." }
             ]
         }
     };
@@ -514,30 +233,13 @@
     function launchSimulator(region, category) {
         currentRegion = region;
         currentCategory = category;
-        
         document.getElementById('home-screen').style.display = 'none';
         document.getElementById('simulator-screen').style.display = 'block';
         
-        const simTitle = document.getElementById('sim-title');
-        let regionText = '';
-        if (region === 'upper') regionText = 'Upper Limb';
-        else if (region === 'lower') regionText = 'Lower Limb';
-        else if (region === 'embryology') regionText = 'Embryology';
-        else if (region === 'physiology') regionText = 'Physiology';
-
-        let categoryText = '';
-        if (region === 'embryology') {
-            categoryText = `Level ${category.replace('level', '')}`;
-        } else if (region === 'physiology') {
-            if (category === 'body_fluids') categoryText = 'Body Fluids & Blood';
-            else if (category === 'nervous_muscular') categoryText = 'Nervous & Muscular';
-            else if (category === 'immune') categoryText = 'Immune System';
-        } else {
-            if (category === 'limbs') categoryText = 'Limb Development';
-            else categoryText = category.charAt(0).toUpperCase() + category.slice(1) + ' Injuries';
-        }
-        
-        simTitle.textContent = `⚡ ${regionText}: ${categoryText}`;
+        let simTitle = document.getElementById('sim-title');
+        let regionText = currentRegion === 'upper' ? 'Upper Limb' : currentRegion === 'lower' ? 'Lower Limb' : currentRegion.charAt(0).toUpperCase() + currentRegion.slice(1);
+        let catText = currentCategory.includes('level') ? currentCategory.replace('level', 'Level ') : currentCategory.replace('_', ' ');
+        simTitle.textContent = `⚡ ${regionText}: ${catText.charAt(0).toUpperCase() + catText.slice(1)}`;
         
         generateCase(); 
     }
@@ -552,36 +254,49 @@
         document.getElementById('next-button').style.display = 'none';
 
         const templates = casesData[currentRegion][currentCategory];
-
-        if (!templates || templates.length === 0) {
-            document.getElementById('case-text').innerHTML = `<strong>Notice:</strong><br><br>More cases are coming soon to this section!`;
-            document.getElementById('diagnostic-text').innerHTML = `[INVESTIGATIONS PENDING]`;
-            document.getElementById('options-container').innerHTML = '';
-            return;
-        }
+        if (!templates || templates.length === 0) return;
 
         let templateIndex;
         if (templates.length > 1) {
-            do {
-                templateIndex = Math.floor(Math.random() * templates.length);
-            } while (templateIndex === lastIndex);
-        } else {
-            templateIndex = 0;
-        }
+            do { templateIndex = Math.floor(Math.random() * templates.length); } while (templateIndex === lastIndex);
+        } else { templateIndex = 0; }
         lastIndex = templateIndex;
-        
         let template = templates[templateIndex];
 
         let vignette = "";
-        if (currentRegion === 'embryology' || currentRegion === 'physiology') {
-            vignette = `A patient ${template.mechanism}. On examination, ${template.exam}`;
+
+        // DYNAMIC VIGNETTE BUILDER
+        if (currentRegion === 'embryology') {
+            if (currentCategory === 'level1') {
+                // Early embryology (mother-focused)
+                let matAge = getAge(18, 45);
+                let occ = getRandom(randDict.occupations);
+                let pren = getRandom(randDict.prenatal);
+                vignette = `A ${matAge}-year-old female ${occ} ${pren} presents for evaluation. ${template.mechanism} On ultrasound, it is noted that it ${template.exam}`;
+            } else {
+                // Late embryology / Defects (infant-focused)
+                let infAge = getRandom(randDict.infantAges);
+                let infGender = getRandom(randDict.kidGenders);
+                let matAge = getAge(18, 45);
+                let delivery = getRandom(randDict.deliveries);
+                let pren = getRandom(randDict.prenatal);
+                let present = getRandom(randDict.presenting);
+                
+                vignette = `A ${infAge} ${infGender.id} born via ${delivery} to a ${matAge}-year-old mother ${pren} is evaluated ${present}. ${infGender.pro} ${template.mechanism} On examination, ${infGender.pro.toLowerCase()} ${template.exam}`;
+            }
         } else {
-            let age = Math.floor(Math.random() * 52) + 18;
-            let genderObj = genders[Math.floor(Math.random() * genders.length)];
-            let occupation = occupations[Math.floor(Math.random() * occupations.length)];
-            let side = sides[Math.floor(Math.random() * sides.length)];
-            vignette = `A ${age}-year-old ${genderObj.id} ${occupation} ${template.mechanism}. On examination, ${genderObj.pro.toLowerCase()} ${template.exam}`;
-            vignette = vignette.replace(/{pro}/g, genderObj.pro).replace(/{pos}/g, genderObj.pos).replace(/{side}/g, side);
+            // Limbs and Physiology
+            let age = getAge(18, 75);
+            let gen = getRandom(randDict.genders);
+            let occ = getRandom(randDict.occupations);
+            let time = getRandom(randDict.timings);
+            let setting = getRandom(randDict.settings);
+            let side = getRandom(randDict.sides);
+            
+            let mech = template.mechanism.replace(/{pos}/g, gen.pos).replace(/{pro}/g, gen.pro).replace(/{side}/g, side);
+            let ex = template.exam.replace(/{pos}/g, gen.pos).replace(/{pro}/g, gen.pro).replace(/{side}/g, side);
+            
+            vignette = `A ${age}-year-old ${gen.id} ${occ} presents to the clinic ${time} after ${mech} ${setting}. On examination, ${gen.pro.toLowerCase()} ${ex}`;
         }
 
         document.getElementById('case-text').innerHTML = `<strong>Patient File:</strong><br><br>${vignette}`;
@@ -589,7 +304,6 @@
 
         const optionsContainer = document.getElementById('options-container');
         optionsContainer.innerHTML = '';
-
         template.options.forEach((opt, idx) => {
             let btn = document.createElement('button');
             btn.className = 'option-btn';
@@ -602,23 +316,17 @@
     function checkAnswer(selectedIndex, btn, template) {
         let buttons = document.querySelectorAll('.option-btn');
         buttons.forEach(b => b.disabled = true);
-        
         let feedback = document.getElementById('feedback-box');
-        
         if (selectedIndex === template.answer) {
-            btn.style.background = '#27ae60';
-            btn.style.borderColor = '#2ecc71';
+            btn.style.background = '#27ae60'; btn.style.borderColor = '#2ecc71';
             feedback.className = 'feedback correct-feedback';
             feedback.innerHTML = `<strong>✓ Spot On.</strong><br><br>${template.explanation}`;
         } else {
-            btn.style.background = '#c0392b';
-            btn.style.borderColor = '#e74c3c';
-            buttons[template.answer].style.background = '#27ae60';
-            buttons[template.answer].style.borderColor = '#2ecc71';
+            btn.style.background = '#c0392b'; btn.style.borderColor = '#e74c3c';
+            buttons[template.answer].style.background = '#27ae60'; buttons[template.answer].style.borderColor = '#2ecc71';
             feedback.className = 'feedback incorrect-feedback';
             feedback.innerHTML = `<strong>✗ Incorrect Diagnosis.</strong><br><br>${template.explanation}`;
         }
-        
         feedback.style.display = 'block';
         document.getElementById('next-button').style.display = 'block';
     }
