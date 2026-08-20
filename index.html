@@ -321,6 +321,7 @@
         .pdf-close:hover { background: #c0392b; }
         .pdf-viewer { flex: 1; width: 100%; overflow: auto; background: #2a2a2a; display: flex; flex-direction: column; align-items: center; padding: 12px; }
         .pdf-canvas { background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.5); margin-bottom: 10px; max-width: 100%; }
+        .pdf-page-wrap { display: flex; justify-content: center; }
         .pdf-controls { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 14px; border-top: 1px solid #333; flex-wrap: wrap; }
         .pdf-ctrl-btn { background: #333; color: #fff; border: 1px solid #555; border-radius: 6px; padding: 5px 12px; cursor: pointer; font-size: .85rem; transition: all .2s; }
         .pdf-ctrl-btn:hover { background: #3498db; border-color: #3498db; }
@@ -831,8 +832,10 @@ function renderVideos() {
 
 // ============ References library ============
 const BOOKS = [
-  { title: "Gray's Anatomy for Students (Part 1)", author: "Drake, Vogl & Mitchell", pages: "1-650", size: "64 MB", tag: "Anatomy", icon: "🦴", file: "references/grays-part1.pdf" },
-  { title: "Gray's Anatomy for Students (Part 2)", author: "Drake, Vogl & Mitchell", pages: "651-1300", size: "65 MB", tag: "Anatomy", icon: "🦴", file: "references/grays-part2.pdf" },
+  { title: "Gray's Anatomy for Students (Part 1)", author: "Drake, Vogl & Mitchell", pages: "1-325", size: "32 MB", tag: "Anatomy", icon: "🦴", file: "references/grays-part1.pdf" },
+  { title: "Gray's Anatomy for Students (Part 2)", author: "Drake, Vogl & Mitchell", pages: "326-650", size: "33 MB", tag: "Anatomy", icon: "🦴", file: "references/grays-part2.pdf" },
+  { title: "Gray's Anatomy for Students (Part 3)", author: "Drake, Vogl & Mitchell", pages: "651-975", size: "33 MB", tag: "Anatomy", icon: "🦴", file: "references/grays-part3.pdf" },
+  { title: "Gray's Anatomy for Students (Part 4)", author: "Drake, Vogl & Mitchell", pages: "976-1300", size: "33 MB", tag: "Anatomy", icon: "🦴", file: "references/grays-part4.pdf" },
   { title: "Atlas of Human Anatomy", author: "Frank H. Netter", pages: 1299, size: "28 MB", tag: "Atlas", icon: "🧍", file: "references/Atlas-of-Human-Anatomy.pdf" },
   { title: "Snell's Clinical Anatomy", author: "Richard S. Snell", pages: 315, size: "32 MB", tag: "Anatomy", icon: "🩺", file: "references/snell.pdf" },
   { title: "Upper Limb Anatomy", author: "Alfiki", pages: 55, size: "29 MB", tag: "Upper Limb", icon: "💪", file: "references/Upper-limb-alfiki.pdf" },
@@ -854,7 +857,7 @@ function renderBooks() {
 if (typeof pdfjsLib !== 'undefined') {
   pdfjsLib.GlobalWorkerOptions.workerSrc = './pdfjs/pdf.worker.min.js';
 }
-let pdfDoc = null, pdfPage = 1, pdfScale = 1.0, pdfRendering = false, pdfRenderQueue = null;
+let pdfDoc = null, pdfScale = 1.0, pdfPages = [], pdfRendering = new Set(), pdfCurrent = 1;
 function openPdf(i) {
   const b = BOOKS[i];
   document.getElementById('pdf-title').textContent = b.title;
@@ -863,34 +866,77 @@ function openPdf(i) {
   document.getElementById('pdf-download').download = b.title.replace(/[^a-z0-9]+/gi, '-') + '.pdf';
   document.getElementById('pdf-overlay').style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  pdfDoc = null; pdfPage = 1; pdfScale = 1.0;
-  document.getElementById('pdf-viewer').innerHTML = '<div class="pdf-loading">Loading PDF&hellip;</div>';
+  pdfDoc = null; pdfScale = 1.0; pdfPages = []; pdfRendering = new Set(); pdfCurrent = 1;
+  const viewer = document.getElementById('pdf-viewer');
+  viewer.innerHTML = '<div class="pdf-loading">Loading PDF&hellip;</div>';
   document.getElementById('pdf-prev').disabled = true;
   document.getElementById('pdf-next').disabled = true;
   document.getElementById('pdf-page-info').textContent = '- / -';
   if (typeof pdfjsLib === 'undefined') {
-    document.getElementById('pdf-viewer').innerHTML = '<div class="pdf-loading">PDF engine failed to load. <a href="' + b.file + '" target="_blank" style="color:#3498db;">Open in new tab instead</a></div>';
+    viewer.innerHTML = '<div class="pdf-loading">PDF engine failed to load. <a href="' + b.file + '" target="_blank" style="color:#3498db;">Open in new tab instead</a></div>';
     return;
   }
   pdfjsLib.getDocument(b.file).promise.then(function (doc) {
     pdfDoc = doc;
     document.getElementById('pdf-page-info').textContent = '1 / ' + doc.numPages;
     document.getElementById('pdf-next').disabled = false;
-    pdfRender();
-  }).catch(function (err) {
-    document.getElementById('pdf-viewer').innerHTML = '<div class="pdf-loading">Could not load this PDF. <a href="' + b.file + '" target="_blank" style="color:#3498db;">Open in new tab instead</a></div>';
+    pdfBuildAll();
+  }).catch(function () {
+    viewer.innerHTML = '<div class="pdf-loading">Could not load this PDF. <a href="' + b.file + '" target="_blank" style="color:#3498db;">Open in new tab instead</a></div>';
   });
 }
-function pdfRender() {
-  if (!pdfDoc || pdfRendering) { pdfRenderQueue = true; return; }
-  pdfRendering = true;
+function pdfBuildAll() {
   const viewer = document.getElementById('pdf-viewer');
+  viewer.innerHTML = '';
+  pdfPages = [];
+  for (let p = 1; p <= pdfDoc.numPages; p++) {
+    const div = document.createElement('div');
+    div.className = 'pdf-page-wrap';
+    div.dataset.page = p;
+    viewer.appendChild(div);
+    pdfPages.push(div);
+  }
+  viewer.addEventListener('scroll', pdfOnScroll);
+  pdfRenderVisible();
+}
+function pdfOnScroll() {
+  pdfRenderVisible();
+  // update page indicator from scroll position
+  const viewer = document.getElementById('pdf-viewer');
+  const st = viewer.scrollTop + 40;
+  let cur = 1;
+  for (let i = 0; i < pdfPages.length; i++) {
+    if (pdfPages[i].offsetTop <= st) cur = i + 1; else break;
+  }
+  if (cur !== pdfCurrent) {
+    pdfCurrent = cur;
+    document.getElementById('pdf-page-info').textContent = cur + ' / ' + pdfDoc.numPages;
+    document.getElementById('pdf-prev').disabled = (cur <= 1);
+    document.getElementById('pdf-next').disabled = (cur >= pdfDoc.numPages);
+  }
+}
+function pdfRenderVisible() {
+  if (!pdfDoc) return;
+  const viewer = document.getElementById('pdf-viewer');
+  const st = viewer.scrollTop, vh = viewer.clientHeight;
+  const lo = st - vh, hi = st + 2 * vh;
+  pdfPages.forEach(function (div, idx) {
+    const p = idx + 1;
+    if (div.offsetTop + div.offsetHeight < lo || div.offsetTop > hi) {
+      if (div.dataset.rendered) { div.innerHTML = ''; div.dataset.rendered = ''; }
+      return;
+    }
+    if (!div.dataset.rendered && !pdfRendering.has(p)) pdfRenderPage(p, div);
+  });
+}
+function pdfRenderPage(p, div) {
+  pdfRendering.add(p);
   const canvas = document.createElement('canvas');
   canvas.className = 'pdf-canvas';
-  viewer.innerHTML = '';
-  viewer.appendChild(canvas);
-  pdfDoc.getPage(pdfPage).then(function (page) {
+  div.appendChild(canvas);
+  pdfDoc.getPage(p).then(function (page) {
     const base = page.getViewport({ scale: 1 });
+    const viewer = document.getElementById('pdf-viewer');
     const avail = viewer.clientWidth - 24;
     let s = pdfScale;
     if (base.width * s > avail) s = avail / base.width;
@@ -901,21 +947,33 @@ function pdfRender() {
     canvas.style.height = vp.height + 'px';
     return page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
   }).then(function () {
-    pdfRendering = false;
-    if (pdfRenderQueue) { pdfRenderQueue = false; pdfRender(); }
+    div.dataset.rendered = '1';
+    pdfRendering.delete(p);
   }).catch(function () {
-    pdfRendering = false;
-    viewer.innerHTML = '<div class="pdf-loading">Error rendering page ' + pdfPage + '.</div>';
+    pdfRendering.delete(p);
+    div.innerHTML = '<div class="pdf-loading">Error rendering page ' + p + '.</div>';
   });
 }
-function pdfPrev() { if (pdfPage > 1) { pdfPage--; document.getElementById('pdf-page-info').textContent = pdfPage + ' / ' + pdfDoc.numPages; document.getElementById('pdf-next').disabled = false; if (pdfPage === 1) document.getElementById('pdf-prev').disabled = true; pdfRender(); } }
-function pdfNext() { if (pdfDoc && pdfPage < pdfDoc.numPages) { pdfPage++; document.getElementById('pdf-page-info').textContent = pdfPage + ' / ' + pdfDoc.numPages; document.getElementById('pdf-prev').disabled = false; if (pdfPage === pdfDoc.numPages) document.getElementById('pdf-next').disabled = true; pdfRender(); } }
-function pdfZoom(d) { pdfScale = Math.min(3, Math.max(0.3, pdfScale + d)); pdfRender(); }
-function pdfFit() { pdfScale = 1.0; pdfRender(); }
+function pdfGoTo(p) {
+  if (!pdfDoc || p < 1 || p > pdfDoc.numPages) return;
+  const div = pdfPages[p - 1];
+  document.getElementById('pdf-viewer').scrollTop = div.offsetTop - 10;
+  pdfOnScroll();
+}
+function pdfPrev() { pdfGoTo(pdfCurrent - 1); }
+function pdfNext() { pdfGoTo(pdfCurrent + 1); }
+function pdfZoom(d) {
+  pdfScale = Math.min(3, Math.max(0.3, pdfScale + d));
+  pdfPages.forEach(function (div) { div.innerHTML = ''; div.dataset.rendered = ''; });
+  pdfRenderVisible();
+}
+function pdfFit() { pdfZoom(0); pdfScale = 1.0; pdfRenderVisible(); }
 function closePdf() {
   document.getElementById('pdf-overlay').style.display = 'none';
-  document.getElementById('pdf-viewer').innerHTML = '<div class="pdf-loading">Loading PDF&hellip;</div>';
-  pdfDoc = null;
+  const viewer = document.getElementById('pdf-viewer');
+  viewer.innerHTML = '<div class="pdf-loading">Loading PDF&hellip;</div>';
+  viewer.removeEventListener('scroll', pdfOnScroll);
+  pdfDoc = null; pdfPages = []; pdfRendering = new Set();
   document.body.style.overflow = '';
 }
 document.getElementById('pdf-overlay').addEventListener('click', function (e) {
