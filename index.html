@@ -745,11 +745,14 @@ function closeVideoPlayer() {
   document.getElementById('video-player-frame').innerHTML = '';
   document.body.style.overflow = '';
 }
-document.getElementById('video-player-overlay').addEventListener('click', function (e) {
-  if (e.target === this) closeVideoPlayer();
-});
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') closeVideoPlayer();
+document.addEventListener('DOMContentLoaded', function () {
+  var ov = document.getElementById('video-player-overlay');
+  if (ov) ov.addEventListener('click', function (e) {
+    if (e.target === this) closeVideoPlayer();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeVideoPlayer();
+  });
 });
 
 // ============ Videos library ============
@@ -884,17 +887,14 @@ function closePdf() {
   document.getElementById('pdf-frame').src = '';
   document.body.style.overflow = '';
 }
-document.getElementById('pdf-overlay').addEventListener('click', function (e) {
-  if (e.target === this) closePdf();
-});
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') closePdf();
-});
-document.getElementById('pdf-overlay').addEventListener('click', function (e) {
-  if (e.target === this) closePdf();
-});
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') closePdf();
+document.addEventListener('DOMContentLoaded', function () {
+  var ov = document.getElementById('pdf-overlay');
+  if (ov) ov.addEventListener('click', function (e) {
+    if (e.target === this) closePdf();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePdf();
+  });
 });
 
 // ---------- home screen statuses ----------
