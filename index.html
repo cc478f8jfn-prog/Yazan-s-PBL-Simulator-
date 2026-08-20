@@ -319,18 +319,12 @@
         .pdf-title { color: #fff; font-weight: bold; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .pdf-close { background: #444; color: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 1rem; cursor: pointer; flex-shrink: 0; transition: all .2s; }
         .pdf-close:hover { background: #c0392b; }
-        .pdf-viewer { flex: 1; width: 100%; overflow: auto; background: #2a2a2a; display: flex; flex-direction: column; align-items: center; padding: 12px; }
-        .pdf-canvas { background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.5); margin-bottom: 10px; max-width: 100%; }
-        .pdf-page-wrap { display: flex; justify-content: center; }
-        .pdf-controls { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 14px; border-top: 1px solid #333; flex-wrap: wrap; }
-        .pdf-ctrl-btn { background: #333; color: #fff; border: 1px solid #555; border-radius: 6px; padding: 5px 12px; cursor: pointer; font-size: .85rem; transition: all .2s; }
-        .pdf-ctrl-btn:hover { background: #3498db; border-color: #3498db; }
-        .pdf-ctrl-btn:disabled { opacity: .35; cursor: default; }
-        .pdf-page-info { color: #aaa; font-size: .85rem; min-width: 90px; text-align: center; }
-        .pdf-loading { color: #fff; padding: 30px; text-align: center; font-size: .95rem; }
+        .pdf-frame { flex: 1; width: 100%; border: none; background: #fff; }
         .pdf-links { display: flex; gap: 14px; padding: 8px 14px; border-top: 1px solid #333; }
         .pdf-links a { color: #3498db; font-size: .85rem; text-decoration: none; font-weight: 600; }
         .pdf-links a:hover { text-decoration: underline; }
+        .book-dl { display: inline-block; margin-top: 4px; background: #2c3e50; color: #fff; border: 1px solid #3498db; border-radius: 6px; padding: 6px 12px; font-size: .8rem; font-weight: 600; cursor: pointer; text-decoration: none; text-align: center; transition: all .2s; }
+        .book-dl:hover { background: #3498db; }
 </style>
 </head>
 <body>
@@ -510,8 +504,6 @@
 
     </div>
 
-    <script src="./pdfjs/pdf.min.js"></script>
-    <script src="./pdfjs/pdf.worker.min.js"></script>
 <script>
 
 // ============ Yazan's PBL Simulator v2 engine ============
@@ -738,6 +730,28 @@ function resetSection() {
 
 
 
+
+// ============ Video player ============
+function openVideoPlayer(vid, title) {
+  document.getElementById('video-player-title').textContent = title;
+  document.getElementById('video-player-frame').innerHTML =
+    '<iframe src="https://www.youtube.com/embed/' + vid + '?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  document.getElementById('video-player-watch').href = 'https://www.youtube.com/watch?v=' + vid;
+  document.getElementById('video-player-overlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeVideoPlayer() {
+  document.getElementById('video-player-overlay').style.display = 'none';
+  document.getElementById('video-player-frame').innerHTML = '';
+  document.body.style.overflow = '';
+}
+document.getElementById('video-player-overlay').addEventListener('click', function (e) {
+  if (e.target === this) closeVideoPlayer();
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closeVideoPlayer();
+});
+
 // ============ Videos library ============
 const VIDEO_DATA ={"anatomy": {"khanfour": {"name": "Dr Ayman Khanfour (Arabic)", "upper": [["Lectures", [["gO5Ur9bSTjo", "𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐭𝐢𝐨𝐧 (𝐔𝐩𝐩𝐞𝐫 𝐥𝐢𝐦𝐛) 📘✨ (مقدمة عن تشريح الطرف العلوى)"], ["MMY4FIKhm1k", "𝐏𝐞𝐜𝐭𝐨𝐫𝐚𝐥 𝐫𝐞𝐠𝐢𝐨𝐧 (𝐃𝐞𝐟𝐢𝐧𝐢𝐭𝐢𝐨𝐧, 𝐜𝐨𝐧𝐭𝐞𝐧𝐭𝐬, 𝐛𝐨𝐧𝐞𝐬, 𝐦𝐮𝐬𝐜𝐥𝐞𝐬, 𝐚𝐧𝐝 𝐜𝐥𝐚𝐯𝐢𝐩𝐞𝐜𝐭𝐨𝐫𝐚𝐥 𝐟𝐚𝐬𝐜𝐢𝐚)"], ["R_9OYCO6I_I", "𝐁𝐚𝐜𝐤 (𝐋𝐚𝐲𝐞𝐫𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐦𝐮𝐬𝐜𝐥𝐞𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐛𝐚𝐜𝐤 & 𝗧𝗿𝗶𝗮𝗻𝗴𝗹𝗲𝘀 𝗼𝗳 𝘁𝗵𝗲 𝗯𝗮𝗰𝗸) 👨🏿‍🤝‍👨🏾"], ["Frp6f8w_Fz0", "𝐒𝐜𝐚𝐩𝐮𝐥𝐚𝐫 𝐫𝐞𝐠𝐢𝐨𝐧 (𝐈) 🎯(𝐒𝐮𝐛𝐬𝐜𝐚𝐩𝐮𝐥𝐚𝐫𝐢𝐬, 𝐬𝐮𝐩𝐫𝐚 𝐚𝐧𝐝 𝐢𝐧𝐟𝐫𝐚𝐬𝐩𝐢𝐧𝐚𝐭𝐮𝐬, 𝐚𝐧𝐝 𝐭𝐞𝐫𝐞𝐬 𝐦𝐮𝐬𝐜𝐥𝐞𝐬 + 𝐫𝐨𝐭𝐚𝐭𝐨𝐫 𝐜𝐮𝐟𝐟)"], ["0Vrwd-DTIXA", "𝐒𝐜𝐚𝐩𝐮𝐥𝐚𝐫 𝐫𝐞𝐠𝐢𝐨𝐧 (𝐈𝐈) 🎯(𝐃𝐞𝐥𝐭𝐨𝐢𝐝 + 𝐬𝐞𝐫𝐫𝐚𝐭𝐮𝐬 𝐚𝐧𝐭. 𝐦𝐮𝐬𝐜𝐥𝐞𝐬, 𝐚𝐱𝐢𝐥𝐥𝐚𝐫𝐲 𝐧. + 𝐢𝐧𝐭𝐞𝐫𝐦𝐮𝐬𝐜𝐮𝐥𝐚𝐫 𝐬𝐩𝐚𝐜𝐞𝐬) 🔺🔻🟦"], ["8yLIczE-xRc", "𝐀𝐱𝐢𝐥𝐥𝐚 (𝐀𝐱𝐢𝐥𝐥𝐚𝐫𝐲 𝐚𝐫𝐭𝐞𝐫𝐲, 𝐚𝐧𝐚𝐬𝐭𝐨𝐦𝐨𝐬𝐢𝐬 𝐚𝐫𝐨𝐮𝐧𝐝 𝐭𝐡𝐞 𝐬𝐜𝐚𝐩𝐮𝐥𝐚, 𝐚𝐧𝐝 𝐚𝐱𝐢𝐥𝐥𝐚𝐫𝐲 𝐥𝐲𝐦𝐩𝐡 𝐧𝐨𝐝𝐞𝐬) 🔻 (الإبط)"], ["ZRMu4arIcvQ", "𝐁𝐫𝐚𝐜𝐡𝐢𝐚𝐥 𝐩𝐥𝐞𝐱𝐮𝐬 (𝐅𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧, 𝐩𝐚𝐫𝐭𝐬, 𝐚𝐧𝐝 𝐛𝐫𝐚𝐧𝐜𝐡𝐞𝐬) (الضفيرة العضدية)"], ["JPCuxe4c1K4", "𝐀𝐫𝐦 (𝐈) 𝐀𝐧𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭 (𝐌𝐮𝐬𝐜𝐥𝐞𝐬 & 𝐍𝐞𝐫𝐯𝐞𝐬)"], ["yyN9afcC5Lg", "𝐀𝐫𝐦 (𝐈𝐈) 𝐏𝐨𝐬𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭 (𝐌𝐮𝐬𝐜𝐥𝐞𝐬, 𝐍𝐞𝐫𝐯𝐞𝐬, 𝐚𝐧𝐝 𝐯𝐞𝐬𝐬𝐞𝐥𝐬)"], ["fxFrCGH9t6M", "𝐂𝐮𝐛𝐢𝐭𝐚𝐥 𝐟𝐨𝐬𝐬𝐚 (+ 𝐁𝐫𝐚𝐜𝐡𝐢𝐚𝐥 𝐚𝐫𝐭𝐞𝐫𝐲 + 𝐀𝐧𝐚𝐬𝐭𝐨𝐦𝐨𝐬𝐢𝐬 𝐚𝐫𝐨𝐮𝐧𝐝 𝐭𝐡𝐞 𝐞𝐥𝐛𝐨𝐰)"], ["2BtFEbH8quc", "𝐅𝐨𝐫𝐞𝐚𝐫𝐦 (𝐈) (𝐀𝐧𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭 - 𝐌𝐮𝐬𝐜𝐥𝐞𝐬 & 𝐍𝐞𝐫𝐯𝐞𝐬) 🤳⚡ (عضلات وأعصاب الجزء الأمامي من الساعد)"], ["RQh2HDhpDig", "𝐅𝐨𝐫𝐞𝐚𝐫𝐦 (𝐈𝐈) (𝐀𝐧𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭 +𝐍𝐞𝐫𝐯𝐞𝐬 + 𝐯𝐞𝐬𝐬𝐞𝐥𝐬⭕⚡ (أوعية وأعصاب الجزء الأمامي من الساعد)"], ["JkHFYggRaoI", "𝐅𝐨𝐫𝐞𝐚𝐫𝐦 (𝐈𝐈𝐈) (𝐏𝐨𝐬𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭 - 𝐌𝐮𝐬𝐜𝐥𝐞𝐬 & 𝐍𝐞𝐫𝐯𝐞𝐬) ⚡ (عضلات وأعصاب الجزء الخلفى من الساعد)"], ["ZaEs1VeQYMc", "𝐇𝐚𝐧𝐝 (𝐈) (𝐒𝐤𝐞𝐥𝐞𝐭𝐨𝐧 + 𝐅𝐥𝐞𝐱𝐨𝐫 𝐚𝐧𝐝 𝐞𝐱𝐭𝐞𝐧𝐬𝐨𝐫 𝐫𝐞𝐭𝐢𝐧𝐚𝐜𝐮𝐥𝐚 + 𝐏𝐚𝐥𝐦𝐚𝐫 𝐚𝐩𝐨𝐧𝐞𝐮𝐫𝐨𝐬𝐢𝐬 + 𝐀𝐧𝐚𝐭𝐨𝐦𝐢𝐜𝐚𝐥 𝐬𝐧𝐮𝐟𝐟 𝐛𝐨𝐱)"], ["uW8G-oehllg", "𝐇𝐚𝐧𝐝 (𝐈𝐈) (𝐌𝐨𝐯𝐞𝐦𝐞𝐧𝐭𝐬 𝐨𝐟 𝐟𝐢𝐧𝐠𝐞𝐫𝐬 + 𝐌𝐮𝐬𝐜𝐥𝐞𝐬 + 𝐄𝐱𝐭𝐞𝐧𝐬𝐨𝐫 𝐞𝐱𝐩𝐚𝐧𝐬𝐢𝐨𝐧 + 𝐍𝐞𝐫𝐯𝐞𝐬 𝐚𝐧𝐝 𝐕𝐞𝐬𝐬𝐞𝐥𝐬)"], ["Qeke3htB4lQ", "𝐒𝐡𝐨𝐮𝐥𝐝𝐞𝐫 𝐣𝐨𝐢𝐧𝐭 + 𝐒𝐭𝐞𝐫𝐧𝐨𝐜𝐥𝐚𝐯𝐢𝐜𝐮𝐥𝐚𝐫 𝐣𝐨𝐢𝐧𝐭𝐬"], ["yFwiahZr1Ng", "𝐄𝐥𝐛𝐨𝐰 𝐚𝐧𝐝 𝐫𝐚𝐝𝐢𝐨𝐮𝐥𝐧𝐚𝐫 𝐣𝐨𝐢𝐧𝐭𝐬"], ["mMNWQeTea0A", "𝐖𝐫𝐢𝐬𝐭 𝐚𝐧𝐝 𝐬𝐦𝐚𝐥𝐥 𝐣𝐨𝐢𝐧𝐭𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐡𝐚𝐧𝐝"], ["4me9sXhuWbM", "𝐕𝐞𝐢𝐧𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐮𝐩𝐩𝐞𝐫 𝐥𝐢𝐦𝐛 🔵 (أوردة الطرف العلوي)"], ["sw-mqZJIP3M", "𝐋𝐲𝐦𝐩𝐡𝐚𝐭𝐢𝐜𝐬 𝐨𝐟 𝐮𝐩𝐩𝐞𝐫 𝐭𝐡𝐞 𝐥𝐢𝐦𝐛 🟢 💪 (التصريف اللمفاوي للطرف العلوي)"], ["05hfBTKg6FM", "𝐂𝐮𝐭𝐚𝐧𝐞𝐨𝐮𝐬 𝐧𝐞𝐫𝐯𝐞𝐬 𝐚𝐧𝐝 𝐝𝐞𝐫𝐦𝐚𝐭𝐨𝐦𝐞𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐮𝐩𝐩𝐞𝐫 𝐥𝐢𝐦𝐛"], ["U027bGBH2RU", "𝐍𝐞𝐫𝐯𝐞 𝐢𝐧𝐣𝐮𝐫𝐢𝐞𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐮𝐩𝐩𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐂𝐚𝐮𝐬𝐞𝐬 & 𝐜𝐥𝐢𝐧𝐢𝐜𝐚𝐥 𝐩𝐢𝐜𝐭𝐮𝐫𝐞) ✂️ (إصابات الأعصاب في الطرف العلوي)"]]], ["Osteology", [["UNoXCIttjE4", "Introduction to the Bones of the Upper Limbs 💪🦴🖐️🎯 (Introduction to the Bones of the Upper Limb)"], ["ErPHBoc4Q7M", "𝐂𝐥𝐚𝐯𝐢𝐜𝐥𝐞 🔗🦴 (عظمة الترقوه )"], ["bZXqFgwPi0I", "𝐒𝐜𝐚𝐩𝐮𝐥𝐚 🛡️🦴 (عظمة اللوح)"], ["MkTfkgxzKCs", "𝐇𝐮𝐦𝐞𝐫𝐮𝐬 💪🦴 (عظم العضد)"], ["MRAGMFMeEYY", "𝐔𝐥𝐧𝐚 🦴🪓🔧 (عظم الزند)"], ["wdFAYo5O4-I", "𝐑𝐚𝐝𝐢𝐮𝐬 🦴🛠️ (عظم الكعبره)"], ["OSkSwVGSm30", "𝐇𝐚𝐧𝐝 (𝐛𝐨𝐧𝐧𝐲 𝐬𝐤𝐞𝐥𝐞𝐭𝐨𝐧) 🤚🖐️✊ (الهيكل العظمى لليد)"]]]], "lower": [["Lectures", [["gDmayRpW948", "𝐓𝐡𝐢𝐠𝐡 (𝐈) (𝐂𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭𝐬 - 𝐅𝐚𝐬𝐜𝐢𝐚 - 𝐌𝐮𝐬𝐜𝐥𝐞𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐚𝐧𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭)"], ["VQgFCp3pTTw", "𝐓𝐡𝐢𝐠𝐡 (𝐈𝐈) (𝐅𝐞𝐦𝐨𝐫𝐚𝐥 𝐭𝐫𝐢𝐚𝐧𝐠𝐥𝐞, 𝐟𝐞𝐦𝐨𝐫𝐚𝐥 𝐬𝐡𝐞𝐚𝐭𝐡, 𝐟𝐞𝐦𝐨𝐫𝐚𝐥 𝐧𝐞𝐫𝐯𝐞, 𝐚𝐧𝐝 𝐟𝐞𝐦𝐨𝐫𝐚𝐥 𝐯𝐞𝐬𝐬𝐞𝐥𝐬)"], ["sQTdhp7zP5E", "𝐓𝐡𝐢𝐠𝐡 (𝐈𝐈𝐈) (𝐌𝐞𝐝𝐢𝐚𝐥 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭) (𝐌𝐮𝐬𝐜𝐥𝐞𝐬 - 𝐎𝐛𝐭𝐮𝐫𝐚𝐭𝐨𝐫 𝐧𝐞𝐫𝐯𝐞 + 𝐕𝐞𝐬𝐬𝐞𝐥𝐬 - 𝐀𝐝𝐝𝐮𝐜𝐭𝐨𝐫 𝐜𝐚𝐧𝐚𝐥)"], ["YJTQe6G-RC4", "𝐆𝐥𝐮𝐭𝐞𝐚𝐥 𝐫𝐞𝐠𝐢𝐨𝐧 (𝐈) (𝐆𝐥𝐮𝐭𝐞𝐚𝐥 𝐦𝐮𝐬𝐜𝐥𝐞𝐬 + 𝐒𝐡𝐨𝐫𝐭 𝐥𝐚𝐭𝐞𝐫𝐚𝐥 𝐡𝐢𝐩 𝐫𝐨𝐭𝐚𝐭𝐨𝐫𝐬)"], ["G4fbuO9uNv0", "𝐆𝐥𝐮𝐭𝐞𝐚𝐥 𝐫𝐞𝐠𝐢𝐨𝐧 (𝐈𝐈) (𝐒𝐜𝐢𝐚𝐭𝐢𝐜 𝐧𝐨𝐭𝐜𝐡𝐞𝐬 + 𝐍𝐞𝐫𝐯𝐞𝐬 + 𝐕𝐞𝐬𝐬𝐞𝐥𝐬)"], ["s6Ka_en_CS8", "𝐓𝐡𝐢𝐠𝐡 (𝐈𝐕) (𝐏𝐨𝐬𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭) (𝐇𝐚𝐦𝐬𝐭𝐫𝐢𝐧𝐠 𝐦𝐮𝐬𝐜𝐥𝐞𝐬 + 𝐒𝐜𝐢𝐚𝐭𝐢𝐜 𝐧𝐞𝐫𝐯𝐞 + 𝐂𝐫𝐮𝐜𝐢𝐚𝐭𝐞 𝐚𝐧𝐚𝐬𝐭𝐨𝐦𝐨𝐬𝐢𝐬) 🦵"], ["RHUm-kQU8Z4", "𝐏𝐨𝐩𝐥𝐢𝐭𝐞𝐚𝐥 𝐟𝐨𝐬𝐬𝐚 (𝐁𝐨𝐮𝐧𝐝𝐚𝐫𝐢𝐞𝐬, 𝐫𝐨𝐨𝐟, 𝐟𝐥𝐨𝐨𝐫, 𝐚𝐧𝐝 𝐜𝐨𝐧𝐭𝐞𝐧𝐭𝐬) 🔹(الحفرة المأبضية)"], ["rkDGQoleqnc", "𝐋𝐞𝐠 (𝐈) (𝐀𝐧𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭) (𝐌𝐮𝐬𝐜𝐥𝐞𝐬 + 𝐕𝐞𝐬𝐬𝐞𝐥𝐬 + 𝐍𝐞𝐫𝐯𝐞𝐬 + 𝐒𝐮𝐩𝐞𝐫𝐢𝐨𝐫 𝐞𝐱𝐭𝐞𝐧𝐬𝐨𝐫 𝐫𝐞𝐭𝐢𝐧𝐚𝐜𝐮𝐥𝐮𝐦)"], ["Upq_fPnpOcs", "𝐋𝐞𝐠 (𝐈𝐈) (𝐋𝐚𝐭𝐞𝐫𝐚𝐥 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭) (𝐌𝐮𝐬𝐜𝐥𝐞𝐬 + 𝐕𝐞𝐬𝐬𝐞𝐥𝐬 + 𝐍𝐞𝐫𝐯𝐞𝐬 + 𝐏𝐞𝐫𝐨𝐧𝐞𝐚𝐥 𝐫𝐞𝐭𝐢𝐧𝐚𝐜𝐮𝐥𝐚)"], ["o0Zyw2Lp-Yw", "𝐃𝐨𝐫𝐬𝐮𝐦 𝐨𝐟 𝐭𝐡𝐞 𝐟𝐨𝐨𝐭 (𝐈𝐧𝐟𝐞𝐫𝐢𝐨𝐫 𝐞𝐱𝐭𝐞𝐧𝐬𝐨𝐫 𝐫𝐞𝐭𝐢𝐧𝐚𝐜𝐮𝐥𝐮𝐦 + 𝐍𝐞𝐫𝐯𝐞𝐬 + 𝐕𝐞𝐬𝐬𝐞𝐥𝐬 + 𝐄𝐱𝐭𝐞𝐧𝐬𝐨𝐫 𝐄𝐱𝐩𝐚𝐧𝐬𝐢𝐨𝐧)"], ["smo4lK49vVM", "𝐋𝐞𝐠 (𝐈𝐈𝐈) (𝐏𝐨𝐬𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭) (𝐌𝐮𝐬𝐜𝐥𝐞𝐬 + 𝐅𝐥𝐞𝐱𝐨𝐫 𝐫𝐞𝐭𝐢𝐧𝐚𝐜𝐮𝐥𝐮𝐦)"], ["P6lQ6Ructpw", "𝐋𝐞𝐠 (𝐈𝐕) (𝐏𝐨𝐬𝐭𝐞𝐫𝐢𝐨𝐫 𝐜𝐨𝐦𝐩𝐚𝐫𝐭𝐦𝐞𝐧𝐭) (𝐏𝐨𝐬𝐭𝐞𝐫𝐢𝐨𝐫 𝐭𝐢𝐛𝐢𝐚𝐥 𝐧𝐞𝐫𝐯𝐞 + 𝐕𝐞𝐬𝐬𝐞𝐥𝐬 + 𝐀𝐧𝐚𝐬𝐭𝐨𝐦𝐨𝐬𝐢𝐬 𝐚𝐫𝐨𝐮𝐧𝐝 𝐤𝐧𝐞𝐞)"], ["a3DULS-kkZQ", "𝐒𝐨𝐥𝐞 𝐨𝐟 𝐭𝐡𝐞 𝐟𝐨𝐨𝐭 (𝐩𝐥𝐚𝐧𝐭𝐚𝐫 𝐟𝐚𝐬𝐜𝐢𝐚, 𝐥𝐚𝐲𝐞𝐫𝐬 𝐨𝐟 𝐦𝐮𝐬𝐜𝐥𝐞𝐬, 𝐚𝐧𝐝 𝐩𝐥𝐚𝐧𝐭𝐚𝐫 𝐧𝐞𝐫𝐯𝐞𝐬 𝐚𝐧𝐝 𝐯𝐞𝐬𝐬𝐞𝐥𝐬) 👣"], ["johdZKX1Oyg", "𝐇𝐢𝐩 𝐣𝐨𝐢𝐧𝐭 (𝐓𝐲𝐩𝐞 + 𝐀𝐫𝐭𝐢𝐜𝐮𝐥𝐚𝐫 𝐬𝐮𝐫𝐟𝐚𝐜𝐞𝐬 + 𝐂𝐚𝐩𝐬𝐮𝐥𝐞 + 𝐋𝐢𝐠𝐚𝐦𝐞𝐧𝐭𝐬 + 𝐌𝐨𝐯𝐞𝐦𝐞𝐧𝐭𝐬 + 𝐀𝐩𝐩𝐥𝐢𝐞𝐝 𝐚𝐧𝐚𝐭𝐨𝐦𝐲) 🦴⚙️🦵"], ["CIHLuq43aKI", "𝐊𝐧𝐞𝐞 𝐣𝐨𝐢𝐧𝐭 + 𝐓𝐢𝐛𝐢𝐨𝐟𝐢𝐛𝐮𝐥𝐚𝐫 𝐣𝐨𝐢𝐧𝐭𝐬 (𝐓𝐲𝐩𝐞 + 𝐀𝐫𝐭𝐢𝐜𝐮𝐥𝐚𝐫 𝐬𝐮𝐫𝐟𝐚𝐜𝐞𝐬 + 𝐂𝐚𝐩𝐬𝐮𝐥𝐞 + 𝐋𝐢𝐠𝐚𝐦𝐞𝐧𝐭𝐬 + 𝐌𝐨𝐯𝐞𝐦𝐞𝐧𝐭𝐬)"], ["tpXvYvZMe_E", "𝐀𝐧𝐤𝐥𝐞 + 𝐅𝐨𝐨𝐭 𝐣𝐨𝐢𝐧𝐭𝐬 + 𝐀𝐫𝐜𝐡𝐞𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐟𝐨𝐨𝐭"], ["frQWXTZBid4", "𝐕𝐞𝐢𝐧𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐥𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 💉"], ["mL426k1WuwE", "𝐋𝐲𝐦𝐩𝐡𝐚𝐭𝐢𝐜𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐥𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛"], ["YSWApGSxvPg", "𝐂𝐮𝐭𝐚𝐧𝐞𝐨𝐮𝐬 𝐧𝐞𝐫𝐯𝐞𝐬 𝐚𝐧𝐝 𝐝𝐞𝐫𝐦𝐚𝐭𝐨𝐦𝐞𝐬"]]], ["Osteology", [["kYGv7CXewE4", "Introduction to the Bones of the Lower Limb 🦵"], ["_SciXMt3phM", "𝐇𝐢𝐩 𝐛𝐨𝐧𝐞 🔽🦴 (عظم الورك)"], ["amyuk1klxPo", "𝐅𝐞𝐦𝐮𝐫 (عظمة الفخذ) 🦴"], ["BJvFVV1Eznk", "𝐏𝐚𝐭𝐞𝐥𝐥𝐚 (عظمة الردفه) 🔻"], ["eyhhMNe53WQ", "𝐓𝐢𝐛𝐢𝐚 (عظمة القصبه)"], ["lazDowmPixw", "𝐅𝐢𝐛𝐮𝐥𝐚 (عظمة الشظيه)"], ["bA-UwPD_9b8", "𝐅𝐨𝐨𝐭 (𝐁𝐨𝐧𝐧𝐲 𝐬𝐤𝐞𝐥𝐞𝐭𝐨𝐧) (الهيكل العظمى للقدم) 👣"]]], ["Revisions & MCQs", [["bY1b77FKknM", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐑𝐞𝐯𝐢𝐞𝐰: 𝐌𝐮𝐬𝐜𝐮𝐥𝐚𝐫 𝐚𝐭𝐭𝐚𝐜𝐡𝐦𝐞𝐧𝐭𝐬 + 𝐀𝐜𝐭𝐢𝐨𝐧𝐬 + 𝐍𝐞𝐫𝐯𝐞 𝐬𝐮𝐩𝐩𝐥𝐲) 🦵🎯"], ["Q8jwCXVeXkk", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐑𝐞𝐯𝐢𝐞𝐰 𝐨𝐟 𝐭𝐡𝐞 𝐧𝐞𝐫𝐯𝐞𝐬 + 𝐍𝐞𝐫𝐯𝐞 𝐢𝐧𝐣𝐮𝐫𝐢𝐞𝐬)"], ["Yv1H4ZFvsLA", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐑𝐞𝐯𝐢𝐞𝐰 𝐨𝐟: 𝐌𝐚𝐢𝐧 𝐬𝐭𝐫𝐮𝐜𝐭𝐮𝐫𝐞𝐬 + 𝐀𝐧𝐚𝐭𝐨𝐦𝐢𝐜𝐚𝐥 𝐫𝐞𝐠𝐢𝐨𝐧𝐬)"], ["10LE-vS1AAI", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐑𝐞𝐯𝐢𝐞𝐰 𝐨𝐟: 𝐀𝐫𝐭𝐞𝐫𝐢𝐞𝐬 + 𝐀𝐫𝐭𝐞𝐫𝐢𝐚𝐥 𝐚𝐧𝐚𝐬𝐭𝐨𝐦𝐨𝐬𝐢𝐬 + 𝐏𝐮𝐥𝐬𝐞 𝐬𝐢𝐭𝐞𝐬)"], ["ZIbn73AIbdc", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐑𝐞𝐯𝐢𝐞𝐰 𝐨𝐟 𝐭𝐡𝐞 𝐯𝐞𝐢𝐧𝐬 𝐚𝐧𝐝 𝐥𝐲𝐦𝐩𝐡𝐚𝐭𝐢𝐜𝐬)"], ["AZH1yYXYFbs", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐑𝐞𝐯𝐢𝐞𝐰 𝐨𝐟 𝐭𝐡𝐞 𝐣𝐨𝐢𝐧𝐭𝐬)"], ["cY2KDE-jPvk", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐑𝐞𝐯𝐢𝐞𝐰 𝐨𝐟 𝐭𝐡𝐞 𝐜𝐮𝐭𝐚𝐧𝐞𝐨𝐮𝐬 𝐧𝐞𝐫𝐯𝐞𝐬 𝐚𝐧𝐝 𝐝𝐞𝐫𝐦𝐚𝐭𝐨𝐦𝐞𝐬)"], ["3o2S7DxDJSc", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐑𝐞𝐯𝐢𝐞𝐰 𝐨𝐟 𝐭𝐡𝐞 \"𝐓𝐫𝐢𝐩𝐥𝐞 𝐫𝐞𝐥𝐚𝐭𝐢𝐨𝐧𝐬\")"], ["hAYbyJFUc_E", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐌𝐂𝐐 - 𝐏𝐚𝐫𝐭 𝟏)"], ["Udu-VAk1Nqk", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 (𝐌𝐂𝐐 - 𝐏𝐚𝐫𝐭 𝟐) ⁉️🤔🫵✅ (الطرف السفلى - (أسئلة اختيار من متعدد و إجاباتها"], ["5lNCsNX7vCQ", "Lower limb - Practical questions"], ["h2g3nx98n9A", "𝐋𝐨𝐰𝐞𝐫 𝐥𝐢𝐦𝐛 𝐫𝐞𝐯𝐢𝐬𝐢𝐨𝐧 (𝐌𝐮𝐬𝐜𝐥𝐞 𝐀𝐧𝐢𝐦𝐚𝐭𝐢𝐨𝐧𝐬: 𝐀𝐧𝐚𝐭𝐨𝐦𝐢𝐜𝐚𝐥 𝐒𝐢𝐭𝐞𝐬 𝐚𝐧𝐝 𝐀𝐜𝐭𝐢𝐨𝐧𝐬)🦵🎯"]]]]}, "ninjanerd": {"name": "Ninja Nerd (English)", "upper": [["Anatomy", [["Htf84xibeFw", "Clavicle Anatomy"], ["70j06vbmclM", "Scapula Anatomy"], ["A7UMQh4LSGU", "Humerus Anatomy"], ["h2ZdM1RmhLQ", "Radius and Ulna Anatomy"], ["wW4eeeeRDug", "Hand Anatomy | Bones of the Hand"], ["ToNL6jMEjuE", "Muscles of the Upper Limb"], ["yfeZLkBedr0", "Arteries of the Upper Limb | Flow Chart"], ["2CcNOqYjxH8", "Arteries & Veins of the Upper Limb | Vascular Arm Model"], ["UlDFSlRBeCE", "Neurology | Brachial Plexus"], ["KxYRVagbMl4", "Rotator Cuff Tear"], ["JP2rVUeuuK4", "Upper Limb Neuro Exam"]]]], "lower": [["Anatomy", [["ZSvb4enXyGU", "Femur Anatomy"], ["uUb2pyzOWHg", "Tibia & Fibula Anatomy"], ["NG7R9OM-qLw", "Foot Anatomy | Bones of the Foot"], ["q0WDD704P1M", "Muscles of the Lower Limb | Anatomy Model"], ["qowdtKHYmZA", "Arteries of the Lower Limb | Flow Chart"], ["CZ0t2mZL3os", "Neurology | Lumbar Plexus"], ["f7Zig8eBCqY", "Neurology | Sacral Plexus"], ["kZgTq5ZPBiQ", "Lower Limb Neuro Exam"]]]]}}, "embryology": {"khanfour": {"name": "Dr Ayman Khanfour (Arabic)", "groups": [["Lectures", [["4jzNbj9WBAs", "𝟎𝟎. 𝐆𝐞𝐧𝐞𝐫𝐚𝐥 𝐞𝐦𝐛𝐫𝐲𝐨𝐥𝐨𝐠𝐲 (𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐭𝐢𝐨𝐧) 💗 مقدمه عن علم الأجنة العام 💗"], ["lzQd3EtBhMo", "𝟎𝟏. 𝐏𝐚𝐫𝐭𝐬 𝐨𝐟 𝐭𝐡𝐞 𝐫𝐞𝐩𝐫𝐨𝐝𝐮𝐜𝐭𝐢𝐯𝐞 𝐬𝐲𝐬𝐭𝐞𝐦 ♀️♂️️ (أجزاء الجهاز التناسلي ) 🚹🚺"], ["bg8_sN3Q1Pg", "20. 𝐅𝐞𝐫𝐭𝐢𝐥𝐢𝐳𝐚𝐭𝐢𝐨𝐧 ♀️👉🚻👈♂️ (Fertilization)"], ["_j4BbMr2TIY", "𝟎𝟑. 𝐂𝐥𝐞𝐚𝐯𝐚𝐠𝐞 🔢🧬🧬🧬🧬(الانقسام)"], ["ve42YFLU8wY", "𝟎𝟒. 𝐈𝐦𝐩𝐥𝐚𝐧𝐭𝐚𝐭𝐢𝐨𝐧 & 𝐝𝐞𝐜𝐢𝐝𝐮𝐚 ⇊ 🏛️ (الزرع أو الغرس و الساقط)"], ["de_0Yo3imac", "𝟎𝟓. 𝐒𝐞𝐜𝐨𝐧𝐝 𝐰𝐞𝐞𝐤 𝐨𝐟 𝐝𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧𝐭 2️⃣ 🧬 (التطور الجنينى فى الأسبوع الثانى)"], ["oPA1pIwPq3M", "𝟎𝟔. 𝐂𝐡𝐨𝐫𝐢𝐨𝐧 💦🔆 (المشيماء)"], ["mi7GqzVGC5o", "𝟎𝟕. 𝐓𝐡𝐢𝐫𝐝 𝐰𝐞𝐞𝐤 𝐨𝐟 𝐝𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧𝐭 (𝐠𝐚𝐬𝐭𝐫𝐮𝐥𝐚𝐭𝐢𝐨𝐧) 3️⃣ 🧬 (تطور الأسبوع الثالث - تَكَوُّنُ المُعَيدَة)"], ["Cd5mi77sZqk", "𝟎𝟖. (𝐓𝐡𝐢𝐫𝐝 𝐭𝐨 𝐞𝐢𝐠𝐡𝐭 𝐰𝐞𝐞𝐤𝐬 𝐨𝐟 𝐝𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧𝐭) 3️⃣ → 8️⃣ 🧬 (التطور الجنينى من الأسبوع الثالث الى الثامن)"], ["faFc8BR3API", "𝟎𝟗. 𝐅𝐨𝐥𝐝𝐢𝐧𝐠 4️⃣ & { ↪↩ ➡ 🔄 + 🔃 } (الطي)"], ["ZymD0-TDNaA", "𝟏𝟎. 𝐀𝐦𝐧𝐢𝐨𝐧 🔅 🏊🏊 (أمنيون)"], ["GSXwYn0mKEo", "𝟏𝟏. 𝐘𝐨𝐥𝐤 𝐬𝐚𝐜 & 𝐀𝐥𝐥𝐚𝐧𝐭𝐨𝐢𝐬 (كيس الصفار والسقاء) 🟡 + ⤵"], ["XLEGu1l6Y_k", "𝟏𝟐. 𝐔𝐦𝐛𝐢𝐥𝐢𝐜𝐚𝐥 𝐜𝐨𝐫𝐝 𝐝𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧𝐭 ➰➰➰ (تطور الحبل السري)"], ["4-uPys4AYfo", "𝟏𝟑. 𝐏𝐥𝐚𝐜𝐞𝐧𝐭𝐚 (المشيمة) 🥓🥓🥓"], ["sukcFbjmrLU", "𝟏𝟒. 𝐆𝐞𝐧𝐞𝐫𝐚𝐥 𝐞𝐦𝐛𝐫𝐲𝐨𝐥𝐨𝐠𝐲 𝐫𝐞𝐯𝐢𝐬𝐢𝐨𝐧 💌 👌(مراجعة عامة لعلم الأجنة)"], ["q98mPQkxpfQ", "𝟏𝟔. 𝐆𝐞𝐧𝐞𝐫𝐚𝐥 𝐞𝐦𝐛𝐫𝐲𝐨𝐥𝐨𝐠𝐲 (𝐌𝐂𝐐) ⁉️🤔🫵✅ مراجعه عامة لعلم الأجنة (أسئلة متعددة الاختيار و إجاباتها)"], ["XyxE8_0ch9E", "𝟏𝟕. 𝐆𝐞𝐧𝐞𝐫𝐚𝐥 𝐞𝐦𝐛𝐫𝐲𝐨𝐥𝐨𝐠𝐲 (𝐏𝐫𝐚𝐜𝐭𝐢𝐜𝐚𝐥 𝐪𝐮𝐞𝐬𝐭𝐢𝐨𝐧𝐬) ⁉️🤺🤾‍♀️🏌️ علم الأجنة العام (أسئلة عملية و إجاباتها)"]]], ["Model Teaching", [["f_tN3aRLbd0", "𝐅𝐨𝐥𝐝𝐢𝐧𝐠 (𝐅𝐨𝐮𝐫𝐭𝐡 𝐰𝐞𝐞𝐤 𝐨𝐟 𝐝𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧𝐭) 4️⃣(𝐌𝐨𝐝𝐞𝐥 𝐭𝐞𝐚𝐜𝐡𝐢𝐧𝐠)"], ["3mTVISMmGRk", "𝐆𝐚𝐬𝐭𝐫𝐮𝐥𝐚𝐭𝐢𝐨𝐧 (𝐓𝐡𝐢𝐫𝐝 𝐰𝐞𝐞𝐤 𝐨𝐟 𝐝𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧𝐭) 3️⃣(𝐌𝐨𝐝𝐞𝐥 𝐭𝐞𝐚𝐜𝐡𝐢𝐧𝐠)"]]]]}, "ninjanerd": {"name": "Ninja Nerd (English)", "groups": [["Embryology", [["H5hqwZRnBBw", "Reproductive System | Fertilization"], ["8-KF0rnhKTU", "Embryology | Fertilization, Cleavage, Blastulation"], ["7SK-WPnF1Dc", "Embryology | Gastrulation"], ["u6203vWPFU0", "Embryology | Ectoderm"], ["Az6yzmeI4fU", "Embryology | Mesoderm"], ["1BlAplt6ydM", "Embryology | Endoderm"], ["R81ahD_lbtI", "Embryology | Development of the Placenta"], ["BtLyik7oAxc", "Embryology | Neurulation, Vesiculation, Neural Crest Cell Migration"], ["WmlbqVyhMts", "Embryology | Development of Skeletal System"], ["tuhv_JrmaXg", "Embryology | Development of Muscular System"], ["RjiPx6Xi-68", "Embryology | Development of the Heart ❤️"], ["4it-uI9e_I8", "Gastrointestinal | Development & Embryology of the GI Tract: Part 1"], ["PAMaaKocIsk", "Gastrointestinal | Development & Embryology of the GI Tract: Part 2"], ["00jgSl0FHNE", "Embryology | Development of the Respiratory System"], ["wiRes2-in0E", "Embryology | Development of the Urinary System"], ["eKuO_526YCc", "Embryology | Development of Reproductive System"], ["MMn7YXIYqbQ", "Embryology | Development of Fetal Circulation"], ["UnRAKacFVvE", "Embryology | Development of Vascular System"], ["RprPAlK3eEs", "Embryology | Development of Pharyngeal Apparatus"]]]]}}, "physiology": {"nagi": {"name": "Dr Nagi Iskandar (Arabic)", "groups": [["Blood", [["9q1Adxa50io", "Dr.Nagi - Live Physiology - Lecture 1 - Blood (1) - Plasma Proteins"], ["YO6SJg0-n_s", "Dr.Nagi - Live Physiology - Lecture 3 - Blood (2) - RBCs & Hemoglobin"], ["Zf4j0u_9rrg", "Dr.Nagi - Live Physiology - Lecture 6 - Blood (3) - Anemia"], ["5RQRf27MWxU", "Dr.Nagi - Live Physiology - Lecture 27 - Blood (4) - Coagulation & Platelets"], ["d8gQ4ZiJgec", "Dr.Nagi - Live Physiology - Lecture 32 - Blood (5) - Blood Coagulation"], ["V-lxNwXW1OE", "Dr.Nagi - Live Physiology - Lecture 34 - Blood (6) - Part 1 - Anticoagulants"], ["_Gk_k_lZ5_E", "Dr.Nagi - Live Physiology - Lecture 35 - Blood (6) - Part 2 - Hemostasis Disorders"], ["tcCNuZp67Ec", "Dr.Nagi - Live Physiology - Lecture 40 - Blood (7) WBCs & Immunity - Part 1"], ["VDcCEg6wBJA", "Dr.Nagi - Live Physiology - Lecture 41 - Blood (7) WBCs & Immunity - Part 2"], ["RAkv0YPfVFI", "Dr.Nagi - Live Physiology - Lecture 45 - Blood (8) - Blood groups & Transfusion"], ["GW30aodvow0", "Dr.Nagi - Live Physiology - Lecture 64 - Blood (9) - Revision & MCQs (1)"], ["00DdkbE-xEg", "Dr.Nagi - Live Physiology - Lecture 65 - Blood (10) - Revision & MCQs (2)"], ["HmYDngfXI3s", "Dr.Nagi - Live Physiology - Lecture 66 - Blood (11) - Revision & MCQs 3"], ["hg4CWxx6_U8", "Dr.Nagi - PRACTICAL Physiology - 1st year - BLOOD experiments"], ["ZTLMm2JGzk0", "Dr.Nagi - How to Solve MCQ Exam Tricks"]]], ["Cardiovascular", [["lo8KnRzPGxY", "Dr.Nagy - CVS Course 2021 - Lecture (1) - Introduction"], ["yCacxnCp7SI", "Dr.Nagy - CVS Course 2021 - Lecture (2) - Excitability & Rhythmicity"], ["DLsT8vMmuXE", "Dr.Nagy - CVS Course 2021 - Lecture (3) - Rhythmicity & Conductivity"], ["tv3jn4ZBwD4", "Dr.Nagy - CVS Course 2021 - Lecture (4) - ECG"], ["QMIegnd56TI", "Dr.Nagy - CVS Course 2021 - Lecture (4) SUMMARY - ECG ( in breif )"], ["NUXPcAzHEiU", "Dr.Nagy - CVS Course 2021 - Lecture (5) - Normal & Abnormal ECG"], ["0Bmtq8PD3tk", "Dr.Nagy - CVS Course 2021 - Lecture (6) - Electrical Cardiac Axis"], ["J8TcOWvFQx4", "Dr.Nagy - CVS Course 2021 - Lecture (7) - Cardiac Cycle"]]], ["Respiratory", [["iujzhLaZ22Q", "Dr.Nagi - Live Physiology - Lecture 51 - Respiration (1)"], ["TW2OjiSsGYc", "Dr.Nagi - Live Physiology - Lecture 72 - Respiration (2)"], ["LVIeXe5zMuM", "Dr.Nagi - Live Physiology - Lecture 79 - Respiration (3)"], ["nGGMmpYY_2E", "Dr.Nagi - Live Physiology - Lecture 84 - Respiration (4) - Work of breathing"], ["TnFg3av9W04", "Dr.Nagi - Live Physiology - Lecture 85 - Respiration (5) - O2 dissociation curves & transport"], ["-jG3hR-CpUo", "Dr.Nagi - Live Physiology - Lecture 88 - Respiration (6) - CO2 transport"], ["mhZmYuii_Io", "Dr.Nagi - Live Physiology - Lecture 94 - Respiration (7) - Respiratory Control"], ["LqH8Xu4uTKM", "Dr.Nagi - Live Physiology - Lecture 98 - Respiration (8) - Chemical & Nervous Respiratory Regulation"], ["k3s9dPdgWjc", "Dr.Nagi - Live Physiology - Lecture 102 - Respiration (9) - Hypoxia, Cyanosis & CO2 Poisoning"], ["IR9mtxV09rc", "Dr.Nagi - Live Physiology - Lecture 105 - Respiration (10)"], ["oGETPeuaM3A", "Dr.Nagi - Respiration (11) - CRASH COURSE - Revision & MCQs"]]], ["GIT", [["PfAhqckMdV8", "Dr.Nagi - Live Physiology - Lecture 95 - GIT (1) - Nervous & Hormonal Control of GIT"], ["rFLzimf8QHk", "Dr.Nagi - Live Physiology - Lecture 103 - GIT (2) - Saliva & Swallowing"], ["woxx22ZGEJI", "Dr.Nagi - Live Physiology - Lecture 104 - GIT (3) - Gastric Secretion & Motility"], ["dpi_STlANkw", "Dr.Nagi - Live Physiology - Lecture 106 - GIT (4) - Vomiting , Pancreas & Bile Salts"], ["BiyqnHkWtEM", "Dr.Nagi - Live Physiology - Lecture 108 - GIT (5) - Jaundice & Bile Pigments"], ["Y_ZBrzjHzeM", "Dr.Nagi - Live Physiology - Lecture 110 - GIT (6) - Small & Large Intrstine"]]], ["Metabolism", [["wuQ_7908HuA", "Dr.Nagi - Live Physiology - Lecture 118 - Metabolism (1) - Part 1"], ["IU5Z2qxsc3k", "Dr.Nagi - Live Physiology - Lecture 119 - Metabolism (1) - Part 2"], ["_exTjM3RlJw", "Dr.Nagi - Live Physiology - Lecture 120 - Metabolism (2)"], ["qc6RKwRIg40", "Dr.Nagi - PRACTICAL Physiology - 2nd year - Vision, Hearing, BMR & Pregnancy test"]]], ["Endocrine", [["7LI0ID8Z5bE", "Dr.Nagi - Endocrine REVISION (1) - Intro. & Important Endocrine Scheme"], ["xgeiHDxFSts", "Dr.Nagi - Endocrine REVISION (2) - Anterior Pituitary gland & GH"], ["X1uBtBVdEjY", "Dr.Nagi - Endocrine REVISION (3) - Posterior Pituitary gland"], ["HCbCwGGfYX4", "Dr.Nagi - Endocrine REVISION (4) - Thyroid Gland"], ["kXxGAbvpx5U", "Dr.Nagi - Endocrine REVISION (5) - Parathyroid Glands & Calcium Hemostasis"], ["acfQKbz_Jbg", "Dr.Nagi - Endocrine REVISION (6) - Adrenal Cortex"], ["EKIFYpjfqYw", "Dr.Nagi - Endocrine REVISION (7) - Diseases of Adrenal Gland"], ["IqIKVg42kgE", "Dr.Nagi - Endocrine REVISION (8) - Insulin & Diabetes Mellitus"], ["48aDCMDmgR0", "Dr.Nagi - Endocrine REVISION (9) - Last Lecture - Pancreatic Hormones"]]], ["Reproductive", [["uQn_vEQ97hs", "Dr.Nagi - Live Physiology - Lecture 113 - Male (1) - Sex Organs , Spermatogenesis & Testosterone"], ["Ef6OPRSAcSM", "Dr.Nagi - Live Physiology - Lecture 114 - Male (2) - Abnormal testicular Functions"], ["UdUiTH5hNGc", "Dr.Nagi - Live Physiology - Lecture 115 - Female (1) - Ovaries, Ovarian cycle & Uterine cycle"], ["IgRl0grdVCg", "Dr.Nagi - Live Physiology - Lecture 116 - Female (2) - Estrogen, Progesterone & Ovarian disorders"], ["0BmDB9L33t0", "Dr.Nagi - Live Physiology - Lecture 117 - Female (3) - Fertilization, Placenta, Labour & Lactation"]]], ["Nerve & Muscles", [["o-9ybGLIgn0", "Dr.Nagi - Live Physiology - Lecture 11 - Nerve (1)"], ["vBSV2KmhkS4", "Dr.Nagi - Live Physiology - Lecture 17 - Nerve (2)"], ["1IKvodibX7o", "Dr.Nagi - Live Physiology - Lecture 24 - Nerve (3)"], ["aa-j9LqDv20", "Dr.Nagi - Live Physiology - Lecture 25 - Nerve (4)"], ["9I0RgpwHNCY", "Dr.Nagi - Live Physiology - Lecture 29 - Muscle (1) - Part 1"], ["XQUNr6Wromc", "Dr.Nagi - Live Physiology - Lecture 29 - Muscle (1) - Part 2"], ["b3Isuy9rvYw", "Dr.Nagi - Live Physiology - Lecture 30 - Muscle (2)"], ["fRQ_3CrE5-E", "Dr.Nagi - Live Physiology - Lecture 37 - Muscle (3)"], ["7E6ss0BsSrg", "Dr.Nagi - Live Physiology - Lecture 43 - Muscle (4)"], ["FMU75_l8z3k", "Dr.Nagi - Live Physiology - Lecture 62 - Nerve (5) - Revision & MCQs"], ["HJx3Ghp4XfQ", "Dr.Nagi - Live Physiology - Lecture 63 - Muscle (5) - Revision & MCQs"]]], ["CNS Motor", [["_jjqkhA_PW0", "Dr.Nagi - Live Physiology - Lecture 53 - CNS Motor (1) - Part 1 - Stretch Reflex"], ["NH66evfG0ts", "Dr.Nagi- Live Physiology - Lecture 54 - CNS Motor (1) - Part 2 - Stretch Reflex Clinical Application"], ["RWXMmRBpCxY", "Dr.Nagi - Live Physiology - Lecture 73 - CNS Motor (2) - Reflexes & TS of Sp.cd."], ["-laeyO0JQlw", "Dr.Nagi - Live Physiology - Lecture 76 - CNS Motor (3)"], ["Zu7aQhJvGSk", "Dr.Nagi - Live Physiology - Lecture 86 - CNS Motor (4) - Part 1 - Postural Reflexes"], ["JnOQKN7Sw4w", "Dr.Nagi - Live Physiology - Lecture 87 - CNS Motor (4) - Part 2 - Motor Areas"], ["j0fUqfyW2so", "Dr.Nagi - Live Physiology - Lecture 88 - CNS Motor (5) - Part 1 - Basal Ganglia"], ["VoJOP2zZEnw", "Dr.Nagi - Live Physiology - Lecture 89 - CNS Motor (5) - Part 2 - Cerebellum"], ["FnDrxrtcp-k", "Dr.Nagi - Live Physiology - Lecture 89 - CNS Motor (7) - Thalamus & EEG"], ["ODNbKCvDnxs", "Dr.Nagi - Live Physiology - Lecture 91 - CNS Motor (8) - Memory & Learning"]]], ["CNS Sensory", [["iGpPxxup4XY", "Dr.Nagi - Live Physiology - Lecture 7 - CNS Sensory (1)"], ["-N7tJUt04SM", "Dr.Nagi - Live Physiology - Lecture 13 - CNS Sensory (2)"], ["T4e4nbte3x4", "Dr.Nagi - Live Physiology - Lecture 20 - CNS Sensory (3)"], ["beH5xUDCxb8", "Dr.Nagi - Live Physiology - Lecture 26 - CNS Sensory (4)"], ["a5-3_2Oudtc", "Dr.Nagi - Live Physiology - Lecture 33 - CNS Sensory (5)"], ["VDXlxv4trzo", "Dr.Nagi - Live Physiology - Lecture 42 - CNS Sensory (6)"], ["p5U8G_-eVkQ", "Dr.Nagi - Live Physiology - Lecture 48 - CNS Sensory (7)"], ["1cbGJLDLYhA", "Dr.Nagi - Live Physiology - Lecture 50 - CNS Sensory (8) - Hyperalgesia & Spinal Cord Lesions"]]], ["CNS Sensory (Crash)", [["LfngQqVV2jo", "Dr.Nagi - CNS Sensory CRASH COURSE - Lecture (1)"], ["vIUXFlpXqw0", "Dr. Nagi - CNS Sensory CRASH COURSE - Lecture (2) - Neuronal Pool"], ["TEj1KZd_3PU", "Dr.Nagi - CNS Sensory CRASH COURSE - Lecture (3) - Sensory Receptor"], ["J1UvtIRd8IM", "Dr.Nagi - CNS Sensory CRASH COURSE - Lecture (4) - Sensations"], ["4PWp0mSPq4Q", "Dr.Nagi - CNS Sensory CRASH COURSE - Lecture (5) - Pain Control System"], ["xfBslyp81_4", "Dr.Nagi - PRACTICAL Physiology - 2nd year - CNS (1)"], ["f0XEWmOuIMw", "Dr.Nagi - PRACTICAL Physiology - 2nd year - CNS (2)"]]]]}, "ninjanerd": {"name": "Ninja Nerd (English)", "groups": [["Cardiovascular", [["jU9w6w8LwqM", "Cardiovascular | Anatomy of the Heart | Heart Model"], ["dgAbpwp9gF8", "Cardiovascular | Structures and Layers of the Heart"], ["1kX6Tp8CWFw", "Cardiovascular | Electrophysiology | Intrinsic Cardiac Conduction System"], ["2L4FbEEsy1s", "Cardiovascular | Electrophysiology | Extrinsic Cardiac Conduction System"], ["CNN30YHsJw0", "ECG Basics | How to Read & Interpret ECGs: Updated Lecture"], ["ZwHCpl22tLU", "Cardiovascular | ECG Basics"], ["791ZsLSmCjo", "Cardiovascular | ECG's"], ["xamYVlNF5Zo", "Cardiovascular | Cardiac Cycle"], ["5pFbA1Qid0c", "Cardiovascular | Cardiac Cycle: Digital Version"], ["0O3FfHPE9PU", "Cardiovascular | Cardiac Output"], ["ar2_UPiGzmU", "Cardiovascular | Blood Vessel Characteristics"], ["moMNBucCew8", "Cardiovascular | Tunic Layers & Types of Capillaries"], ["Z1mw3hVJBWc", "Cardiovascular | Microcirculation"], ["2g7pFPXG2eE", "Cardiovascular | Fundamentals of Blood Pressure"], ["Yyz0E5CpCNQ", "Cardiovascular | Blood Pressure Regulation | Hypotension"], ["CnWFcOJBqRk", "Cardiovascular | Blood Pressure Regulation | Hypertension"]]], ["Respiratory", [["RnWVCE9KdR8", "Respiratory | Half Head Anatomy"], ["uYm4l_alVV0", "Respiratory | Mechanics of Breathing: Pressure Changes | Part 1"], ["LewPdsjzEic", "Respiratory | Mechanics of Breathing: Inspiration | Part 2"], ["-oVL0CDduAY", "Respiratory | Mechanics of Breathing: Expiration | Part 3"], ["EBmPGDJD1lM", "Respiratory | Airway Resistance"], ["gjLCu8qe2nI", "Respiratory | Surface Tension & Surfactant in Alveoli"], ["BTwgmMfqOW4", "Respiratory | Compliance & Elasticity"], ["mNadr6bGEMU", "Respiratory | Spirometry: Lung Volumes & Capacities"], ["yUtngVm93-c", "Respiratory | External Respiration: Ventilation Perfusion Coupling"], ["Wn_f23qus1k", "Respiratory | External Respiration: Thickness & Surface Area of Respiratory Membrane"], ["YGGG_gKi0m8", "Respiratory | External Respiration: Partial Pressures and Solubilities"], ["Lo6kRuC0ruU", "Respiratory | Internal Respiration"], ["RlpBOOb8KkU", "Respiratory | Types of Hypoxia: Hypoxemic, Anemic, Stagnant, Histotoxic"], ["bhJarMGNFw4", "Respiratory | Oxygen-Hemoglobin Dissociation Curve"], ["_KNAKKNbq20", "Respiratory | Regulation of Breathing: Respiratory Centers: Part 1"], ["fWBhmrrSPUk", "Respiratory | Regulation of Breathing: Central & Peripheral Chemoreceptors: Part 2"], ["gSVtW1HcV3c", "Respiratory | Regulation of Breathing: Factors Influencing Rate and Depth: Part 3"], ["6B3TUj2cLgo", "Respiratory | Respiration During Exercise"], ["P_4wk33cTVo", "Respiratory | Respiration at High Altitudes"], ["tuJXHTPvuc4", "Respiratory | Forced Spirometry & Pulmonary Function Test"]]], ["Renal", [["7Z7aeBCQwTQ", "Renal | Kidney Anatomy Model"], ["SVqSqPOcahY", "Renal | Glomerular Filtration"], ["ISpVjQSlml4", "Renal | Proximal Convoluted Tubule"], ["uYu-zvCXiV4", "Renal | Loop of Henle"], ["66iJfFevuRY", "Renal | Distal Convoluted Tubule"], ["PAIFAf8aZ8I", "Renal | The Collecting Duct"], ["rwZIT_N75Bs", "Renal | Filtration, Reabsorption, and Secretion: Overview"], ["2HMPe3799QI", "Renal | Autoregulation (Updated)"], ["RLK9RiotyyQ", "Renal | Micturition Reflex"]]], ["Endocrine", [["RMV130vU8gA", "Endocrinology | Receptor Pathways"], ["13yGwDAvbQI", "Endocrinology | Hypothalamus: Posterior Pituitary Connection"], ["iLmwWF3aYgA", "Endocrinology | Hypothalamus: Anterior Pituitary Connection"], ["WYBE9inF6KY", "Endocrinology | Oxytocin"], ["HL89x3BTnmY", "Endocrinology | Antidiuretic Hormone (ADH)"], ["_LKdNhF2WhI", "Endocrinology | Growth Hormone"], ["SN-bYAJQJ7Y", "Endocrinology | Prolactin"], ["BeI0-xw_cSQ", "Endocrinology | Synthesis of Thyroid Hormone"], ["PdBGkp0UaG0", "Endocrinology | Target Organs of the Thyroid"], ["5aq_rxTbtws", "Endocrinology | Thyroid Overview"], ["y64aXKCkHk4", "Endocrinology | Parathyroid Gland | Calcitonin"], ["HZhz-7Grux0", "Endocrinology | Adrenal Gland: Aldosterone"], ["rk2b3X6CU4w", "Endocrinology | Adrenal Gland: Cortisol"], ["tjukdJx27-s", "Endocrinology | Adrenal Gland: Gonadocorticoids"], ["afzWLmd72Rk", "Endocrinology | Adrenal Medulla | Catecholamines"], ["njUUXiqbcto", "Endocrinology | Adrenal Gland Overview"], ["b2Kcp5hJBXE", "Endocrinology | Pancreas: Glucagon Function"], ["w4jHtPUNg6E", "Endocrinology | Pancreas: Insulin Function"], ["EZmWx6LHxWs", "Endocrinology | Pancreas: Overview"], ["58WaZYZCV_4", "Endocrinology | Pineal Gland"]]], ["Metabolism", [["gggC9vctvBQ", "Metabolism | Glycolysis"], ["xoqyF6DJZ-Y", "Metabolism | Regulation of Glycolysis"], ["5WHFJ0ypeFE", "Metabolism | Transition Stage (Preparatory Phase)"], ["U1nK68V3SeA", "Metabolism | Regulation of the Transition Stage"], ["rr7IRYLqleg", "Metabolism | The Krebs Cycle"], ["UyTto4Aegss", "Metabolism | Electron Transport Chain: DETAILED | Part 1"], ["Z2F0Dt8e4eg", "Metabolism | Electron Transport Chain: DETAILED | Part 2"], ["leMbiVQlhEo", "Metabolism | Electron Transport Chain: DETAILED | Part 3"], ["AsD0hOkVZXU", "Metabolism | Electron Transport Chain: Overview"], ["zVGbd-df7Y8", "Metabolism | Glycogenesis"], ["YQV_ODVCzQQ", "Metabolism | Glycogenolysis"], ["NL6ETs9k3Wk", "Metabolism | Regulation of Glycogen Metabolism"], ["YpV96faQOZc", "Metabolism | Gluconeogenesis"], ["ORIx2WYNWqs", "Metabolism | Regulation of Gluconeogenesis"], ["nBFSz63T1c0", "Metabolism | Fatty Acid Synthesis: Part 1"], ["iKcvb1IihcM", "Metabolism | Fatty Acid Synthesis: Part 2 (Updated)"], ["v-5RcGtSa8Y", "Metabolism | Triglyceride Synthesis"], ["lD62q1hUae4", "Metabolism | Mobilization of Triglycerides"], ["OyQ1cgBw8HA", "Metabolism | Fatty Acid Oxidation: Part 1"], ["jxylGoJP9jY", "Metabolism | Fatty Acid Oxidation: Part 2"], ["0M-B2dOfcUo", "Metabolism | Amino Acid Metabolism"], ["XZEJ5PNvjkk", "Metabolism | Urea Cycle"], ["BlR9DkUAUkI", "Metabolism | Ketone Metabolism"], ["eXXpUxg9vn4", "Metabolism | Pentose Phosphate Pathway"], ["lpHmTl83pQY", "Metabolism | Regulation of Pentose Phosphate Pathway"], ["DQ-tUjfFet4", "Metabolism | The Metabolic Map: Carbohydrates"], ["Wm7UR0zCQzM", "Metabolism | The Metabolic Map: Lipids"], ["IlnI5-08U8E", "Metabolism | The Metabolic Map: Proteins"], ["nurZ2nNovp8", "Metabolism | Cholesterol Metabolism"], ["wQY0xpwqPfQ", "Metabolism | Lipoprotein Metabolism | Chylomicrons, VLDL, IDL, LDL, & HDL"], ["4GFKdLy2fOE", "Metabolism | Nucleotide Synthesis | Purine and Pyrimidine Synthesis"]]], ["Hematology", [["yF22BfXEO5g", "Hematology | Hematocrit"], ["kcnOXlr-9Ic", "Hematology | Erythropoiesis: Red Blood Cell Formation: Part 1"], ["aIQ9Ex_nFUU", "Hematology | Erythropoiesis: Lifespan & Destruction: Part 2"], ["mOrRJBqm744", "Hematology | Types of Anemias"], ["pWGRT17SazA", "Hematology | Polycythemias"], ["nyKxu7Kkguo", "Hematology | Leukopoiesis: White Blood Cell Formation"], ["SGzp9wqeu84", "Hematology | Hemostasis: Coagulation Cascade"], ["9DnlP6AgQdQ", "Hematology | Blood Typing"], ["MRzxsX5YG94", "CBC | Approach to Anemia"], ["RTXNNRPMVK8", "CBC | Approach to Polycythemia"]]], ["Neurology", [["ADAOsuaOSCk", "Anatomy of the Brain | Model"], ["qzKHMgK9yYU", "Anatomy of the Brain | Dissectible Model"], ["5mrd2fu3qvY", "Ventricles of the Brain | Anatomy Model"], ["f3Yruz2VekM", "Anatomy of the Spine | Model"], ["qOmmqu6_g3s", "Neurology | Neuron Anatomy & Function"], ["Jk_9IhHVOTk", "Neurology | Resting Membrane, Graded, Action Potentials"], ["w2gI-IAokJg", "Neurology | Glial Cells: Astrocytes, Oligodendrocytes, Schwann Cells, Ependymal Cells, Microglia"], ["1CCNldjSEXs", "Neurology | Cerebrum: Frontal Lobe Anatomy & Function"], ["iWXSWTlgmJo", "Neurology | Cerebrum: Parietal Lobe Anatomy & Function"], ["YevzCMVgO_w", "Neurology | Cerebrum: Temporal Lobe Anatomy & Function"], ["IBr5wCykSBE", "Neurology | Cerebrum: Occipital Lobe Anatomy & Function"], ["2LzZMWGQe1k", "Neurology | Cerebral Cortex Anatomy & Function: Overview"], ["hxvep2Y8ShI", "Neurology | Basal Ganglia Anatomy & Function | Direct & Indirect Pathways"], ["hgoa_ZxX5Sg", "Neurology | Hypothalamus Anatomy & Function"], ["L8SezbBHWJI", "Neurology | Thalamus Anatomy & Function"], ["3Bvz6DHBB1g", "Neurology | Limbic System Anatomy & Function"], ["-3Pj5sNqf-Y", "Neurology | Midbrain Anatomy & Function"], ["Xi9_WRVoynM", "Neurology | Pons Anatomy & Function"], ["fMF04LiaLFY", "Neurology | Medulla Anatomy & Function"], ["NVsrexn3pT8", "Neurology | Cerebellum Anatomy & Function"], ["0H9sIyNmygQ", "Neurology | Brain Meninges | Epidural, Subdural, Subarachnoid, & Intracerebral Hematomas"], ["6XtPzcXAqBc", "Neurology | Gross Anatomy of the Spinal Cord and Spinal Nerves"], ["z0xi99-e5ac", "Neurology | Spinal Cord: Gray Matter Structure & Function"], ["qqb4S5Tv008", "Neurology | Spinal Cord: White Matter Structure & Function"], ["MRl9akfrGQ4", "Ascending Tracts | Dorsal Column: Medial Lemniscus Pathway"], ["Xy2J_zzRjDI", "Ascending Tracts | Spinothalamic Tract"], ["6gqJMcNpNgA", "Ascending Tracts | Spinocerebellar Tract"], ["8IhN6T3mT04", "Ascending Tracts | Pain Modulation: Gate Control Theory"], ["Eyl0ihAd-1Y", "Neurology | Descending Tracts: Corticobulbar Tract"], ["zKA8iaxfEww", "Neurology | Descending Tracts: Corticospinal Tract"]]], ["Special Senses", [["UUCn2Bq3oVQ", "Special Senses | Eye Anatomy with Extraocular Muscles | Model"], ["8nzFCQOs7Ug", "Special Senses | Ear Anatomy | Model"], ["Hclc7lL_Oyw", "Special Senses | Eye Anatomy"], ["FnCiLD4gARI", "Neurology | Optic Nerve | Cranial Nerve II: Visual Pathway and Lesions"], ["-_kmchtMVd8", "Special Senses | Pupillary Light and Accommodation Reflex"], ["W1wW8lsX3bU", "Special Senses | Photoreceptors: Rods and Cones"], ["GKaFjw8N8zQ", "Special Senses | The Phototransduction Cascade"], ["VRLm7cpmZSk", "Special Senses | External and Middle Ear Anatomy"], ["zW1f5wk5PNc", "Special Senses | Inner Ear Anatomy"], ["m10vi4liwgo", "Special Senses | Semicircular Canals: Cristae Ampullaris | BPPV"], ["h3AsFe1QgfM", "Special Senses | Vestibule | Maculae: Utricle and Saccule"], ["x4ouSb-10C8", "Special Senses | Cochlea: Spiral Organ of Corti"]]], ["Reproductive", [["5eHvZ2gyR1Y", "Anatomy of Male Reproductive System | Model"], ["AREHaMls9Y4", "Anatomy of Female Reproductive System | Model"], ["mjROZrxBdv4", "Male Reproductive System | Spermatogenesis"], ["33m9pN_vAI4", "Male Reproductive System | Erection & Ejaculation"], ["pzgUbyD6mCM", "Female Reproductive Cycle | Ovulation"], ["EfexbuyIqCY", "Female Reproductive Cycle | Menstrual Cycle"], ["CwgaFwHJM4g", "Female Reproductive Cycle | Ovulation & Menstrual Cycle: Overview"]]]]}}};
 let vidsState = { subject: null, teacher: null, limb: null };
@@ -850,132 +864,32 @@ function renderBooks() {
       '<span class="book-tag">' + b.tag + '</span>' +
       '<div class="book-title">' + b.title + '</div>' +
       '<div class="book-meta">' + b.author + ' &middot; ' + b.pages + ' pages &middot; ' + b.size + '</div>' +
+      '<a class="book-dl" href="' + b.file + '" download="' + b.title.replace(/[^a-z0-9]+/gi, '-') + '.pdf" onclick="event.stopPropagation()">&#11015; Download PDF</a>' +
       '</div>';
   });
   r.innerHTML = html;
 }
-if (typeof pdfjsLib !== 'undefined') {
-  pdfjsLib.GlobalWorkerOptions.workerSrc = './pdfjs/pdf.worker.min.js';
-}
-let pdfDoc = null, pdfScale = 1.0, pdfPages = [], pdfRendering = new Set(), pdfCurrent = 1;
 function openPdf(i) {
   const b = BOOKS[i];
   document.getElementById('pdf-title').textContent = b.title;
+  document.getElementById('pdf-frame').src = b.file;
   document.getElementById('pdf-open-tab').href = b.file;
   document.getElementById('pdf-download').href = b.file;
   document.getElementById('pdf-download').download = b.title.replace(/[^a-z0-9]+/gi, '-') + '.pdf';
   document.getElementById('pdf-overlay').style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  pdfDoc = null; pdfScale = 1.0; pdfPages = []; pdfRendering = new Set(); pdfCurrent = 1;
-  const viewer = document.getElementById('pdf-viewer');
-  viewer.innerHTML = '<div class="pdf-loading">Loading PDF&hellip;</div>';
-  document.getElementById('pdf-prev').disabled = true;
-  document.getElementById('pdf-next').disabled = true;
-  document.getElementById('pdf-page-info').textContent = '- / -';
-  if (typeof pdfjsLib === 'undefined') {
-    viewer.innerHTML = '<div class="pdf-loading">PDF engine failed to load. <a href="' + b.file + '" target="_blank" style="color:#3498db;">Open in new tab instead</a></div>';
-    return;
-  }
-  pdfjsLib.getDocument(b.file).promise.then(function (doc) {
-    pdfDoc = doc;
-    document.getElementById('pdf-page-info').textContent = '1 / ' + doc.numPages;
-    document.getElementById('pdf-next').disabled = false;
-    pdfBuildAll();
-  }).catch(function () {
-    viewer.innerHTML = '<div class="pdf-loading">Could not load this PDF. <a href="' + b.file + '" target="_blank" style="color:#3498db;">Open in new tab instead</a></div>';
-  });
 }
-function pdfBuildAll() {
-  const viewer = document.getElementById('pdf-viewer');
-  viewer.innerHTML = '';
-  pdfPages = [];
-  for (let p = 1; p <= pdfDoc.numPages; p++) {
-    const div = document.createElement('div');
-    div.className = 'pdf-page-wrap';
-    div.dataset.page = p;
-    viewer.appendChild(div);
-    pdfPages.push(div);
-  }
-  viewer.addEventListener('scroll', pdfOnScroll);
-  pdfRenderVisible();
-}
-function pdfOnScroll() {
-  pdfRenderVisible();
-  // update page indicator from scroll position
-  const viewer = document.getElementById('pdf-viewer');
-  const st = viewer.scrollTop + 40;
-  let cur = 1;
-  for (let i = 0; i < pdfPages.length; i++) {
-    if (pdfPages[i].offsetTop <= st) cur = i + 1; else break;
-  }
-  if (cur !== pdfCurrent) {
-    pdfCurrent = cur;
-    document.getElementById('pdf-page-info').textContent = cur + ' / ' + pdfDoc.numPages;
-    document.getElementById('pdf-prev').disabled = (cur <= 1);
-    document.getElementById('pdf-next').disabled = (cur >= pdfDoc.numPages);
-  }
-}
-function pdfRenderVisible() {
-  if (!pdfDoc) return;
-  const viewer = document.getElementById('pdf-viewer');
-  const st = viewer.scrollTop, vh = viewer.clientHeight;
-  const lo = st - vh, hi = st + 2 * vh;
-  pdfPages.forEach(function (div, idx) {
-    const p = idx + 1;
-    if (div.offsetTop + div.offsetHeight < lo || div.offsetTop > hi) {
-      if (div.dataset.rendered) { div.innerHTML = ''; div.dataset.rendered = ''; }
-      return;
-    }
-    if (!div.dataset.rendered && !pdfRendering.has(p)) pdfRenderPage(p, div);
-  });
-}
-function pdfRenderPage(p, div) {
-  pdfRendering.add(p);
-  const canvas = document.createElement('canvas');
-  canvas.className = 'pdf-canvas';
-  div.appendChild(canvas);
-  pdfDoc.getPage(p).then(function (page) {
-    const base = page.getViewport({ scale: 1 });
-    const viewer = document.getElementById('pdf-viewer');
-    const avail = viewer.clientWidth - 24;
-    let s = pdfScale;
-    if (base.width * s > avail) s = avail / base.width;
-    const vp = page.getViewport({ scale: s });
-    canvas.width = vp.width;
-    canvas.height = vp.height;
-    canvas.style.width = vp.width + 'px';
-    canvas.style.height = vp.height + 'px';
-    return page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
-  }).then(function () {
-    div.dataset.rendered = '1';
-    pdfRendering.delete(p);
-  }).catch(function () {
-    pdfRendering.delete(p);
-    div.innerHTML = '<div class="pdf-loading">Error rendering page ' + p + '.</div>';
-  });
-}
-function pdfGoTo(p) {
-  if (!pdfDoc || p < 1 || p > pdfDoc.numPages) return;
-  const div = pdfPages[p - 1];
-  document.getElementById('pdf-viewer').scrollTop = div.offsetTop - 10;
-  pdfOnScroll();
-}
-function pdfPrev() { pdfGoTo(pdfCurrent - 1); }
-function pdfNext() { pdfGoTo(pdfCurrent + 1); }
-function pdfZoom(d) {
-  pdfScale = Math.min(3, Math.max(0.3, pdfScale + d));
-  pdfPages.forEach(function (div) { div.innerHTML = ''; div.dataset.rendered = ''; });
-  pdfRenderVisible();
-}
-function pdfFit() { pdfZoom(0); pdfScale = 1.0; pdfRenderVisible(); }
 function closePdf() {
   document.getElementById('pdf-overlay').style.display = 'none';
-  const viewer = document.getElementById('pdf-viewer');
-  viewer.innerHTML = '<div class="pdf-loading">Loading PDF&hellip;</div>';
-  viewer.removeEventListener('scroll', pdfOnScroll);
-  pdfDoc = null; pdfPages = []; pdfRendering = new Set();
+  document.getElementById('pdf-frame').src = '';
   document.body.style.overflow = '';
 }
+document.getElementById('pdf-overlay').addEventListener('click', function (e) {
+  if (e.target === this) closePdf();
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closePdf();
+});
 document.getElementById('pdf-overlay').addEventListener('click', function (e) {
   if (e.target === this) closePdf();
 });
@@ -1031,16 +945,10 @@ updateHomeStatuses();
                 <div id="pdf-title" class="pdf-title"></div>
                 <button class="pdf-close" onclick="closePdf()" title="Close">&times;</button>
             </div>
-            <div id="pdf-viewer" class="pdf-viewer"><div class="pdf-loading">Loading PDF&hellip;</div></div>
-            <div class="pdf-controls">
-                <button class="pdf-ctrl-btn" id="pdf-prev" onclick="pdfPrev()" disabled>&#8592; Prev</button>
-                <span class="pdf-page-info" id="pdf-page-info">- / -</span>
-                <button class="pdf-ctrl-btn" id="pdf-next" onclick="pdfNext()" disabled>Next &#8594;</button>
-                <button class="pdf-ctrl-btn" onclick="pdfZoom(-0.15)">&#8722; Zoom</button>
-                <button class="pdf-ctrl-btn" onclick="pdfZoom(0.15)">&#43; Zoom</button>
-                <button class="pdf-ctrl-btn" onclick="pdfFit()">Fit</button>
-                <a class="pdf-ctrl-btn" id="pdf-open-tab" href="#" target="_blank" rel="noopener" style="text-decoration:none;">Open in new tab &#8599;</a>
-                <a class="pdf-ctrl-btn" id="pdf-download" href="#" download style="text-decoration:none;">Download &#11015;</a>
+            <iframe id="pdf-frame" class="pdf-frame" src=""></iframe>
+            <div class="pdf-links">
+                <a id="pdf-open-tab" href="#" target="_blank" rel="noopener">Open in new tab &#8599;</a>
+                <a id="pdf-download" href="#" download>Download &#11015;</a>
             </div>
         </div>
     </div>
