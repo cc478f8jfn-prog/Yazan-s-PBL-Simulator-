@@ -243,28 +243,32 @@
         .btn-secondary:hover { background: #3498db; border-color: #3498db; }
         .cat-status { display: block; font-size: 0.72rem; font-weight: normal; color: #8c9ba5; margin-top: 5px; }
 
-        .app-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; background: #1c1c1c; border-bottom: 2px solid #3498db; padding: 10px 22px; box-sizing: border-box; box-shadow: 0 4px 14px rgba(0,0,0,.5); }
-        .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
-        .logo-img { height: 40px; width: 40px; border-radius: 8px; object-fit: cover; }
-        .logo-text { color: #3498db; font-weight: bold; font-size: 1.25rem; letter-spacing: 1px; white-space: nowrap; }
-        .main-nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
-        .nav-btn { background: transparent; color: #cfd8dc; border: 1px solid #444; padding: 8px 14px; border-radius: 20px; cursor: pointer; font-size: .9rem; font-weight: 600; transition: all .2s; }
-        .nav-btn:hover { background: #3498db; color: #fff; border-color: #3498db; }
-        .nav-btn.active { background: #3498db; color: #fff; border-color: #3498db; }
+        .app-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; background: #1c1c1c; border-bottom: 2px solid #3498db; padding: 16px 24px; box-sizing: border-box; box-shadow: 0 4px 14px rgba(0,0,0,.5); }
+        .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
+        .logo-img { height: 50px; width: 50px; border-radius: 8px; object-fit: cover; }
+        .logo-text { color: #3498db; font-weight: bold; font-size: 1.55rem; letter-spacing: 1px; white-space: nowrap; }
+        .main-nav { display: flex; gap: 0; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-btn { background: transparent; color: #cfd8dc; border: none; border-left: 1px solid #3a3a3a; padding: 12px 18px; border-radius: 0; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all .2s; }
+        .nav-btn:first-child { border-left: none; }
+        .nav-btn:hover { background: #3498db; color: #fff; }
+        .nav-btn.active { background: #3498db; color: #fff; }
         body { display: block; }
         .view { display: none; min-height: 100vh; box-sizing: border-box; padding: 96px 2rem 2rem; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
         .landing-box { text-align: center; max-width: 780px; }
         .main-title { font-size: 2.6rem; }
         .welcome-sub { color: #b9bec5; font-size: 1.05rem; margin: 14px 0 34px; }
         .big-buttons { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
-        .big-btn { background: #2d2d2d; border: 2px solid #3498db; color: #f0f2f5; border-radius: 14px; padding: 24px 30px; cursor: pointer; min-width: 210px; display: flex; flex-direction: column; align-items: center; gap: 10px; font-weight: bold; font-size: 1.05rem; transition: all .25s; }
+        .big-btn { background: #2d2d2d; border: 2px solid #3498db; color: #f0f2f5; border-radius: 14px; padding: 32px 42px; cursor: pointer; min-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 12px; font-weight: bold; font-size: 1.25rem; transition: all .25s; }
         .big-btn:hover { background: #3498db; color: #fff; transform: translateY(-4px); box-shadow: 0 10px 24px rgba(52,152,219,.35); }
         .big-btn-primary { background: rgba(52,152,219,.15); }
-        .big-icon { font-size: 2rem; }
+        .big-icon { font-size: 2.5rem; }
         .section-title { color: #3498db; border-bottom: 2px solid #3498db; padding-bottom: 10px; font-size: 1.8rem; }
         .section-note { color: #b9bec5; font-size: 1.05rem; margin-top: 14px; max-width: 560px; text-align: center; }
         @media (max-width: 768px) {
-            .main-nav { display: none; }
+            .app-header { flex-direction: column; align-items: center; gap: 10px; padding: 12px 10px; }
+            .main-nav { display: flex; justify-content: center; width: 100%; border-top: 1px solid #3a3a3a; padding-top: 8px; }
+            .nav-btn { border-left: 1px solid #3a3a3a; padding: 10px 12px; font-size: .9rem; }
+            .nav-btn:first-child { border-left: none; }
             .big-btn { min-width: 100%; }
         }
 
@@ -325,6 +329,11 @@
         .pdf-links a:hover { text-decoration: underline; }
         .book-dl { display: inline-block; margin-top: 4px; background: #2c3e50; color: #fff; border: 1px solid #3498db; border-radius: 6px; padding: 6px 12px; font-size: .8rem; font-weight: 600; cursor: pointer; text-decoration: none; text-align: center; transition: all .2s; }
         .book-dl:hover { background: #3498db; }
+        .about-box { max-width: 640px; text-align: left; color: #cfd8dc; font-size: 1.02rem; line-height: 1.7; margin-top: 20px; }
+        .about-box p { margin: 12px 0; }
+        .about-box ul { margin: 12px 0 12px 20px; }
+        .about-box li { margin: 8px 0; }
+        .about-box b { color: #3498db; }
 </style>
 </head>
 <body>
@@ -347,8 +356,6 @@
 
     <!-- LANDING VIEW -->
     <div id="view-landing" class="view" style="display:flex;">
-        <button class="back-section" onclick="goBack()">&#8592; Back</button>
-
         <div class="landing-box">
             <div class="welcome-text">welcome to</div>
             <h1 class="main-title">Yazan's Medical Platform</h1>
@@ -406,15 +413,6 @@
             </div>
         </div>
         
-        <div class="footer-area">
-            <a href="mailto:yazan.w.q7@icloud.com" class="contact-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Contact Me
-            </a>
-        </div>
     </div>
 
     
@@ -441,7 +439,15 @@
         <button class="back-section" onclick="goBack()">&#8592; Back</button>
 
         <h2 class="section-title">About</h2>
-        <p class="section-note">About Yazan's Medplat &mdash; coming soon.</p>
+        <div class="about-box">
+            <p>Yazan's Medplat is a free medical study platform built for medical students, by a medical student. It brings together everything you need for your pre-clinical years in one place:</p>
+            <ul>
+                <li><b>PBL Simulator</b> &mdash; 836 clinical cases across Upper Limb, Lower Limb, Embryology and Physiology, with 3 difficulty levels and progress tracking.</li>
+                <li><b>Video Tutorials</b> &mdash; 373 hand-picked lectures from trusted teachers: Dr Ayman Khanfour (Arabic anatomy &amp; embryology), Dr Nagi Iskandar (Arabic physiology) and Ninja Nerd (English).</li>
+                <li><b>References Books</b> &mdash; a library of essential medical textbooks you can read online or download for offline study.</li>
+            </ul>
+            <p>The platform is designed by a medical student who knows exactly what studying feels like &mdash; so everything here is built to make learning faster, easier and more effective.</p>
+        </div>
     </div>
 
     <!-- CONTACT VIEW -->
