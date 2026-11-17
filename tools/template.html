@@ -1540,7 +1540,7 @@ function startOSCE(region, category, lvl) {
   const chief = (osce.st.chief || '').replace(/\.$/, '');
   osceSay('Hello doctor. ' + (osce.st.persona.age ? 'I am ' + osce.st.persona.age + ' years old. ' : '') +
     t('osce.patientIntro'), 'patient');
-  osceSay(t('osce.note') + ': ' + chief.charAt(0).toUpperCase() + chief.slice(1) + '.', 'system');
+  osceSay(t('osce.presNote') + ': ' + chief.charAt(0).toUpperCase() + chief.slice(1) + '.', 'system');
   osceGo('history');
   window.scrollTo(0, 0);
 }
@@ -1911,7 +1911,8 @@ const I18N = {
     'osce.investigations': 'Investigations', 'osce.ddxScore': 'Differential diagnosis',
     'osce.dxScore': 'Final diagnosis', 'osce.mgmtScore': 'Management safety',
     'osce.patientIntro': 'I was asked to come and talk to you about what has been going on.',
-    'osce.note': 'Presentation note', 'osce.confused': 'I am not sure I follow, doctor. Could you ask that another way?',
+    'osce.note': 'A virtual patient, focused examination, investigations, a differential and a plan. Every station ends with an examiner scorecard out of 100, pass mark 60.',
+    'osce.presNote': 'Presentation note', 'osce.confused': 'I am not sure I follow, doctor. Could you ask that another way?',
     'osce.nothing': 'Nothing like that, doctor.', 'osce.nothingElse': 'Nothing else that I noticed.',
     'osce.cannotSay': 'I cannot really say, doctor.', 'osce.redflagAsk': 'Now that you ask: ',
     'footer.tagline': 'Medical learning platform',
@@ -1995,7 +1996,8 @@ const I18N = {
     'osce.investigations': 'الفحوصات', 'osce.ddxScore': 'التشخيص التفريقي',
     'osce.dxScore': 'التشخيص النهائي', 'osce.mgmtScore': 'سلامة التدبير',
     'osce.patientIntro': 'طُلب مني أن آتي وأتحدث معك عمّا يجري.',
-    'osce.note': 'ملاحظة العرض', 'osce.confused': 'لم أفهم تماماً يا دكتور، هل يمكنك صياغة السؤال بطريقة أخرى؟',
+    'osce.note': 'مريض افتراضي، فحص موجّه، فحوصات، تشخيص تفريقي وخطة. كل محطة تنتهي ببطاقة تقييم من مئة، والنجاح عند ستين.',
+    'osce.presNote': 'ملاحظة العرض', 'osce.confused': 'لم أفهم تماماً يا دكتور، هل يمكنك صياغة السؤال بطريقة أخرى؟',
     'osce.nothing': 'لا شيء من هذا يا دكتور.', 'osce.nothingElse': 'لا شيء آخر لاحظته.',
     'osce.cannotSay': 'لا أستطيع الجزم يا دكتور.', 'osce.redflagAsk': 'بما أنك سألت: ',
     'footer.tagline': 'منصة التعلم الطبي',
