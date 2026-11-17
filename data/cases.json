@@ -5005,8 +5005,8 @@
   "general": {
    "1": [
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. squared-off shoulder, arm held in slight abduction and external rotation.",
+     "mechanism": "presents with squared-off shoulder, arm held in slight abduction and external rotation",
+     "exam": "",
      "diagnostic": "X-ray: Humeral head located inferior and medial to glenoid fossa.",
      "options": [
       "AC Joint Separation",
@@ -5019,8 +5019,8 @@
      "id": "msk-general-1-1"
     },
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. locked internal rotation, inability to externally rotate arm.",
+     "mechanism": "presents with locked internal rotation, inability to externally rotate arm",
+     "exam": "",
      "diagnostic": "X-ray: Lightbulb sign on AP view, loss of normal overlap.",
      "options": [
       "Rotator Cuff Tear",
@@ -5033,8 +5033,8 @@
      "id": "msk-general-1-2"
     },
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. piano-key sign, prominent distal clavicle after falling on point of shoulder.",
+     "mechanism": "presents with piano-key sign, prominent distal clavicle after falling on point of shoulder",
+     "exam": "",
      "diagnostic": "X-ray with weights: Increased coracoclavicular distance.",
      "options": [
       "Clavicle Fracture",
@@ -5047,9 +5047,9 @@
      "id": "msk-general-1-3"
     },
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. child holding arm pronated and flexed, refusing to move it after sudden pull.",
-     "diagnostic": "Clinical: Reduction via supination and flexion restores normal use immediately.",
+     "mechanism": "presents with holding arm pronated and flexed, refusing to move it after sudden pull",
+     "exam": "reduction via supination and flexion restores normal use immediately",
+     "diagnostic": "",
      "options": [
       "Supracondylar Fracture",
       "Monteggia Fracture",
@@ -5061,9 +5061,9 @@
      "id": "msk-general-1-4"
     },
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. gradual loss of active and passive range of motion, especially external rotation.",
-     "diagnostic": "Clinical: Painful progressive restriction in diabetic or middle-aged patient.",
+     "mechanism": "presents with gradual loss of active and passive range of motion, especially external rotation",
+     "exam": "painful progressive restriction in diabetic or middle-aged patient",
+     "diagnostic": "",
      "options": [
       "Rotator Cuff Tear",
       "Shoulder Dislocation",
@@ -5075,9 +5075,9 @@
      "id": "msk-general-1-5"
     },
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. pain over radial styloid, positive Finkelstein test.",
-     "diagnostic": "Physical exam: Sharp pain with ulnar deviation of wrist while thumb is held in flexion.",
+     "mechanism": "presents with pain over radial styloid, positive Finkelstein test",
+     "exam": "sharp pain with ulnar deviation of wrist while thumb is held in flexion",
+     "diagnostic": "",
      "options": [
       "Carpal Tunnel Syndrome",
       "De Quervain Tenosynovitis",
@@ -5089,8 +5089,8 @@
      "id": "msk-general-1-6"
     },
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. catching or locking of finger during flexion with painful snap on extension.",
+     "mechanism": "presents with catching or locking of finger during flexion with painful snap on extension",
+     "exam": "",
      "diagnostic": "Ultrasound: Thickening of A1 pulley and flexor tendon nodule.",
      "options": [
       "Mallet Finger",
@@ -5103,9 +5103,9 @@
      "id": "msk-general-1-7"
     },
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. nodular thickening of palmar fascia leading to progressive flexion contracture of 4th/5th digits.",
-     "diagnostic": "Clinical: Pits and cords in palm without pain.",
+     "mechanism": "presents with nodular thickening of palmar fascia leading to progressive flexion contracture of 4th/5th digits",
+     "exam": "pits and cords in palm without pain",
+     "diagnostic": "",
      "options": [
       "Trigger Finger",
       "Volkmann Contracture",
@@ -5117,8 +5117,8 @@
      "id": "msk-general-1-8"
     },
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. severe ischemic pain, pallor, pulselessness, clawhand deformity after supracondylar fracture.",
+     "mechanism": "presents with severe ischemic pain, pallor, pulselessness, clawhand deformity after supracondylar fracture",
+     "exam": "",
      "diagnostic": "Clinical/Pressure monitoring: Compartment syndrome sequela.",
      "options": [
       "Volkmann Contracture",
@@ -5131,8 +5131,8 @@
      "id": "msk-general-1-9"
     },
     {
-     "mechanism": "presented with acute upper extremity pathology following trauma or overuse.",
-     "exam": "shows characteristic clinical signs. pain and swelling 4-6 cm proximal to wrist over radial aspect.",
+     "mechanism": "presents with pain and swelling 4-6 cm proximal to wrist over radial aspect",
+     "exam": "",
      "diagnostic": "Ultrasound: Tenosynovitis where radial wrist extensors cross APL/EPB.",
      "options": [
       "De Quervain",
@@ -5280,8 +5280,8 @@
      "id": "msk-general-1-19"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. popping sensation during pivoting, rapid joint swelling, positive Lachman test.",
+     "mechanism": "presents with exhibits classic clinical findings. popping sensation during pivoting, rapid joint swelling, positive Lachman test",
+     "exam": "",
      "diagnostic": "MRI: Complete mid-substance tear of anterior cruciate ligament.",
      "options": [
       "ACL Tear",
@@ -5294,8 +5294,8 @@
      "id": "msk-general-1-20"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. joint line tenderness, catching, locking, and clicking during knee rotation.",
+     "mechanism": "presents with exhibits classic clinical findings. joint line tenderness, catching, locking, and clicking during knee rotation",
+     "exam": "",
      "diagnostic": "MRI: Linear high-signal intensity extending to articular surface of medial meniscus.",
      "options": [
       "Meniscal Tear",
@@ -5308,8 +5308,8 @@
      "id": "msk-general-1-21"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. limb shortened, adducted, and internally rotated after dashboard injury in car crash.",
+     "mechanism": "presents with exhibits classic clinical findings. limb shortened, adducted, and internally rotated after dashboard injury in car crash",
+     "exam": "",
      "diagnostic": "X-ray: Femoral head located posterior and superior to acetabulum.",
      "options": [
       "Posterior Hip Dislocation",
@@ -5322,8 +5322,8 @@
      "id": "msk-general-1-22"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. gradual onset posterior heel pain, stiffness in morning, tenderness along tendon.",
+     "mechanism": "presents with exhibits classic clinical findings. gradual onset posterior heel pain, stiffness in morning, tenderness along tendon",
+     "exam": "",
      "diagnostic": "Ultrasound: Thickening of Achilles tendon with hypoechoic areas.",
      "options": [
       "Achilles Tendinitis",
@@ -5336,9 +5336,9 @@
      "id": "msk-general-1-23"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. severe heel pain with first steps in the morning, tenderness at medial calcaneal tubercle.",
-     "diagnostic": "Clinical: Pain aggravated by dorsiflexion of toes (Windlass mechanism).",
+     "mechanism": "presents with exhibits classic clinical findings. severe heel pain with first steps in the morning, tenderness at medial calcaneal tubercle",
+     "exam": "pain aggravated by dorsiflexion of toes (Windlass mechanism)",
+     "diagnostic": "",
      "options": [
       "Plantar Fasciitis",
       "Tarsal Tunnel Syndrome",
@@ -5350,9 +5350,9 @@
      "id": "msk-general-1-24"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. anterior knee pain worse with stairs, squatting, and prolonged sitting (theater sign).",
-     "diagnostic": "Clinical: Positive Clark test and patellar apprehension.",
+     "mechanism": "presents with exhibits classic clinical findings. anterior knee pain worse with stairs, squatting, and prolonged sitting (theater sign)",
+     "exam": "positive Clark test and patellar apprehension",
+     "diagnostic": "",
      "options": [
       "Patellofemoral Pain Syndrome",
       "Patellar Tendonitis",
@@ -5364,8 +5364,8 @@
      "id": "msk-general-1-25"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. pain and prominent bony swelling at tibial tuberosity in active growing adolescent.",
+     "mechanism": "presents with exhibits classic clinical findings. pain and prominent bony swelling at tibial tuberosity in active growing adolescent",
+     "exam": "",
      "diagnostic": "X-ray: Fragmentation and inflammation of tibial tuberosity secondary to traction apophysitis.",
      "options": [
       "Osgood-Schlatter Disease",
@@ -5378,8 +5378,8 @@
      "id": "msk-general-1-26"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. severe disproportionate pain, pain on passive toe extension, tense wooden compartment, pulselessness (late).",
+     "mechanism": "presents with exhibits classic clinical findings. severe disproportionate pain, pain on passive toe extension, tense wooden compartment, pulselessness (late)",
+     "exam": "",
      "diagnostic": "Compartment Pressure Monitoring: Interstitial pressure > 30 mmHg.",
      "options": [
       "Acute Compartment Syndrome",
@@ -5392,8 +5392,8 @@
      "id": "msk-general-1-27"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. unilateral calf swelling, pitting edema, warmth, erythema, positive Homan sign.",
+     "mechanism": "presents with exhibits classic clinical findings. unilateral calf swelling, pitting edema, warmth, erythema, positive Homan sign",
+     "exam": "",
      "diagnostic": "Duplex Ultrasound: Lack of compressibility and absence of flow in deep calf/femoral veins.",
      "options": [
       "Deep Vein Thrombosis",
@@ -5406,8 +5406,8 @@
      "id": "msk-general-1-28"
     },
     {
-     "mechanism": "presented with acute lower extremity injury or chronic overload syndrome.",
-     "exam": "exhibits classic clinical findings. acute calf pain and swelling mimicking DVT (pseudo-thrombophlebitis) after cyst rupture.",
+     "mechanism": "presents with exhibits classic clinical findings. acute calf pain and swelling mimicking DVT (pseudo-thrombophlebitis) after cyst rupture",
+     "exam": "",
      "diagnostic": "Ultrasound: Popliteal fluid collection with tracking down calf musculature.",
      "options": [
       "Baker Cyst Rupture",
@@ -7448,9 +7448,9 @@
   "level2": {
    "1": [
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. failure of fusion between maxillary prominence and medial nasal prominence.",
-     "diagnostic": "Clinical observation: Unilateral gap in upper lip.",
+     "mechanism": "presents with failure of fusion between maxillary prominence and medial nasal prominence",
+     "exam": "unilateral gap in upper lip",
+     "diagnostic": "",
      "options": [
       "Maxillary & Medial Nasal Prominences",
       "Palatine Shelves",
@@ -7462,9 +7462,9 @@
      "id": "embryology-level2-1-1"
     },
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. failure of palatine shelves to fuse in the midline, leaving open roof of mouth.",
-     "diagnostic": "Clinical observation: Communication between oral and nasal cavities.",
+     "mechanism": "presents with failure of palatine shelves to fuse in the midline, leaving open roof of mouth",
+     "exam": "communication between oral and nasal cavities",
+     "diagnostic": "",
      "options": [
       "Palatine Shelves",
       "Maxillary Prominences",
@@ -7476,8 +7476,8 @@
      "id": "embryology-level2-1-2"
     },
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. harsh holosystolic murmur at left lower sternal border in infant.",
+     "mechanism": "presents with harsh holosystolic murmur at left lower sternal border in infant",
+     "exam": "",
      "diagnostic": "Echocardiogram: Defect in membranous interventricular septum with left-to-right shunt.",
      "options": [
       "Atrial Septal Defect",
@@ -7490,8 +7490,8 @@
      "id": "embryology-level2-1-3"
     },
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. infant presenting with excessive drooling, choking, and cyanosis upon first feeding.",
+     "mechanism": "presents with excessive drooling, choking, and cyanosis upon first feeding",
+     "exam": "",
      "diagnostic": "Imaging: Nasogastric tube coiling in proximal esophagus; air in stomach.",
      "options": [
       "Tracheoesophageal Fistula",
@@ -7504,8 +7504,8 @@
      "id": "embryology-level2-1-4"
     },
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. infant with scaphoid abdomen, respiratory distress, and bowel sounds heard in left chest.",
+     "mechanism": "presents with scaphoid abdomen, respiratory distress, and bowel sounds heard in left chest",
+     "exam": "",
      "diagnostic": "Chest X-ray: Bowel loops occupying thoracic cavity with pulmonary hypoplasia.",
      "options": [
       "Diaphragmatic Hernia",
@@ -7518,9 +7518,9 @@
      "id": "embryology-level2-1-5"
     },
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. infant born with abdominal viscera herniated into base of umbilical cord, covered by peritoneal sac.",
-     "diagnostic": "Physical exam: Midline abdominal wall defect covered by amnion/peritoneum.",
+     "mechanism": "presents with born with abdominal viscera herniated into base of umbilical cord, covered by peritoneal sac",
+     "exam": "midline abdominal wall defect covered by amnion/peritoneum",
+     "diagnostic": "",
      "options": [
       "Omphalocele",
       "Gastroschisis",
@@ -7532,9 +7532,9 @@
      "id": "embryology-level2-1-6"
     },
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. infant born with bowel loops protruding directly through abdominal wall defect (usually right of umbilicus).",
-     "diagnostic": "Physical exam: Exposed bowel loops without membranous sac cover.",
+     "mechanism": "presents with born with bowel loops protruding directly through abdominal wall defect (usually right of umbilicus)",
+     "exam": "exposed bowel loops without membranous sac cover",
+     "diagnostic": "",
      "options": [
       "Gastroschisis",
       "Omphalocele",
@@ -7546,8 +7546,8 @@
      "id": "embryology-level2-1-7"
     },
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. neonates with failure to pass meconium within 48 hours, abdominal distension.",
+     "mechanism": "presents with neonates with failure to pass meconium within 48 hours, abdominal distension",
+     "exam": "",
      "diagnostic": "Rectal Biopsy: Absence of ganglion cells in Meissner and Auerbach plexuses.",
      "options": [
       "Hirschsprung Disease",
@@ -7560,8 +7560,8 @@
      "id": "embryology-level2-1-8"
     },
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. painless rectal bleeding or bowel obstruction in child, remnant of embryonic structure.",
+     "mechanism": "presents with painless rectal bleeding or bowel obstruction in child, remnant of embryonic structure",
+     "exam": "",
      "diagnostic": "Technetium-99m scan (Meckel scan): Uptake in ectopic gastric mucosa.",
      "options": [
       "Meckel Diverticulum",
@@ -7574,8 +7574,8 @@
      "id": "embryology-level2-1-9"
     },
     {
-     "mechanism": "was evaluated during neonatal screening for congenital anomalies.",
-     "exam": "exhibits structural features of organogenesis disruption. cyanotic infant with boot-shaped heart and hypercyanotic spells ('tet spells').",
+     "mechanism": "presents with cyanotic infant with boot-shaped heart and hypercyanotic spells ('tet spells')",
+     "exam": "",
      "diagnostic": "Echocardiogram: VSD, overriding aorta, pulmonary stenosis, right ventricular hypertrophy.",
      "options": [
       "Tetralogy of Fallot",
@@ -8271,8 +8271,8 @@
   "level3": {
    "1": [
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. fixed split S2 and systolic ejection murmur in child or young adult.",
+     "mechanism": "presents with fixed split S2 and systolic ejection murmur in child or young adult",
+     "exam": "",
      "diagnostic": "Echocardiogram: Left-to-right shunt across septum secundum defect.",
      "options": [
       "Atrial Septal Defect",
@@ -8285,8 +8285,8 @@
      "id": "embryology-level3-1-1"
     },
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. continuous 'machinery' murmur heard best at left infraclavicular area in preterm infant.",
+     "mechanism": "presents with continuous 'machinery' murmur heard best at left infraclavicular area in preterm infant",
+     "exam": "",
      "diagnostic": "Echocardiogram: Failure of ductus arteriosus to close functionally after birth.",
      "options": [
       "Patent Ductus Arteriosus",
@@ -8299,8 +8299,8 @@
      "id": "embryology-level3-1-2"
     },
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. upper extremity hypertension with delayed/weak femoral pulses (radio-femoral delay).",
+     "mechanism": "presents with upper extremity hypertension with delayed/weak femoral pulses (radio-femoral delay)",
+     "exam": "",
      "diagnostic": "Chest X-ray / Angiography: Rib notching and constriction of descending aorta.",
      "options": [
       "Coarctation of Aorta",
@@ -8313,8 +8313,8 @@
      "id": "embryology-level3-1-3"
     },
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. severe cyanosis immediately after birth unresponsive to oxygen therapy.",
+     "mechanism": "presents with severe cyanosis immediately after birth unresponsive to oxygen therapy",
+     "exam": "",
      "diagnostic": "Echocardiogram: Aorta arises from right ventricle and pulmonary artery from left ventricle.",
      "options": [
       "Transposition of Great Arteries",
@@ -8327,8 +8327,8 @@
      "id": "embryology-level3-1-4"
     },
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. severe midline facial defects, cyclopia, or single ventricular cavity on neuroimaging.",
+     "mechanism": "presents with severe midline facial defects, cyclopia, or single ventricular cavity on neuroimaging",
+     "exam": "",
      "diagnostic": "MRI: Incomplete cleavage of prosencephalon into two hemispheres associated with Sonic Hedgehog signaling.",
      "options": [
       "Holoprosencephaly",
@@ -8341,8 +8341,8 @@
      "id": "embryology-level3-1-5"
     },
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. neonatal spine lesion with protruding sac containing meninges and neural elements.",
+     "mechanism": "presents with neonatal spine lesion with protruding sac containing meninges and neural elements",
+     "exam": "",
      "diagnostic": "Physical exam / Ultrasound: Dorsal midline spinal defect with motor/sensory deficits below lesion.",
      "options": [
       "Spina Bifida Occulta",
@@ -8355,8 +8355,8 @@
      "id": "embryology-level3-1-6"
     },
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. absence of major portion of brain, skull, and scalp due to failure of rostral neuropore closure.",
+     "mechanism": "presents with absence of major portion of brain, skull, and scalp due to failure of rostral neuropore closure",
+     "exam": "",
      "diagnostic": "Prenatal Ultrasound: Absent cranial vault and cerebral hemispheres.",
      "options": [
       "Anencephaly",
@@ -8369,8 +8369,8 @@
      "id": "embryology-level3-1-7"
     },
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. enlarged posterior fossa, cystic dilation of 4th ventricle, hydrocephalus in infant.",
+     "mechanism": "presents with enlarged posterior fossa, cystic dilation of 4th ventricle, hydrocephalus in infant",
+     "exam": "",
      "diagnostic": "MRI: Agenesis of cerebellar vermis with large posterior fossa cyst.",
      "options": [
       "Dandy-Walker Malformation",
@@ -8383,8 +8383,8 @@
      "id": "embryology-level3-1-8"
     },
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. seizures or developmental delay; neuroimaging shows absence of interhemispheric white matter fibers.",
+     "mechanism": "presents with seizures or developmental delay; neuroimaging shows absence of interhemispheric white matter fibers",
+     "exam": "",
      "diagnostic": "MRI: Complete or partial absence of corpus callosum with parallel ventricles.",
      "options": [
       "Agenesis of Corpus Callosum",
@@ -8397,9 +8397,9 @@
      "id": "embryology-level3-1-9"
     },
     {
-     "mechanism": "was diagnosed with a structural birth defect during pediatric examination.",
-     "exam": "presents with characteristic anatomical malformations. empty scrotal sac with testicle palpable in inguinal canal or abdomen in newborn male.",
-     "diagnostic": "Physical exam: Failure of one or both testes to descend into scrotum.",
+     "mechanism": "presents with empty scrotal sac with testicle palpable in inguinal canal or abdomen in newborn male",
+     "exam": "failure of one or both testes to descend into scrotum",
+     "diagnostic": "",
      "options": [
       "Cryptorchidism",
       "Hydrocele",
@@ -9094,8 +9094,8 @@
   "level4": {
    "1": [
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. cyanosis and heart failure in infant due to single great vessel leaving heart.",
+     "mechanism": "presents with exhibits advanced pathology features. cyanosis and heart failure in infant due to single great vessel leaving heart",
+     "exam": "",
      "diagnostic": "Echocardiogram: Single large arterial trunk overriding large VSD.",
      "options": [
       "Persistent Truncus Arteriosus",
@@ -9108,8 +9108,8 @@
      "id": "embryology-level4-1-1"
     },
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. infant with hypocalcemia, recurrent viral/fungal infections (thymic aplasia), and conotruncal heart defects.",
+     "mechanism": "presents with exhibits advanced pathology features. infant with hypocalcemia, recurrent viral/fungal infections (thymic aplasia), and conotruncal heart defects",
+     "exam": "",
      "diagnostic": "Genetic Testing / FISH: Microdeletion on chromosome 22q11.",
      "options": [
       "DiGeorge Syndrome",
@@ -9122,8 +9122,8 @@
      "id": "embryology-level4-1-2"
     },
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. micrognathia, glossoptosis, and U-shaped cleft palate leading to airway obstruction.",
+     "mechanism": "presents with exhibits advanced pathology features. micrognathia, glossoptosis, and U-shaped cleft palate leading to airway obstruction",
+     "exam": "",
      "diagnostic": "Clinical evaluation: Small mandible forces tongue posteriorly, preventing palatal shelf closure.",
      "options": [
       "Pierre Robin Sequence",
@@ -9136,8 +9136,8 @@
      "id": "embryology-level4-1-3"
     },
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. smooth, painless lateral neck mass along anterior border of sternocleidomastoid muscle.",
+     "mechanism": "presents with exhibits advanced pathology features. smooth, painless lateral neck mass along anterior border of sternocleidomastoid muscle",
+     "exam": "",
      "diagnostic": "Ultrasound / Biopsy: Cystic cavity lined by squamous epithelium, remnant of pharyngeal apparatus.",
      "options": [
       "Branchial Cleft Cyst",
@@ -9150,8 +9150,8 @@
      "id": "embryology-level4-1-4"
     },
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. midline neck mass that moves superiorly upon swallowing or tongue protrusion.",
+     "mechanism": "presents with exhibits advanced pathology features. midline neck mass that moves superiorly upon swallowing or tongue protrusion",
+     "exam": "",
      "diagnostic": "Ultrasound: Midline cystic lesion near hyoid bone.",
      "options": [
       "Thyroglossal Duct Cyst",
@@ -9164,8 +9164,8 @@
      "id": "embryology-level4-1-5"
     },
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. severe caudal regression, fusion of lower limbs, renal agenesis.",
+     "mechanism": "presents with exhibits advanced pathology features. severe caudal regression, fusion of lower limbs, renal agenesis",
+     "exam": "",
      "diagnostic": "Prenatal Ultrasound / Pathology: Defective gastrulation with loss of midline mesoderm.",
      "options": [
       "Sirenomelia",
@@ -9178,8 +9178,8 @@
      "id": "embryology-level4-1-6"
     },
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. large tumor protruding from sacrococcygeal region in newborn, composed of multi-germ layer tissues.",
+     "mechanism": "presents with exhibits advanced pathology features. large tumor protruding from sacrococcygeal region in newborn, composed of multi-germ layer tissues",
+     "exam": "",
      "diagnostic": "Imaging: Heterogeneous mass containing bone, calcification, and cystic spaces.",
      "options": [
       "Sacrococcygeal Teratoma",
@@ -9192,8 +9192,8 @@
      "id": "embryology-level4-1-7"
     },
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. newborn with pulmonary hypoplasia, flat facies, and limb deformities due to severe oligohydramnios.",
+     "mechanism": "presents with exhibits advanced pathology features. newborn with pulmonary hypoplasia, flat facies, and limb deformities due to severe oligohydramnios",
+     "exam": "",
      "diagnostic": "Ultrasound: Bilateral renal agenesis leading to absent fetal urine production.",
      "options": [
       "Potter Sequence",
@@ -9206,8 +9206,8 @@
      "id": "embryology-level4-1-8"
     },
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. duodenal obstruction and vomiting in newborn due to pancreatic tissue encircling duodenum.",
+     "mechanism": "presents with exhibits advanced pathology features. duodenal obstruction and vomiting in newborn due to pancreatic tissue encircling duodenum",
+     "exam": "",
      "diagnostic": "Imaging: Barium swallow showing 'double bubble' sign and annular constriction of duodenum.",
      "options": [
       "Annular Pancreas",
@@ -9220,9 +9220,9 @@
      "id": "embryology-level4-1-9"
     },
     {
-     "mechanism": "presented with complex embryological malformation or syndrome.",
-     "exam": "exhibits advanced pathology features. newborn infant with heart located outside the thoracic cavity due to failure of lateral body wall folding.",
-     "diagnostic": "Physical exam: Exposed heart beating outside thoracic wall.",
+     "mechanism": "presents with exhibits advanced pathology features. newborn infant with heart located outside the thoracic cavity due to failure of lateral body wall folding",
+     "exam": "exposed heart beating outside thoracic wall",
+     "diagnostic": "",
      "options": [
       "Ectopia Cordis",
       "Gastroschisis",
@@ -9919,8 +9919,8 @@
   "blood": {
    "1": [
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. dry mucous membranes, low blood pressure, concentrated urine, normal serum sodium.",
+     "mechanism": "presents with dry mucous membranes, low blood pressure, concentrated urine, normal serum sodium",
+     "exam": "",
      "diagnostic": "Labs: Normal serum Na+, elevated hematocrit due to hemoconcentration.",
      "options": [
       "Hypotonic Hydration",
@@ -9933,8 +9933,8 @@
      "id": "physiology-blood-1-1"
     },
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. confusion, lethargy, muscle cramps, cerebral edema due to water shifting into cells.",
+     "mechanism": "presents with confusion, lethargy, muscle cramps, cerebral edema due to water shifting into cells",
+     "exam": "",
      "diagnostic": "Labs: Low serum sodium (hyponatremia) and reduced plasma osmolarity.",
      "options": [
       "Hypotonic Hydration",
@@ -9947,8 +9947,8 @@
      "id": "physiology-blood-1-2"
     },
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. fatigue, pallor, microcytic hypochromic red blood cells, low MCV.",
+     "mechanism": "presents with fatigue, pallor, microcytic hypochromic red blood cells, low MCV",
+     "exam": "",
      "diagnostic": "Iron Panel: Low serum ferritin, low serum iron, high total iron-binding capacity (TIBC).",
      "options": [
       "Iron Deficiency Anemia",
@@ -9961,8 +9961,8 @@
      "id": "physiology-blood-1-3"
     },
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. megaloblastic anemia, fatigue, paresthesia, atrophic gastritis.",
+     "mechanism": "presents with megaloblastic anemia, fatigue, paresthesia, atrophic gastritis",
+     "exam": "",
      "diagnostic": "Labs: Macrocytic RBCs (high MCV), hypersegmented neutrophils, anti-intrinsic factor antibodies.",
      "options": [
       "Iron Deficiency Anemia",
@@ -9975,8 +9975,8 @@
      "id": "physiology-blood-1-4"
     },
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. tachycardia, hypotension, pale skin, thirst, reduced central venous pressure.",
+     "mechanism": "presents with tachycardia, hypotension, pale skin, thirst, reduced central venous pressure",
+     "exam": "",
      "diagnostic": "Labs: Initially normal hemoglobin/hematocrit before interstitial fluid shifts into vascular space.",
      "options": [
       "Acute Hemorrhage",
@@ -9989,8 +9989,8 @@
      "id": "physiology-blood-1-5"
     },
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. kussmaul breathing (deep rapid respirations), fruity breath odor, nausea, high anion gap.",
+     "mechanism": "presents with kussmaul breathing (deep rapid respirations), fruity breath odor, nausea, high anion gap",
+     "exam": "",
      "diagnostic": "ABG: Low pH, low bicarbonate, low PCO2 (respiratory compensation), high serum ketones.",
      "options": [
       "Metabolic Acidosis",
@@ -10003,8 +10003,8 @@
      "id": "physiology-blood-1-6"
     },
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. lightheadedness, tingling in fingers and toes, high pH, low PCO2.",
+     "mechanism": "presents with lightheadedness, tingling in fingers and toes, high pH, low PCO2",
+     "exam": "",
      "diagnostic": "ABG: Elevated pH (>7.45), low PCO2, normal or slightly low bicarbonate.",
      "options": [
       "Respiratory Alkalosis",
@@ -10017,8 +10017,8 @@
      "id": "physiology-blood-1-7"
     },
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. plethora, headaches, pruritus after warm bath, elevated hemoglobin and hematocrit.",
+     "mechanism": "presents with plethora, headaches, pruritus after warm bath, elevated hemoglobin and hematocrit",
+     "exam": "",
      "diagnostic": "Labs: Increased red blood cell mass, low EPO levels, JAK2 mutation positive.",
      "options": [
       "Polycythemia Vera",
@@ -10031,8 +10031,8 @@
      "id": "physiology-blood-1-8"
     },
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. jaundice, severe anemia, hepatosplenomegaly in newborn of Rh-negative mother and Rh-positive baby.",
+     "mechanism": "presents with jaundice, severe anemia, hepatosplenomegaly in newborn of Rh-negative mother and Rh-positive baby",
+     "exam": "",
      "diagnostic": "Labs: Positive Coombs test, elevated unconjugated bilirubin, reticulocytosis.",
      "options": [
       "Erythroblastosis Fetalis",
@@ -10045,8 +10045,8 @@
      "id": "physiology-blood-1-9"
     },
     {
-     "mechanism": "presented with systemic fluid, electrolyte, or hematologic imbalance.",
-     "exam": "exhibits clinical signs of physiological dysfunction. muscle weakness, fatigue, cardiac arrhythmias, U waves on ECG.",
+     "mechanism": "presents with muscle weakness, fatigue, cardiac arrhythmias, U waves on ECG",
+     "exam": "",
      "diagnostic": "Labs: Serum potassium < 3.5 mEq/L.",
      "options": [
       "Hypokalemia",
@@ -10742,8 +10742,8 @@
   "nerve_muscle": {
    "1": [
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. progressive muscle weakness worsening with activity, improving with rest, bilateral ptosis.",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. progressive muscle weakness worsening with activity, improving with rest, bilateral ptosis",
+     "exam": "",
      "diagnostic": "Serology: Antibodies against postsynaptic nicotinic acetylcholine receptors.",
      "options": [
       "Myasthenia Gravis",
@@ -10756,8 +10756,8 @@
      "id": "physiology-nerve_muscle-1-1"
     },
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. proximal muscle weakness improving with repetitive use, dry mouth, associated with small cell lung cancer.",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. proximal muscle weakness improving with repetitive use, dry mouth, associated with small cell lung cancer",
+     "exam": "",
      "diagnostic": "Serology/EMG: Antibodies against presynaptic voltage-gated calcium channels.",
      "options": [
       "Myasthenia Gravis",
@@ -10770,8 +10770,8 @@
      "id": "physiology-nerve_muscle-1-2"
     },
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. symmetric descending paralysis, diplopia, blurred vision, dysphagia after consuming canned food.",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. symmetric descending paralysis, diplopia, blurred vision, dysphagia after consuming canned food",
+     "exam": "",
      "diagnostic": "Toxin assay: Botulinum toxin blocking SNARE-mediated exocytosis of acetylcholine.",
      "options": [
       "Botulism",
@@ -10784,8 +10784,8 @@
      "id": "physiology-nerve_muscle-1-3"
     },
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. relapsing-remitting visual disturbances, paresthesia, ataxia, internuclear ophthalmoplegia.",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. relapsing-remitting visual disturbances, paresthesia, ataxia, internuclear ophthalmoplegia",
+     "exam": "",
      "diagnostic": "MRI: Periventricular white matter plaques (Dawson fingers); CSF oligoclonal bands.",
      "options": [
       "Multiple Sclerosis",
@@ -10798,8 +10798,8 @@
      "id": "physiology-nerve_muscle-1-4"
     },
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. ascending symmetric muscle weakness, hyporeflexia, areflexia following viral illness or campylobacter.",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. ascending symmetric muscle weakness, hyporeflexia, areflexia following viral illness or campylobacter",
+     "exam": "",
      "diagnostic": "CSF Analysis: Albuminocytologic dissociation (high protein with normal cell count).",
      "options": [
       "Guillain-Barré Syndrome",
@@ -10812,8 +10812,8 @@
      "id": "physiology-nerve_muscle-1-5"
     },
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. temporary reversible loss of pain sensation in localized area during minor procedure.",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. temporary reversible loss of pain sensation in localized area during minor procedure",
+     "exam": "",
      "diagnostic": "Electrophysiology: Reversible blockade of voltage-gated Na+ channels stopping action potentials.",
      "options": [
       "Blocking Potassium Efflux",
@@ -10826,8 +10826,8 @@
      "id": "physiology-nerve_muscle-1-6"
     },
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. resting tremor, cogwheel rigidity, bradykinesia, postural instability.",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. resting tremor, cogwheel rigidity, bradykinesia, postural instability",
+     "exam": "",
      "diagnostic": "Pathology: Loss of dopaminergic neurons in substantia nigra with Lewy bodies.",
      "options": [
       "Parkinson Disease",
@@ -10840,8 +10840,8 @@
      "id": "physiology-nerve_muscle-1-7"
     },
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. paresthesia, numbness, severe weakness, paralysis after consuming pufferfish.",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. paresthesia, numbness, severe weakness, paralysis after consuming pufferfish",
+     "exam": "",
      "diagnostic": "Toxicology: Potent blockade of fast voltage-gated sodium channels in nerve and muscle.",
      "options": [
       "Tetrodotoxin",
@@ -10854,8 +10854,8 @@
      "id": "physiology-nerve_muscle-1-8"
     },
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. flaccid paralysis, respiratory arrest due to competitive blockade at neuromuscular junction.",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. flaccid paralysis, respiratory arrest due to competitive blockade at neuromuscular junction",
+     "exam": "",
      "diagnostic": "Pharmacology: Competitive antagonist of acetylcholine at nicotinic receptors.",
      "options": [
       "Curare",
@@ -10868,8 +10868,8 @@
      "id": "physiology-nerve_muscle-1-9"
     },
     {
-     "mechanism": "presented with neurological or neuromuscular transmission disorder.",
-     "exam": "exhibits characteristic clinical and electrophysiological findings. salivation, lacrimation, urination, defecation, muscle fasciculations, miosis (DUMBELS).",
+     "mechanism": "presents with exhibits characteristic clinical and electrophysiological findings. salivation, lacrimation, urination, defecation, muscle fasciculations, miosis (DUMBELS)",
+     "exam": "",
      "diagnostic": "Labs: Severely depressed plasma and erythrocyte acetylcholinesterase activity.",
      "options": [
       "Organophosphates",
@@ -11565,8 +11565,8 @@
   "immune": {
    "1": [
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. sudden hives, pruritus, wheezing, hypotension, rapid pulse after exposure to allergen (peanut/bee sting).",
+     "mechanism": "presents with sudden hives, pruritus, wheezing, hypotension, rapid pulse after exposure to allergen (peanut/bee sting)",
+     "exam": "",
      "diagnostic": "Serology: Elevated allergen-specific IgE and serum tryptase.",
      "options": [
       "Type I Hypersensitivity",
@@ -11579,8 +11579,8 @@
      "id": "physiology-immune-1-1"
     },
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. fatigue, jaundice, dark urine, low hemoglobin.",
+     "mechanism": "presents with fatigue, jaundice, dark urine, low hemoglobin",
+     "exam": "",
      "diagnostic": "Labs: Positive direct Coombs test showing antibodies bound to RBC surface.",
      "options": [
       "Type I",
@@ -11593,8 +11593,8 @@
      "id": "physiology-immune-1-2"
     },
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. malar butterfly rash, joint pain, glomerulonephritis, fever.",
+     "mechanism": "presents with malar butterfly rash, joint pain, glomerulonephritis, fever",
+     "exam": "",
      "diagnostic": "Serology: Positive anti-nuclear antibodies (ANA), anti-dsDNA, low complement levels.",
      "options": [
       "Type I",
@@ -11607,8 +11607,8 @@
      "id": "physiology-immune-1-3"
     },
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. red, swollen, vesicular skin rash 48-72 hours after touching poison ivy or nickel.",
+     "mechanism": "presents with red, swollen, vesicular skin rash 48-72 hours after touching poison ivy or nickel",
+     "exam": "",
      "diagnostic": "Patch Test: Delayed induration and erythema at allergen patch site.",
      "options": [
       "Type I",
@@ -11621,8 +11621,8 @@
      "id": "physiology-immune-1-4"
     },
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. recurrent bacterial sinopulmonary infections in male infant after 6 months of age.",
+     "mechanism": "presents with recurrent bacterial sinopulmonary infections in male infant after 6 months of age",
+     "exam": "",
      "diagnostic": "Flow Cytometry: Absence of circulating mature B cells; very low immunoglobulin levels.",
      "options": [
       "X-Linked Agammaglobulinemia",
@@ -11635,8 +11635,8 @@
      "id": "physiology-immune-1-5"
     },
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. recurrent severe viral, bacterial, fungal, and opportunistic infections in infant (bubble baby).",
+     "mechanism": "presents with recurrent severe viral, bacterial, fungal, and opportunistic infections in infant (bubble baby)",
+     "exam": "",
      "diagnostic": "Labs: Absent T cells, defective B cell function, markedly reduced TRECs.",
      "options": [
       "SCID",
@@ -11649,8 +11649,8 @@
      "id": "physiology-immune-1-6"
     },
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. hemoptysis (coughing up blood) and rapidly progressive glomerulonephritis.",
+     "mechanism": "presents with hemoptysis (coughing up blood) and rapidly progressive glomerulonephritis",
+     "exam": "",
      "diagnostic": "Biopsy/Serology: Linear IgG deposition along glomerular and alveolar basement membranes.",
      "options": [
       "Goodpasture Syndrome",
@@ -11663,8 +11663,8 @@
      "id": "physiology-immune-1-7"
     },
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. muscle fatigue and weakness worsening with repetitive use.",
+     "mechanism": "presents with muscle fatigue and weakness worsening with repetitive use",
+     "exam": "",
      "diagnostic": "Serology: Antibodies against postsynaptic ACh receptors at neuromuscular junction.",
      "options": [
       "Myasthenia Gravis",
@@ -11677,8 +11677,8 @@
      "id": "physiology-immune-1-8"
     },
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. fatigue, cold intolerance, weight gain, constipation, enlarged firm goiter.",
+     "mechanism": "presents with fatigue, cold intolerance, weight gain, constipation, enlarged firm goiter",
+     "exam": "",
      "diagnostic": "Serology: High titers of anti-thyroid peroxidase (anti-TPO) and anti-thyroglobulin antibodies.",
      "options": [
       "Hashimoto Thyroiditis",
@@ -11691,8 +11691,8 @@
      "id": "physiology-immune-1-9"
     },
     {
-     "mechanism": "presented with immune-mediated pathology or immunodeficiency.",
-     "exam": "exhibits clinical manifestations of immune dysfunction. heat intolerance, palpitations, weight loss, exophthalmos, pretibial myxedema.",
+     "mechanism": "presents with heat intolerance, palpitations, weight loss, exophthalmos, pretibial myxedema",
+     "exam": "",
      "diagnostic": "Serology: Thyroid-stimulating immunoglobulins (TSI) binding to TSH receptors.",
      "options": [
       "Graves Disease",

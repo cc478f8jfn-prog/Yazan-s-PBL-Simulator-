@@ -211,12 +211,23 @@ BIOCHEM_PICKS = {
 }
 
 
-def build_biochem():
+NINJA_BIOCHEM = [
+    (r"^biochemistry", "proteins"),
+    (r"^metabolism \|", "carbs"),
+]
+
+
+def build_biochem(ninja):
     out = {}
     for key, (name, picks) in BIOCHEM_PICKS.items():
         out[key] = {"name": name,
                     "ar": [entry(v, t, ESMAT, "ar") for v, t in picks],
                     "en": []}
+    for vid, title in ninja:
+        for pattern, key in NINJA_BIOCHEM:
+            if re.search(pattern, title, re.I):
+                out[key]["en"].append(entry(vid, title, NINJA, "en"))
+                break
     return out
 
 
@@ -237,7 +248,16 @@ PHARM = [
 PHARM_EN = re.compile(r"english version", re.I)
 
 
-def build_pharm():
+NINJA_PHARM = [
+    (r"^pharmacokinetics", "general"),
+    (r"^autonomic pharmacology", "autonomic"),
+    (r"^antineoplastic|chemotherapy", "oncology_blood"),
+    (r"drugs for heart failure|antihypertensive", "cvs"),
+    (r"antibiotics", "antimicrobials"),
+]
+
+
+def build_pharm(ninja):
     cat = [(v, t) for v, t in load("foda")]
     out = {k: {"name": n, "ar": [], "en": []} for k, n, _ in PHARM}
     leftovers = []
@@ -252,6 +272,11 @@ def build_pharm():
             continue
         lang = "en" if PHARM_EN.search(title) else "ar"
         out[key][lang].append(entry(vid, title, FODA, lang))
+    for vid, title in ninja:
+        for pattern, key in NINJA_PHARM:
+            if re.search(pattern, title, re.I) and not SKIP.search(title):
+                out[key]["en"].append(entry(vid, title, NINJA, "en"))
+                break
     return out, leftovers
 
 
@@ -341,6 +366,47 @@ def sort_block(videos):
     return out
 
 
+SIG_STOP = re.compile(r"\b(part|pt|lecture|lec|episode|chapter|the|a|an|of|and|in|to|for|with|"
+                      r"clinical medicine|overview|explained|introduction|basics|causes|symptoms|"
+                      r"diagnosis|treatment|pathology|review|discussion|made easy|full|video)\b"
+                      r"|[-:|•,()]|\d+", re.I)
+
+CHANNEL_RANK = {KHANFOUR: 0, NAGI: 0, ESMAT: 0, FODA: 0, IMAN: 0, NINJA: 1,
+                "Osmosis from Elsevier": 2, "Zero To Finals": 3, "Dr Matt & Dr Mike": 4,
+                "Rhesus Medicine": 5, "Dirty Medicine": 6, "Medicosis Perfectionalis": 7,
+                "Armando Hasudungan": 8, "Internal Medicine (Batenia)": 9}
+
+
+def topic_signature(title):
+    t = SIG_STOP.sub(" ", title.lower())
+    words = [w for w in re.findall(r"[^\W\d_]{3,}", t, re.UNICODE)]
+    return " ".join(words[:4])
+
+
+def drop_duplicates(sec):
+    """Same language, same topic: keep the preferred channel, drop the rest."""
+    for lang in ("ar", "en"):
+        keep, seen = [], {}
+        for v in sec.get(lang, []):
+            sig = topic_signature(v[1])
+            if not sig:
+                keep.append(v)
+                continue
+            if sig in seen:
+                idx = seen[sig]
+                other = keep[idx]
+                if other[2] == v[2]:
+                    # same doctor, different lecture: keep both
+                    keep.append(v)
+                    continue
+                if CHANNEL_RANK.get(v[2], 9) < CHANNEL_RANK.get(other[2], 9):
+                    keep[idx] = v
+                continue
+            seen[sig] = len(keep)
+            keep.append(v)
+        sec[lang] = keep
+
+
 def normalise_labels(out):
     """One channel, one label."""
     fix = {"Dr Ayman Khanfour Anatomy Teaching": KHANFOUR,
@@ -363,8 +429,8 @@ def main():
     out["embryology"] = build_embryology(old)
     out["histology"] = build_histology(old, ninja)
     out["physiology"] = build_physiology(ninja)
-    out["biochemistry"] = build_biochem()
-    pharm, pharm_left = build_pharm()
+    out["biochemistry"] = build_biochem(ninja)
+    pharm, pharm_left = build_pharm(ninja)
     out["pharmacology"] = pharm
     for subj, secs in build_kept(old).items():
         out[subj] = secs
@@ -396,6 +462,7 @@ def main():
         for key, sec in secs.items():
             sec["ar"] = sort_block(sec.get("ar", []))
             sec["en"] = sort_block(sec.get("en", []))
+            drop_duplicates(sec)
             ensure_explanation(sec)
             total += len(sec["ar"]) + len(sec["en"])
 

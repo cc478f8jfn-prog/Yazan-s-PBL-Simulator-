@@ -6022,7 +6022,29 @@
      ""
     ]
    ],
-   "en": []
+   "en": [
+    [
+     "y43pIHUtjeM",
+     "Biochemistry - Michaelis-Menten & Lineweaver-Burk Plot",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "jJUoQMLMV2E",
+     "Biochemistry - Enzyme Inhibition",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "4eLjRcHnMCk",
+     "Biochemistry - Michaelis-Menten Equation",
+     "Ninja Nerd",
+     "en",
+     ""
+    ]
+   ]
   },
   "molecular": {
    "name": "Molecular Biology & Genetics",
@@ -6134,7 +6156,50 @@
      ""
     ]
    ],
-   "en": []
+   "en": [
+    [
+     "mBDMS1kHhcg",
+     "Pharmacokinetics - Dosage Regimen",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "m07ON7VA7VE",
+     "Pharmacokinetics - Drug Clearance",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "k04PQiAFJbY",
+     "Pharmacokinetics - Drug Excretion",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "qvucMHUVZA4",
+     "Pharmacokinetics - Drug Metabolism",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "gD9LiXpq0Tk",
+     "Pharmacokinetics - Drug Distribution",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "kkUxUBoM-hM",
+     "Pharmacokinetics - Drug Absorption",
+     "Ninja Nerd",
+     "en",
+     ""
+    ]
+   ]
   },
   "autonomic": {
    "name": "Autonomic Pharmacology",
@@ -6427,7 +6492,22 @@
      ""
     ]
    ],
-   "en": []
+   "en": [
+    [
+     "tRWHm33ZXNw",
+     "Drugs for Heart Failure",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "u7baG79qefY",
+     "Antihypertensive Drugs",
+     "Ninja Nerd",
+     "en",
+     ""
+    ]
+   ]
   },
   "cns": {
    "name": "CNS Drugs",
@@ -6682,6 +6762,41 @@
      "NmAr5ajgrD8",
      "Antiviral Pharmacology - Lec 01: Virus Structure & Life Cycle - English Version",
      "Dr Abdelmoteal Foda",
+     "en",
+     ""
+    ],
+    [
+     "GGtwJ-SGXTA",
+     "Antibiotics",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "OZSXXTNfpqs",
+     "Antibiotics: DNA & RNA Synthesis Inhibitors: Part 4",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "bViytsc7vnQ",
+     "Antibiotics: Protein Synthesis Inhibitors: Part 3",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "Q2B35HB78bE",
+     "Antibiotics: Folic Acid Pathway Inhibitors: Part 2",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "omovOv3DFz8",
+     "Antibiotics: Cell Wall Synthesis Inhibitors: Part 1",
+     "Ninja Nerd",
      "en",
      ""
     ]
@@ -7314,22 +7429,8 @@
      ""
     ],
     [
-     "f46VFQG2S84",
-     "Cirrhosis - causes, symptoms, diagnosis, treatment, pathology",
-     "Osmosis from Elsevier",
-     "en",
-     ""
-    ],
-    [
      "RudR2_VVoaw",
      "Alcohol-related liver disease - causes, symptoms & pathology",
-     "Osmosis from Elsevier",
-     "en",
-     ""
-    ],
-    [
-     "IAQp2Zuqevc",
-     "Pneumonia - causes, symptoms, diagnosis, treatment, pathology",
      "Osmosis from Elsevier",
      "en",
      ""
@@ -7533,13 +7634,6 @@
      ""
     ],
     [
-     "ma7MVU8sjkI",
-     "Human Immunodeficiency Virus (HIV)",
-     "Professor Dave Explains",
-     "en",
-     ""
-    ],
-    [
      "KvvECcXnDks",
      "Human immunodeficiency virus (HIV) - life cycle, pathophysiology, investigations, diagnosis and AIDS",
      "Armando Hasudungan",
@@ -7670,13 +7764,6 @@
      "gR84OJ_EGxk",
      "Introduction to the immune system",
      "Osmosis from Elsevier",
-     "en",
-     "exp"
-    ],
-    [
-     "UsZ_zHfFeR0",
-     "The Immune System: Overview",
-     "Dr Matt & Dr Mike",
      "en",
      "exp"
     ],
@@ -7862,6 +7949,13 @@
      ""
     ],
     [
+     "hiZfAOsIov8",
+     "الحمى الروماتيزمية / Rheumatic fever",
+     "Internal Medicine (Batenia)",
+     "ar",
+     ""
+    ],
+    [
      "La0Fydslabs",
      "التعامل مع الصدمة (SHOCK) فى الطوارئ وانواعها",
      "Internal Medicine (Batenia)",
@@ -7941,6 +8035,62 @@
      "exp"
     ],
     [
+     "iaO8110iSzI",
+     "Infective Endocarditis - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "KiI9WMXBV_o",
+     "Valvular Heart Diseases - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "Gsu8NT1yYes",
+     "Congestive Heart Failure - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "S8ehpYrnX2w",
+     "Pulmonary Artery Hypertension - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "TTYGxK1DNKA",
+     "MASTER ECG/EKG INTERPRETATION: A Systematic Approach for 12 Lead ECG/EKGs",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "JhqVivwes_g",
+     "Understanding Arrhythmias",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "BXfnlCebHHE",
+     "Understanding Pericarditis",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "tskOCzz4z1g",
+     "Understanding Aortic Dissection",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
      "kVGbMnSaI_g",
      "Antianginal Drugs",
      "Ninja Nerd",
@@ -7950,20 +8100,6 @@
     [
      "VgqbICq8ZZk",
      "Antiarrhythmic Drugs",
-     "Ninja Nerd",
-     "en",
-     ""
-    ],
-    [
-     "u7baG79qefY",
-     "Antihypertensive Drugs",
-     "Ninja Nerd",
-     "en",
-     ""
-    ],
-    [
-     "tRWHm33ZXNw",
-     "Drugs for Heart Failure",
      "Ninja Nerd",
      "en",
      ""
@@ -7981,8 +8117,22 @@
      ""
     ],
     [
+     "Uak0-7LEugs",
+     "هل يصاب الشخص بكورونا مرتين COVID-19 ؟؟",
+     "Internal Medicine (Batenia)",
+     "ar",
+     ""
+    ],
+    [
      "DmHAOchzdJ0",
      "Pulmonary embolism / جلطات الشرايين الرئوية (الانصمام الرئوى)",
+     "Internal Medicine (Batenia)",
+     "ar",
+     ""
+    ],
+    [
+     "PucJIeGLTuo",
+     "لقاح كورونا / الفرق بين اللقاح الامريكى والصينى / COVID-19 VACCINE",
      "Internal Medicine (Batenia)",
      "ar",
      ""
@@ -7992,6 +8142,20 @@
     [
      "P7Fkg7_yXL0",
      "Asthma - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "oNvvTvDB9aA",
+     "COVID-19 - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "_otI7IrrHLo",
+     "Influenza - Clinical Medicine",
      "Ninja Nerd",
      "en",
      "exp"
@@ -8039,6 +8203,13 @@
      "exp"
     ],
     [
+     "bXWksu3APic",
+     "Acute Respiratory Distress Syndrome (ARDS) - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
      "W45U1pslKVI",
      "Chronic Obstructive Pulmonary Disease (COPD) - Clinical Medicine",
      "Ninja Nerd",
@@ -8051,6 +8222,69 @@
      "Ninja Nerd",
      "en",
      "exp"
+    ],
+    [
+     "rtbBQ3Uptm8",
+     "Pulmonary Sleep Disorders: Sleep Apnea, Obesity Hypoventilation Syndrome - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "0zTWh71QXwI",
+     "Understanding Bronchiectasis",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "eU5Qu34BynA",
+     "Understanding Pleural Effusions",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "OW7UP_JllO8",
+     "COVID-19 - Pathophysiology",
+     "Dr Matt & Dr Mike",
+     "en",
+     "exp"
+    ],
+    [
+     "gamxKsaLbhs",
+     "Antivirals - HIV, Hepatitis, Influenza, Herpes Treatment",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "M4D0I45_mQ0",
+     "Pneumothorax",
+     "Zero To Finals",
+     "en",
+     ""
+    ],
+    [
+     "i5VWOUB0OP0",
+     "Obstructive Sleep Apnoea",
+     "Zero To Finals",
+     "en",
+     ""
+    ],
+    [
+     "wIehD382pkU",
+     "Interpreting Lung Function Tests (Spirometry)",
+     "Zero To Finals",
+     "en",
+     ""
+    ],
+    [
+     "t7DXH8cvYUc",
+     "Prone Positioning in Severe ARDS",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
     ]
    ]
   },
@@ -8142,6 +8376,48 @@
      "Ninja Nerd",
      "en",
      "exp"
+    ],
+    [
+     "OY7Zi18cIb0",
+     "Diabetes Insipidus and SIADH - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "qJLuI4GqSu8",
+     "Obesity and Metabolic Syndrome - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "0rRRmrLmcBM",
+     "Cushing's Syndrome and Disease - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "U5VVSCVJt_w",
+     "Understanding Acromegaly",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "AQHYiZ0kMlI",
+     "Understanding Thyroid Hormones",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "FpgtueT-2pY",
+     "How is the thyroid regulated?",
+     "Zero To Finals",
+     "en",
+     ""
     ]
    ]
   }
@@ -8256,6 +8532,90 @@
      "Zero To Finals",
      "en",
      "exp"
+    ],
+    [
+     "onzZ9SuwUw4",
+     "Understanding Bowel Obstruction",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "z0ZnyUv5SP8",
+     "Understanding Acute Cholecystitis",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "QZhvJc7PCVI",
+     "Understanding Stomach and Duodenal Ulcers",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "xjcKoHsH_1w",
+     "Understanding Stomas (Colostomy, Ileostomy, Urostomy and Gastrostomy)",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "_uAzSnRiWtE",
+     "Stomach development - Embryology",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "8ci_OzYUFQ0",
+     "Stomach Histology - Gastric Pits",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "_SkFBoV8bd0",
+     "Stomach Acid & Acid Reducing Drugs",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "GpcpxxjDyHg",
+     "Stomach Anatomy - Location & Structure",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "3pYzDqyBZig",
+     "Stomach Physiology - Gastric Secretion & Acid Regulation",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "jpgWF4zaFas",
+     "Coeliac Trunk - Blood Supply to Stomach, Liver, and Spleen",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "1O2iHXhoRoA",
+     "Stomach: Histology",
+     "Osmosis from Elsevier",
+     "en",
+     ""
+    ],
+    [
+     "WsbY6dywYkI",
+     "Glioblastoma (NORD)",
+     "Osmosis from Elsevier",
+     "en",
+     ""
     ]
    ]
   },
@@ -8319,6 +8679,27 @@
      "exp"
     ],
     [
+     "AUkiaZU_ZdI",
+     "Testicular Cancer - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "9U2sD00Oc1w",
+     "Urinary Tract Malignancies - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "S3-HtGWJh5Q",
+     "Urinary Tract Infection (UTI) - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
      "Oh9zdARiwtQ",
      "Understanding Hydroceles",
      "Zero To Finals",
@@ -8333,6 +8714,13 @@
      "exp"
     ],
     [
+     "-RF6UKQINnA",
+     "Understanding Testicular Cancer",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
      "emozZmyBrXo",
      "Understanding Testicular Torsion",
      "Zero To Finals",
@@ -8340,9 +8728,37 @@
      "exp"
     ],
     [
+     "gGS7tddt1XA",
+     "Understanding Urinary Tract Infections",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "EnCKnwQBXMk",
+     "UTI Made Easy - Urinary Tract Infections Explained Clearly",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "Ggkoaxb7NA0",
+     "Case Study #1: Urinary Tract Infection - UTI",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
      "Dkf8o_zUzd8",
      "Urinary Catheters",
      "Zero To Finals",
+     "en",
+     ""
+    ],
+    [
+     "B-Ih_jhyI90",
+     "Testicular cancer in under 2 mins!",
+     "Dr Matt & Dr Mike",
      "en",
      ""
     ],
@@ -8361,9 +8777,9 @@
      ""
     ],
     [
-     "2oCirJY9SYw",
-     "Benign Prostatic Hyperplasia & Prostate Cancer",
-     "Rhesus Medicine",
+     "JOAQLaHlFck",
+     "Testicular Cancer/Tumors",
+     "Dirty Medicine",
      "en",
      ""
     ],
@@ -8371,6 +8787,13 @@
      "suSvkfDWoNQ",
      "Hydrocele vs. Varicocele vs. Torsion vs. Epididymitis vs. Tumor",
      "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "misjS5mTCB0",
+     "Urinary tract infection (upper and lower UTI)",
+     "Internal Medicine (Batenia)",
      "en",
      ""
     ],
@@ -8403,13 +8826,6 @@
    "name": "Neonatology",
    "ar": [],
    "en": [
-    [
-     "bXWksu3APic",
-     "Acute Respiratory Distress Syndrome (ARDS) - Clinical Medicine",
-     "Ninja Nerd",
-     "en",
-     "exp"
-    ],
     [
      "A4QLD4nD-6g",
      "APGAR Score Made Easy - Newborn Assessment (APGAR Mnemonic)",
@@ -8598,8 +9014,57 @@
    "ar": [],
    "en": [
     [
+     "MO-UbMtTjRU",
+     "STI - Syphilis - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "BEdi_SkzY5Q",
+     "STI - Chlamydia - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "ae2ylRZpkvA",
+     "STI - Gonorrhea - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "WYVU9gov8Zg",
+     "STI - Genital Herpes - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "Ks-nMVgjrhs",
+     "Gynecological Cancers - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "CwgaFwHJM4g",
+     "Female Reproductive Cycle - Ovulation & Menstrual Cycle: Overview",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
      "dsKj5hKR9HU",
      "Understanding Endometriosis",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "3Lt9I5LrWZw",
+     "Understanding the Menstrual Cycle",
      "Zero To Finals",
      "en",
      "exp"
@@ -8615,6 +9080,13 @@
      "-qRBHqCTOjE",
      "Understanding Early Menopause: Premature Ovarian Insufficiency",
      "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "ta4wAINBqio",
+     "Female Reproductive Cycles Made Easy!",
+     "Dr Matt & Dr Mike",
      "en",
      "exp"
     ],
@@ -8654,11 +9126,25 @@
      "exp"
     ],
     [
-     "E9Z1pLKZabk",
-     "Methods of Contraception Made Easy (Contraceptive Methods Explained)",
+     "f-YPgfAGuu4",
+     "Understanding Chlamydia (Chlamydia Trachomatis Explained Clearly)",
      "Rhesus Medicine",
      "en",
      "exp"
+    ],
+    [
+     "pzgUbyD6mCM",
+     "Female Reproductive Cycle - Ovulation",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "EfexbuyIqCY",
+     "Female Reproductive Cycle - Menstrual Cycle",
+     "Ninja Nerd",
+     "en",
+     ""
     ],
     [
      "E1toz8WDyds",
@@ -8677,6 +9163,13 @@
     [
      "jQBcw6mCRJc",
      "I am a Zebra - Lymphangioleiomyomatosis (LAM) disease",
+     "Osmosis from Elsevier",
+     "en",
+     ""
+    ],
+    [
+     "kH7csuQqBCk",
+     "The Importance of Seeing Rare Disease Patients Holistically: Eric & Kristi Levine, Parents of a C...",
      "Osmosis from Elsevier",
      "en",
      ""
@@ -8821,6 +9314,13 @@
      "exp"
     ],
     [
+     "YHZYH1PtD60",
+     "Understanding Anorexia (Anorexia Nervosa Explained Clearly)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
      "fu2PXhIBZLw",
      "Episode 2 - \"Anxiety\"",
      "Dr Matt & Dr Mike",
@@ -8854,6 +9354,83 @@
      "Osmosis from Elsevier",
      "en",
      ""
+    ],
+    [
+     "aCJpfXmyCfM",
+     "DSM V Criteria for Depression - SIG E CAPS Mnemonic - Diagnosis of Depression",
+     "Rhesus Medicine",
+     "en",
+     ""
+    ],
+    [
+     "IGGUaiJDnLQ",
+     "What is the difference between Delirium and Dementia? - Delirium vs Dementia Mnemonic OCD CAMPS",
+     "Rhesus Medicine",
+     "en",
+     ""
+    ],
+    [
+     "uRufJh56y0E",
+     "Anxiety Disorders",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "eNdHaitsVIk",
+     "Major Depression and SSRI's/SNRI's",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "-TOs6cceTlA",
+     "Bipolar Disorder: criteria, types, symptoms, and treatment",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "mjf8dOQr2lY",
+     "Normal Grief vs. Pathologic Grief vs. Major Depression vs. Adjustment Disorder vs.  Anxiety",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "gaAdSGVgd3Y",
+     "Somatoform Disorders (Somatic Symptom, Conversion, Illness Anxiety, Factitious, Malingering)",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "2gh1leczt_k",
+     "Electroconvulsive Therapy (ECT) - A Treatment for Depression?",
+     "Medicosis Perfectionalis",
+     "en",
+     ""
+    ],
+    [
+     "AvbshOF56uE",
+     "Refeeding Syndrome (RFS) - Eating Disorders - Psychiatry Playlist",
+     "Medicosis Perfectionalis",
+     "en",
+     ""
+    ],
+    [
+     "EYgHx8dpJaI",
+     "Binge Eating Disorder - Eating Disorders - Psychology and Psychiatry",
+     "Medicosis Perfectionalis",
+     "en",
+     ""
+    ],
+    [
+     "etJlmx9p_Q4",
+     "Bulimia Nervosa - Eating Disorders - DSM 5 - Psychological Disorders - Psychiatry",
+     "Medicosis Perfectionalis",
+     "en",
+     ""
     ]
    ]
   },
@@ -8871,13 +9448,6 @@
     [
      "fFvswwX7Ops",
      "Mood Stabilizers/Pharmacology",
-     "Dirty Medicine",
-     "en",
-     ""
-    ],
-    [
-     "eNdHaitsVIk",
-     "Major Depression and SSRI's/SNRI's",
      "Dirty Medicine",
      "en",
      ""

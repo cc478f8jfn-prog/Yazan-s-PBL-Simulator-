@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from video_rules import entry, load, norm  # noqa: E402
 
-CAP = 12
+CAP = 24
 SKIP = re.compile(r"podcast|trailer|shorts|teaser|live stream|q&a|unboxing|nursing|nclex|level up rn|registerednurse|ai in healthcare|practice laws|interview", re.I)
 
 SOURCES = [
@@ -33,17 +33,19 @@ CLINICAL = {
         "cardio": ("Cardiology", [
             r"heart failure", r"myocardial infarct", r"angina", r"\becg\b", r"arrhythm", r"atrial fibrillation",
             r"valvular|valve disease|mitral|aortic stenosis", r"hypertens", r"endocarditis", r"pericarditis",
-            r"cardiomyopath", r"shock\b", r"cardiac arrest",
+            r"cardiomyopath", r"shock\b", r"cardiac arrest", r"endocarditis", r"rheumatic fever",
+            r"aortic dissection", r"peripheral artery disease", r"dyslipidaemia",
         ]),
         "resp": ("Respiratory", [
             r"asthma", r"copd", r"pneumonia", r"tuberculosis", r"pulmonary embol", r"pleural effusion",
             r"pneumothorax", r"respiratory failure", r"bronchiectasis", r"lung cancer", r"spirometr",
-            r"sleep apnoea|sleep apnea",
+            r"sleep apnoea|sleep apnea", r"covid|influenza|tuberculosis", r"pleural disease|empyema",
+            r"ards|acute respiratory distress",
         ]),
         "endo": ("Endocrinology & Metabolism", [
             r"diabet", r"ketoacidosis|\bdka\b", r"thyroid|hypothyroid|hyperthyroid|graves", r"adrenal|addison|cushing",
             r"pituitary|acromegaly|prolactin", r"hypercalc|hypocalc|parathyr", r"obesity", r"dyslipidaemia|dyslipidemia",
-            r"hypoglyc",
+            r"hypoglyc", r"pituitary|acromegaly", r"vitamin d|osteoporosis", r"dyslipidaemia",
         ]),
     }),
     "surgery": ("Surgery", {
@@ -60,7 +62,8 @@ CLINICAL = {
         "urology": ("Urology", [
             r"renal stone|kidney stone|urolithiasis|ureteric colic", r"\bbph\b|benign prostatic",
             r"prostate cancer", r"urinary retention", r"hydrocele|varicocele", r"testicular torsion",
-            r"bladder cancer", r"catheter", r"haematuria|hematuria",
+            r"bladder cancer|urinary tract malignan", r"catheter", r"haematuria|hematuria",
+            r"urinary tract infection|uti\b", r"testicular cancer",
         ]),
     }),
     "pediatrics": ("Pediatrics", {
@@ -87,7 +90,8 @@ CLINICAL = {
         "gynaecology": ("Gynaecology", [
             r"menorrhagia|abnormal uterine bleeding", r"ovarian (cyst|cancer)", r"fibroid|leiomyoma",
             r"endometriosis", r"\bpcos\b|polycystic ovarian", r"infertil", r"cervical cancer", r"contracept",
-            r"menopaus", r"pelvic inflammatory",
+            r"menopaus", r"pelvic inflammatory", r"gynaecolog|gynecolog|gynecologic cancer|ovarian cancer",
+            r"female reproductive cycle|menstrual", r"sexually transmitted|sti\b|chlamydia|gonorrhea",
         ]),
         "emergencies": ("Obstetric Emergencies", [
             r"postpartum (haemorrhage|hemorrhage)|atonic uterus", r"shoulder dystocia", r"cord prolapse",
