@@ -3,38 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YazMed | Medical Learning Platform</title>
+    <meta name="description" content="YazMed is a medical learning platform: PBL cases, an OSCE simulator, terminology flashcards, a quiz bank and curated video lectures.">
+    <meta name="theme-color" content="#0C161E">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./icon.png">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <meta property="og:title" content="YazMed | Medical Learning Platform">
+    <meta property="og:description" content="PBL cases, an OSCE simulator, terminology flashcards, a quiz bank and curated video lectures.">
+    <meta property="og:image" content="./logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('medplat-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+          var s = localStorage.getItem('medplat-size');
+          if (s === 's' || s === 'l') document.documentElement.setAttribute('data-size', s);
+          var l = localStorage.getItem('medplat-lang');
+          document.documentElement.lang = l === 'ar' ? 'ar' : 'en';
+          document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+        } catch (e) {}
+      })();
+    </script>
+<style>
+        /* ============ YazMed theme ============
+           Brand palette taken from the logo: deep navy, teal, warm peach.
+           Dark is the default; light follows the system preference unless the
+           user forces a theme from Settings. */
 
-    <title>Yazan's Medplat</title>
-    <link rel="icon" type="image/svg+xml" href="./logo.svg">
-    <style>
         :root {
-            --bg: #14171a;
-            --bg-soft: #171b1f;
-            --surface: #1c2126;
-            --surface-2: #232a30;
-            --line: #2c343b;
-            --line-soft: #232a30;
-            --text: #e8e6e1;
-            --muted: #9aa5ad;
-            --dim: #78848c;
-            --accent: #79b3a5;
-            --accent-strong: #96c9bb;
-            --clinical: #c3a67f;
-            --ok: #7fb98f;
-            --warn: #d5a35f;
-            --err: #cd7f76;
-            --radius: 10px;
+            --navy: #0B3660;
+            --teal: #20A8B8;
+            --peach: #EDBF8F;
+
+            --bg: #0C161E;
+            --bg-soft: #101D27;
+            --surface: #13232E;
+            --surface-2: #1A2F3C;
+            --line: #203543;
+            --line-soft: #1A2C38;
+            --text: #E6EDF1;
+            --muted: #94A7B3;
+            --dim: #748794;
+            --accent: #37B3C2;
+            --accent-soft: rgba(55, 179, 194, .14);
+            --accent-2: #EFC08D;
+            --ok: #7FC49A;
+            --warn: #E0B070;
+            --err: #D98A80;
+            --shadow: 0 18px 40px rgba(3, 10, 15, .45);
+
+            --radius: 12px;
             --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
             --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+            color-scheme: dark;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #F5F5DC;
+                --bg-soft: #EFEFD2;
+                --surface: #FBFBEC;
+                --surface-2: #F0F0D6;
+                --line: #DAD8B4;
+                --line-soft: #E4E2C4;
+                --text: #12242E;
+                --muted: #566A73;
+                --dim: #7A8C93;
+                --accent: #107C8C;
+                --accent-soft: rgba(16, 124, 140, .12);
+                --accent-2: #A9662F;
+                --ok: #2F7D51;
+                --warn: #9A6B1F;
+                --err: #A8423A;
+                --shadow: 0 18px 40px rgba(60, 60, 30, .12);
+                color-scheme: light;
+            }
+        }
+
+        html[data-theme="light"] {
+            --bg: #F5F5DC;
+            --bg-soft: #EFEFD2;
+            --surface: #FBFBEC;
+            --surface-2: #F0F0D6;
+            --line: #DAD8B4;
+            --line-soft: #E4E2C4;
+            --text: #12242E;
+            --muted: #566A73;
+            --dim: #7A8C93;
+            --accent: #107C8C;
+            --accent-soft: rgba(16, 124, 140, .12);
+            --accent-2: #A9662F;
+            --ok: #2F7D51;
+            --warn: #9A6B1F;
+            --err: #A8423A;
+            --shadow: 0 18px 40px rgba(60, 60, 30, .12);
+            color-scheme: light;
+        }
+
+        html[data-theme="dark"] {
+            --bg: #0C161E;
+            --bg-soft: #101D27;
+            --surface: #13232E;
+            --surface-2: #1A2F3C;
+            --line: #203543;
+            --line-soft: #1A2C38;
+            --text: #E6EDF1;
+            --muted: #94A7B3;
+            --dim: #748794;
+            --accent: #37B3C2;
+            --accent-soft: rgba(55, 179, 194, .14);
+            --accent-2: #EFC08D;
+            --ok: #7FC49A;
+            --warn: #E0B070;
+            --err: #D98A80;
+            --shadow: 0 18px 40px rgba(3, 10, 15, .45);
+            color-scheme: dark;
         }
 
         * { box-sizing: border-box; }
-
         html { font-size: 17px; }
+        html[data-size="s"] { font-size: 15.5px; }
+        html[data-size="l"] { font-size: 18.5px; }
 
         body {
             margin: 0;
@@ -42,76 +136,67 @@
             font-size: 1rem;
             line-height: 1.65;
             color: var(--text);
-            background: var(--bg);
+            background-color: var(--bg);
+            /* the faint grid keeps large empty areas from reading as dead space */
+            background-image:
+                radial-gradient(circle at 12% 8%, var(--accent-soft), transparent 42%),
+                linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
+            background-size: 100% 100%, 64px 64px, 64px 64px;
+            background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
+        html[dir="rtl"] body { font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans', Tahoma, sans-serif; }
 
-        h1, h2, h3, h4 {
-            font-family: var(--serif);
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            line-height: 1.25;
-            color: var(--text);
-            margin: 0 0 .5em;
-        }
+        h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; color: var(--text); margin: 0 0 .5em; }
+        html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] h4 { font-family: 'Noto Naskh Arabic', 'IBM Plex Sans Arabic', serif; letter-spacing: 0; }
         h1 { font-size: 2.1rem; }
         h2 { font-size: 1.5rem; }
         h3 { font-size: 1.2rem; }
         h4 { font-size: 1.02rem; }
         p { margin: 0 0 1em; }
         a { color: var(--accent); text-decoration: none; }
-        a:hover { color: var(--accent-strong); text-decoration: underline; }
+        a:hover { color: var(--accent-2); text-decoration: underline; }
         b, strong { font-weight: 600; }
-        ::selection { background: rgba(121, 179, 165, .28); }
-
+        ::selection { background: var(--accent-soft); }
         button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; }
         button { cursor: pointer; }
-        button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
         /* ---------- header ---------- */
         .app-header {
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 120;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 24px;
-            padding: 14px clamp(16px, 4vw, 40px);
-            background: rgba(20, 23, 26, .94);
+            padding: 12px clamp(16px, 4vw, 40px);
+            background: color-mix(in srgb, var(--bg) 92%, transparent);
             border-bottom: 1px solid var(--line);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
         }
-        .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .logo-img { width: 30px; height: 30px; object-fit: contain; }
-        .logo-text {
-            font-family: var(--serif);
-            font-size: 1.12rem;
-            font-weight: 600;
-            color: var(--text);
-            letter-spacing: .01em;
-            white-space: nowrap;
-        }
-        .main-nav { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 10px; cursor: pointer; background: none; border: none; padding: 0; }
+        .logo-mark { height: 30px; width: 30px; display: block; }
+        .logo-word { font-family: var(--serif); font-size: 1.22rem; font-weight: 600; letter-spacing: -.01em; color: var(--text); }
+        .logo:hover .logo-mark { opacity: .85; }
+        .main-nav { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
         .nav-btn {
-            background: none;
-            border: none;
-            border-bottom: 2px solid transparent;
-            padding: 6px 0;
-            color: var(--muted);
-            font-size: .93rem;
-            font-weight: 500;
-            letter-spacing: .01em;
+            background: none; border: none; border-bottom: 2px solid transparent;
+            padding: 6px 0; color: var(--muted); font-size: .92rem; font-weight: 500;
             transition: color .15s ease, border-color .15s ease;
         }
         .nav-btn:hover { color: var(--text); }
         .nav-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+        .nav-icon { width: 15px; height: 15px; display: inline-block; vertical-align: -2px; }
+        .nav-btn.icon-only { display: inline-flex; align-items: center; gap: 6px; }
 
-        /* ---------- views ---------- */
+        /* ---------- layout ---------- */
+        main { flex: 1; display: flex; flex-direction: column; }
         .view {
             display: none;
             flex-direction: column;
@@ -119,668 +204,435 @@
             width: 100%;
             max-width: 1180px;
             margin: 0 auto;
-            padding: 40px clamp(16px, 4vw, 32px) 80px;
+            padding: 40px clamp(16px, 4vw, 32px) 64px;
         }
-        #view-landing { justify-content: center; min-height: calc(100vh - 62px); padding-top: 0; padding-bottom: 0; }
 
-        /* ---------- landing ---------- */
-        .landing-box { max-width: 720px; text-align: left; }
-        .welcome-text {
-            font-size: .8rem;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            color: var(--dim);
-            margin-bottom: 14px;
-        }
-        .main-title {
-            font-family: var(--serif);
-            font-size: clamp(2rem, 5vw, 2.9rem);
-            color: var(--text);
-            margin: 0 0 16px;
-        }
-        .welcome-sub {
-            color: var(--muted);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            max-width: 60ch;
-            margin-bottom: 34px;
-        }
-        .big-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-        .big-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 14px;
+        /* ---------- hero ---------- */
+        .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 5vw, 64px); align-items: center; width: 100%; padding: 20px 0 40px; }
+        .hero-art {
+            position: relative;
             background: var(--surface);
             border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 20px 22px;
-            color: var(--text);
-            text-align: left;
-            transition: border-color .16s ease, background .16s ease;
+            border-radius: 18px;
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 320px;
+            overflow: hidden;
+        }
+        .hero-art::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(to right, var(--line-soft) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--line-soft) 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: .6;
+            pointer-events: none;
+        }
+        .hero-emblem { position: relative; width: min(78%, 340px); height: auto; filter: drop-shadow(0 12px 26px rgba(4, 20, 30, .25)); }
+        .hero-ecg { position: absolute; left: 0; right: 0; bottom: 18px; height: 46px; opacity: .55; }
+        .hero-ecg path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+        .welcome-text { font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; }
+        .main-title { font-size: clamp(2rem, 4.4vw, 2.85rem); margin: 0 0 14px; }
+        .welcome-sub { color: var(--muted); font-size: 1.04rem; line-height: 1.7; max-width: 52ch; margin-bottom: 30px; }
+        .big-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 520px; }
+        .big-btn {
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+            padding: 16px 18px; color: var(--text); text-align: start;
+            transition: border-color .16s ease, transform .16s ease;
         }
         .big-btn:hover { border-color: var(--accent); background: var(--surface-2); }
-        .big-btn::after { content: "\2192"; color: var(--dim); font-size: .95rem; transition: transform .16s ease, color .16s ease; }
+        .big-btn::after { content: "\2192"; color: var(--dim); font-size: .9rem; transition: transform .16s ease, color .16s ease; }
+        html[dir="rtl"] .big-btn::after { content: "\2190"; }
         .big-btn:hover::after { color: var(--accent); transform: translateX(3px); }
-        .big-label { font-weight: 500; font-size: 1rem; letter-spacing: .01em; }
-        .big-btn-primary .big-label { color: var(--text); }
+        .big-label { font-weight: 500; font-size: .98rem; }
+        .big-btn-primary { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 
-        /* ---------- section headers ---------- */
-        .top-header-area { text-align: center; margin-bottom: 30px; }
-        .top-header-area .main-title { font-size: clamp(1.6rem, 3.4vw, 2.15rem); }
-        .section-title { text-align: center; margin-bottom: 8px; }
-        .section-note {
-            color: var(--muted);
-            font-size: .96rem;
-            max-width: 68ch;
-            margin: 0 auto 26px;
-            text-align: center;
-            line-height: 1.7;
-        }
-        .block-title {
-            width: 100%;
-            max-width: 1180px;
-            font-family: var(--serif);
-            font-size: 1.15rem;
-            color: var(--text);
-            margin: 34px 0 14px;
-            padding-bottom: 8px;
+        .stats-band {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            width: 100%; margin-top: 44px; padding: 22px 0; border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
         }
+        .stats-band .stat { display: flex; flex-direction: column; gap: 2px; padding-inline-end: 18px; }
+        .stats-band .stat + .stat { padding-inline-start: 22px; border-inline-start: 1px solid var(--line-soft); }
+        .stats-band b { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--text); line-height: 1.2; }
+        .stats-band span { color: var(--dim); font-size: .82rem; letter-spacing: .02em; }
+
+        .path-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; width: 100%; margin-top: 40px; }
+        .path-step {
+            display: flex; flex-direction: column; align-items: flex-start; gap: 8px; text-align: start;
+            background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+            padding: 20px 22px; color: var(--muted); font-size: .9rem; line-height: 1.6;
+            transition: border-color .16s ease, transform .16s ease;
+        }
+        .path-step:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .path-step b { font-family: var(--serif); font-size: 1.15rem; color: var(--text); font-weight: 600; }
+        .step-no { font-family: var(--mono); font-size: .74rem; letter-spacing: .12em; color: var(--accent); }
+
+        /* ---------- section headers ---------- */
+        .top-header-area { text-align: center; margin-bottom: 28px; }
+        .top-header-area .main-title { font-size: clamp(1.6rem, 3.4vw, 2.15rem); }
+        .section-title { text-align: center; margin-bottom: 8px; }
+        .section-note { color: var(--muted); font-size: .95rem; max-width: 68ch; margin: 0 auto 24px; text-align: center; line-height: 1.7; }
+        .block-title {
+            width: 100%; font-family: var(--serif); font-size: 1.12rem; color: var(--text);
+            margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .block-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, var(--line), transparent); }
         .back-section, .back-btn {
-            align-self: flex-start;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: none;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            color: var(--muted);
-            padding: 8px 14px;
-            font-size: .86rem;
-            margin-bottom: 24px;
+            align-self: flex-start; display: inline-flex; align-items: center; gap: 8px;
+            background: none; border: 1px solid var(--line); border-radius: 8px;
+            color: var(--muted); padding: 8px 14px; font-size: .85rem; margin-bottom: 22px;
             transition: color .15s ease, border-color .15s ease;
         }
         .back-section:hover, .back-btn:hover { color: var(--text); border-color: var(--accent); }
         .back-btn svg { width: 15px; height: 15px; }
+        html[dir="rtl"] .back-btn svg { transform: scaleX(-1); }
 
-        /* ---------- category grids ---------- */
-        .limbs-container {
-            align-items: start;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            width: 100%;
-            margin-bottom: 10px;
+        /* ---------- grids and cards ---------- */
+        .limbs-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; width: 100%; align-items: start; }
+        .limb-column { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+        .limb-column h2 { font-size: 1.02rem; margin: 0 0 4px; padding-bottom: 10px; border-bottom: 1px solid var(--line-soft); }
+        .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 14px; width: 100%; margin-bottom: 18px; }
+        .start-box, .vid-sub-btn, .osce-station, .flash-level {
+            display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px;
+            min-height: 96px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+            padding: 18px 20px; color: var(--text); font-size: 1rem; font-weight: 500; text-align: start;
+            transition: border-color .16s ease, transform .16s ease;
         }
-        .limb-column {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .limb-column h2 {
-            font-size: 1.05rem;
-            color: var(--text);
-            margin: 0 0 4px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--line-soft);
-        }
-        .cat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
-            gap: 14px;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .start-box {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 6px;
-            min-height: 96px;
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 18px 20px;
-            color: var(--text);
-            font-size: 1rem;
-            font-weight: 500;
-            text-align: left;
-            transition: border-color .16s ease, background .16s ease;
-        }
-        .start-box:hover { border-color: var(--accent); background: var(--surface-2); }
-        .cat-meta { display: block; font-size: .8rem; font-weight: 400; color: var(--dim); letter-spacing: .01em; }
-        .cat-status { display: block; font-size: .78rem; font-weight: 400; color: var(--accent); }
+        .start-box:hover, .vid-sub-btn:hover, .osce-station:hover, .flash-level:hover { border-color: var(--accent); background: var(--surface-2); transform: translateY(-1px); }
+        .cat-meta, .station-meta, .vid-count, .flash-count { font-size: .79rem; font-weight: 400; color: var(--dim); }
+        .cat-status { font-size: .78rem; font-weight: 400; color: var(--accent); }
 
-        /* ---------- quiz track tabs ---------- */
-        .track-tabs { display: flex; gap: 8px; justify-content: center; margin: 6px 0 26px; flex-wrap: wrap; }
+        /* ---------- tabs ---------- */
+        .track-tabs { display: flex; gap: 8px; justify-content: center; margin: 4px 0 24px; flex-wrap: wrap; }
         .track-tab {
-            background: none;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 9px 20px;
-            color: var(--muted);
-            font-size: .9rem;
-            font-weight: 500;
-            transition: all .15s ease;
+            background: none; border: 1px solid var(--line); border-radius: 8px; padding: 9px 20px;
+            color: var(--muted); font-size: .9rem; font-weight: 500; transition: border-color .15s ease, color .15s ease;
         }
         .track-tab:hover { color: var(--text); border-color: var(--accent); }
         .track-tab.active { background: var(--surface-2); border-color: var(--accent); color: var(--text); }
 
         /* ---------- videos ---------- */
-        #videos-root, #quiz-grid { width: 100%; }
-        .videos-menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 14px;
-            width: 100%;
-            margin: 6px auto 0;
-        }
-        .vid-sub-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
-            width: 100%;
-            min-height: 96px;
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 20px;
-            color: var(--text);
-            font-size: 1.02rem;
-            font-weight: 500;
-            text-align: left;
-            transition: border-color .16s ease, background .16s ease;
-        }
-        .vid-sub-btn:hover { border-color: var(--accent); background: var(--surface-2); }
-        .vid-count { font-size: .8rem; font-weight: 400; color: var(--dim); }
-        .vid-crumb { align-self: flex-start; color: var(--muted); font-size: .88rem; margin: 0 0 18px; }
+        #videos-root, #quiz-grid, #flash-root, #pbl-grid { width: 100%; }
+        .videos-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; width: 100%; }
+        .vid-crumb { align-self: flex-start; color: var(--muted); font-size: .88rem; margin: 0 0 16px; }
         .vid-crumb b { color: var(--text); font-weight: 600; }
-        .vid-note { color: var(--muted); font-size: .96rem; max-width: 60ch; text-align: center; margin: 20px auto; }
+        .vid-note { color: var(--muted); font-size: .95rem; max-width: 60ch; text-align: center; margin: 20px auto; }
         .vid-empty { color: var(--dim); font-size: .85rem; margin: 16px 0 0; }
-        .lang-block { width: 100%; margin: 34px 0 0; }
-        .lang-title {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            font-family: var(--serif);
-            font-size: 1.1rem;
-            color: var(--text);
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--line);
-            margin-bottom: 18px;
-        }
-        .lang-tag {
-            font-family: var(--sans);
-            font-size: .68rem;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            color: var(--dim);
-            border: 1px solid var(--line);
-            border-radius: 4px;
-            padding: 2px 7px;
-        }
-        .lang-title.lang-ar { border-bottom-color: rgba(121, 179, 165, .5); }
-        .lang-title.lang-en { border-bottom-color: rgba(195, 166, 127, .45); }
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            gap: 16px;
-            width: 100%;
-        }
-        .video-card {
-            display: flex;
-            flex-direction: column;
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            overflow: hidden;
-            color: var(--text);
-            transition: border-color .16s ease, background .16s ease;
-        }
+        .lang-block { width: 100%; margin: 32px 0 0; }
+        .lang-title { display: flex; align-items: baseline; gap: 12px; font-family: var(--serif); font-size: 1.08rem; padding-bottom: 10px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+        .lang-tag { font-family: var(--sans); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); border: 1px solid var(--line); border-radius: 4px; padding: 2px 7px; }
+        .lang-title.lang-ar { border-bottom-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+        .lang-title.lang-en { border-bottom-color: color-mix(in srgb, var(--accent-2) 45%, var(--line)); }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; width: 100%; }
+        .video-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; color: var(--text); transition: border-color .16s ease; }
         .video-card:hover { border-color: var(--accent); text-decoration: none; background: var(--surface-2); }
         .video-thumb-wrap { position: relative; display: block; }
-        .video-thumb { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #0e1113; }
-        .vid-play-badge {
-            position: absolute;
-            left: 10px;
-            bottom: 10px;
-            background: rgba(14, 17, 19, .8);
-            color: #fff;
-            border-radius: 4px;
-            padding: 2px 8px;
-            font-size: .7rem;
-        }
-        .video-title { padding: 12px 13px 4px; font-size: .86rem; line-height: 1.5; color: var(--text); }
-        .vch { padding: 0 13px 13px; font-size: .74rem; color: var(--dim); line-height: 1.5; }
-        .chip {
-            display: inline-block;
-            font-size: .64rem;
-            letter-spacing: .08em;
-            padding: 1px 6px;
-            border-radius: 4px;
-            margin-left: 4px;
-            border: 1px solid var(--line);
-            color: var(--dim);
-        }
-        .chip-ar { border-color: rgba(121, 179, 165, .45); color: var(--accent); }
-        .chip-en { border-color: rgba(195, 166, 127, .45); color: var(--clinical); }
-        .chip-exp { border-color: rgba(213, 163, 95, .5); color: var(--warn); }
+        .video-thumb { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--bg-soft); }
+        .vid-play-badge { position: absolute; inset-inline-start: 10px; bottom: 10px; background: rgba(6, 14, 20, .8); color: #fff; border-radius: 4px; padding: 2px 8px; font-size: .68rem; }
+        .video-title { padding: 12px 13px 4px; font-size: .86rem; line-height: 1.5; }
+        .vch { padding: 0 13px 13px; font-size: .73rem; color: var(--dim); line-height: 1.5; }
+        .chip { display: inline-block; font-size: .63rem; letter-spacing: .08em; padding: 1px 6px; border-radius: 4px; margin-inline-start: 4px; border: 1px solid var(--line); color: var(--dim); }
+        .chip-ar { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); color: var(--accent); }
+        .chip-en { border-color: color-mix(in srgb, var(--accent-2) 45%, var(--line)); color: var(--accent-2); }
+        .chip-exp { border-color: color-mix(in srgb, var(--warn) 55%, var(--line)); color: var(--warn); }
 
         /* ---------- video player ---------- */
-        .video-player-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(8, 10, 12, .9);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .video-player-box {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            width: 100%;
-            max-width: 900px;
-            padding: 16px;
-        }
+        .video-player-overlay { position: fixed; inset: 0; background: rgba(4, 10, 14, .9); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .video-player-box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; width: 100%; max-width: 900px; padding: 16px; box-shadow: var(--shadow); }
         .video-player-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 12px; }
-        .video-player-title { font-family: var(--serif); font-size: .98rem; line-height: 1.45; color: var(--text); }
-        .video-player-close {
-            background: none;
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            color: var(--muted);
-            width: 30px;
-            height: 30px;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
+        .video-player-title { font-family: var(--serif); font-size: .98rem; line-height: 1.45; }
+        .video-player-close { background: none; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); width: 30px; height: 30px; font-size: 1rem; flex-shrink: 0; }
         .video-player-close:hover { color: var(--text); border-color: var(--err); }
         .video-player-frame { position: relative; padding-top: 56.25%; background: #000; border-radius: 8px; overflow: hidden; }
         .video-player-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
         .video-player-links { margin-top: 12px; }
         .video-player-links a { font-size: .84rem; }
 
-        /* ---------- PBL case screen ---------- */
-        .simulator-container {
-            display: none;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 28px clamp(16px, 4vw, 24px) 80px;
-        }
-        .level-track { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
-        .level-pill {
-            font-size: .78rem;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            color: var(--accent);
-            border: 1px solid rgba(121, 179, 165, .4);
-            border-radius: 4px;
-            padding: 3px 9px;
-        }
+        /* ---------- PBL case ---------- */
+        .simulator-container { display: none; width: 100%; max-width: 900px; margin: 0 auto; padding: 28px clamp(16px, 4vw, 24px) 70px; }
+        .level-track { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+        .level-pill { font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line)); border-radius: 4px; padding: 3px 9px; }
         .progress-track { flex: 1; min-width: 120px; height: 4px; background: var(--surface-2); border-radius: 2px; overflow: hidden; }
         .progress-fill { height: 100%; width: 0; background: var(--accent); transition: width .25s ease; }
         .level-count { font-size: .78rem; color: var(--dim); }
-        .sim-header { font-family: var(--serif); font-size: 1.45rem; text-align: center; margin-bottom: 22px; }
+        .sim-header { font-size: 1.42rem; text-align: center; margin-bottom: 20px; }
         .case-objective { text-align: center; color: var(--dim); font-size: .84rem; margin: 0 auto 16px; max-width: 60ch; }
         .clinical-history {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-left: 2px solid var(--accent);
-            border-radius: var(--radius);
-            padding: 26px 28px;
-            font-size: 1.04rem;
-            line-height: 1.75;
-            color: var(--text);
-            max-width: 760px;
-            margin: 0 auto 16px;
-            text-align: left;
+            background: var(--surface); border: 1px solid var(--line); border-inline-start: 3px solid var(--accent);
+            border-radius: var(--radius); padding: 26px 28px; font-size: 1.03rem; line-height: 1.75;
+            max-width: 760px; margin: 0 auto 16px; text-align: start;
         }
-        .clinical-history strong {
-            display: block;
-            font-family: var(--sans);
-            font-size: .76rem;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            color: var(--dim);
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-        .diagnostic-viewer {
-            max-width: 760px;
-            margin: 0 auto 22px;
-            padding: 16px 20px;
-            background: var(--bg-soft);
-            border: 1px dashed var(--line);
-            border-radius: var(--radius);
-            font-size: .92rem;
-            line-height: 1.65;
-            color: var(--muted);
-        }
-        .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-bottom: 18px; }
-        .option-btn {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 16px 18px;
-            color: var(--text);
-            font-size: .96rem;
-            line-height: 1.5;
-            text-align: left;
-            transition: border-color .15s ease, background .15s ease;
-        }
+        .clinical-history strong { display: block; font-family: var(--sans); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; font-weight: 600; }
+        .diagnostic-viewer { max-width: 760px; margin: 0 auto 20px; padding: 15px 20px; background: var(--bg-soft); border: 1px dashed var(--line); border-radius: var(--radius); font-size: .91rem; line-height: 1.65; color: var(--muted); }
+        .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-bottom: 16px; }
+        .option-btn { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 18px; color: var(--text); font-size: .95rem; line-height: 1.5; text-align: start; transition: border-color .15s ease, background .15s ease; }
         .option-btn:hover:not(:disabled) { border-color: var(--accent); background: var(--surface-2); }
-        .option-btn:disabled { cursor: default; opacity: .95; }
-        .feedback {
-            display: none;
-            border-radius: var(--radius);
-            padding: 20px 22px;
-            font-size: .95rem;
-            line-height: 1.7;
-            margin-bottom: 18px;
-        }
-        .correct-feedback { background: rgba(127, 185, 143, .1); border: 1px solid rgba(127, 185, 143, .4); }
-        .incorrect-feedback { background: rgba(205, 127, 118, .1); border: 1px solid rgba(205, 127, 118, .4); }
-        .feedback strong { font-family: var(--serif); font-size: 1.05rem; }
-        .next-btn, .tutor-btn {
-            border-radius: 8px;
-            padding: 12px 22px;
-            font-size: .92rem;
-            font-weight: 500;
-            border: 1px solid var(--line);
-            background: var(--surface);
-            color: var(--text);
-        }
+        .option-btn:disabled { cursor: default; }
+        .feedback { display: none; border-radius: var(--radius); padding: 20px 22px; font-size: .94rem; line-height: 1.7; margin-bottom: 16px; }
+        .correct-feedback { background: color-mix(in srgb, var(--ok) 12%, transparent); border: 1px solid color-mix(in srgb, var(--ok) 45%, var(--line)); }
+        .incorrect-feedback { background: color-mix(in srgb, var(--err) 12%, transparent); border: 1px solid color-mix(in srgb, var(--err) 45%, var(--line)); }
+        .feedback strong { font-family: var(--serif); font-size: 1.04rem; }
+        .next-btn, .tutor-btn { border-radius: 8px; padding: 11px 20px; font-size: .91rem; font-weight: 500; border: 1px solid var(--line); background: var(--surface); color: var(--text); }
         .next-btn { display: none; border-color: var(--accent); color: var(--accent); }
-        .next-btn:hover { background: var(--accent); color: #12191a; }
-        .tutor-btn { color: var(--muted); margin-left: 10px; }
+        .next-btn:hover { background: var(--accent); color: var(--bg); }
+        .tutor-btn { color: var(--muted); margin-inline-start: 10px; }
         .tutor-btn:hover { color: var(--text); border-color: var(--accent); }
-        .summary-box, .osce-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 26px; }
-        .summary-box { display: none; margin-top: 10px; }
-        .summary-stats { color: var(--muted); font-size: .95rem; line-height: 1.9; margin-bottom: 18px; text-align: center; }
+        .summary-box, .osce-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+        .summary-box { display: none; margin-top: 8px; }
+        .summary-stats { color: var(--muted); font-size: .94rem; line-height: 1.9; margin-bottom: 18px; text-align: center; }
         .stat-correct { color: var(--ok); font-weight: 600; }
         .stat-wrong { color: var(--err); font-weight: 600; }
         .actions-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-        .btn-secondary {
-            background: none;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 11px 18px;
-            color: var(--muted);
-            font-size: .88rem;
-            transition: all .15s ease;
-        }
+        .btn-secondary { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 10px 18px; color: var(--muted); font-size: .87rem; transition: border-color .15s ease, color .15s ease; }
         .btn-secondary:hover { color: var(--text); border-color: var(--accent); }
 
-        /* ---------- OSCE simulator home ---------- */
+        /* ---------- OSCE ---------- */
         .osce-home-grid { width: 100%; }
-        .osce-group { margin-bottom: 34px; }
-        .osce-group h3 {
-            font-family: var(--serif);
-            font-size: 1.12rem;
-            color: var(--text);
-            margin: 0 0 14px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--line);
-        }
-        .osce-station {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 6px;
-            min-height: 96px;
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 18px 20px;
-            color: var(--text);
-            font-size: 1rem;
-            font-weight: 500;
-            text-align: left;
-            transition: border-color .16s ease, background .16s ease;
-        }
-        .osce-station:hover { border-color: var(--clinical); background: var(--surface-2); }
-        .station-meta { font-size: .78rem; font-weight: 400; color: var(--dim); }
-
-        /* ---------- OSCE station ---------- */
-        .osce-screen { display: none; width: 100%; max-width: 980px; margin: 0 auto; padding: 26px clamp(16px, 4vw, 24px) 80px; }
-        .osce-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-        .osce-head h2 { font-size: 1.2rem; margin: 0; color: var(--text); }
-        .ai-settings {
-            margin-left: auto;
-            background: none;
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            color: var(--dim);
-            padding: 6px 12px;
-            font-size: .76rem;
-        }
+        .osce-group { margin-bottom: 30px; }
+        .osce-group h3 { font-size: 1.08rem; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+        .osce-station:hover { border-color: var(--accent-2); }
+        .osce-screen { display: none; width: 100%; max-width: 980px; margin: 0 auto; padding: 26px clamp(16px, 4vw, 24px) 70px; }
+        .osce-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+        .osce-head h2 { font-size: 1.18rem; margin: 0; }
+        .ai-settings { margin-inline-start: auto; background: none; border: 1px solid var(--line); border-radius: 6px; color: var(--dim); padding: 6px 12px; font-size: .75rem; }
         .ai-settings:hover { color: var(--text); border-color: var(--accent); }
-        .osce-chat {
-            background: var(--bg-soft);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 18px;
-            height: 300px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .osce-msg { max-width: 78%; padding: 11px 15px; border-radius: 12px; font-size: .93rem; line-height: 1.6; }
-        .osce-patient { background: var(--surface-2); color: var(--text); align-self: flex-start; border-bottom-left-radius: 3px; }
-        .osce-you { background: rgba(121, 179, 165, .16); color: var(--text); align-self: flex-end; border-bottom-right-radius: 3px; }
-        .osce-system { background: none; border: 1px dashed var(--line); color: var(--muted); font-family: var(--mono); font-size: .82rem; align-self: flex-start; }
-        .osce-panel { margin-top: 20px; }
+        .osce-chat { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .osce-msg { max-width: 78%; padding: 11px 15px; border-radius: 12px; font-size: .92rem; line-height: 1.6; }
+        .osce-patient { background: var(--surface-2); align-self: flex-start; border-end-start-radius: 3px; }
+        .osce-you { background: var(--accent-soft); align-self: flex-end; border-end-end-radius: 3px; }
+        .osce-system { background: none; border: 1px dashed var(--line); color: var(--muted); font-family: var(--mono); font-size: .81rem; align-self: flex-start; }
+        .osce-panel { margin-top: 18px; }
         .osce-stepper { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
-        .osce-step {
-            background: none;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 12px 10px;
-            color: var(--muted);
-            font-size: .86rem;
-            text-align: left;
-        }
+        .osce-step { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 12px 10px; color: var(--muted); font-size: .85rem; text-align: start; }
         .osce-step:hover { color: var(--text); border-color: var(--accent); }
         .osce-step.active { color: var(--text); border-color: var(--accent); background: var(--surface-2); }
-        .osce-step.done { border-color: rgba(127, 185, 143, .5); }
-        .osce-hintrow { color: var(--muted); font-size: .88rem; margin: 18px 0 12px; }
+        .osce-step.done { border-color: color-mix(in srgb, var(--ok) 50%, var(--line)); }
+        .osce-hintrow { color: var(--muted); font-size: .87rem; margin: 16px 0 12px; }
         .osce-inputrow { display: flex; gap: 8px; margin-bottom: 12px; }
-        .osce-inputrow input {
-            flex: 1;
-            background: var(--bg-soft);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 12px 14px;
-            color: var(--text);
-        }
+        .osce-inputrow input { flex: 1; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
         .osce-inputrow input::placeholder, .osce-plan::placeholder { color: var(--dim); }
-        .osce-send {
-            background: var(--surface-2);
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            border-radius: 8px;
-            padding: 0 22px;
-            font-weight: 500;
-        }
-        .osce-send:hover { background: var(--accent); color: #12191a; }
+        .osce-send { background: var(--surface-2); border: 1px solid var(--accent); color: var(--accent); border-radius: 8px; padding: 0 22px; font-weight: 500; }
+        .osce-send:hover { background: var(--accent); color: var(--bg); }
         .osce-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-        .osce-chip {
-            background: none;
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 9px 14px;
-            color: var(--muted);
-            font-size: .85rem;
-            text-align: left;
-        }
+        .osce-chip { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 9px 14px; color: var(--muted); font-size: .84rem; text-align: start; }
         .osce-chip:hover { color: var(--text); border-color: var(--accent); }
-        .osce-chip.picked { border-color: var(--accent); color: var(--text); background: rgba(121, 179, 165, .12); }
-        .osce-chip-flag { border-color: rgba(205, 127, 118, .45); color: #dda49c; }
-        .osce-select {
-            width: 100%;
-            background: var(--bg-soft);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 12px 14px;
-            margin-bottom: 12px;
-            color: var(--text);
-        }
-        .osce-plan {
-            width: 100%;
-            min-height: 130px;
-            background: var(--bg-soft);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 12px 14px;
-            color: var(--text);
-            line-height: 1.6;
-            resize: vertical;
-        }
-        .osce-finish {
-            margin-top: 14px;
-            background: none;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            border-radius: 8px;
-            padding: 12px 24px;
-            font-weight: 500;
-        }
-        .osce-finish:hover { background: var(--accent); color: #12191a; }
-        .osce-card h3 { font-size: 1.35rem; margin-bottom: 20px; }
-        .osce-card h4 { font-family: var(--sans); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin: 26px 0 10px; }
-        .score-row { display: grid; grid-template-columns: 180px 1fr 58px; gap: 12px; align-items: center; margin-bottom: 9px; font-size: .88rem; color: var(--muted); }
+        .osce-chip.picked { border-color: var(--accent); color: var(--text); background: var(--accent-soft); }
+        .osce-chip-flag { border-color: color-mix(in srgb, var(--err) 45%, var(--line)); color: var(--err); }
+        .osce-select { width: 100%; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+        .osce-plan { width: 100%; min-height: 130px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; line-height: 1.6; resize: vertical; }
+        .osce-finish { margin-top: 14px; background: none; border: 1px solid var(--accent); color: var(--accent); border-radius: 8px; padding: 12px 24px; font-weight: 500; }
+        .osce-finish:hover { background: var(--accent); color: var(--bg); }
+        .osce-card h3 { font-size: 1.32rem; margin-bottom: 18px; }
+        .osce-card h4 { font-family: var(--sans); font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin: 24px 0 10px; }
+        .score-row { display: grid; grid-template-columns: 180px 1fr 58px; gap: 12px; align-items: center; margin-bottom: 9px; font-size: .87rem; color: var(--muted); }
         .score-track { height: 5px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
         .score-fill { height: 100%; background: var(--accent); }
-        .score-row b { color: var(--text); font-weight: 500; text-align: right; }
-        .osce-notes { margin: 0; padding-left: 18px; color: var(--muted); font-size: .9rem; line-height: 1.7; }
-        .osce-model { color: var(--muted); font-size: .92rem; line-height: 1.7; margin: 14px 0 0; }
+        .score-row b { color: var(--text); font-weight: 500; text-align: end; }
+        .osce-notes { margin: 0; padding-inline-start: 18px; color: var(--muted); font-size: .89rem; line-height: 1.7; }
+        .osce-model { color: var(--muted); font-size: .91rem; line-height: 1.7; margin: 14px 0 0; }
         .osce-model b { color: var(--text); }
-        .osce-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
-        .osce-llm {
-            white-space: pre-wrap;
-            background: var(--bg-soft);
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            padding: 18px;
-            margin-top: 18px;
-            color: var(--muted);
-            font-size: .9rem;
-            line-height: 1.7;
+        .osce-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .osce-llm { white-space: pre-wrap; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; padding: 18px; margin-top: 18px; color: var(--muted); font-size: .89rem; line-height: 1.7; }
+
+        /* ---------- flashcards ---------- */
+        .flash-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; width: 100%; }
+        .flash-card-wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; width: 100%; max-width: 720px; margin: 0 auto; }
+        .flash-card {
+            position: relative; width: 100%; min-height: 300px; background: var(--surface);
+            border: 1px solid var(--line); border-radius: 18px; padding: 34px 30px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 12px; text-align: center; cursor: pointer; box-shadow: var(--shadow);
+            transition: border-color .16s ease, transform .16s ease;
         }
+        .flash-card:hover { border-color: var(--accent); }
+        .flash-term { font-family: var(--serif); font-size: clamp(1.5rem, 3.4vw, 2.1rem); line-height: 1.3; }
+        html[dir="rtl"] .flash-term { font-family: 'Noto Naskh Arabic', serif; }
+        .flash-ar { color: var(--accent-2); font-size: 1.05rem; font-family: 'IBM Plex Sans Arabic', sans-serif; direction: rtl; }
+        .flash-def { color: var(--muted); font-size: 1rem; line-height: 1.75; max-width: 52ch; }
+        .flash-hint { color: var(--dim); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; position: absolute; bottom: 16px; inset-inline-start: 0; inset-inline-end: 0; text-align: center; }
+        .flash-toolbar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .flash-btn { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 18px; color: var(--muted); font-size: .87rem; transition: border-color .15s ease, color .15s ease; }
+        .flash-btn:hover { color: var(--text); border-color: var(--accent); }
+        .flash-btn.primary { border-color: var(--accent); color: var(--accent); }
+        .flash-btn.known { border-color: color-mix(in srgb, var(--ok) 55%, var(--line)); color: var(--ok); }
+        .flash-progress { width: 100%; max-width: 720px; }
+        .flash-progress .progress-track { height: 5px; }
+        .flash-meta { display: flex; justify-content: space-between; color: var(--dim); font-size: .8rem; margin-bottom: 8px; }
+
+        /* ---------- settings ---------- */
+        .settings-box { width: 100%; max-width: 720px; display: flex; flex-direction: column; gap: 18px; }
+        .setting-row { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; display: grid; grid-template-columns: 1fr auto; gap: 10px 18px; align-items: center; }
+        .setting-label { font-weight: 500; }
+        .setting-hint { color: var(--dim); font-size: .82rem; grid-column: 1 / -1; margin: 0; }
+        .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+        .seg button { background: none; border: none; padding: 8px 16px; color: var(--muted); font-size: .85rem; }
+        .seg button.active { background: var(--accent-soft); color: var(--text); }
+        .setting-row input[type="text"], .setting-row input[type="password"] { width: 100%; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: .88rem; }
+        .setting-row .full { grid-column: 1 / -1; }
+        .danger-btn { background: none; border: 1px solid color-mix(in srgb, var(--err) 55%, var(--line)); color: var(--err); border-radius: 8px; padding: 9px 16px; font-size: .85rem; }
+        .danger-btn:hover { background: color-mix(in srgb, var(--err) 12%, transparent); }
 
         /* ---------- about / contact ---------- */
-        .about-box { max-width: 68ch; color: var(--muted); font-size: 1rem; line-height: 1.8; text-align: left; }
-        .about-box p { margin: 0 0 18px; }
-        .about-box ul { margin: 0 0 18px; padding-left: 20px; }
+        .about-box { max-width: 68ch; color: var(--muted); font-size: 1rem; line-height: 1.8; }
+        .about-box ul { margin: 0 0 18px; padding-inline-start: 20px; }
         .about-box li { margin-bottom: 12px; }
         .about-box b { color: var(--text); font-weight: 600; }
-        .contact-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 12px 18px;
-            color: var(--accent);
-            font-size: .94rem;
-            margin-top: 18px;
-        }
+        .contact-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 18px; color: var(--accent); font-size: .94rem; margin-top: 16px; }
         .contact-badge:hover { border-color: var(--accent); text-decoration: none; }
         .contact-badge svg { width: 16px; height: 16px; }
 
+        /* ---------- footer ---------- */
+        .site-footer {
+            border-top: 1px solid var(--line);
+            background: var(--bg-soft);
+            padding: 26px clamp(16px, 4vw, 40px) 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-brand { display: flex; align-items: center; gap: 12px; }
+        .footer-brand img { height: 26px; width: auto; }
+        .footer-tag { color: var(--dim); font-size: .82rem; }
+        .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+        .footer-links button { background: none; border: none; color: var(--muted); font-size: .84rem; padding: 0; }
+        .footer-links button:hover { color: var(--accent); }
+        .footer-ecg { width: 160px; height: 26px; opacity: .7; }
+        .footer-ecg path { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+
         /* ---------- responsive ---------- */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-art { order: -1; min-height: 220px; }
+        }
         @media (max-width: 780px) {
             html { font-size: 16px; }
-            .app-header { flex-direction: column; gap: 12px; padding: 12px 16px; }
-            .main-nav { justify-content: center; gap: 16px; }
-            .nav-btn { font-size: .87rem; }
+            .app-header { flex-direction: column; gap: 10px; padding: 10px 16px; }
+            .main-nav { justify-content: center; gap: 14px; }
+            .nav-btn { font-size: .85rem; }
             .big-buttons { grid-template-columns: 1fr; }
             .clinical-history { padding: 20px; }
             .options-grid { grid-template-columns: 1fr; }
             .score-row { grid-template-columns: 1fr 56px; }
             .score-row .score-track { grid-column: 1 / -1; order: 3; }
+            .setting-row { grid-template-columns: 1fr; }
         }
     </style>
+    
 </head>
 <body>
 
     <!-- HEADER -->
     <header id="app-header" class="app-header">
-        <div class="logo" onclick="showView('landing')">
-            <img src="./logo.svg" alt="Yazan's Medplat logo" class="logo-img" onerror="this.style.display='none'">
-            <span class="logo-text">Yazan's Medplat</span>
-        </div>
-        <nav class="main-nav">
-            <button class="nav-btn" data-view="landing" onclick="showView('landing')">Home</button>
-            <button class="nav-btn" data-view="videos" onclick="showView('videos')">Video Tutorials</button>
-            <button class="nav-btn" data-view="pbl" onclick="showView('pbl')">Basic PBL</button>
-            <button class="nav-btn" data-view="osce" onclick="showView('osce')">OSCE Simulator</button>
-            <button class="nav-btn" data-view="quiz" onclick="showView('quiz')">Quizzes</button>
-            <button class="nav-btn" data-view="about" onclick="showView('about')">About</button>
-            <button class="nav-btn" data-view="contact" onclick="showView('contact')">Contact Me</button>
+        <button class="logo" onclick="showView('landing')" aria-label="YazMed home"><img src="./icon.png" alt="" class="logo-mark"><span class="logo-word">YazMed</span></button>
+                <nav class="main-nav">
+            <button class="nav-btn" data-view="landing" data-i18n="nav.home" onclick="showView('landing')">Home</button>
+            <button class="nav-btn" data-view="videos" data-i18n="nav.videos" onclick="showView('videos')">Video Tutorials</button>
+            <button class="nav-btn" data-view="pbl" data-i18n="nav.pbl" onclick="showView('pbl')">Basic PBL</button>
+            <button class="nav-btn" data-view="osce" data-i18n="nav.osce" onclick="showView('osce')">OSCE Simulator</button>
+            <button class="nav-btn" data-view="flash" data-i18n="nav.flash" onclick="showView('flash')">Terminology</button>
+            <button class="nav-btn" data-view="quiz" data-i18n="nav.quiz" onclick="showView('quiz')">Quizzes</button>
+            <button class="nav-btn" data-view="about" data-i18n="nav.about" onclick="showView('about')">About</button>
+            <button class="nav-btn" data-view="contact" data-i18n="nav.contact" onclick="showView('contact')">Contact Me</button>
+            <button class="nav-btn icon-only" data-view="settings" data-i18n="nav.settings" onclick="showView('settings')">Settings</button>
         </nav>
     </header>
 
+    <main>
     <!-- LANDING VIEW -->
     <div id="view-landing" class="view" style="display:flex;">
-        <div class="landing-box">
-            <div class="welcome-text">welcome to</div>
-            <h1 class="main-title">Yazan's Medical Platform</h1>
-            <p class="welcome-sub">Clinical PBL cases, a quiz bank and video tutorials for the basic medical years, organised by body system, all in one place.</p>
-            <div class="big-buttons">
-                <button class="big-btn" onclick="showView('videos')"><span class="big-label">Video Tutorials</span></button>
-                <button class="big-btn big-btn-primary" onclick="showView('pbl')"><span class="big-label">Basic PBL Simulator</span></button>
-                <button class="big-btn big-btn-primary" onclick="showView('osce')"><span class="big-label">OSCE Simulator</span></button>
-                <button class="big-btn" onclick="showView('quiz')"><span class="big-label">Quiz Bank</span></button>
+        <div class="hero">
+            <div>
+                <div class="welcome-text" data-i18n="landing.welcome">welcome to</div>
+                <h1 class="main-title">YazMed</h1>
+                <p class="welcome-sub" data-i18n="landing.sub">Clinical PBL cases, an OSCE simulator, terminology flashcards, a quiz bank and video tutorials for the medical years, organised by system in one place.</p>
+                <div class="big-buttons">
+                    <button class="big-btn" onclick="showView('pbl')"><span class="big-label" data-i18n="landing.pbl">Basic PBL Simulator</span></button>
+                    <button class="big-btn big-btn-primary" onclick="showView('osce')"><span class="big-label" data-i18n="landing.osce">OSCE Simulator</span></button>
+                    <button class="big-btn" onclick="showView('flash')"><span class="big-label" data-i18n="landing.flash">Terminology Flashcards</span></button>
+                    <button class="big-btn" onclick="showView('quiz')"><span class="big-label" data-i18n="landing.quiz">Quiz Bank</span></button>
+                    <button class="big-btn" onclick="showView('videos')"><span class="big-label" data-i18n="landing.videos">Video Tutorials</span></button>
+                </div>
             </div>
+            <div class="hero-art">
+                <img class="hero-emblem" src="./icon.png" alt="YazMed emblem">
+                <svg class="hero-ecg" viewBox="0 0 600 46" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0 32 H120 l14 -18 l10 30 l12 -26 l10 14 H230 l16 -8 l12 8 H340 l14 -22 l12 34 l12 -30 l10 18 H600"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="stats-band">
+            <div class="stat"><b>1,106</b><span data-i18n="stats.cases">PBL cases</span></div>
+            <div class="stat"><b>19</b><span data-i18n="stats.stations">OSCE stations</span></div>
+            <div class="stat"><b>270</b><span data-i18n="stats.mcqs">MCQs</span></div>
+            <div class="stat"><b>120</b><span data-i18n="stats.cards">flashcards</span></div>
+            <div class="stat"><b>1,280</b><span data-i18n="stats.videos">lectures</span></div>
+        </div>
+        <div class="path-band">
+            <button class="path-step" onclick="showView('videos')">
+                <span class="step-no">01</span>
+                <b data-i18n="path.learn">Learn</b>
+                <span data-i18n="path.learnText">Lectures by system, Arabic first and English underneath, plus flashcards for the language of medicine.</span>
+            </button>
+            <button class="path-step" onclick="showView('pbl')">
+                <span class="step-no">02</span>
+                <b data-i18n="path.practise">Practise</b>
+                <span data-i18n="path.practiseText">Progressive PBL cases that make you commit to a diagnosis and explain the mechanism.</span>
+            </button>
+            <button class="path-step" onclick="showView('osce')">
+                <span class="step-no">03</span>
+                <b data-i18n="path.prove">Prove it</b>
+                <span data-i18n="path.proveText">OSCE stations and system quizzes that score you the way an examiner would.</span>
+            </button>
         </div>
     </div>
 
     <!-- PBL SIMULATOR VIEW (by system) -->
     <div id="home-screen" class="view" style="display:none;">
-        <button class="back-section" onclick="goBack()">&#8592; Back</button>
+        <button class="back-section" onclick="goBack()">&#8592; <span data-i18n="nav.back">Back</span></button>
         <div class="top-header-area">
-            <div class="welcome-text">Basic PBL simulator</div>
-            <h1 class="main-title">Choose a System</h1>
-            <p class="section-note">Progressive case triggers, mechanism before diagnosis, progress saved level by level, Socratic hints when you stall.</p>
+            <div class="welcome-text" data-i18n="pbl.welcome">Basic PBL simulator</div>
+            <h1 class="main-title" data-i18n="pbl.title">Choose a System</h1>
+            <p class="section-note" data-i18n="pbl.note">Progressive case triggers, mechanism before diagnosis, progress saved level by level, Socratic hints when you stall.</p>
         </div>
-        <div class="limbs-container"><div class="limb-column"><h2>Musculoskeletal System</h2><button class="start-box" onclick="openCategory('msk','nerves')" data-region="msk" data-category="nerves">Nerve Injuries</button><button class="start-box" onclick="openCategory('msk','muscles')" data-region="msk" data-category="muscles">Muscle Injuries</button><button class="start-box" onclick="openCategory('msk','bones')" data-region="msk" data-category="bones">Bone Injuries</button><button class="start-box" onclick="openCategory('msk','general')" data-region="msk" data-category="general">General Injuries</button></div><div class="limb-column"><h2>Development & Embryology</h2><button class="start-box" onclick="openCategory('embryology','level1')" data-region="embryology" data-category="level1">Level 1: Basics & Weeks</button><button class="start-box" onclick="openCategory('embryology','level2')" data-region="embryology" data-category="level2">Level 2: Organogenesis</button><button class="start-box" onclick="openCategory('embryology','level3')" data-region="embryology" data-category="level3">Level 3: Structural Defects</button><button class="start-box" onclick="openCategory('embryology','level4')" data-region="embryology" data-category="level4">Level 4: Advanced Pathology</button></div><div class="limb-column"><h2>General Pathology</h2><button class="start-box" onclick="openCategory('pathology','general')" data-region="pathology" data-category="general">General Pathology - 4 levels</button></div></div>
-        <h2 class="block-title">Physiology, by System</h2><div class="cat-grid"><button class="start-box" onclick="openCategory('physiology','cell')" data-region="physiology" data-category="cell">Cell & Membrane<span class="cat-meta" data-meta="physiology/cell"></span></button><button class="start-box" onclick="openCategory('physiology','nerve_muscle')" data-region="physiology" data-category="nerve_muscle">Nerve & Muscle<span class="cat-meta" data-meta="physiology/nerve_muscle"></span></button><button class="start-box" onclick="openCategory('physiology','blood')" data-region="physiology" data-category="blood">Blood & Body Fluids<span class="cat-meta" data-meta="physiology/blood"></span></button><button class="start-box" onclick="openCategory('physiology','immune')" data-region="physiology" data-category="immune">Immunity<span class="cat-meta" data-meta="physiology/immune"></span></button><button class="start-box" onclick="openCategory('physiology','cardio')" data-region="physiology" data-category="cardio">Cardiovascular<span class="cat-meta" data-meta="physiology/cardio"></span></button><button class="start-box" onclick="openCategory('physiology','resp')" data-region="physiology" data-category="resp">Respiratory<span class="cat-meta" data-meta="physiology/resp"></span></button><button class="start-box" onclick="openCategory('physiology','renal')" data-region="physiology" data-category="renal">Renal & Acid-Base<span class="cat-meta" data-meta="physiology/renal"></span></button><button class="start-box" onclick="openCategory('physiology','git')" data-region="physiology" data-category="git">Gastrointestinal<span class="cat-meta" data-meta="physiology/git"></span></button><button class="start-box" onclick="openCategory('physiology','endocrine')" data-region="physiology" data-category="endocrine">Endocrine<span class="cat-meta" data-meta="physiology/endocrine"></span></button><button class="start-box" onclick="openCategory('physiology','repro')" data-region="physiology" data-category="repro">Reproductive<span class="cat-meta" data-meta="physiology/repro"></span></button></div>
+        <div id="pbl-grid"></div>
     </div>
 
-    <!-- OSCE SIMULATOR VIEW -->
-    <div id="view-osce" class="view" style="display:none;">
-        <button class="back-section" onclick="goBack()">&#8592; Back</button>
-        <div class="top-header-area">
-            <div class="welcome-text">OSCE simulator</div>
-            <h1 class="main-title">Choose a Station</h1>
+    <!-- FLASHCARDS VIEW -->
+    <div id="view-flash" class="view" style="display:none;">
+        <button class="back-section" onclick="goBack()">&#8592; <span data-i18n="nav.back">Back</span></button>
+        <h2 class="section-title" data-i18n="flash.title">Terminology Flashcards</h2>
+        <p class="section-note" data-i18n="flash.note">Medical language in two tracks: basic word building and clinical usage.</p>
+        <div class="track-tabs">
+            <button class="track-tab active" data-track="basic" data-i18n="flash.basic" onclick="setFlashTrack('basic', this)">Basic terminology</button>
+            <button class="track-tab" data-track="clinical" data-i18n="flash.clinical" onclick="setFlashTrack('clinical', this)">Clinical terminology</button>
         </div>
-        <p class="section-note">A virtual patient, focused examination, investigations, a differential and a plan. Every station ends with an examiner scorecard out of 100, pass mark 60.</p>
-        <div id="osce-home-grid" class="osce-home-grid"></div>
+        <div id="flash-root"></div>
+    </div>
+
+    <!-- SETTINGS VIEW -->
+    <div id="view-settings" class="view" style="display:none;">
+        <button class="back-section" onclick="goBack()">&#8592; <span data-i18n="nav.back">Back</span></button>
+        <h2 class="section-title" data-i18n="settings.title">Settings</h2>
+        <p class="section-note" data-i18n="settings.note">Language, appearance and study tools. Everything is stored in this browser only.</p>
+        <div class="settings-box" id="settings-body"></div>
     </div>
 
     <!-- QUIZ VIEW -->
     <div id="view-quiz" class="view" style="display:none;">
         <button class="back-section" onclick="goBack()">&#8592; Back</button>
-        <h2 class="section-title">Quiz Bank</h2>
-        <p class="section-note">MCQs by system, split into levels that unlock as you finish. The clinical half covers the subjects you meet on the wards.</p>
+        <h2 class="section-title" data-i18n="quiz.title">Quiz Bank</h2>
+        <p class="section-note" data-i18n="quiz.note">MCQs by system, split into levels that unlock as you finish. The clinical half covers the subjects you meet on the wards.</p>
         <div class="track-tabs">
-            <button class="track-tab active" data-track="basic" onclick="setQuizTrack('basic', this)">Basic Sciences</button>
-            <button class="track-tab" data-track="clinical" onclick="setQuizTrack('clinical', this)">Clinical</button>
+            <button class="track-tab active" data-track="basic" data-i18n="quiz.basic" onclick="setQuizTrack('basic', this)">Basic Sciences</button>
+            <button class="track-tab" data-track="clinical" data-i18n="quiz.clinical" onclick="setQuizTrack('clinical', this)">Clinical</button>
         </div>
         <div id="quiz-grid" class="cat-grid"></div>
     </div>
@@ -788,10 +640,10 @@
     <!-- VIDEO TUTORIALS VIEW -->
     <div id="view-videos" class="view" style="display:none;">
         <button class="back-section" onclick="goBack()">&#8592; Back</button>
-        <h2 class="section-title">Video Tutorials</h2>
+        <h2 class="section-title" data-i18n="video.title">Video Tutorials</h2>
         <div class="track-tabs">
-            <button class="track-tab active" data-track="basic" onclick="setVideoTrack('basic', this)">Basic Sciences</button>
-            <button class="track-tab" data-track="clinical" onclick="setVideoTrack('clinical', this)">Clinical</button>
+            <button class="track-tab active" data-track="basic" data-i18n="video.basic" onclick="setVideoTrack('basic', this)">Basic Sciences</button>
+            <button class="track-tab" data-track="clinical" data-i18n="video.clinical" onclick="setVideoTrack('clinical', this)">Clinical</button>
         </div>
         <div id="videos-root"></div>
     </div>
@@ -869,6 +721,23 @@
         <div id="osce-panel" class="osce-panel"></div>
     </div>
 
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <img src="./icon.png" alt=""><span class="logo-word" style="font-size:1.02rem">YazMed</span>
+            <span class="footer-tag"><span data-i18n="footer.tagline">Medical learning platform</span> · <span data-i18n="footer.rights">Built by a medical student, for medical students.</span></span>
+        </div>
+        <svg class="footer-ecg" viewBox="0 0 200 26" aria-hidden="true">
+            <path d="M0 18 h40 l6 -9 l5 16 l6 -13 l5 8 h30 l8 -4 l6 4 h44 l6 -11 l6 17 l6 -14 l5 8 h27"></path>
+        </svg>
+        <div class="footer-links">
+            <button data-i18n="nav.about" onclick="showView('about')">About</button>
+            <button data-i18n="nav.contact" onclick="showView('contact')">Contact Me</button>
+            <button data-i18n="nav.settings" onclick="showView('settings')">Settings</button>
+        </div>
+    </footer>
+
     <!-- VIDEO PLAYER MODAL -->
     <div id="video-player-overlay" class="video-player-overlay">
         <div class="video-player-box">
@@ -899,6 +768,7 @@ const occupations = ['software engineer', 'medical student', 'construction worke
   'barista', 'mechanic', 'carpenter', 'nurse', 'delivery driver'];
 const sides = ['right', 'left'];
 const TRACKS = {"videos":{"basic":{"label":"Basic Sciences","subjects":["anatomy","embryology","histology","physiology","biochemistry"]},"clinical":{"label":"Clinical","subjects":["pathology","pharmacology","microbiology","immunology","medicine","surgery","pediatrics","obgyn","psychiatry"]}},"quiz":{"basic":{"label":"Basic Sciences","categories":["msk","neuro","cardio","resp","renal","git","endocrine","repro","blood_immune","development"]},"clinical":{"label":"Clinical","categories":["medicine","surgery","pediatrics","obgyn","psychiatry"]}}};
+const FLASH = {"basic":{"level1":{"name":"Foundations: word building","cards":[{"term":"a- / an-","definition":"Without or absence of. Asymptomatic means without symptoms.","ar":"بدون / انعدام"},{"term":"hyper-","definition":"Above normal or excessive. Hypertension is raised blood pressure.","ar":"فوق / زيادة"},{"term":"hypo-","definition":"Below normal or deficient. Hypoglycaemia is low blood glucose.","ar":"تحت / نقص"},{"term":"tachy-","definition":"Fast. Tachycardia is a heart rate above 100 per minute.","ar":"سريع"},{"term":"brady-","definition":"Slow. Bradycardia is a heart rate below 60 per minute.","ar":"بطيء"},{"term":"dys-","definition":"Difficult, painful or disordered. Dysphagia is difficulty swallowing.","ar":"صعوبة / اضطراب"},{"term":"-itis","definition":"Inflammation. Gastritis is inflammation of the stomach lining.","ar":"التهاب"},{"term":"-ectomy","definition":"Surgical removal of. Appendicectomy is removal of the appendix.","ar":"استئصال"},{"term":"-otomy","definition":"Cutting into. Laparotomy is a surgical incision into the abdomen.","ar":"شق / فتح جراحي"},{"term":"-ostomy","definition":"Creating a permanent opening. Colostomy brings colon to the skin.","ar":"فغر"},{"term":"-algia","definition":"Pain. Arthralgia is joint pain without swelling.","ar":"ألم"},{"term":"-aemia","definition":"A condition of the blood. Anaemia is a low haemoglobin concentration.","ar":"حالة الدم"},{"term":"-uria","definition":"A condition of the urine. Haematuria is blood in the urine.","ar":"حالة البول"},{"term":"-megaly","definition":"Enlargement. Hepatomegaly is an enlarged liver.","ar":"تضخم"},{"term":"-oma","definition":"A swelling or tumour. Lipoma is a benign fatty tumour.","ar":"ورم"},{"term":"-pathy","definition":"Disease of. Neuropathy is disease of peripheral nerves.","ar":"اعتلال"},{"term":"-plegia","definition":"Paralysis. Hemiplegia is paralysis of one side of the body.","ar":"شلل"},{"term":"-scopy","definition":"Looking inside with an instrument. Endoscopy examines the gut lumen.","ar":"تنظير"},{"term":"-graphy","definition":"Recording or imaging. Radiography produces an X-ray image.","ar":"تصوير"},{"term":"cardi-","definition":"Heart. Cardiomegaly is an enlarged heart.","ar":"القلب"}],"name_ar":"الأساسيات: بناء المصطلح"},"level2":{"name":"The body: position, planes and regions","cards":[{"term":"Anatomical position","definition":"Standing upright, face forward, palms forward, feet together. Every direction is described from this reference.","ar":"الوضع التشريحي"},{"term":"Sagittal plane","definition":"A vertical plane dividing the body into left and right. The midline one is the median plane.","ar":"المستوى السهمي"},{"term":"Coronal (frontal) plane","definition":"A vertical plane dividing the body into front and back.","ar":"المستوى الإكليلي"},{"term":"Transverse plane","definition":"A horizontal plane dividing the body into upper and lower parts.","ar":"المستوى المستعرض"},{"term":"Proximal","definition":"Closer to the trunk or the point of origin.","ar":"قريب"},{"term":"Distal","definition":"Further from the trunk or the point of origin.","ar":"بعيد"},{"term":"Medial / Lateral","definition":"Medial is towards the midline, lateral is away from it.","ar":"إنسي / وحشي"},{"term":"Superior / Inferior","definition":"Superior is towards the head, inferior is towards the feet.","ar":"علوي / سفلي"},{"term":"Superficial / Deep","definition":"Superficial is nearer the skin, deep is further from it.","ar":"سطحي / عميق"},{"term":"Flexion / Extension","definition":"Flexion decreases the angle at a joint, extension increases it.","ar":"ثني / بسط"},{"term":"Abduction / Adduction","definition":"Abduction moves a limb away from the midline, adduction brings it back.","ar":"تبعيد / تقريب"},{"term":"Pronation / Supination","definition":"Pronation turns the palm down, supination turns it up.","ar":"كب / بطح"},{"term":"Thoracic cavity","definition":"The space bounded by the ribs and diaphragm, holding heart, lungs and mediastinum.","ar":"التجويف الصدري"},{"term":"Abdominopelvic cavity","definition":"The space from the diaphragm to the pelvic floor, holding gut, liver and pelvic organs.","ar":"التجويف البطني الحوضي"},{"term":"Retroperitoneal","definition":"Behind the peritoneal lining: kidneys, ureters, pancreas and great vessels lie here.","ar":"خلف الصفاق"},{"term":"Epigastric region","definition":"The upper central abdominal region, over the stomach and liver edge.","ar":"منطقة فم المعدة"},{"term":"Right iliac fossa","definition":"The lower right abdominal region, where the appendix and caecum sit.","ar":"الحفرة الحرقفية اليمنى"},{"term":"Dermatome","definition":"The strip of skin supplied by one spinal nerve root.","ar":"القطعة الجلدية"},{"term":"Motor unit","definition":"One motor neuron and all the muscle fibres it supplies.","ar":"الوحدة الحركية"},{"term":"Anastomosis","definition":"A connection between two vessels or tubes, natural or surgical.","ar":"مفاغرة"}],"name_ar":"الجسم: الأوضاع والمستويات والمناطق"},"level3":{"name":"Pathology and laboratory vocabulary","cards":[{"term":"Hypertrophy","definition":"Increase in cell size, giving a larger organ with the same number of cells.","ar":"تضخم الخلايا"},{"term":"Hyperplasia","definition":"Increase in cell number, usually in response to a stimulus.","ar":"فرط التنسج"},{"term":"Metaplasia","definition":"One mature cell type is replaced by another, often a response to irritation.","ar":"حؤول"},{"term":"Dysplasia","definition":"Disordered growth with abnormal cells, a precursor of malignancy.","ar":"خلل التنسج"},{"term":"Apoptosis","definition":"Programmed cell death, tidy and without inflammation.","ar":"الاستماتة"},{"term":"Necrosis","definition":"Cell death from injury, with inflammation and loss of tissue architecture.","ar":"تنخر"},{"term":"Infarction","definition":"Ischaemic necrosis of tissue after loss of its blood supply.","ar":"احتشاء"},{"term":"Ischaemia","definition":"Reduced blood flow to a tissue, which may be reversible.","ar":"نقص التروية"},{"term":"Oedema","definition":"Excess fluid in the interstitial space, producing swelling.","ar":"وذمة"},{"term":"Exudate vs transudate","definition":"Exudate is protein rich and inflammatory, transudate is protein poor from pressure imbalance.","ar":"نضح التهابي / رشح"},{"term":"Granuloma","definition":"A collection of macrophages and giant cells walling off a persistent agent.","ar":"ورم حبيبي"},{"term":"Thrombus vs embolus","definition":"A thrombus forms in place, an embolus travels and lodges elsewhere.","ar":"خثرة / صمة"},{"term":"Benign vs malignant","definition":"Benign tumours stay local and well differentiated, malignant ones invade and metastasise.","ar":"حميد / خبيث"},{"term":"Metastasis","definition":"Spread of malignant cells to a distant site through blood, lymph or seeding.","ar":"انتقال"},{"term":"Carcinoma in situ","definition":"Malignant cells confined by the basement membrane, not yet invasive.","ar":"سرطان موضعي"},{"term":"Anaemia","definition":"Haemoglobin below the reference range for age and sex.","ar":"فقر الدم"},{"term":"Leucocytosis","definition":"A raised white cell count, often a response to infection.","ar":"كثرة الكريات البيضاء"},{"term":"Culture and sensitivity","definition":"Growing an organism and testing which antibiotics inhibit it.","ar":"المزرعة والحساسية"},{"term":"Sensitivity / Specificity","definition":"Sensitivity finds the diseased, specificity excludes the healthy. Neither alone gives the probability of disease.","ar":"الحساسية / النوعية"},{"term":"Idiopathic / Iatrogenic","definition":"Idiopathic means no identifiable cause, iatrogenic means caused by medical care.","ar":"مجهول السبب / علاجي المنشأ"}],"name_ar":"مصطلحات علم الأمراض والمختبر"}},"clinical":{"level1":{"name":"History and examination language","cards":[{"term":"Symptom vs sign","definition":"A symptom is what the patient reports, a sign is what the examiner finds.","ar":"عرض / علامة"},{"term":"SOCRATES","definition":"Site, Onset, Character, Radiation, Associations, Timing, Exacerbating factors, Severity.","ar":"سقراط لأخذ القصة"},{"term":"Dyspnoea","definition":"Breathlessness perceived by the patient.","ar":"ضيق النفس"},{"term":"Orthopnoea","definition":"Breathlessness on lying flat, counted in pillows.","ar":"ضيق النفس الاضطجاعي"},{"term":"Paroxysmal nocturnal dyspnoea","definition":"Waking at night gasping, relieved by sitting up, typical of heart failure.","ar":"ضيق نفس ليلي انتيابي"},{"term":"Syncope","definition":"Transient loss of consciousness from cerebral hypoperfusion, with full recovery.","ar":"غشية"},{"term":"Vertigo","definition":"A false sense of movement, rotatory or swaying.","ar":"دوار"},{"term":"Claudication","definition":"Muscle pain on walking that resolves with rest, from arterial insufficiency.","ar":"عرج متقطع"},{"term":"Haemoptysis","definition":"Coughing up blood from the respiratory tract.","ar":"نفث الدم"},{"term":"Haematemesis","definition":"Vomiting blood, usually from the upper gastrointestinal tract.","ar":"تقيؤ دموي"},{"term":"Melaena","definition":"Black tarry stool from digested blood.","ar":"تغوط أسود"},{"term":"Nocturia","definition":"Waking at night to pass urine.","ar":"تبول ليلي"},{"term":"Tenesmus","definition":"A painful urge to defecate with little or nothing passed.","ar":"الزحير"},{"term":"Anosmia","definition":"Loss of the sense of smell.","ar":"فقد الشم"},{"term":"Photophobia","definition":"Light causes discomfort, common in meningitis and migraine.","ar":"رهاب الضوء"},{"term":"Guarding and rigidity","definition":"Involuntary abdominal wall tension, rigidity being the board-like extreme.","ar":"تصلب البطن"},{"term":"Rebound tenderness","definition":"Pain worse on releasing pressure, suggesting peritoneal irritation.","ar":"ألم الارتداد"},{"term":"Murmur","definition":"A sound from turbulent blood flow across a valve or shunt.","ar":"لغط قلبي"},{"term":"Crepitations","definition":"Crackling breath sounds from collapsed or fluid-filled alveoli.","ar":"خراخر"},{"term":"Pedal oedema","definition":"Fluid collecting in the feet and ankles, pitting on pressure.","ar":"وذمة الكاحل"}],"name_ar":"لغة القصة والفحص السريري"},"level2":{"name":"Investigations, procedures and drugs","cards":[{"term":"Full blood count","definition":"Haemoglobin, white cells and platelets, the first line haematology screen.","ar":"تعداد الدم الكامل"},{"term":"Urea and electrolytes","definition":"Renal function and the common electrolytes, sodium and potassium.","ar":"اليوريا والكهارل"},{"term":"Liver function tests","definition":"Bilirubin, transaminases, alkaline phosphatase and albumin.","ar":"وظائف الكبد"},{"term":"CRP and ESR","definition":"Acute phase markers of inflammation, neither is specific to one disease.","ar":"بروتين سي التفاعلي ومعدل الترسيب"},{"term":"Troponin","definition":"Cardiac protein released on myocyte injury, the marker for acute coronary syndrome.","ar":"التروبونين"},{"term":"HbA1c","definition":"Glycated haemoglobin reflecting average glucose over about three months.","ar":"الهيموغلوبين السكري"},{"term":"INR","definition":"Standardised prothrombin time used to dose warfarin and assess clotting.","ar":"نسبة الزمن الطبيعي الدولية"},{"term":"Blood cultures","definition":"Paired aerobic and anaerobic bottles taken before antibiotics in suspected sepsis.","ar":"مزارع الدم"},{"term":"Arterial blood gas","definition":"pH, carbon dioxide, oxygen and bicarbonate, showing ventilation and acid base state.","ar":"غازات الدم الشرياني"},{"term":"ECG","definition":"A twelve lead recording of cardiac electrical activity, showing rhythm and ischaemia.","ar":"تخطيط القلب"},{"term":"Echocardiography","definition":"Ultrasound of the heart showing valves, chambers and ejection fraction.","ar":"تخطيط القلب بالصدى"},{"term":"CT with contrast","definition":"Cross sectional imaging that shows acute bleeding, infarction and masses.","ar":"التصوير المقطعي بالصبغة"},{"term":"MRI","definition":"Magnetic resonance imaging, best for soft tissue, cord and brain.","ar":"التصوير بالرنين المغناطيسي"},{"term":"Ultrasound","definition":"Safe, real time imaging used for abdomen, vessels and obstetrics.","ar":"السونار"},{"term":"Endoscopy","definition":"A camera passed into the gut lumen for direct view and biopsy.","ar":"التنظير"},{"term":"Biopsy","definition":"A tissue sample examined histologically to give a definitive diagnosis.","ar":"خزعة"},{"term":"Lumbar puncture","definition":"CSF sampling from the lumbar subarachnoid space after excluding raised pressure.","ar":"البزل القطني"},{"term":"Central venous catheter","definition":"A line into a large vein for drugs, fluids and central pressure measurement.","ar":"القسطرة الوريدية المركزية"},{"term":"Urinary catheterisation","definition":"Drainage of the bladder, monitoring output and relieving retention.","ar":"قسطرة البول"},{"term":"Informed consent","definition":"Explaining indication, alternatives, risks and benefits before a procedure.","ar":"الموافقة المستنيرة"}],"name_ar":"الفحوصات والإجراءات والأدوية"},"level3":{"name":"Emergencies, safety and evidence","cards":[{"term":"Sepsis Six","definition":"Oxygen, cultures, antibiotics, fluids, lactate and urine output within one hour.","ar":"حزمة الإنتان الست"},{"term":"A to E assessment","definition":"Airway, Breathing, Circulation, Disability, Exposure, treating each before moving on.","ar":"التقييم المنهجي ABCD"},{"term":"NEWS2","definition":"A track and trigger score from observations that flags a deteriorating patient.","ar":"مقياس الإنذار المبكر"},{"term":"Red flag","definition":"A feature that raises the probability of serious disease and demands urgent action.","ar":"علامة خطورة"},{"term":"Time critical","definition":"A condition where delay to treatment directly worsens outcome, such as stroke or sepsis.","ar":"حالة حرجة زمنياً"},{"term":"DNACPR","definition":"A recorded decision that CPR would not succeed, made with the patient where possible.","ar":"عدم الإنعاش"},{"term":"Mental capacity","definition":"The ability to understand, retain, weigh and communicate a decision at that moment.","ar":"الأهلية الذهنية"},{"term":"Number needed to treat","definition":"How many patients must be treated for one to benefit.","ar":"العدد اللازم لعلاج واحد"},{"term":"Positive predictive value","definition":"The chance a positive test is truly positive, which depends on prevalence.","ar":"القيمة التنبؤية الإيجابية"},{"term":"Randomised controlled trial","definition":"Participants allocated by chance to intervention or control, the strongest design for causation.","ar":"تجربة عشوائية مضبوطة"},{"term":"Blinding","definition":"Keeping allocation hidden from patient, clinician or assessor to reduce bias.","ar":"التعمية"},{"term":"Confidence interval","definition":"The range of values likely to contain the true effect, showing precision.","ar":"فترة الثقة"},{"term":"Audit vs research","definition":"Audit checks practice against a standard, research creates new generalisable knowledge.","ar":"التدقيق / البحث"},{"term":"Differential diagnosis","definition":"A ranked list of plausible diagnoses kept open until evidence narrows it.","ar":"التشخيص التفريقي"},{"term":"Safety netting","definition":"Clear advice on what to watch for and when to return if things change.","ar":"شبكة الأمان"},{"term":"Polypharmacy","definition":"Many medicines taken together, raising interaction and adverse effect risk.","ar":"تعدد الأدوية"},{"term":"Deprescribing","definition":"Planned withdrawal of medicines that no longer give benefit.","ar":"إيقاف الأدوية غير اللازمة"},{"term":"Multidisciplinary team","definition":"Doctors, nurses, pharmacists and therapists planning care together.","ar":"الفريق متعدد التخصصات"},{"term":"Triage","definition":"Sorting patients by urgency so the sickest are seen first.","ar":"الفرز"},{"term":"Handover (SBAR)","definition":"Situation, Background, Assessment, Recommendation, a structured clinical handover.","ar":"تسليم الحالة"}],"name_ar":"الطوارئ والسلامة والطب المبني على الدليل"}}};
 
 let SAVE = loadSave();
 let current = null;
@@ -958,9 +828,11 @@ function paint(name) {
   const btn = document.querySelector('.nav-btn[data-view="' + name + '"]');
   if (btn) btn.classList.add('active');
   if (name === 'quiz') { renderQuizGrid(); updateHomeStatuses(); }
-  if (name === 'pbl') updateHomeStatuses();
+  if (name === 'pbl') renderPblHome();
   if (name === 'videos') renderVideos();
   if (name === 'osce') renderOsceHome();
+  if (name === 'flash') renderFlash();
+  if (name === 'settings') renderSettings();
   window.scrollTo(0, 0);
 }
 
@@ -1030,19 +902,24 @@ function startLevel(region, category, lvl) {
   showCase();
 }
 function catTitle(region, category) {
+  if (LANG === 'ar' && AR_CATS[region + '/' + category]) return AR_CATS[region + '/' + category];
   const byRegion = CATEGORY_TITLES[region];
   if (byRegion && byRegion[category]) return byRegion[category];
   return category;
 }
+function regionTitle(region) {
+  if (LANG === 'ar' && AR_REGIONS[region]) return AR_REGIONS[region];
+  return REGION_TITLES[region] || '';
+}
 function renderHeader() {
   const isQuiz = current.region === 'quiz';
   $('sim-title').textContent = isQuiz
-    ? 'Quiz: ' + catTitle(current.region, current.category)
-    : (REGION_TITLES[current.region] || '') + ': ' + catTitle(current.region, current.category);
-  $('level-pill').textContent = 'Level ' + current.level + '/' + totalLevels(current.region, current.category)
+    ? t('quiz.title') + ': ' + catTitle(current.region, current.category)
+    : regionTitle(current.region) + ': ' + catTitle(current.region, current.category);
+  $('level-pill').textContent = t('case.level') + ' ' + current.level + '/' + totalLevels(current.region, current.category)
     + ' \u00B7 ' + LEVEL_LABELS[current.level - 1];
   const doneCount = current.total - current.pool.length;
-  $('level-count').textContent = doneCount + '/' + current.total + ' answered';
+  $('level-count').textContent = doneCount + '/' + current.total + ' ' + t('case.answered');
   $('progress-fill').style.width = (current.total ? Math.round(doneCount / current.total * 100) : 0) + '%';
 }
 
@@ -1086,19 +963,17 @@ function showCase() {
   current.optionBtns = [];
   const isQuestion = !!tpl.stem;
   if (isQuestion) {
-    $('case-text').innerHTML = '<strong>Question</strong>' + tpl.stem;
+    $('case-text').innerHTML = '<strong>' + t('case.question') + '</strong>' + tpl.stem;
     $('diagnostic-text').style.display = 'none';
   } else {
     const isLimb = current.region === 'msk';
-    $('case-text').innerHTML = '<strong>Patient file</strong>' + buildVignette(tpl, isLimb);
+    $('case-text').innerHTML = '<strong>' + t('case.patientFile') + '</strong>' + buildVignette(tpl, isLimb);
     $('diagnostic-text').innerHTML = tpl.diagnostic || '';
     $('diagnostic-text').style.display = 'block';
   }
   const obj = $('case-objective');
   if (obj) {
-    obj.textContent = isQuestion
-      ? 'Learning objective: apply the basic-science principle behind this question, not a memorised fact.'
-      : 'Learning objective: explain the mechanism behind this presentation and justify your chosen diagnosis over the alternatives.';
+    obj.textContent = isQuestion ? t('case.objectiveQ') : t('case.objective');
   }
   $('feedback-box').style.display = 'none';
   $('next-button').style.display = 'none';
@@ -1126,7 +1001,7 @@ function checkAnswer(selIdx, btn) {
   if (!correct) { btn.style.background = '#c0392b'; btn.style.borderColor = '#e74c3c'; }
   const fb = $('feedback-box');
   fb.className = correct ? 'feedback correct-feedback' : 'feedback incorrect-feedback';
-  fb.innerHTML = '<strong>' + (correct ? 'Spot On.' : 'Incorrect Answer.') + '</strong><br><br>' + tpl.explanation;
+  fb.innerHTML = '<strong>' + (correct ? t('case.spotOn') : t('case.incorrect')) + '</strong><br><br>' + tpl.explanation;
   fb.style.display = 'block';
   const st = stateOf(current.region, current.category);
   st.done[tpl.id] = correct ? 'c' : 'w';
@@ -1151,12 +1026,12 @@ function finishLevel() {
   $('summary-view').style.display = 'block';
   const totalRun = current.runCorrect + current.runWrong;
   const acc = totalRun ? Math.round(current.runCorrect / totalRun * 100) : 0;
-  $('summary-title').textContent = 'Level ' + current.level + ' Complete \u2014 ' + LEVEL_LABELS[current.level - 1];
+  $('summary-title').textContent = t('case.levelComplete') + ' \u2014 ' + LEVEL_LABELS[current.level - 1];
   $('summary-stats').innerHTML =
-    '<span class="stat-correct">Correct: ' + current.runCorrect + '</span> \u00B7 ' +
-    '<span class="stat-wrong">Wrong: ' + current.runWrong + '</span> \u00B7 Accuracy: ' + acc + '%' +
-    '<br><span style="color:#8c9ba5">Overall: ' + st.correct + ' correct \u00B7 ' + st.wrong + ' wrong</span>';
-  $('next-level-btn').textContent = 'Next Level (' + LEVEL_LABELS[nxt - 1] + ')';
+    '<span class="stat-correct">' + t('case.correct') + ': ' + current.runCorrect + '</span> \u00B7 ' +
+    '<span class="stat-wrong">' + t('case.wrong') + ': ' + current.runWrong + '</span> \u00B7 ' + t('case.accuracy') + ': ' + acc + '%' +
+    '<br><span style="color:var(--dim)">' + t('case.overall') + ': ' + st.correct + ' / ' + st.wrong + '</span>';
+  $('next-level-btn').textContent = t('case.nextLevel') + ' (' + LEVEL_LABELS[nxt - 1] + ')';
 }
 function goNextLevel() {
   const nxt = nextLevel(current.region, current.category);
@@ -1185,14 +1060,14 @@ function showEnd(region, category) {
   $('next-button').style.display = 'none';
   $('sim-title').textContent = region === 'quiz'
     ? 'Quiz: ' + catTitle(region, category)
-    : (REGION_TITLES[region] || '') + ': ' + catTitle(region, category);
-  $('level-pill').textContent = 'Section Completed';
+    : regionTitle(region) + ': ' + catTitle(region, category);
+  $('level-pill').textContent = t('case.sectionDone');
   $('level-count').textContent = '';
   $('progress-fill').style.width = '100%';
   $('end-stats').innerHTML =
     '<span class="stat-correct">Correct: ' + st.correct + '</span> \u00B7 ' +
     '<span class="stat-wrong">Wrong: ' + st.wrong + '</span>' +
-    '<br>Total answered: ' + (st.correct + st.wrong);
+    '<br>' + t('case.totalAnswered') + ': ' + (st.correct + st.wrong);
   current = null;
 }
 function resetSection() {
@@ -1300,8 +1175,8 @@ function renderVideos() {
   if (!sec) { r.innerHTML = '<p class="vid-note">No videos in this section yet.</p>'; return; }
   const ar = sec.ar || [], en = sec.en || [];
   let html = '<p class="vid-crumb">' + esc(subjectLabel(vidsState.subject)) + ' &rsaquo; <b>' + esc(sec.name) + '</b></p>';
-  html += langBlock('lang-ar', 'Arabic lectures', 'AR', ar);
-  html += langBlock('lang-en', 'English lectures', 'EN', en);
+  html += langBlock('lang-ar', t('video.ar'), 'AR', ar);
+  html += langBlock('lang-en', t('video.en'), 'EN', en);
   if (!ar.length && !en.length) html += '<p class="vid-note">No videos in this section yet.</p>';
   if (!en.length) html += '<p class="vid-empty">No English lectures for this section yet.</p>';
   if (!ar.length) html += '<p class="vid-empty">No Arabic lectures for this section yet.</p>';
@@ -1318,6 +1193,8 @@ function videosBack() {
 }
 
 // ---------- home screen statuses and category metadata ----------
+function refreshPblHome() { renderPblHome(); }
+
 function updateHomeStatuses() {
   document.querySelectorAll('.start-box[data-region]').forEach(btn => {
     const region = btn.getAttribute('data-region');
@@ -1330,11 +1207,11 @@ function updateHomeStatuses() {
     const total = totalLevels(region, category);
     const lvl = nextLevel(region, category);
     let status;
-    if (lvl === null) status = '\u2713 Section done \u00B7 retry available';
+    if (lvl === null) status = '\u2713 ' + t('case.sectionDone');
     else {
       const all = levelCases(region, category, lvl);
       const doneCount = all.filter(c => st.done[c.id]).length;
-      status = 'Level ' + lvl + '/' + total + ' \u00B7 ' + doneCount + '/' + all.length + ' answered';
+      status = t('case.level') + ' ' + lvl + '/' + total + ' \u00B7 ' + doneCount + '/' + all.length + ' ' + t('case.answered');
     }
     let span = btn.querySelector('.cat-status');
     if (!span) { span = document.createElement('span'); span.className = 'cat-status'; btn.appendChild(span); }
@@ -1569,6 +1446,34 @@ function osceMark(region, category) {
   p[k] = (p[k] || 0) + 1;
   try { localStorage.setItem(OSCE_KEY, JSON.stringify(p)); } catch (e) {}
 }
+const PBL_GROUPS = [
+  [['msk', 'nerves'], ['msk', 'muscles'], ['msk', 'bones'], ['msk', 'general']],
+  [['embryology', 'level1'], ['embryology', 'level2'], ['embryology', 'level3'], ['embryology', 'level4']],
+  [['pathology', 'general']],
+  [['physiology', 'cell'], ['physiology', 'nerve_muscle'], ['physiology', 'blood'], ['physiology', 'immune'],
+   ['physiology', 'cardio'], ['physiology', 'resp'], ['physiology', 'renal'], ['physiology', 'git'],
+   ['physiology', 'endocrine'], ['physiology', 'repro']]
+];
+
+function renderPblHome() {
+  const root = $('pbl-grid');
+  if (!root) return;
+  let html = '';
+  PBL_GROUPS.forEach(group => {
+    html += '<h2 class="block-title">' + regionTitle(group[0][0]) + '</h2>';
+    html += '<div class="cat-grid">';
+    group.forEach(pair => {
+      const region = pair[0], category = pair[1];
+      if (!casesData[region] || !casesData[region][category]) return;
+      html += '<button class="start-box" onclick="openCategory(\'' + region + '\',\'' + category + '\')" data-region="' + region + '" data-category="' + category + '">' +
+        esc(catTitle(region, category)) + '</button>';
+    });
+    html += '</div>';
+  });
+  root.innerHTML = html;
+  updateHomeStatuses();
+}
+
 function renderOsceHome() {
   const root = $('osce-home-grid');
   if (!root) return;
@@ -1619,12 +1524,12 @@ function startOSCE(region, category, lvl) {
   $('app-header').style.display = 'none';
   $('simulator-screen').style.display = 'none';
   $('osce-screen').style.display = 'block';
-  $('osce-title').textContent = catTitle(region, category) + ' \u00B7 OSCE station';
+  $('osce-title').textContent = catTitle(region, category) + ' \u00B7 ' + t('osce.station');
   osce.transcript = [];
   const chief = (osce.st.chief || '').replace(/\.$/, '');
   osceSay('Hello doctor. ' + (osce.st.persona.age ? 'I am ' + osce.st.persona.age + ' years old. ' : '') +
-    'I was asked to come and talk to you about what has been going on.', 'patient');
-  osceSay('Presentation note: ' + chief.charAt(0).toUpperCase() + chief.slice(1) + '.', 'system');
+    t('osce.patientIntro'), 'patient');
+  osceSay(t('osce.note') + ': ' + chief.charAt(0).toUpperCase() + chief.slice(1) + '.', 'system');
   osceGo('history');
   window.scrollTo(0, 0);
 }
@@ -1649,7 +1554,7 @@ function osceAsk() {
   osceSay(q, 'you');
   const intent = OSCE_INTENTS.find(i => i.re.test(q));
   if (!intent) {
-    osceSay('I am not sure I follow, doctor. Could you ask that another way?', 'patient');
+    osceSay(t('osce.confused'), 'patient');
     renderOscePanel();
     return;
   }
@@ -1657,7 +1562,7 @@ function osceAsk() {
   const s = osce.st;
   let reply;
   if (intent.key === 'associations') reply = (s.history.associations || []).join(' ') || 'Nothing else that I noticed.';
-  else if (intent.key === 'redflags') reply = s.redFlags.length ? 'Now that you ask: ' + s.redFlags.join(', ') + '.' : 'Nothing like that, doctor.';
+  else if (intent.key === 'redflags') reply = s.redFlags.length ? t('osce.redflagAsk') + s.redFlags.join(', ') + '.' : t('osce.nothing');
   else if (intent.key === 'pmh') reply = s.history.pmh || 'No long-standing illnesses that I know of.';
   else if (intent.key === 'drugs') reply = s.history.drugs || 'Only what the doctor prescribed. No allergies.';
   else if (intent.key === 'family') reply = s.history.family || 'Nobody in the family has had this.';
@@ -1690,9 +1595,9 @@ function osceQuick(key) {
   osce.asked[key] = true;
   const s = osce.st;
   let reply;
-  if (key === 'redflags') reply = s.redFlags.length ? 'Now that you ask: ' + s.redFlags.join(', ') + '.' : 'Nothing like that, doctor.';
-  else if (key === 'associations') reply = (s.history.associations || []).join(' ') || 'Nothing else that I noticed.';
-  else reply = s.history[key] || 'I cannot really say, doctor.';
+  if (key === 'redflags') reply = s.redFlags.length ? t('osce.redflagAsk') + s.redFlags.join(', ') + '.' : t('osce.nothing');
+  else if (key === 'associations') reply = (s.history.associations || []).join(' ') || t('osce.nothingElse');
+  else reply = s.history[key] || t('osce.cannotSay');
   osceSay(reply, 'patient');
   renderOscePanel();
 }
@@ -1788,15 +1693,15 @@ function osceFinish() {
   const bar = (label, value, max) => '<div class="score-row"><span>' + label + '</span>' +
     '<div class="score-track"><div class="score-fill" style="width:' + Math.round(value / max * 100) + '%"></div></div>' +
     '<b>' + value + '/' + max + '</b></div>';
-  let html = '<div class="osce-card"><h3>' + (sc.pass ? 'Pass' : 'Not yet a pass') + ': ' + sc.total + '/100</h3>' +
-    bar('History coverage', sc.history, 25) + bar('Red flags', sc.redflags, 20) +
-    bar('Examination', sc.exam, 15) + bar('Investigations', sc.ix, 15) +
-    bar('Differential diagnosis', sc.ddx, 10) + bar('Final diagnosis', sc.dx, 10) +
-    bar('Management safety', sc.mgmt, 10) +
-    '<p class="osce-model"><b>Model answer:</b> ' + esc(s.diagnosis) + '. ' + esc(s.explanation) + '</p>' +
-    '<p class="osce-model"><b>Safe management:</b> ' + esc(s.management.join('; ')) + '.</p>';
-  html += '<h4>Examiner notes</h4><ul class="osce-notes">' +
-    (sc.notes.length ? sc.notes.map(n => '<li>' + esc(n) + '</li>').join('') : '<li>Nothing missed. Clean station.</li>') +
+  let html = '<div class="osce-card"><h3>' + (sc.pass ? t('osce.pass') : t('osce.fail')) + ': ' + sc.total + '/100</h3>' +
+    bar(t('osce.historyCoverage'), sc.history, 25) + bar(t('osce.redflags'), sc.redflags, 20) +
+    bar(t('osce.examination'), sc.exam, 15) + bar(t('osce.investigations'), sc.ix, 15) +
+    bar(t('osce.ddxScore'), sc.ddx, 10) + bar(t('osce.dxScore'), sc.dx, 10) +
+    bar(t('osce.mgmtScore'), sc.mgmt, 10) +
+    '<p class="osce-model"><b>' + t('osce.model') + ':</b> ' + esc(s.diagnosis) + '. ' + esc(s.explanation) + '</p>' +
+    '<p class="osce-model"><b>' + t('osce.safe') + ':</b> ' + esc(s.management.join('; ')) + '.</p>';
+  html += '<h4>' + t('osce.notes') + '</h4><ul class="osce-notes">' +
+    (sc.notes.length ? sc.notes.map(n => '<li>' + esc(n) + '</li>').join('') : '<li>' + t('osce.clean') + '</li>') +
     '</ul>';
   html += '<div class="osce-actions"><button class="btn-secondary" onclick="osceRetry()">Retry station</button>' +
     '<button class="btn-secondary" onclick="osceNewPatient()">New patient, same section</button>' +
@@ -1831,7 +1736,7 @@ function renderOscePanel() {
   if (!osce) return;
   const s = osce.st;
   const step = osce.step;
-  const steps = [['history', 'History'], ['exam', 'Examination'], ['ix', 'Investigations'], ['ddx', 'Differential'], ['plan', 'Diagnosis and plan']];
+  const steps = [['history', t('osce.history')], ['exam', t('osce.exam')], ['ix', t('osce.ix')], ['ddx', t('osce.ddx')], ['plan', t('osce.plan')]];
   let html = '<div class="osce-stepper">';
   steps.forEach((pair, i) => {
     const done = (pair[0] === 'history' && Object.keys(osce.asked).length) ||
@@ -1845,29 +1750,29 @@ function renderOscePanel() {
   html += '</div>';
 
   if (step === 'history') {
-    html += '<div class="osce-hintrow">Ask by typing, or tap a prompt. The red flag screen is the step most students skip.</div>' +
-      '<div class="osce-inputrow"><input id="osce-q" placeholder="Ask the patient a question" onkeydown="if(event.key===\'Enter\')osceAsk()">' +
-      '<button class="osce-send" onclick="osceAsk()">Ask</button></div>' +
+    html += '<div class="osce-hintrow">' + t('osce.hintHistory') + '</div>' +
+      '<div class="osce-inputrow"><input id="osce-q" placeholder="' + t('osce.qPh') + '" onkeydown="if(event.key===\'Enter\')osceAsk()">' +
+      '<button class="osce-send" onclick="osceAsk()">' + t('osce.ask') + '</button></div>' +
       '<div class="osce-chips">' + OSCE_INTENTS.slice(0, 9).map(i =>
         '<button class="osce-chip" onclick="osceQuick(\'' + i.key + '\')">' + i.label + '</button>').join('') +
       '<button class="osce-chip osce-chip-flag" onclick="osceQuick(\'redflags\')">Screen for red flags</button></div>';
   } else if (step === 'exam') {
-    html += '<div class="osce-hintrow">Request only the examinations you would actually perform.</div><div class="osce-chips">' +
+    html += '<div class="osce-hintrow">' + t('osce.hintExam') + '</div><div class="osce-chips">' +
       EXAM_SYSTEMS.map(x => '<button class="osce-chip' + (osce.examDone[x.key] ? ' picked' : '') + '" onclick="osceExamine(\'' + x.key + '\')">' + x.label + '</button>').join('') + '</div>';
   } else if (step === 'ix') {
-    html += '<div class="osce-hintrow">Every unnecessary test is named on the scorecard.</div><div class="osce-chips">' +
+    html += '<div class="osce-hintrow">' + t('osce.hintIx') + '</div><div class="osce-chips">' +
       IX_MENU.map(x => '<button class="osce-chip' + (osce.ixOrdered.some(i => i.key === x.key) ? ' picked' : '') + '" onclick="osceOrderIx(\'' + x.key + '\')">' + x.label + '</button>').join('') + '</div>';
   } else if (step === 'ddx') {
-    html += '<div class="osce-hintrow">Pick up to three, most likely first.</div><div class="osce-chips">' +
+    html += '<div class="osce-hintrow">' + t('osce.hintDdx') + '</div><div class="osce-chips">' +
       s.ddx.map(o => '<button class="osce-chip' + (osce.ddx.indexOf(o) >= 0 ? ' picked' : '') + '" onclick="osceToggleDdx(this.dataset.o,this)" data-o="' + esc(o) + '">' + esc(o) + '</button>').join('') +
       '</div><div class="osce-inputrow"><input placeholder="Reasoning (optional)" value="' + esc(osce.ddxNote) + '" oninput="osce.ddxNote=this.value"></div>';
   } else {
-    html += '<div class="osce-hintrow">Commit to one diagnosis and a safe plan.</div>' +
+    html += '<div class="osce-hintrow">' + t('osce.hintPlan') + '</div>' +
       '<select class="osce-select" onchange="osce.finalDx=this.value">' +
-      '<option value="">Choose your diagnosis</option>' +
+      '<option value="">' + t('osce.pickDx') + '</option>' +
       s.ddx.map(o => '<option' + (osce.finalDx === o ? ' selected' : '') + '>' + esc(o) + '</option>').join('') + '</select>' +
       '<textarea class="osce-plan" placeholder="Management plan: immediate steps, treatment, referral, safety net" oninput="osce.plan=this.value">' + esc(osce.plan) + '</textarea>' +
-      '<button class="osce-finish" onclick="osceFinish()">Submit station</button>';
+      '<button class="osce-finish" onclick="osceFinish()">' + t('osce.submit') + '</button>';
   }
   $('osce-panel').innerHTML = html;
 }
@@ -1904,19 +1809,446 @@ function tutorHint() {
   const fb = $('feedback-box');
   fb.style.display = 'block';
   fb.className = 'feedback';
-  fb.innerHTML = '<strong>Socratic prompt</strong><br><br>' + q1 + '<br><br>' + q2 +
-    '<br><br><span style="color:#8c9ba5">Reveal the reasoning: ' + esc(first) + '</span>';
+  fb.innerHTML = '<strong>' + t('case.socratic') + '</strong><br><br>' + q1 + '<br><br>' + q2 +
+    '<br><br><span style="color:var(--dim)">' + t('case.reasoning') + ': ' + esc(first) + '</span>';
   if (llmReady()) {
     llmCall(OSCE_SYSTEM_PROMPTS.tutor, 'Case: ' + (tpl.mechanism || tpl.stem) + '. Findings: ' + (tpl.exam || '') +
       '. Ask one question.').then(txt => {
-        if (txt) fb.innerHTML = '<strong>Socratic prompt</strong><br><br>' + esc(txt);
+        if (txt) fb.innerHTML = '<strong>' + t('case.socratic') + '</strong><br><br>' + esc(txt);
       });
   }
+}
+
+// ============ YazMed app shell: language, theme, settings, flashcards ============
+
+const I18N = {
+  en: {
+    'nav.home': 'Home', 'nav.videos': 'Video Tutorials', 'nav.pbl': 'Basic PBL',
+    'nav.osce': 'OSCE Simulator', 'nav.quiz': 'Quizzes', 'nav.flash': 'Terminology',
+    'nav.about': 'About', 'nav.contact': 'Contact Me', 'nav.settings': 'Settings', 'nav.back': 'Back',
+    'landing.welcome': 'welcome to',
+    'landing.title': 'YazMed',
+    'landing.sub': 'Clinical PBL cases, an OSCE simulator, terminology flashcards, a quiz bank and video tutorials for the medical years, organised by system in one place.',
+    'landing.videos': 'Video Tutorials', 'landing.pbl': 'Basic PBL Simulator',
+    'landing.osce': 'OSCE Simulator', 'landing.quiz': 'Quiz Bank',
+    'landing.flash': 'Terminology Flashcards',
+    'stats.cases': 'PBL cases', 'stats.stations': 'OSCE stations', 'stats.mcqs': 'MCQs',
+    'stats.cards': 'flashcards', 'stats.videos': 'lectures',
+    'path.learn': 'Learn', 'path.learnText': 'Lectures by system, Arabic first and English underneath, plus flashcards for the language of medicine.',
+    'path.practise': 'Practise', 'path.practiseText': 'Progressive PBL cases that make you commit to a diagnosis and explain the mechanism.',
+    'path.prove': 'Prove it', 'path.proveText': 'OSCE stations and system quizzes that score you the way an examiner would.',
+    'pbl.welcome': 'Basic PBL simulator', 'pbl.title': 'Choose a System',
+    'pbl.note': 'Progressive case triggers, mechanism before diagnosis, progress saved level by level, Socratic hints when you stall.',
+    'osce.welcome': 'OSCE simulator', 'osce.title': 'Choose a Station',
+    'osce.note': 'A virtual patient, focused examination, investigations, a differential and a plan. Every station ends with an examiner scorecard out of 100, pass mark 60.',
+    'quiz.title': 'Quiz Bank',
+    'quiz.note': 'MCQs by system, split into levels that unlock as you finish. The clinical half covers the subjects you meet on the wards.',
+    'quiz.basic': 'Basic Sciences', 'quiz.clinical': 'Clinical',
+    'video.title': 'Video Tutorials', 'video.basic': 'Basic Sciences', 'video.clinical': 'Clinical',
+    'video.ar': 'Arabic lectures', 'video.en': 'English lectures', 'video.topics': 'Back to topics',
+    'video.sections': 'sections', 'video.videos': 'videos',
+    'flash.title': 'Terminology Flashcards',
+    'flash.note': 'Medical language in two tracks: basic word building and clinical usage. Each track runs from first year to final year.',
+    'flash.basic': 'Basic terminology', 'flash.clinical': 'Clinical terminology',
+    'flash.level': 'Level', 'flash.cards': 'cards', 'flash.known': 'known',
+    'flash.flip': 'Flip card', 'flash.next': 'Next', 'flash.prev': 'Previous',
+    'flash.markKnown': 'Mark as known', 'flash.knownDone': 'Known', 'flash.shuffle': 'Shuffle',
+    'flash.reset': 'Reset progress', 'flash.back': 'Back to levels',
+    'flash.hintFront': 'Tap the card to reveal the definition',
+    'flash.hintBack': 'Tap again to hide the definition',
+    'flash.empty': 'No cards in this level yet.',
+    'settings.title': 'Settings',
+    'settings.note': 'Language, appearance and study tools. Everything is stored in this browser only.',
+    'settings.language': 'Language', 'settings.langHint': 'Interface language. Case and question text stays in English.',
+    'settings.theme': 'Appearance', 'settings.themeSystem': 'System', 'settings.themeLight': 'Light', 'settings.themeDark': 'Dark',
+    'settings.themeHint': 'System follows your device setting. Light uses the warm paper background.',
+    'settings.size': 'Text size', 'settings.sizeS': 'Small', 'settings.sizeM': 'Medium', 'settings.sizeL': 'Large',
+    'settings.sizeHint': 'Applies to the whole site straight away.',
+    'settings.ai': 'AI endpoint for the OSCE patient and examiner',
+    'settings.aiHint': 'Optional. An OpenAI-compatible chat endpoint. Leave empty and the built-in responder runs everything offline.',
+    'settings.endpoint': 'Endpoint', 'settings.key': 'API key', 'settings.model': 'Model',
+    'settings.save': 'Save', 'settings.saved': 'Saved.',
+    'settings.data': 'Your progress', 'settings.dataHint': 'Clears what this browser remembers about your study progress.',
+    'settings.resetPbl': 'Reset PBL progress', 'settings.resetOsce': 'Reset OSCE stations',
+    'settings.resetFlash': 'Reset flashcards', 'settings.resetAll': 'Reset everything',
+    'settings.resetDone': 'Cleared.',
+    'case.level': 'Level', 'case.answered': 'answered', 'case.correct': 'Correct', 'case.wrong': 'Wrong',
+    'case.accuracy': 'Accuracy', 'case.overall': 'Overall', 'case.spotOn': 'Spot On.',
+    'case.incorrect': 'Incorrect Answer.', 'case.next': 'Next Case', 'case.tutor': 'Ask the tutor for a hint',
+    'case.objective': 'Learning objective: explain the mechanism behind this presentation and justify your chosen diagnosis over the alternatives.',
+    'case.objectiveQ': 'Learning objective: apply the basic-science principle behind this question, not a memorised fact.',
+    'case.patientFile': 'Patient file', 'case.question': 'Question',
+    'case.levelComplete': 'Level Complete', 'case.sectionDone': 'Section Completed',
+    'case.retryLevel': 'Retry Level', 'case.nextLevel': 'Next Level', 'case.backHome': 'Back to Home',
+    'case.retrySection': 'Retry Section', 'case.totalAnswered': 'Total answered',
+    'case.socratic': 'Socratic prompt', 'case.reasoning': 'Reveal the reasoning',
+    'osce.station': 'OSCE station', 'osce.history': 'History', 'osce.exam': 'Examination',
+    'osce.ix': 'Investigations', 'osce.ddx': 'Differential', 'osce.plan': 'Diagnosis and plan',
+    'osce.ask': 'Ask', 'osce.submit': 'Submit station', 'osce.retry': 'Retry station',
+    'osce.newPatient': 'New patient, same section', 'osce.backStations': 'Back to stations',
+    'osce.aiSettings': 'AI settings', 'osce.pickDx': 'Choose your diagnosis',
+    'osce.hintHistory': 'Ask by typing, or tap a prompt. The red flag screen is the step most students skip.',
+    'osce.hintExam': 'Request only the examinations you would actually perform.',
+    'osce.hintIx': 'Every unnecessary test is named on the scorecard.',
+    'osce.hintDdx': 'Pick up to three, most likely first.',
+    'osce.hintPlan': 'Commit to one diagnosis and a safe plan.',
+    'osce.qPh': 'Ask the patient a question', 'osce.planPh': 'Management plan: immediate steps, treatment, referral, safety net',
+    'osce.reasonPh': 'Reasoning (optional)', 'osce.model': 'Model answer', 'osce.safe': 'Safe management',
+    'osce.notes': 'Examiner notes', 'osce.clean': 'Nothing missed. Clean station.',
+    'osce.pass': 'Pass', 'osce.fail': 'Not yet a pass',
+    'osce.historyCoverage': 'History coverage', 'osce.redflags': 'Red flags', 'osce.examination': 'Examination',
+    'osce.investigations': 'Investigations', 'osce.ddxScore': 'Differential diagnosis',
+    'osce.dxScore': 'Final diagnosis', 'osce.mgmtScore': 'Management safety',
+    'osce.patientIntro': 'I was asked to come and talk to you about what has been going on.',
+    'osce.note': 'Presentation note', 'osce.confused': 'I am not sure I follow, doctor. Could you ask that another way?',
+    'osce.nothing': 'Nothing like that, doctor.', 'osce.nothingElse': 'Nothing else that I noticed.',
+    'osce.cannotSay': 'I cannot really say, doctor.', 'osce.redflagAsk': 'Now that you ask: ',
+    'footer.tagline': 'Medical learning platform',
+    'footer.rights': 'Built by a medical student, for medical students.'
+  },
+  ar: {
+    'nav.home': 'الرئيسية', 'nav.videos': 'مكتبة الفيديو', 'nav.pbl': 'حالات أساسية',
+    'nav.osce': 'محاكي OSCE', 'nav.quiz': 'بنك الأسئلة', 'nav.flash': 'المصطلحات',
+    'nav.about': 'عن المنصة', 'nav.contact': 'اتصل بي', 'nav.settings': 'الإعدادات', 'nav.back': 'رجوع',
+    'landing.welcome': 'مرحباً بك في',
+    'landing.title': 'YazMed',
+    'landing.sub': 'حالات تعلم قائمة على المشكلات، ومحاكي امتحان سريري، وبطاقات مصطلحات، وبنك أسئلة، ومكتبة فيديو لسنوات الطب، مرتبة حسب الأجهزة في مكان واحد.',
+    'landing.videos': 'مكتبة الفيديو', 'landing.pbl': 'محاكي الحالات الأساسية',
+    'landing.osce': 'محاكي OSCE', 'landing.quiz': 'بنك الأسئلة',
+    'landing.flash': 'بطاقات المصطلحات',
+    'stats.cases': 'حالة تدريبية', 'stats.stations': 'محطة OSCE', 'stats.mcqs': 'سؤال اختيار',
+    'stats.cards': 'بطاقة مصطلحات', 'stats.videos': 'محاضرة',
+    'path.learn': 'تعلّم', 'path.learnText': 'محاضرات مرتبة حسب الجهاز، عربي أولاً وإنجليزي تحته، مع بطاقات لمصطلحات الطب.',
+    'path.practise': 'تدرّب', 'path.practiseText': 'حالات متتابعة تُلزمك باختيار التشخيص وشرح الميكانيزم.',
+    'path.prove': 'أثبت', 'path.proveText': 'محطات OSCE وأسئلة الأنظمة التي تقيّمك كما يفعل الممتحن.',
+    'pbl.welcome': 'محاكي الحالات الأساسية', 'pbl.title': 'اختر جهازاً',
+    'pbl.note': 'حالات متتابعة، الميكانيزم قبل التشخيص، تقدم محفوظ لكل مستوى، وتلميحات سقراطية عند التعثر.',
+    'osce.welcome': 'محاكي OSCE', 'osce.title': 'اختر محطة',
+    'osce.note': 'مريض افتراضي، فحص موجّه، فحوصات، تشخيص تفريقي وخطة. كل محطة تنتهي ببطاقة تقييم من مئة، والنجاح عند ستين.',
+    'quiz.title': 'بنك الأسئلة',
+    'quiz.note': 'أسئلة اختيار من متعدد حسب الجهاز، مقسمة إلى مستويات تُفتح بالتتابع. النصف السريري يغطي مواد العنقود السريري.',
+    'quiz.basic': 'العلوم الأساسية', 'quiz.clinical': 'العلوم السريرية',
+    'video.title': 'مكتبة الفيديو', 'video.basic': 'العلوم الأساسية', 'video.clinical': 'العلوم السريرية',
+    'video.ar': 'محاضرات عربية', 'video.en': 'محاضرات إنجليزية', 'video.topics': 'رجوع إلى الموضوعات',
+    'video.sections': 'أقسام', 'video.videos': 'فيديو',
+    'flash.title': 'بطاقات المصطلحات',
+    'flash.note': 'لغة الطب في مسارين: بناء المصطلح الأساسي والاستخدام السريري. كل مسار من السنة الأولى إلى السنة النهائية.',
+    'flash.basic': 'المصطلحات الأساسية', 'flash.clinical': 'المصطلحات السريرية',
+    'flash.level': 'المستوى', 'flash.cards': 'بطاقة', 'flash.known': 'محفوظة',
+    'flash.flip': 'اقلب البطاقة', 'flash.next': 'التالي', 'flash.prev': 'السابق',
+    'flash.markKnown': 'حفظتها', 'flash.knownDone': 'محفوظة', 'flash.shuffle': 'خلط',
+    'flash.reset': 'تصفير التقدم', 'flash.back': 'رجوع إلى المستويات',
+    'flash.hintFront': 'اضغط البطاقة لإظهار التعريف',
+    'flash.hintBack': 'اضغط مرة أخرى لإخفاء التعريف',
+    'flash.empty': 'لا توجد بطاقات في هذا المستوى بعد.',
+    'settings.title': 'الإعدادات',
+    'settings.note': 'اللغة والمظهر وأدوات الدراسة. كل شيء يُحفظ في هذا المتصفح فقط.',
+    'settings.language': 'اللغة', 'settings.langHint': 'لغة الواجهة. نصوص الحالات والأسئلة تبقى بالإنجليزية.',
+    'settings.theme': 'المظهر', 'settings.themeSystem': 'النظام', 'settings.themeLight': 'فاتح', 'settings.themeDark': 'داكن',
+    'settings.themeHint': 'خيار النظام يتبع إعداد جهازك. الفاتح يستخدم خلفية ورقية دافئة.',
+    'settings.size': 'حجم الخط', 'settings.sizeS': 'صغير', 'settings.sizeM': 'متوسط', 'settings.sizeL': 'كبير',
+    'settings.sizeHint': 'يُطبق على الموقع كله فوراً.',
+    'settings.ai': 'واجهة الذكاء الاصطناعي للمريض والممتحن',
+    'settings.aiHint': 'اختياري. أي واجهة متوافقة مع OpenAI. إذا تُركت فارغة يعمل الرد المدمج دون إنترنت.',
+    'settings.endpoint': 'الرابط', 'settings.key': 'المفتاح', 'settings.model': 'الموديل',
+    'settings.save': 'حفظ', 'settings.saved': 'تم الحفظ.',
+    'settings.data': 'تقدمك', 'settings.dataHint': 'يمسح ما يحفظه هذا المتصفح عن تقدمك الدراسي.',
+    'settings.resetPbl': 'تصفير الحالات', 'settings.resetOsce': 'تصفير محطات OSCE',
+    'settings.resetFlash': 'تصفير البطاقات', 'settings.resetAll': 'تصفير الكل',
+    'settings.resetDone': 'تم المسح.',
+    'case.level': 'المستوى', 'case.answered': 'تمت الإجابة', 'case.correct': 'صحيح', 'case.wrong': 'خطأ',
+    'case.accuracy': 'الدقة', 'case.overall': 'الإجمالي', 'case.spotOn': 'إجابة صحيحة.',
+    'case.incorrect': 'إجابة خاطئة.', 'case.next': 'الحالة التالية', 'case.tutor': 'اطلب تلميحاً من المدرّس',
+    'case.objective': 'هدف التعلم: اشرح الميكانيزم وراء هذا العرض وبرّر تشخيصك مقابل البدائل.',
+    'case.objectiveQ': 'هدف التعلم: طبّق المبدأ العلمي وراء هذا السؤال لا مجرد حفظ المعلومة.',
+    'case.patientFile': 'ملف المريض', 'case.question': 'سؤال',
+    'case.levelComplete': 'اكتمل المستوى', 'case.sectionDone': 'اكتمل القسم',
+    'case.retryLevel': 'إعادة المستوى', 'case.nextLevel': 'المستوى التالي', 'case.backHome': 'رجوع للرئيسية',
+    'case.retrySection': 'إعادة القسم', 'case.totalAnswered': 'إجمالي الإجابات',
+    'case.socratic': 'سؤال سقراطي', 'case.reasoning': 'اكشف الاستدلال',
+    'osce.station': 'محطة OSCE', 'osce.history': 'القصة المرضية', 'osce.exam': 'الفحص',
+    'osce.ix': 'الفحوصات', 'osce.ddx': 'التشخيص التفريقي', 'osce.plan': 'التشخيص والخطة',
+    'osce.ask': 'اسأل', 'osce.submit': 'إنهاء المحطة', 'osce.retry': 'إعادة المحطة',
+    'osce.newPatient': 'مريض جديد، نفس القسم', 'osce.backStations': 'رجوع إلى المحطات',
+    'osce.aiSettings': 'إعدادات الذكاء', 'osce.pickDx': 'اختر تشخيصك',
+    'osce.hintHistory': 'اسأل بالكتابة أو اختر سؤالاً جاهزاً. فحص العلامات الخطرة هو الخطوة التي ينساها معظم الطلاب.',
+    'osce.hintExam': 'اطلب فقط الفحوصات التي ستجريها فعلاً.',
+    'osce.hintIx': 'كل فحص غير ضروري يُذكر في التقييم.',
+    'osce.hintDdx': 'اختر حتى ثلاثة، الأرجح أولاً.',
+    'osce.hintPlan': 'التزم بتشخيص واحد وخطة آمنة.',
+    'osce.qPh': 'اسأل المريض سؤالاً', 'osce.planPh': 'خطة العلاج: الخطوات الفورية، العلاج، الإحالة، وشبكة الأمان',
+    'osce.reasonPh': 'الاستدلال (اختياري)', 'osce.model': 'الإجابة النموذجية', 'osce.safe': 'التدبير الآمن',
+    'osce.notes': 'ملاحظات الممتحن', 'osce.clean': 'لا شيء فاتك. محطة نظيفة.',
+    'osce.pass': 'ناجح', 'osce.fail': 'لم تصل إلى النجاح بعد',
+    'osce.historyCoverage': 'تغطية القصة', 'osce.redflags': 'العلامات الخطرة', 'osce.examination': 'الفحص',
+    'osce.investigations': 'الفحوصات', 'osce.ddxScore': 'التشخيص التفريقي',
+    'osce.dxScore': 'التشخيص النهائي', 'osce.mgmtScore': 'سلامة التدبير',
+    'osce.patientIntro': 'طُلب مني أن آتي وأتحدث معك عمّا يجري.',
+    'osce.note': 'ملاحظة العرض', 'osce.confused': 'لم أفهم تماماً يا دكتور، هل يمكنك صياغة السؤال بطريقة أخرى؟',
+    'osce.nothing': 'لا شيء من هذا يا دكتور.', 'osce.nothingElse': 'لا شيء آخر لاحظته.',
+    'osce.cannotSay': 'لا أستطيع الجزم يا دكتور.', 'osce.redflagAsk': 'بما أنك سألت: ',
+    'footer.tagline': 'منصة التعلم الطبي',
+    'footer.rights': 'بناها طالب طب لطلاب الطب.'
+  }
+};
+
+const AR_REGIONS = {
+  msk: 'الجهاز العضلي الهيكلي', embryology: 'التطور وعلم الأجنة',
+  pathology: 'علم الأمراض العام', physiology: 'علم وظائف الأعضاء', quiz: 'بنك الأسئلة'
+};
+const AR_CATS = {
+  'msk/nerves': 'إصابات الأعصاب', 'msk/muscles': 'إصابات العضلات', 'msk/bones': 'إصابات العظام', 'msk/general': 'إصابات عامة',
+  'embryology/level1': 'المستوى الأول: الأساسيات والأسابيع', 'embryology/level2': 'المستوى الثاني: تكوّن الأعضاء',
+  'embryology/level3': 'المستوى الثالث: العيوب البنيوية', 'embryology/level4': 'المستوى الرابع: الأمراض المتقدمة',
+  'pathology/general': 'علم الأمراض العام',
+  'physiology/cell': 'الخلية والغشاء', 'physiology/nerve_muscle': 'العصب والعضلة', 'physiology/blood': 'الدم وسوائل الجسم',
+  'physiology/immune': 'المناعة', 'physiology/cardio': 'القلب والأوعية', 'physiology/resp': 'الجهاز التنفسي',
+  'physiology/renal': 'الكلى والحمض القاعدي', 'physiology/git': 'الجهاز الهضمي', 'physiology/endocrine': 'الغدد الصماء',
+  'physiology/repro': 'التكاثر',
+  'quiz/msk': 'العضلي الهيكلي', 'quiz/neuro': 'الجهاز العصبي', 'quiz/cardio': 'القلب', 'quiz/resp': 'التنفسي',
+  'quiz/renal': 'الكلى والمسالك', 'quiz/git': 'الهضمي والكبد', 'quiz/endocrine': 'الغدد الصماء', 'quiz/repro': 'التكاثر',
+  'quiz/blood_immune': 'الدم والمناعة', 'quiz/development': 'التطور والأنسجة',
+  'quiz/medicine': 'الباطنة', 'quiz/surgery': 'الجراحة', 'quiz/pediatrics': 'الأطفال',
+  'quiz/obgyn': 'النساء والولادة', 'quiz/psychiatry': 'النفسية'
+};
+
+let LANG = 'en';
+function t(key) {
+  const dict = I18N[LANG] || I18N.en;
+  return dict[key] || I18N.en[key] || key;
+}
+
+function applyLang(lang) {
+  LANG = (lang === 'ar') ? 'ar' : 'en';
+  document.documentElement.lang = LANG;
+  document.documentElement.dir = LANG === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.getAttribute('data-i18n'));
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph')));
+  });
+  try { localStorage.setItem('medplat-lang', LANG); } catch (e) {}
+  if (typeof refreshAll === 'function') refreshAll();
+}
+
+// ---------- theme and text size ----------
+function applyTheme(theme) {
+  const root = document.documentElement;
+  if (theme === 'light' || theme === 'dark') root.setAttribute('data-theme', theme);
+  else root.removeAttribute('data-theme');
+  try { localStorage.setItem('medplat-theme', theme || 'system'); } catch (e) {}
+  const sysLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  const effective = (theme === 'light' || theme === 'dark') ? theme : (sysLight ? 'light' : 'dark');
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', effective === 'light' ? '#F5F5DC' : '#0C161E');
+}
+function applySize(size) {
+  if (size === 's' || size === 'l') document.documentElement.setAttribute('data-size', size);
+  else document.documentElement.removeAttribute('data-size');
+  try { localStorage.setItem('medplat-size', size || 'm'); } catch (e) {}
+}
+
+// ---------- settings view ----------
+function renderSettings() {
+  const box = $('settings-body');
+  if (!box) return;
+  const s = llmSettings();
+  const theme = localStorage.getItem('medplat-theme') || 'system';
+  const size = localStorage.getItem('medplat-size') || 'm';
+  const seg = (id, options, active) => '<div class="seg" id="' + id + '">' + options.map(o =>
+    '<button class="' + (o[0] === active ? 'active' : '') + '" onclick="' + o[2] + '">' + o[1] + '</button>').join('') + '</div>';
+  box.innerHTML =
+    '<div class="setting-row"><div class="setting-label">' + t('settings.language') + '</div>' +
+      seg('seg-lang', [['en', 'English', "setLang('en')"], ['ar', 'العربية', "setLang('ar')"]], LANG) +
+      '<p class="setting-hint">' + t('settings.langHint') + '</p></div>' +
+    '<div class="setting-row"><div class="setting-label">' + t('settings.theme') + '</div>' +
+      seg('seg-theme', [['system', t('settings.themeSystem'), "setTheme('system')"], ['light', t('settings.themeLight'), "setTheme('light')"], ['dark', t('settings.themeDark'), "setTheme('dark')"]], theme) +
+      '<p class="setting-hint">' + t('settings.themeHint') + '</p></div>' +
+    '<div class="setting-row"><div class="setting-label">' + t('settings.size') + '</div>' +
+      seg('seg-size', [['s', t('settings.sizeS'), "setSize('s')"], ['m', t('settings.sizeM'), "setSize('m')"], ['l', t('settings.sizeL'), "setSize('l')"]], size) +
+      '<p class="setting-hint">' + t('settings.sizeHint') + '</p></div>' +
+    '<div class="setting-row"><div class="setting-label">' + t('settings.ai') + '</div>' +
+      '<p class="setting-hint">' + t('settings.aiHint') + '</p>' +
+      '<div class="full"><input type="text" id="ai-endpoint" placeholder="' + t('settings.endpoint') + '" value="' + esc(s.endpoint || '') + '"></div>' +
+      '<div class="full"><input type="password" id="ai-key" placeholder="' + t('settings.key') + '" value="' + esc(s.key || '') + '"></div>' +
+      '<div class="full"><input type="text" id="ai-model" placeholder="' + t('settings.model') + '" value="' + esc(s.model || 'gpt-4o-mini') + '"></div>' +
+      '<div class="full"><button class="flash-btn primary" onclick="saveAi()">' + t('settings.save') + '</button> <span id="ai-status" class="setting-hint"></span></div></div>' +
+    '<div class="setting-row"><div class="setting-label">' + t('settings.data') + '</div>' +
+      '<p class="setting-hint">' + t('settings.dataHint') + '</p>' +
+      '<div class="full"><button class="danger-btn" onclick="resetStore(SAVE_KEY)">' + t('settings.resetPbl') + '</button> ' +
+      '<button class="danger-btn" onclick="resetStore(OSCE_KEY)">' + t('settings.resetOsce') + '</button> ' +
+      '<button class="danger-btn" onclick="resetStore(FLASH_KEY)">' + t('settings.resetFlash') + '</button> ' +
+      '<button class="danger-btn" onclick="resetStore(\'*\')">' + t('settings.resetAll') + '</button></div></div>';
+}
+
+function setLang(l) { applyLang(l); }
+function setTheme(v) { applyTheme(v); renderSettings(); }
+function setSize(v) { applySize(v); renderSettings(); }
+function saveAi() {
+  saveLlmSettings({
+    endpoint: ($('ai-endpoint') || {}).value || '',
+    key: ($('ai-key') || {}).value || '',
+    model: ($('ai-model') || {}).value || 'gpt-4o-mini'
+  });
+  const st = $('ai-status');
+  if (st) st.textContent = t('settings.saved');
+}
+function resetStore(key) {
+  try {
+    if (key === '*') {
+      localStorage.removeItem(SAVE_KEY);
+      localStorage.removeItem(OSCE_KEY);
+      localStorage.removeItem(FLASH_KEY);
+    } else {
+      localStorage.removeItem(key);
+    }
+    SAVE = loadSave();
+    flashState = { track: 'basic', level: null, idx: 0, flipped: false, known: {} };
+    renderSettings();
+    updateHomeStatuses();
+    const st = $('ai-status');
+    if (st) st.textContent = t('settings.resetDone');
+  } catch (e) {}
+}
+
+// ---------- flashcards ----------
+const FLASH_KEY = 'medplat-flash-v1';
+let flashState = { track: 'basic', level: null, idx: 0, flipped: false, known: {} };
+
+function flashStore() {
+  try { return JSON.parse(localStorage.getItem(FLASH_KEY) || '{}'); } catch (e) { return {}; }
+}
+function flashSave(store) {
+  try { localStorage.setItem(FLASH_KEY, JSON.stringify(store)); } catch (e) {}
+}
+function flashKnownSet() {
+  const store = flashStore();
+  const k = flashState.track + '/' + flashState.level;
+  return new Set(store[k] || []);
+}
+function flashMarkKnown() {
+  if (!flashState.level) return;
+  const store = flashStore();
+  const k = flashState.track + '/' + flashState.level;
+  const set = new Set(store[k] || []);
+  if (set.has(flashState.idx)) set.delete(flashState.idx); else set.add(flashState.idx);
+  store[k] = Array.from(set);
+  flashSave(store);
+  renderFlash();
+}
+function setFlashTrack(track, btn) {
+  flashState = { track: track, level: null, idx: 0, flipped: false, known: {} };
+  document.querySelectorAll('#view-flash .track-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderFlash();
+}
+function openFlashLevel(level) {
+  flashState.level = level;
+  flashState.idx = 0;
+  flashState.flipped = false;
+  renderFlash();
+}
+function flashBack() {
+  flashState.level = null;
+  renderFlash();
+}
+function flashFlip() { flashState.flipped = !flashState.flipped; renderFlash(); }
+function flashNext(delta) {
+  const set = FLASH[flashState.track][flashState.level];
+  if (!set) return;
+  const n = set.cards.length;
+  flashState.idx = (flashState.idx + delta + n) % n;
+  flashState.flipped = false;
+  renderFlash();
+}
+function flashShuffle() {
+  const set = FLASH[flashState.track][flashState.level];
+  if (!set) return;
+  for (let i = set.cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = set.cards[i]; set.cards[i] = set.cards[j]; set.cards[j] = tmp;
+  }
+  flashState.idx = 0;
+  flashState.flipped = false;
+  renderFlash();
+}
+function flashResetLevel() {
+  const store = flashStore();
+  delete store[flashState.track + '/' + flashState.level];
+  flashSave(store);
+  renderFlash();
+}
+
+function renderFlash() {
+  const root = $('flash-root');
+  if (!root) return;
+  const track = FLASH[flashState.track];
+  if (!track) { root.innerHTML = '<p class="vid-note">' + t('flash.empty') + '</p>'; return; }
+  if (!flashState.level) {
+    const store = flashStore();
+    let html = '<div class="flash-grid">';
+    Object.keys(track).forEach(level => {
+      const set = track[level];
+      const known = (store[flashState.track + '/' + level] || []).length;
+      html += '<button class="flash-level" onclick="openFlashLevel(\'' + level + '\')">' +
+        t('flash.level') + ' ' + level.replace('level', '') + ' · ' + esc((LANG === 'ar' && set.name_ar) ? set.name_ar : set.name) +
+        '<span class="flash-count">' + set.cards.length + ' ' + t('flash.cards') + ' · ' + known + ' ' + t('flash.known') + '</span></button>';
+    });
+    root.innerHTML = html + '</div>';
+    return;
+  }
+  const set = track[flashState.level];
+  if (!set || !set.cards.length) { root.innerHTML = '<p class="vid-note">' + t('flash.empty') + '</p>'; return; }
+  const cards = set.cards;
+  const card = cards[flashState.idx] || cards[0];
+  const known = flashKnownSet();
+  const isKnown = known.has(flashState.idx);
+  const pct = Math.round((known.size / cards.length) * 100);
+  root.innerHTML =
+    '<div class="flash-card-wrap">' +
+      '<div class="flash-progress"><div class="flash-meta"><span>' + esc((LANG === 'ar' && set.name_ar) ? set.name_ar : set.name) + '</span>' +
+        '<span>' + (flashState.idx + 1) + ' / ' + cards.length + ' · ' + known.size + ' ' + t('flash.known') + '</span></div>' +
+        '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%"></div></div></div>' +
+      '<div class="flash-card" onclick="flashFlip()">' +
+        '<div class="flash-term">' + esc(card.term) + '</div>' +
+        (card.ar ? '<div class="flash-ar">' + esc(card.ar) + '</div>' : '') +
+        (flashState.flipped
+          ? '<div class="flash-def">' + esc(card.definition) + '</div>'
+          : '<div class="flash-hint">' + t('flash.hintFront') + '</div>') +
+      '</div>' +
+      '<div class="flash-toolbar">' +
+        '<button class="flash-btn" onclick="flashNext(-1)">' + t('flash.prev') + '</button>' +
+        '<button class="flash-btn primary" onclick="flashFlip()">' + t('flash.flip') + '</button>' +
+        '<button class="flash-btn ' + (isKnown ? 'known' : '') + '" onclick="flashMarkKnown()">' +
+          (isKnown ? t('flash.knownDone') : t('flash.markKnown')) + '</button>' +
+        '<button class="flash-btn" onclick="flashNext(1)">' + t('flash.next') + '</button>' +
+        '<button class="flash-btn" onclick="flashShuffle()">' + t('flash.shuffle') + '</button>' +
+        '<button class="flash-btn" onclick="flashResetLevel()">' + t('flash.reset') + '</button>' +
+        '<button class="flash-btn" onclick="flashBack()">' + t('flash.back') + '</button>' +
+      '</div>' +
+    '</div>';
+}
+
+// ---------- misc ----------
+function refreshAll() {
+  if (typeof renderPblHome === 'function' && currentView === 'pbl') renderPblHome();
+  else if (typeof updateHomeStatuses === 'function') updateHomeStatuses();
+  if (typeof renderQuizGrid === 'function' && currentView === 'quiz') renderQuizGrid();
+  if (typeof renderOsceHome === 'function' && currentView === 'osce') renderOsceHome();
+  if (typeof renderVideos === 'function' && currentView === 'videos') renderVideos();
+  if (typeof renderFlash === 'function' && currentView === 'flash') renderFlash();
+  if (typeof renderSettings === 'function' && currentView === 'settings') renderSettings();
+  if (typeof renderHeader === 'function' && currentView === 'sim' && current) renderHeader();
 }
 
 renderQuizGrid();
 renderOsceHome();
 updateHomeStatuses();
+renderFlash();
+applyLang(localStorage.getItem('medplat-lang') || 'en');
+applyTheme(localStorage.getItem('medplat-theme') || 'system');
+applySize(localStorage.getItem('medplat-size') || 'm');
 var homeBtn = document.querySelector('.nav-btn[data-view="landing"]');
 if (homeBtn) homeBtn.classList.add('active');
 

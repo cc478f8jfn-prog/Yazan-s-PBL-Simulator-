@@ -1,0 +1,158 @@
+#!/usr/bin/env python3
+"""Generate data/flashcards.json: two tracks, three academic levels each."""
+import json
+import os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+BASIC = {
+    "level1": ("Foundations: word building", [
+        ("a- / an-", "Without or absence of. Asymptomatic means without symptoms.", "بدون / انعدام"),
+        ("hyper-", "Above normal or excessive. Hypertension is raised blood pressure.", "فوق / زيادة"),
+        ("hypo-", "Below normal or deficient. Hypoglycaemia is low blood glucose.", "تحت / نقص"),
+        ("tachy-", "Fast. Tachycardia is a heart rate above 100 per minute.", "سريع"),
+        ("brady-", "Slow. Bradycardia is a heart rate below 60 per minute.", "بطيء"),
+        ("dys-", "Difficult, painful or disordered. Dysphagia is difficulty swallowing.", "صعوبة / اضطراب"),
+        ("-itis", "Inflammation. Gastritis is inflammation of the stomach lining.", "التهاب"),
+        ("-ectomy", "Surgical removal of. Appendicectomy is removal of the appendix.", "استئصال"),
+        ("-otomy", "Cutting into. Laparotomy is a surgical incision into the abdomen.", "شق / فتح جراحي"),
+        ("-ostomy", "Creating a permanent opening. Colostomy brings colon to the skin.", "فغر"),
+        ("-algia", "Pain. Arthralgia is joint pain without swelling.", "ألم"),
+        ("-aemia", "A condition of the blood. Anaemia is a low haemoglobin concentration.", "حالة الدم"),
+        ("-uria", "A condition of the urine. Haematuria is blood in the urine.", "حالة البول"),
+        ("-megaly", "Enlargement. Hepatomegaly is an enlarged liver.", "تضخم"),
+        ("-oma", "A swelling or tumour. Lipoma is a benign fatty tumour.", "ورم"),
+        ("-pathy", "Disease of. Neuropathy is disease of peripheral nerves.", "اعتلال"),
+        ("-plegia", "Paralysis. Hemiplegia is paralysis of one side of the body.", "شلل"),
+        ("-scopy", "Looking inside with an instrument. Endoscopy examines the gut lumen.", "تنظير"),
+        ("-graphy", "Recording or imaging. Radiography produces an X-ray image.", "تصوير"),
+        ("cardi-", "Heart. Cardiomegaly is an enlarged heart.", "القلب"),
+    ]),
+    "level2": ("The body: position, planes and regions", [
+        ("Anatomical position", "Standing upright, face forward, palms forward, feet together. Every direction is described from this reference.", "الوضع التشريحي"),
+        ("Sagittal plane", "A vertical plane dividing the body into left and right. The midline one is the median plane.", "المستوى السهمي"),
+        ("Coronal (frontal) plane", "A vertical plane dividing the body into front and back.", "المستوى الإكليلي"),
+        ("Transverse plane", "A horizontal plane dividing the body into upper and lower parts.", "المستوى المستعرض"),
+        ("Proximal", "Closer to the trunk or the point of origin.", "قريب"),
+        ("Distal", "Further from the trunk or the point of origin.", "بعيد"),
+        ("Medial / Lateral", "Medial is towards the midline, lateral is away from it.", "إنسي / وحشي"),
+        ("Superior / Inferior", "Superior is towards the head, inferior is towards the feet.", "علوي / سفلي"),
+        ("Superficial / Deep", "Superficial is nearer the skin, deep is further from it.", "سطحي / عميق"),
+        ("Flexion / Extension", "Flexion decreases the angle at a joint, extension increases it.", "ثني / بسط"),
+        ("Abduction / Adduction", "Abduction moves a limb away from the midline, adduction brings it back.", "تبعيد / تقريب"),
+        ("Pronation / Supination", "Pronation turns the palm down, supination turns it up.", "كب / بطح"),
+        ("Thoracic cavity", "The space bounded by the ribs and diaphragm, holding heart, lungs and mediastinum.", "التجويف الصدري"),
+        ("Abdominopelvic cavity", "The space from the diaphragm to the pelvic floor, holding gut, liver and pelvic organs.", "التجويف البطني الحوضي"),
+        ("Retroperitoneal", "Behind the peritoneal lining: kidneys, ureters, pancreas and great vessels lie here.", "خلف الصفاق"),
+        ("Epigastric region", "The upper central abdominal region, over the stomach and liver edge.", "منطقة فم المعدة"),
+        ("Right iliac fossa", "The lower right abdominal region, where the appendix and caecum sit.", "الحفرة الحرقفية اليمنى"),
+        ("Dermatome", "The strip of skin supplied by one spinal nerve root.", "القطعة الجلدية"),
+        ("Motor unit", "One motor neuron and all the muscle fibres it supplies.", "الوحدة الحركية"),
+        ("Anastomosis", "A connection between two vessels or tubes, natural or surgical.", "مفاغرة"),
+    ]),
+    "level3": ("Pathology and laboratory vocabulary", [
+        ("Hypertrophy", "Increase in cell size, giving a larger organ with the same number of cells.", "تضخم الخلايا"),
+        ("Hyperplasia", "Increase in cell number, usually in response to a stimulus.", "فرط التنسج"),
+        ("Metaplasia", "One mature cell type is replaced by another, often a response to irritation.", "حؤول"),
+        ("Dysplasia", "Disordered growth with abnormal cells, a precursor of malignancy.", "خلل التنسج"),
+        ("Apoptosis", "Programmed cell death, tidy and without inflammation.", "الاستماتة"),
+        ("Necrosis", "Cell death from injury, with inflammation and loss of tissue architecture.", "تنخر"),
+        ("Infarction", "Ischaemic necrosis of tissue after loss of its blood supply.", "احتشاء"),
+        ("Ischaemia", "Reduced blood flow to a tissue, which may be reversible.", "نقص التروية"),
+        ("Oedema", "Excess fluid in the interstitial space, producing swelling.", "وذمة"),
+        ("Exudate vs transudate", "Exudate is protein rich and inflammatory, transudate is protein poor from pressure imbalance.", "نضح التهابي / رشح"),
+        ("Granuloma", "A collection of macrophages and giant cells walling off a persistent agent.", "ورم حبيبي"),
+        ("Thrombus vs embolus", "A thrombus forms in place, an embolus travels and lodges elsewhere.", "خثرة / صمة"),
+        ("Benign vs malignant", "Benign tumours stay local and well differentiated, malignant ones invade and metastasise.", "حميد / خبيث"),
+        ("Metastasis", "Spread of malignant cells to a distant site through blood, lymph or seeding.", "انتقال"),
+        ("Carcinoma in situ", "Malignant cells confined by the basement membrane, not yet invasive.", "سرطان موضعي"),
+        ("Anaemia", "Haemoglobin below the reference range for age and sex.", "فقر الدم"),
+        ("Leucocytosis", "A raised white cell count, often a response to infection.", "كثرة الكريات البيضاء"),
+        ("Culture and sensitivity", "Growing an organism and testing which antibiotics inhibit it.", "المزرعة والحساسية"),
+        ("Sensitivity / Specificity", "Sensitivity finds the diseased, specificity excludes the healthy. Neither alone gives the probability of disease.", "الحساسية / النوعية"),
+        ("Idiopathic / Iatrogenic", "Idiopathic means no identifiable cause, iatrogenic means caused by medical care.", "مجهول السبب / علاجي المنشأ"),
+    ]),
+}
+
+CLINICAL = {
+    "level1": ("History and examination language", [
+        ("Symptom vs sign", "A symptom is what the patient reports, a sign is what the examiner finds.", "عرض / علامة"),
+        ("SOCRATES", "Site, Onset, Character, Radiation, Associations, Timing, Exacerbating factors, Severity.", "سقراط لأخذ القصة"),
+        ("Dyspnoea", "Breathlessness perceived by the patient.", "ضيق النفس"),
+        ("Orthopnoea", "Breathlessness on lying flat, counted in pillows.", "ضيق النفس الاضطجاعي"),
+        ("Paroxysmal nocturnal dyspnoea", "Waking at night gasping, relieved by sitting up, typical of heart failure.", "ضيق نفس ليلي انتيابي"),
+        ("Syncope", "Transient loss of consciousness from cerebral hypoperfusion, with full recovery.", "غشية"),
+        ("Vertigo", "A false sense of movement, rotatory or swaying.", "دوار"),
+        ("Claudication", "Muscle pain on walking that resolves with rest, from arterial insufficiency.", "عرج متقطع"),
+        ("Haemoptysis", "Coughing up blood from the respiratory tract.", "نفث الدم"),
+        ("Haematemesis", "Vomiting blood, usually from the upper gastrointestinal tract.", "تقيؤ دموي"),
+        ("Melaena", "Black tarry stool from digested blood.", "تغوط أسود"),
+        ("Nocturia", "Waking at night to pass urine.", "تبول ليلي"),
+        ("Tenesmus", "A painful urge to defecate with little or nothing passed.", "الزحير"),
+        ("Anosmia", "Loss of the sense of smell.", "فقد الشم"),
+        ("Photophobia", "Light causes discomfort, common in meningitis and migraine.", "رهاب الضوء"),
+        ("Guarding and rigidity", "Involuntary abdominal wall tension, rigidity being the board-like extreme.", "تصلب البطن"),
+        ("Rebound tenderness", "Pain worse on releasing pressure, suggesting peritoneal irritation.", "ألم الارتداد"),
+        ("Murmur", "A sound from turbulent blood flow across a valve or shunt.", "لغط قلبي"),
+        ("Crepitations", "Crackling breath sounds from collapsed or fluid-filled alveoli.", "خراخر"),
+        ("Pedal oedema", "Fluid collecting in the feet and ankles, pitting on pressure.", "وذمة الكاحل"),
+    ]),
+    "level2": ("Investigations, procedures and drugs", [
+        ("Full blood count", "Haemoglobin, white cells and platelets, the first line haematology screen.", "تعداد الدم الكامل"),
+        ("Urea and electrolytes", "Renal function and the common electrolytes, sodium and potassium.", "اليوريا والكهارل"),
+        ("Liver function tests", "Bilirubin, transaminases, alkaline phosphatase and albumin.", "وظائف الكبد"),
+        ("CRP and ESR", "Acute phase markers of inflammation, neither is specific to one disease.", "بروتين سي التفاعلي ومعدل الترسيب"),
+        ("Troponin", "Cardiac protein released on myocyte injury, the marker for acute coronary syndrome.", "التروبونين"),
+        ("HbA1c", "Glycated haemoglobin reflecting average glucose over about three months.", "الهيموغلوبين السكري"),
+        ("INR", "Standardised prothrombin time used to dose warfarin and assess clotting.", "نسبة الزمن الطبيعي الدولية"),
+        ("Blood cultures", "Paired aerobic and anaerobic bottles taken before antibiotics in suspected sepsis.", "مزارع الدم"),
+        ("Arterial blood gas", "pH, carbon dioxide, oxygen and bicarbonate, showing ventilation and acid base state.", "غازات الدم الشرياني"),
+        ("ECG", "A twelve lead recording of cardiac electrical activity, showing rhythm and ischaemia.", "تخطيط القلب"),
+        ("Echocardiography", "Ultrasound of the heart showing valves, chambers and ejection fraction.", "تخطيط القلب بالصدى"),
+        ("CT with contrast", "Cross sectional imaging that shows acute bleeding, infarction and masses.", "التصوير المقطعي بالصبغة"),
+        ("MRI", "Magnetic resonance imaging, best for soft tissue, cord and brain.", "التصوير بالرنين المغناطيسي"),
+        ("Ultrasound", "Safe, real time imaging used for abdomen, vessels and obstetrics.", "السونار"),
+        ("Endoscopy", "A camera passed into the gut lumen for direct view and biopsy.", "التنظير"),
+        ("Biopsy", "A tissue sample examined histologically to give a definitive diagnosis.", "خزعة"),
+        ("Lumbar puncture", "CSF sampling from the lumbar subarachnoid space after excluding raised pressure.", "البزل القطني"),
+        ("Central venous catheter", "A line into a large vein for drugs, fluids and central pressure measurement.", "القسطرة الوريدية المركزية"),
+        ("Urinary catheterisation", "Drainage of the bladder, monitoring output and relieving retention.", "قسطرة البول"),
+        ("Informed consent", "Explaining indication, alternatives, risks and benefits before a procedure.", "الموافقة المستنيرة"),
+    ]),
+    "level3": ("Emergencies, safety and evidence", [
+        ("Sepsis Six", "Oxygen, cultures, antibiotics, fluids, lactate and urine output within one hour.", "حزمة الإنتان الست"),
+        ("A to E assessment", "Airway, Breathing, Circulation, Disability, Exposure, treating each before moving on.", "التقييم المنهجي ABCD"),
+        ("NEWS2", "A track and trigger score from observations that flags a deteriorating patient.", "مقياس الإنذار المبكر"),
+        ("Red flag", "A feature that raises the probability of serious disease and demands urgent action.", "علامة خطورة"),
+        ("Time critical", "A condition where delay to treatment directly worsens outcome, such as stroke or sepsis.", "حالة حرجة زمنياً"),
+        ("DNACPR", "A recorded decision that CPR would not succeed, made with the patient where possible.", "عدم الإنعاش"),
+        ("Mental capacity", "The ability to understand, retain, weigh and communicate a decision at that moment.", "الأهلية الذهنية"),
+        ("Number needed to treat", "How many patients must be treated for one to benefit.", "العدد اللازم لعلاج واحد"),
+        ("Positive predictive value", "The chance a positive test is truly positive, which depends on prevalence.", "القيمة التنبؤية الإيجابية"),
+        ("Randomised controlled trial", "Participants allocated by chance to intervention or control, the strongest design for causation.", "تجربة عشوائية مضبوطة"),
+        ("Blinding", "Keeping allocation hidden from patient, clinician or assessor to reduce bias.", "التعمية"),
+        ("Confidence interval", "The range of values likely to contain the true effect, showing precision.", "فترة الثقة"),
+        ("Audit vs research", "Audit checks practice against a standard, research creates new generalisable knowledge.", "التدقيق / البحث"),
+        ("Differential diagnosis", "A ranked list of plausible diagnoses kept open until evidence narrows it.", "التشخيص التفريقي"),
+        ("Safety netting", "Clear advice on what to watch for and when to return if things change.", "شبكة الأمان"),
+        ("Polypharmacy", "Many medicines taken together, raising interaction and adverse effect risk.", "تعدد الأدوية"),
+        ("Deprescribing", "Planned withdrawal of medicines that no longer give benefit.", "إيقاف الأدوية غير اللازمة"),
+        ("Multidisciplinary team", "Doctors, nurses, pharmacists and therapists planning care together.", "الفريق متعدد التخصصات"),
+        ("Triage", "Sorting patients by urgency so the sickest are seen first.", "الفرز"),
+        ("Handover (SBAR)", "Situation, Background, Assessment, Recommendation, a structured clinical handover.", "تسليم الحالة"),
+    ]),
+}
+
+data = {"basic": {}, "clinical": {}}
+for track, sets in (("basic", BASIC), ("clinical", CLINICAL)):
+    for level, (name, cards) in sets.items():
+        data[track][level] = {
+            "name": name,
+            "cards": [{"term": t, "definition": d, "ar": a} for t, d, a in cards],
+        }
+
+out = os.path.join(ROOT, "data", "flashcards.json")
+with open(out, "w", encoding="utf-8") as fh:
+    json.dump(data, fh, ensure_ascii=False, indent=1)
+total = sum(len(v["cards"]) for track in data.values() for v in track.values())
+print("wrote", out, total, "cards")

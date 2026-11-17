@@ -32,6 +32,7 @@ def main():
         "CAT_META": dump(meta["CAT_META"]),
         "TRACKS": dump(meta.get("TRACKS", {})),
         "EXPLAIN": dump(meta.get("EXPLAIN", {})),
+        "FLASH": dump(load("flashcards")),
     }
     for key, value in slots.items():
         token = "__" + key + "__"

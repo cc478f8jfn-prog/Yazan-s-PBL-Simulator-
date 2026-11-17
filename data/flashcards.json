@@ -1,0 +1,642 @@
+{
+ "basic": {
+  "level1": {
+   "name": "Foundations: word building",
+   "cards": [
+    {
+     "term": "a- / an-",
+     "definition": "Without or absence of. Asymptomatic means without symptoms.",
+     "ar": "بدون / انعدام"
+    },
+    {
+     "term": "hyper-",
+     "definition": "Above normal or excessive. Hypertension is raised blood pressure.",
+     "ar": "فوق / زيادة"
+    },
+    {
+     "term": "hypo-",
+     "definition": "Below normal or deficient. Hypoglycaemia is low blood glucose.",
+     "ar": "تحت / نقص"
+    },
+    {
+     "term": "tachy-",
+     "definition": "Fast. Tachycardia is a heart rate above 100 per minute.",
+     "ar": "سريع"
+    },
+    {
+     "term": "brady-",
+     "definition": "Slow. Bradycardia is a heart rate below 60 per minute.",
+     "ar": "بطيء"
+    },
+    {
+     "term": "dys-",
+     "definition": "Difficult, painful or disordered. Dysphagia is difficulty swallowing.",
+     "ar": "صعوبة / اضطراب"
+    },
+    {
+     "term": "-itis",
+     "definition": "Inflammation. Gastritis is inflammation of the stomach lining.",
+     "ar": "التهاب"
+    },
+    {
+     "term": "-ectomy",
+     "definition": "Surgical removal of. Appendicectomy is removal of the appendix.",
+     "ar": "استئصال"
+    },
+    {
+     "term": "-otomy",
+     "definition": "Cutting into. Laparotomy is a surgical incision into the abdomen.",
+     "ar": "شق / فتح جراحي"
+    },
+    {
+     "term": "-ostomy",
+     "definition": "Creating a permanent opening. Colostomy brings colon to the skin.",
+     "ar": "فغر"
+    },
+    {
+     "term": "-algia",
+     "definition": "Pain. Arthralgia is joint pain without swelling.",
+     "ar": "ألم"
+    },
+    {
+     "term": "-aemia",
+     "definition": "A condition of the blood. Anaemia is a low haemoglobin concentration.",
+     "ar": "حالة الدم"
+    },
+    {
+     "term": "-uria",
+     "definition": "A condition of the urine. Haematuria is blood in the urine.",
+     "ar": "حالة البول"
+    },
+    {
+     "term": "-megaly",
+     "definition": "Enlargement. Hepatomegaly is an enlarged liver.",
+     "ar": "تضخم"
+    },
+    {
+     "term": "-oma",
+     "definition": "A swelling or tumour. Lipoma is a benign fatty tumour.",
+     "ar": "ورم"
+    },
+    {
+     "term": "-pathy",
+     "definition": "Disease of. Neuropathy is disease of peripheral nerves.",
+     "ar": "اعتلال"
+    },
+    {
+     "term": "-plegia",
+     "definition": "Paralysis. Hemiplegia is paralysis of one side of the body.",
+     "ar": "شلل"
+    },
+    {
+     "term": "-scopy",
+     "definition": "Looking inside with an instrument. Endoscopy examines the gut lumen.",
+     "ar": "تنظير"
+    },
+    {
+     "term": "-graphy",
+     "definition": "Recording or imaging. Radiography produces an X-ray image.",
+     "ar": "تصوير"
+    },
+    {
+     "term": "cardi-",
+     "definition": "Heart. Cardiomegaly is an enlarged heart.",
+     "ar": "القلب"
+    }
+   ],
+   "name_ar": "الأساسيات: بناء المصطلح"
+  },
+  "level2": {
+   "name": "The body: position, planes and regions",
+   "cards": [
+    {
+     "term": "Anatomical position",
+     "definition": "Standing upright, face forward, palms forward, feet together. Every direction is described from this reference.",
+     "ar": "الوضع التشريحي"
+    },
+    {
+     "term": "Sagittal plane",
+     "definition": "A vertical plane dividing the body into left and right. The midline one is the median plane.",
+     "ar": "المستوى السهمي"
+    },
+    {
+     "term": "Coronal (frontal) plane",
+     "definition": "A vertical plane dividing the body into front and back.",
+     "ar": "المستوى الإكليلي"
+    },
+    {
+     "term": "Transverse plane",
+     "definition": "A horizontal plane dividing the body into upper and lower parts.",
+     "ar": "المستوى المستعرض"
+    },
+    {
+     "term": "Proximal",
+     "definition": "Closer to the trunk or the point of origin.",
+     "ar": "قريب"
+    },
+    {
+     "term": "Distal",
+     "definition": "Further from the trunk or the point of origin.",
+     "ar": "بعيد"
+    },
+    {
+     "term": "Medial / Lateral",
+     "definition": "Medial is towards the midline, lateral is away from it.",
+     "ar": "إنسي / وحشي"
+    },
+    {
+     "term": "Superior / Inferior",
+     "definition": "Superior is towards the head, inferior is towards the feet.",
+     "ar": "علوي / سفلي"
+    },
+    {
+     "term": "Superficial / Deep",
+     "definition": "Superficial is nearer the skin, deep is further from it.",
+     "ar": "سطحي / عميق"
+    },
+    {
+     "term": "Flexion / Extension",
+     "definition": "Flexion decreases the angle at a joint, extension increases it.",
+     "ar": "ثني / بسط"
+    },
+    {
+     "term": "Abduction / Adduction",
+     "definition": "Abduction moves a limb away from the midline, adduction brings it back.",
+     "ar": "تبعيد / تقريب"
+    },
+    {
+     "term": "Pronation / Supination",
+     "definition": "Pronation turns the palm down, supination turns it up.",
+     "ar": "كب / بطح"
+    },
+    {
+     "term": "Thoracic cavity",
+     "definition": "The space bounded by the ribs and diaphragm, holding heart, lungs and mediastinum.",
+     "ar": "التجويف الصدري"
+    },
+    {
+     "term": "Abdominopelvic cavity",
+     "definition": "The space from the diaphragm to the pelvic floor, holding gut, liver and pelvic organs.",
+     "ar": "التجويف البطني الحوضي"
+    },
+    {
+     "term": "Retroperitoneal",
+     "definition": "Behind the peritoneal lining: kidneys, ureters, pancreas and great vessels lie here.",
+     "ar": "خلف الصفاق"
+    },
+    {
+     "term": "Epigastric region",
+     "definition": "The upper central abdominal region, over the stomach and liver edge.",
+     "ar": "منطقة فم المعدة"
+    },
+    {
+     "term": "Right iliac fossa",
+     "definition": "The lower right abdominal region, where the appendix and caecum sit.",
+     "ar": "الحفرة الحرقفية اليمنى"
+    },
+    {
+     "term": "Dermatome",
+     "definition": "The strip of skin supplied by one spinal nerve root.",
+     "ar": "القطعة الجلدية"
+    },
+    {
+     "term": "Motor unit",
+     "definition": "One motor neuron and all the muscle fibres it supplies.",
+     "ar": "الوحدة الحركية"
+    },
+    {
+     "term": "Anastomosis",
+     "definition": "A connection between two vessels or tubes, natural or surgical.",
+     "ar": "مفاغرة"
+    }
+   ],
+   "name_ar": "الجسم: الأوضاع والمستويات والمناطق"
+  },
+  "level3": {
+   "name": "Pathology and laboratory vocabulary",
+   "cards": [
+    {
+     "term": "Hypertrophy",
+     "definition": "Increase in cell size, giving a larger organ with the same number of cells.",
+     "ar": "تضخم الخلايا"
+    },
+    {
+     "term": "Hyperplasia",
+     "definition": "Increase in cell number, usually in response to a stimulus.",
+     "ar": "فرط التنسج"
+    },
+    {
+     "term": "Metaplasia",
+     "definition": "One mature cell type is replaced by another, often a response to irritation.",
+     "ar": "حؤول"
+    },
+    {
+     "term": "Dysplasia",
+     "definition": "Disordered growth with abnormal cells, a precursor of malignancy.",
+     "ar": "خلل التنسج"
+    },
+    {
+     "term": "Apoptosis",
+     "definition": "Programmed cell death, tidy and without inflammation.",
+     "ar": "الاستماتة"
+    },
+    {
+     "term": "Necrosis",
+     "definition": "Cell death from injury, with inflammation and loss of tissue architecture.",
+     "ar": "تنخر"
+    },
+    {
+     "term": "Infarction",
+     "definition": "Ischaemic necrosis of tissue after loss of its blood supply.",
+     "ar": "احتشاء"
+    },
+    {
+     "term": "Ischaemia",
+     "definition": "Reduced blood flow to a tissue, which may be reversible.",
+     "ar": "نقص التروية"
+    },
+    {
+     "term": "Oedema",
+     "definition": "Excess fluid in the interstitial space, producing swelling.",
+     "ar": "وذمة"
+    },
+    {
+     "term": "Exudate vs transudate",
+     "definition": "Exudate is protein rich and inflammatory, transudate is protein poor from pressure imbalance.",
+     "ar": "نضح التهابي / رشح"
+    },
+    {
+     "term": "Granuloma",
+     "definition": "A collection of macrophages and giant cells walling off a persistent agent.",
+     "ar": "ورم حبيبي"
+    },
+    {
+     "term": "Thrombus vs embolus",
+     "definition": "A thrombus forms in place, an embolus travels and lodges elsewhere.",
+     "ar": "خثرة / صمة"
+    },
+    {
+     "term": "Benign vs malignant",
+     "definition": "Benign tumours stay local and well differentiated, malignant ones invade and metastasise.",
+     "ar": "حميد / خبيث"
+    },
+    {
+     "term": "Metastasis",
+     "definition": "Spread of malignant cells to a distant site through blood, lymph or seeding.",
+     "ar": "انتقال"
+    },
+    {
+     "term": "Carcinoma in situ",
+     "definition": "Malignant cells confined by the basement membrane, not yet invasive.",
+     "ar": "سرطان موضعي"
+    },
+    {
+     "term": "Anaemia",
+     "definition": "Haemoglobin below the reference range for age and sex.",
+     "ar": "فقر الدم"
+    },
+    {
+     "term": "Leucocytosis",
+     "definition": "A raised white cell count, often a response to infection.",
+     "ar": "كثرة الكريات البيضاء"
+    },
+    {
+     "term": "Culture and sensitivity",
+     "definition": "Growing an organism and testing which antibiotics inhibit it.",
+     "ar": "المزرعة والحساسية"
+    },
+    {
+     "term": "Sensitivity / Specificity",
+     "definition": "Sensitivity finds the diseased, specificity excludes the healthy. Neither alone gives the probability of disease.",
+     "ar": "الحساسية / النوعية"
+    },
+    {
+     "term": "Idiopathic / Iatrogenic",
+     "definition": "Idiopathic means no identifiable cause, iatrogenic means caused by medical care.",
+     "ar": "مجهول السبب / علاجي المنشأ"
+    }
+   ],
+   "name_ar": "مصطلحات علم الأمراض والمختبر"
+  }
+ },
+ "clinical": {
+  "level1": {
+   "name": "History and examination language",
+   "cards": [
+    {
+     "term": "Symptom vs sign",
+     "definition": "A symptom is what the patient reports, a sign is what the examiner finds.",
+     "ar": "عرض / علامة"
+    },
+    {
+     "term": "SOCRATES",
+     "definition": "Site, Onset, Character, Radiation, Associations, Timing, Exacerbating factors, Severity.",
+     "ar": "سقراط لأخذ القصة"
+    },
+    {
+     "term": "Dyspnoea",
+     "definition": "Breathlessness perceived by the patient.",
+     "ar": "ضيق النفس"
+    },
+    {
+     "term": "Orthopnoea",
+     "definition": "Breathlessness on lying flat, counted in pillows.",
+     "ar": "ضيق النفس الاضطجاعي"
+    },
+    {
+     "term": "Paroxysmal nocturnal dyspnoea",
+     "definition": "Waking at night gasping, relieved by sitting up, typical of heart failure.",
+     "ar": "ضيق نفس ليلي انتيابي"
+    },
+    {
+     "term": "Syncope",
+     "definition": "Transient loss of consciousness from cerebral hypoperfusion, with full recovery.",
+     "ar": "غشية"
+    },
+    {
+     "term": "Vertigo",
+     "definition": "A false sense of movement, rotatory or swaying.",
+     "ar": "دوار"
+    },
+    {
+     "term": "Claudication",
+     "definition": "Muscle pain on walking that resolves with rest, from arterial insufficiency.",
+     "ar": "عرج متقطع"
+    },
+    {
+     "term": "Haemoptysis",
+     "definition": "Coughing up blood from the respiratory tract.",
+     "ar": "نفث الدم"
+    },
+    {
+     "term": "Haematemesis",
+     "definition": "Vomiting blood, usually from the upper gastrointestinal tract.",
+     "ar": "تقيؤ دموي"
+    },
+    {
+     "term": "Melaena",
+     "definition": "Black tarry stool from digested blood.",
+     "ar": "تغوط أسود"
+    },
+    {
+     "term": "Nocturia",
+     "definition": "Waking at night to pass urine.",
+     "ar": "تبول ليلي"
+    },
+    {
+     "term": "Tenesmus",
+     "definition": "A painful urge to defecate with little or nothing passed.",
+     "ar": "الزحير"
+    },
+    {
+     "term": "Anosmia",
+     "definition": "Loss of the sense of smell.",
+     "ar": "فقد الشم"
+    },
+    {
+     "term": "Photophobia",
+     "definition": "Light causes discomfort, common in meningitis and migraine.",
+     "ar": "رهاب الضوء"
+    },
+    {
+     "term": "Guarding and rigidity",
+     "definition": "Involuntary abdominal wall tension, rigidity being the board-like extreme.",
+     "ar": "تصلب البطن"
+    },
+    {
+     "term": "Rebound tenderness",
+     "definition": "Pain worse on releasing pressure, suggesting peritoneal irritation.",
+     "ar": "ألم الارتداد"
+    },
+    {
+     "term": "Murmur",
+     "definition": "A sound from turbulent blood flow across a valve or shunt.",
+     "ar": "لغط قلبي"
+    },
+    {
+     "term": "Crepitations",
+     "definition": "Crackling breath sounds from collapsed or fluid-filled alveoli.",
+     "ar": "خراخر"
+    },
+    {
+     "term": "Pedal oedema",
+     "definition": "Fluid collecting in the feet and ankles, pitting on pressure.",
+     "ar": "وذمة الكاحل"
+    }
+   ],
+   "name_ar": "لغة القصة والفحص السريري"
+  },
+  "level2": {
+   "name": "Investigations, procedures and drugs",
+   "cards": [
+    {
+     "term": "Full blood count",
+     "definition": "Haemoglobin, white cells and platelets, the first line haematology screen.",
+     "ar": "تعداد الدم الكامل"
+    },
+    {
+     "term": "Urea and electrolytes",
+     "definition": "Renal function and the common electrolytes, sodium and potassium.",
+     "ar": "اليوريا والكهارل"
+    },
+    {
+     "term": "Liver function tests",
+     "definition": "Bilirubin, transaminases, alkaline phosphatase and albumin.",
+     "ar": "وظائف الكبد"
+    },
+    {
+     "term": "CRP and ESR",
+     "definition": "Acute phase markers of inflammation, neither is specific to one disease.",
+     "ar": "بروتين سي التفاعلي ومعدل الترسيب"
+    },
+    {
+     "term": "Troponin",
+     "definition": "Cardiac protein released on myocyte injury, the marker for acute coronary syndrome.",
+     "ar": "التروبونين"
+    },
+    {
+     "term": "HbA1c",
+     "definition": "Glycated haemoglobin reflecting average glucose over about three months.",
+     "ar": "الهيموغلوبين السكري"
+    },
+    {
+     "term": "INR",
+     "definition": "Standardised prothrombin time used to dose warfarin and assess clotting.",
+     "ar": "نسبة الزمن الطبيعي الدولية"
+    },
+    {
+     "term": "Blood cultures",
+     "definition": "Paired aerobic and anaerobic bottles taken before antibiotics in suspected sepsis.",
+     "ar": "مزارع الدم"
+    },
+    {
+     "term": "Arterial blood gas",
+     "definition": "pH, carbon dioxide, oxygen and bicarbonate, showing ventilation and acid base state.",
+     "ar": "غازات الدم الشرياني"
+    },
+    {
+     "term": "ECG",
+     "definition": "A twelve lead recording of cardiac electrical activity, showing rhythm and ischaemia.",
+     "ar": "تخطيط القلب"
+    },
+    {
+     "term": "Echocardiography",
+     "definition": "Ultrasound of the heart showing valves, chambers and ejection fraction.",
+     "ar": "تخطيط القلب بالصدى"
+    },
+    {
+     "term": "CT with contrast",
+     "definition": "Cross sectional imaging that shows acute bleeding, infarction and masses.",
+     "ar": "التصوير المقطعي بالصبغة"
+    },
+    {
+     "term": "MRI",
+     "definition": "Magnetic resonance imaging, best for soft tissue, cord and brain.",
+     "ar": "التصوير بالرنين المغناطيسي"
+    },
+    {
+     "term": "Ultrasound",
+     "definition": "Safe, real time imaging used for abdomen, vessels and obstetrics.",
+     "ar": "السونار"
+    },
+    {
+     "term": "Endoscopy",
+     "definition": "A camera passed into the gut lumen for direct view and biopsy.",
+     "ar": "التنظير"
+    },
+    {
+     "term": "Biopsy",
+     "definition": "A tissue sample examined histologically to give a definitive diagnosis.",
+     "ar": "خزعة"
+    },
+    {
+     "term": "Lumbar puncture",
+     "definition": "CSF sampling from the lumbar subarachnoid space after excluding raised pressure.",
+     "ar": "البزل القطني"
+    },
+    {
+     "term": "Central venous catheter",
+     "definition": "A line into a large vein for drugs, fluids and central pressure measurement.",
+     "ar": "القسطرة الوريدية المركزية"
+    },
+    {
+     "term": "Urinary catheterisation",
+     "definition": "Drainage of the bladder, monitoring output and relieving retention.",
+     "ar": "قسطرة البول"
+    },
+    {
+     "term": "Informed consent",
+     "definition": "Explaining indication, alternatives, risks and benefits before a procedure.",
+     "ar": "الموافقة المستنيرة"
+    }
+   ],
+   "name_ar": "الفحوصات والإجراءات والأدوية"
+  },
+  "level3": {
+   "name": "Emergencies, safety and evidence",
+   "cards": [
+    {
+     "term": "Sepsis Six",
+     "definition": "Oxygen, cultures, antibiotics, fluids, lactate and urine output within one hour.",
+     "ar": "حزمة الإنتان الست"
+    },
+    {
+     "term": "A to E assessment",
+     "definition": "Airway, Breathing, Circulation, Disability, Exposure, treating each before moving on.",
+     "ar": "التقييم المنهجي ABCD"
+    },
+    {
+     "term": "NEWS2",
+     "definition": "A track and trigger score from observations that flags a deteriorating patient.",
+     "ar": "مقياس الإنذار المبكر"
+    },
+    {
+     "term": "Red flag",
+     "definition": "A feature that raises the probability of serious disease and demands urgent action.",
+     "ar": "علامة خطورة"
+    },
+    {
+     "term": "Time critical",
+     "definition": "A condition where delay to treatment directly worsens outcome, such as stroke or sepsis.",
+     "ar": "حالة حرجة زمنياً"
+    },
+    {
+     "term": "DNACPR",
+     "definition": "A recorded decision that CPR would not succeed, made with the patient where possible.",
+     "ar": "عدم الإنعاش"
+    },
+    {
+     "term": "Mental capacity",
+     "definition": "The ability to understand, retain, weigh and communicate a decision at that moment.",
+     "ar": "الأهلية الذهنية"
+    },
+    {
+     "term": "Number needed to treat",
+     "definition": "How many patients must be treated for one to benefit.",
+     "ar": "العدد اللازم لعلاج واحد"
+    },
+    {
+     "term": "Positive predictive value",
+     "definition": "The chance a positive test is truly positive, which depends on prevalence.",
+     "ar": "القيمة التنبؤية الإيجابية"
+    },
+    {
+     "term": "Randomised controlled trial",
+     "definition": "Participants allocated by chance to intervention or control, the strongest design for causation.",
+     "ar": "تجربة عشوائية مضبوطة"
+    },
+    {
+     "term": "Blinding",
+     "definition": "Keeping allocation hidden from patient, clinician or assessor to reduce bias.",
+     "ar": "التعمية"
+    },
+    {
+     "term": "Confidence interval",
+     "definition": "The range of values likely to contain the true effect, showing precision.",
+     "ar": "فترة الثقة"
+    },
+    {
+     "term": "Audit vs research",
+     "definition": "Audit checks practice against a standard, research creates new generalisable knowledge.",
+     "ar": "التدقيق / البحث"
+    },
+    {
+     "term": "Differential diagnosis",
+     "definition": "A ranked list of plausible diagnoses kept open until evidence narrows it.",
+     "ar": "التشخيص التفريقي"
+    },
+    {
+     "term": "Safety netting",
+     "definition": "Clear advice on what to watch for and when to return if things change.",
+     "ar": "شبكة الأمان"
+    },
+    {
+     "term": "Polypharmacy",
+     "definition": "Many medicines taken together, raising interaction and adverse effect risk.",
+     "ar": "تعدد الأدوية"
+    },
+    {
+     "term": "Deprescribing",
+     "definition": "Planned withdrawal of medicines that no longer give benefit.",
+     "ar": "إيقاف الأدوية غير اللازمة"
+    },
+    {
+     "term": "Multidisciplinary team",
+     "definition": "Doctors, nurses, pharmacists and therapists planning care together.",
+     "ar": "الفريق متعدد التخصصات"
+    },
+    {
+     "term": "Triage",
+     "definition": "Sorting patients by urgency so the sickest are seen first.",
+     "ar": "الفرز"
+    },
+    {
+     "term": "Handover (SBAR)",
+     "definition": "Situation, Background, Assessment, Recommendation, a structured clinical handover.",
+     "ar": "تسليم الحالة"
+    }
+   ],
+   "name_ar": "الطوارئ والسلامة والطب المبني على الدليل"
+  }
+ }
+}
