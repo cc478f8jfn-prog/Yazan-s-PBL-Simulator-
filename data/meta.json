@@ -1,0 +1,146 @@
+{
+ "REGION_TITLES": {
+  "msk": "Musculoskeletal System",
+  "embryology": "Development & Embryology",
+  "pathology": "General Pathology",
+  "physiology": "Physiology",
+  "quiz": "Quiz Bank"
+ },
+ "CATEGORY_TITLES": {
+  "msk": {
+   "nerves": "Nerve Injuries",
+   "muscles": "Muscle Injuries",
+   "bones": "Bone Injuries",
+   "general": "General Injuries"
+  },
+  "embryology": {
+   "level1": "Level 1: Basics & Weeks",
+   "level2": "Level 2: Organogenesis",
+   "level3": "Level 3: Structural Defects",
+   "level4": "Level 4: Advanced Pathology"
+  },
+  "pathology": {
+   "general": "General Pathology"
+  },
+  "physiology": {
+   "cell": "Cell & Membrane",
+   "nerve_muscle": "Nerve & Muscle",
+   "blood": "Blood & Body Fluids",
+   "immune": "Immunity",
+   "cardio": "Cardiovascular",
+   "resp": "Respiratory",
+   "renal": "Renal & Acid-Base",
+   "git": "Gastrointestinal",
+   "endocrine": "Endocrine",
+   "repro": "Reproductive"
+  },
+  "quiz": {
+   "msk": "Musculoskeletal",
+   "neuro": "Nervous System",
+   "cardio": "Cardiovascular",
+   "resp": "Respiratory",
+   "renal": "Renal & Urinary",
+   "git": "Gastrointestinal & Liver",
+   "endocrine": "Endocrine",
+   "repro": "Reproductive",
+   "blood_immune": "Blood & Immunity",
+   "development": "Development & Histology",
+   "medicine": "Internal Medicine",
+   "surgery": "Surgery",
+   "pediatrics": "Pediatrics",
+   "obgyn": "Obstetrics & Gynaecology",
+   "psychiatry": "Psychiatry"
+  }
+ },
+ "CAT_META": {
+  "msk/nerves": "3 levels &middot; 121 cases",
+  "msk/muscles": "3 levels &middot; 110 cases",
+  "msk/bones": "3 levels &middot; 110 cases",
+  "msk/general": "3 levels &middot; 110 cases",
+  "embryology/level1": "3 levels &middot; 55 cases",
+  "embryology/level2": "3 levels &middot; 55 cases",
+  "embryology/level3": "3 levels &middot; 55 cases",
+  "embryology/level4": "3 levels &middot; 55 cases",
+  "physiology/blood": "3 levels &middot; 55 cases",
+  "physiology/nerve_muscle": "3 levels &middot; 55 cases",
+  "physiology/immune": "3 levels &middot; 55 cases",
+  "physiology/cardio": "3 levels &middot; 36 cases",
+  "physiology/cell": "3 levels &middot; 30 cases",
+  "physiology/endocrine": "3 levels &middot; 24 cases",
+  "physiology/git": "3 levels &middot; 24 cases",
+  "physiology/renal": "3 levels &middot; 30 cases",
+  "physiology/repro": "3 levels &middot; 18 cases",
+  "physiology/resp": "3 levels &middot; 30 cases",
+  "pathology/general": "4 levels &middot; 78 cases",
+  "quiz/blood_immune": "3 levels &middot; 18 questions",
+  "quiz/cardio": "3 levels &middot; 18 questions",
+  "quiz/development": "3 levels &middot; 18 questions",
+  "quiz/endocrine": "3 levels &middot; 18 questions",
+  "quiz/git": "3 levels &middot; 18 questions",
+  "quiz/msk": "3 levels &middot; 18 questions",
+  "quiz/neuro": "3 levels &middot; 18 questions",
+  "quiz/renal": "3 levels &middot; 18 questions",
+  "quiz/repro": "3 levels &middot; 18 questions",
+  "quiz/resp": "3 levels &middot; 18 questions",
+  "quiz/medicine": "3 levels &middot; 18 questions",
+  "quiz/surgery": "3 levels &middot; 18 questions",
+  "quiz/pediatrics": "3 levels &middot; 18 questions",
+  "quiz/obgyn": "3 levels &middot; 18 questions",
+  "quiz/psychiatry": "3 levels &middot; 18 questions"
+ },
+ "TRACKS": {
+  "videos": {
+   "basic": {
+    "label": "Basic Sciences",
+    "subjects": [
+     "anatomy",
+     "embryology",
+     "histology",
+     "physiology",
+     "biochemistry"
+    ]
+   },
+   "clinical": {
+    "label": "Clinical",
+    "subjects": [
+     "pathology",
+     "pharmacology",
+     "microbiology",
+     "immunology",
+     "medicine",
+     "surgery",
+     "pediatrics",
+     "obgyn",
+     "psychiatry"
+    ]
+   }
+  },
+  "quiz": {
+   "basic": {
+    "label": "Basic Sciences",
+    "categories": [
+     "msk",
+     "neuro",
+     "cardio",
+     "resp",
+     "renal",
+     "git",
+     "endocrine",
+     "repro",
+     "blood_immune",
+     "development"
+    ]
+   },
+   "clinical": {
+    "label": "Clinical",
+    "categories": [
+     "medicine",
+     "surgery",
+     "pediatrics",
+     "obgyn",
+     "psychiatry"
+    ]
+   }
+  }
+ }
+}

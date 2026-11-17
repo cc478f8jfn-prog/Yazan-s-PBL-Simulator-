@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazan's Medplat</title>
+    <link rel="icon" type="image/svg+xml" href="./logo.svg">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e1e;
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%233498db' stroke-width='1.5' fill='none' stroke-opacity='0.08'%3E%3Cpolyline points='20,160 40,160 50,130 65,180 85,120 100,160 120,160' stroke-linejoin='round' /%3E%3Cpath d='M150,40 h10 v-10 h10 v10 h10 v10 h-10 v10 h-10 v-10 h-10 z' fill='%233498db' fill-opacity='0.03' /%3E%3Ccircle cx='50' cy='50' r='8' /%3E%3Cpath d='M50,58 v20 M44,44 l-12,-12 M56,44 l12,-12 M58,50 h15' stroke-linecap='round' /%3E%3C/g%3E%3C/svg%3E");
+            background-size: 250px 250px;
+            color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* --- HOME SCREEN STYLES --- */
+        #home-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .top-header-area {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .welcome-text {
+            font-size: 1.2rem;
+            color: #8c9ba5;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            text-transform: lowercase;
+        }
+        .main-title {
+            font-size: 3rem;
+            color: #3498db;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        
+        /* Layout for Columns */
+        .limbs-container {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            max-width: 1250px;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .limb-column {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: rgba(45, 45, 45, 0.6);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #444;
+        }
+        .limb-column h2 {
+            text-align: center;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .start-box {
+            background: #2d2d2d;
+            border: 2px solid #3498db;
+            color: #f0f2f5;
+            padding: 10px 12px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .start-box:hover {
+            background: #3498db;
+            color: #fff;
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .footer-area {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .contact-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #2d2d2d;
+            border: 1px solid #3498db;
+            color: #3498db;
+            padding: 10px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        .contact-badge:hover {
+            background: #3498db;
+            color: #fff;
+        }
+        .contact-badge svg {
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* --- SIMULATOR SCREEN STYLES --- */
+        .simulator-container {
+            background: #2d2d2d;
+            max-width: 900px;
+            width: 100%;
+            padding: 3.5rem 2.5rem 2.5rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none; 
+            position: relative;
+        }
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: transparent;
+            border: none;
+            color: #8c9ba5;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+            padding: 0;
+        }
+        .back-btn:hover { color: #3498db; }
+        .back-btn svg { width: 20px; height: 20px; margin-right: 6px; }
+
+        .sim-header {
+            color: #fff;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        .clinical-history {
+            background: #3d3d3d;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+        .diagnostic-viewer {
+            background: #000;
+            color: #4af626;
+            padding: 25px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid #555;
+            line-height: 1.5;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        button.option-btn {
+            background: #444;
+            border: 2px solid #555;
+            color: #fff;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        button.option-btn:hover { background: #3498db; border-color: #3498db; }
+        button.option-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        
+        .feedback {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .correct-feedback { background: rgba(39, 174, 96, 0.2); color: #2ecc71; border: 1px solid #27ae60; }
+        .incorrect-feedback { background: rgba(231, 76, 60, 0.2); color: #e74c3c; border: 1px solid #c0392b; }
+        
+        .next-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 24px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            display: none;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .next-btn:hover { background: #2980b9; }
+
+        @media (max-width: 768px) {
+            .options-grid { grid-template-columns: 1fr; }
+        }
+    
+        .level-track { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: #2a2a2a; border: 1px solid #444; border-radius: 8px; padding: 10px 14px; margin-bottom: 15px; }
+        .level-pill { background: rgba(52,152,219,0.15); color: #3498db; border: 1px solid rgba(52,152,219,0.4); padding: 3px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; white-space: nowrap; }
+        .progress-track { flex: 1; min-width: 140px; height: 10px; background: #444; border-radius: 6px; overflow: hidden; }
+        .progress-fill { height: 100%; width: 0%; background: #3498db; border-radius: 6px; transition: width .3s ease; }
+        .level-count { color: #8c9ba5; font-size: 0.85rem; white-space: nowrap; }
+        .summary-box { background: #3d3d3d; border: 1px solid #555; border-radius: 10px; padding: 26px; text-align: center; margin-top: 8px; }
+        .summary-stats { font-size: 1.15rem; margin: 16px 0; line-height: 1.7; }
+        .stat-correct { color: #2ecc71; font-weight: bold; }
+        .stat-wrong { color: #e74c3c; font-weight: bold; }
+        .actions-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .btn-secondary { background: #444; color: #fff; border: 2px solid #555; padding: 12px 18px; font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all .2s; }
+        .btn-secondary:hover { background: #3498db; border-color: #3498db; }
+        .cat-status { display: block; font-size: 0.72rem; font-weight: normal; color: #8c9ba5; margin-top: 5px; }
+
+        .app-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; background: #1c1c1c; border-bottom: 2px solid #3498db; padding: 16px 24px; box-sizing: border-box; box-shadow: 0 4px 14px rgba(0,0,0,.5); }
+        .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
+        .logo-img { height: 50px; width: 50px; border-radius: 8px; object-fit: cover; }
+        .logo-text { color: #3498db; font-weight: bold; font-size: 1.55rem; letter-spacing: 1px; white-space: nowrap; }
+        .main-nav { display: flex; gap: 0; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-btn { background: transparent; color: #cfd8dc; border: none; border-left: 1px solid #3a3a3a; padding: 12px 18px; border-radius: 0; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all .2s; }
+        .nav-btn:first-child { border-left: none; }
+        .nav-btn:hover { background: #3498db; color: #fff; }
+        .nav-btn.active { background: #3498db; color: #fff; }
+        body { display: block; }
+        .view { display: none; min-height: 100vh; box-sizing: border-box; padding: 120px 2rem 2rem; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+        .landing-box { text-align: center; max-width: 780px; }
+        .main-title { font-size: 2.6rem; }
+        .welcome-sub { color: #b9bec5; font-size: 1.05rem; margin: 14px 0 34px; }
+        .big-buttons { display: flex; gap: 18px; justify-content: center; align-items: stretch; }
+        .big-btn { background: #2d2d2d; border: 2px solid #3498db; color: #f0f2f5; border-radius: 14px; padding: 32px 42px; cursor: pointer; min-width: 250px; display: flex; flex-direction: column; align-items: center; gap: 12px; font-weight: bold; font-size: 1.25rem; transition: all .25s; }
+        .big-btn:hover { background: #3498db; color: #fff; transform: translateY(-4px); box-shadow: 0 10px 24px rgba(52,152,219,.35); }
+        .big-btn-primary { background: #2d2d2d; }
+        .big-icon { font-size: 2.5rem; }
+        .section-title { color: #3498db; border-bottom: 2px solid #3498db; padding-bottom: 10px; font-size: 1.8rem; }
+        .section-note { color: #b9bec5; font-size: 1.05rem; margin-top: 14px; max-width: 560px; text-align: center; }
+        @media (max-width: 768px) {
+            .app-header { flex-direction: column; align-items: center; gap: 10px; padding: 12px 10px; }
+            .main-nav { display: flex; justify-content: center; width: 100%; border-top: 1px solid #3a3a3a; padding-top: 8px; }
+            .nav-btn { border-left: 1px solid #3a3a3a; padding: 10px 12px; font-size: .9rem; }
+            .nav-btn:first-child { border-left: none; }
+            .view { padding: 190px 1rem 2rem; }
+            .back-section { top: 190px; }
+            .big-buttons { flex-wrap: wrap; }
+            .big-btn { min-width: 0; flex: 1 1 30%; padding: 20px 10px; font-size: 1rem; }
+            .big-icon { font-size: 2rem; }
+        }
+
+        .view { position: relative; }
+        .back-section { position: absolute; top: 120px; left: 24px; background: transparent; border: 1px solid #444; color: #cfd8dc; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: .9rem; font-weight: 600; transition: all .2s; z-index: 5; }
+        .back-section:hover { background: #3498db; color: #fff; border-color: #3498db; }
+
+        .videos-menu { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+        .vid-sub-btn { background: #2d2d2d; border: 2px solid #3498db; color: #f0f2f5; border-radius: 12px; padding: 18px 26px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: all .2s; min-width: 180px; }
+        .vid-sub-btn:hover { background: #3498db; color: #fff; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(52,152,219,.35); }
+        .vid-teacher-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 22px; }
+        .vid-teacher-btn { background: rgba(52,152,219,.12); border: 2px solid #3498db; color: #fff; border-radius: 12px; padding: 20px 28px; cursor: pointer; font-weight: bold; font-size: 1.05rem; transition: all .2s; }
+        .vid-teacher-btn:hover { background: #3498db; }
+        .vid-limb-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+        .vid-limb-btn { background: #2d2d2d; border: 2px solid #555; color: #fff; border-radius: 12px; padding: 14px 24px; cursor: pointer; font-weight: bold; font-size: .95rem; transition: all .2s; }
+        .vid-limb-btn:hover { background: #3498db; border-color: #3498db; }
+        .video-grid { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 14px; max-width: 1100px; }
+        .video-card { width: 240px; background: #2d2d2d; border: 1px solid #444; border-radius: 10px; overflow: hidden; text-decoration: none; color: #f0f2f5; transition: all .2s; display: block; }
+        .video-card:hover { border-color: #3498db; transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.45); }
+        .video-thumb { width: 100%; height: 135px; object-fit: cover; background: #000; display: block; }
+        .video-title { padding: 9px 10px; font-size: .82rem; line-height: 1.35; color: #e8eaed; min-height: 54px; }
+        .video-group-title { color: #3498db; font-weight: bold; margin-top: 24px; font-size: 1.05rem; border-bottom: 1px solid #3a3a3a; padding-bottom: 6px; width: 100%; text-align: left; }
+        .vid-crumb { color: #8c9ba5; font-size: .9rem; margin-top: 14px; }
+        .vid-crumb b { color: #3498db; }
+        .vid-note { color: #b9bec5; font-size: 1rem; margin-top: 26px; text-align: center; max-width: 520px; }
+
+        .video-player-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.88); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .video-player-box { background: #1c1c1c; border: 1px solid #3498db; border-radius: 12px; max-width: 900px; width: 100%; padding: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.8); }
+        .video-player-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+        .video-player-title { color: #fff; font-weight: bold; font-size: .95rem; line-height: 1.35; }
+        .video-player-close { background: #444; color: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 1rem; cursor: pointer; flex-shrink: 0; transition: all .2s; }
+        .video-player-close:hover { background: #c0392b; }
+        .video-player-frame { position: relative; padding-top: 56.25%; background: #000; border-radius: 8px; overflow: hidden; }
+        .video-player-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-player-links { display: flex; gap: 10px; margin-top: 10px; }
+        .video-player-links a { color: #3498db; font-size: .85rem; text-decoration: none; font-weight: 600; }
+        .video-player-links a:hover { text-decoration: underline; }
+        .vid-play-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(0,0,0,.65); color: #fff; border: 2px solid #3498db; border-radius: 50%; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; pointer-events: none; }
+        .video-card:hover .vid-play-badge { background: rgba(52,152,219,.85); }
+        .video-thumb-wrap { position: relative; display: block; }
+
+        .books-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; margin-top: 10px; }
+        .book-card { background: #1c1c1c; border: 1px solid #333; border-radius: 12px; padding: 16px; cursor: pointer; transition: all .2s; display: flex; flex-direction: column; gap: 8px; }
+        .book-card:hover { border-color: #3498db; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(52,152,219,.15); }
+        .book-cover { height: 140px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 3rem; background: linear-gradient(135deg, #0d253f, #1a5276); border: 1px solid #2c3e50; }
+        .book-title { color: #fff; font-weight: bold; font-size: .95rem; line-height: 1.3; }
+        .book-meta { color: #888; font-size: .8rem; }
+        .book-tag { display: inline-block; background: rgba(52,152,219,.15); color: #3498db; border: 1px solid rgba(52,152,219,.35); border-radius: 20px; padding: 2px 10px; font-size: .72rem; font-weight: 600; align-self: flex-start; }
+        .pdf-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.9); z-index: 2000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 16px; }
+        .pdf-box { background: #1c1c1c; border: 1px solid #3498db; border-radius: 12px; width: 100%; max-width: 1000px; height: 92vh; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,.8); }
+        .pdf-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #333; }
+        .pdf-title { color: #fff; font-weight: bold; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .pdf-close { background: #444; color: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 1rem; cursor: pointer; flex-shrink: 0; transition: all .2s; }
+        .pdf-close:hover { background: #c0392b; }
+        .pdf-frame { flex: 1; width: 100%; border: none; background: #fff; }
+        .pdf-links { display: flex; gap: 14px; padding: 8px 14px; border-top: 1px solid #333; }
+        .pdf-links a { color: #3498db; font-size: .85rem; text-decoration: none; font-weight: 600; }
+        .pdf-links a:hover { text-decoration: underline; }
+        .book-dl { display: inline-block; margin-top: 4px; background: #2c3e50; color: #fff; border: 1px solid #3498db; border-radius: 6px; padding: 6px 12px; font-size: .8rem; font-weight: 600; cursor: pointer; text-decoration: none; text-align: center; transition: all .2s; }
+        .book-dl:hover { background: #3498db; }
+        .about-box { max-width: 640px; text-align: left; color: #cfd8dc; font-size: 1.02rem; line-height: 1.7; margin-top: 20px; }
+        .about-box p { margin: 12px 0; }
+        .about-box ul { margin: 12px 0 12px 20px; }
+        .about-box li { margin: 8px 0; }
+        .about-box b { color: #3498db; }
+
+        /* ---- system blocks (added) ---- */
+        .block-title { width:100%; max-width:1250px; color:#3498db; font-size:1.2rem; margin:22px 0 6px;
+            border-bottom:1px solid #3a3a3a; padding-bottom:6px; }
+        .cat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:12px;
+            width:100%; max-width:1250px; margin-bottom:1.6rem; }
+        .start-box .cat-meta { display:block; font-size:.72rem; font-weight:normal; color:#8c9ba5; margin-top:4px; }
+        .start-box .cat-status { display:block; font-size:.7rem; font-weight:normal; color:#5d9b74; margin-top:2px; }
+        .video-card .vch { display:block; font-size:.7rem; color:#7f8b95; margin-top:4px; line-height:1.3; }
+        .chip { display:inline-block; font-size:.6rem; font-weight:bold; padding:1px 6px; border-radius:9px;
+            margin-left:5px; vertical-align:middle; letter-spacing:.5px; }
+        .chip-ar { background:#1f5c3f; color:#d6f5e4; }
+        .chip-en { background:#1f4560; color:#d6e9f7; }
+
+        /* ---- tracks, bigger video buttons, language blocks ---- */
+        .track-tabs { display:flex; gap:12px; justify-content:center; margin:20px 0 12px; flex-wrap:wrap; }
+        .track-tab { background:#252525; border:2px solid #3f3f3f; color:#cfd8dc; border-radius:12px;
+            padding:14px 34px; font-size:1.05rem; font-weight:700; letter-spacing:.4px; cursor:pointer;
+            transition:all .2s; }
+        .track-tab:hover { border-color:#3498db; color:#fff; }
+        .track-tab.active { background:#3498db; border-color:#3498db; color:#fff; }
+        .videos-menu { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px;
+            width:100%; max-width:1080px; margin:18px auto 0; }
+        .vid-sub-btn { display:block; width:100%; background:#2d2d2d; border:2px solid #3498db; color:#fff;
+            border-radius:12px; padding:22px 20px; font-size:1.1rem; font-weight:700; cursor:pointer;
+            text-align:center; transition:all .2s; }
+        .vid-sub-btn:hover { background:#3498db; transform:translateY(-2px); }
+        .vid-sub-btn .vid-count { display:block; font-size:.8rem; font-weight:400; color:#9fb3c8; margin-top:6px; }
+        .vid-sub-btn:hover .vid-count { color:#eaf4ff; }
+        .lang-block { width:100%; max-width:1120px; margin:28px auto 0; }
+        .lang-title { display:flex; align-items:center; gap:10px; color:#fff; font-size:1.15rem;
+            font-weight:700; border-bottom:2px solid #3498db; padding-bottom:8px; }
+        .lang-title .lang-tag { font-size:.72rem; letter-spacing:1px; padding:3px 10px; border-radius:20px; }
+        .lang-ar .lang-tag { background:#1f5c3f; color:#d6f5e4; }
+        .lang-en .lang-tag { background:#1f4560; color:#d6e9f7; }
+        .chip-exp { background:#7a4a1f; color:#ffe6cc; }
+        .vid-empty { color:#8c9ba5; font-size:.9rem; margin:12px 0 0; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="app-header" class="app-header">
+        <div class="logo" onclick="showView('landing')">
+            <img src="./logo.svg" alt="Yazan's Medplat logo" class="logo-img" onerror="this.style.display='none'">
+            <span class="logo-text">Yazan's Medplat</span>
+        </div>
+        <nav class="main-nav">
+            <button class="nav-btn" data-view="landing" onclick="showView('landing')">Home</button>
+            <button class="nav-btn" data-view="videos" onclick="showView('videos')">Video Tutorials</button>
+            <button class="nav-btn" data-view="pbl" onclick="showView('pbl')">PBL Simulator</button>
+            <button class="nav-btn" data-view="quiz" onclick="showView('quiz')">Quizzes</button>
+            <button class="nav-btn" data-view="about" onclick="showView('about')">About</button>
+            <button class="nav-btn" data-view="contact" onclick="showView('contact')">Contact Me</button>
+        </nav>
+    </header>
+
+    <!-- LANDING VIEW -->
+    <div id="view-landing" class="view" style="display:flex;">
+        <div class="landing-box">
+            <div class="welcome-text">welcome to</div>
+            <h1 class="main-title">Yazan's Medical Platform</h1>
+            <p class="welcome-sub">Clinical PBL cases, a quiz bank and video tutorials for the basic medical years, organised by body system, all in one place.</p>
+            <div class="big-buttons">
+                <button class="big-btn" onclick="showView('videos', this)"><span class="big-icon">&#9654;</span><span class="big-label">Video Tutorials</span></button>
+                <button class="big-btn big-btn-primary" onclick="showView('pbl', this)"><span class="big-icon">&#9889;</span><span class="big-label">PBL Simulator</span></button>
+                <button class="big-btn" onclick="showView('quiz', this)"><span class="big-icon">&#10067;</span><span class="big-label">Quiz Bank</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PBL SIMULATOR VIEW (by system) -->
+    <div id="home-screen" class="view" style="display:none;">
+        <button class="back-section" onclick="goBack()">&#8592; Back</button>
+        <div class="top-header-area">
+            <div class="welcome-text">PBL simulator</div>
+            <h1 class="main-title">Choose a System</h1>
+        </div>
+        <div class="limbs-container"><div class="limb-column"><h2>Musculoskeletal System</h2><button class="start-box" onclick="openCategory('msk','nerves')" data-region="msk" data-category="nerves">Nerve Injuries</button><button class="start-box" onclick="openCategory('msk','muscles')" data-region="msk" data-category="muscles">Muscle Injuries</button><button class="start-box" onclick="openCategory('msk','bones')" data-region="msk" data-category="bones">Bone Injuries</button><button class="start-box" onclick="openCategory('msk','general')" data-region="msk" data-category="general">General Injuries</button></div><div class="limb-column"><h2>Development & Embryology</h2><button class="start-box" onclick="openCategory('embryology','level1')" data-region="embryology" data-category="level1">Level 1: Basics & Weeks</button><button class="start-box" onclick="openCategory('embryology','level2')" data-region="embryology" data-category="level2">Level 2: Organogenesis</button><button class="start-box" onclick="openCategory('embryology','level3')" data-region="embryology" data-category="level3">Level 3: Structural Defects</button><button class="start-box" onclick="openCategory('embryology','level4')" data-region="embryology" data-category="level4">Level 4: Advanced Pathology</button></div><div class="limb-column"><h2>General Pathology</h2><button class="start-box" onclick="openCategory('pathology','general')" data-region="pathology" data-category="general">General Pathology - 4 levels</button></div></div>
+        <h2 class="block-title">Physiology, by System</h2><div class="cat-grid"><button class="start-box" onclick="openCategory('physiology','cell')" data-region="physiology" data-category="cell">Cell & Membrane<span class="cat-meta" data-meta="physiology/cell"></span></button><button class="start-box" onclick="openCategory('physiology','nerve_muscle')" data-region="physiology" data-category="nerve_muscle">Nerve & Muscle<span class="cat-meta" data-meta="physiology/nerve_muscle"></span></button><button class="start-box" onclick="openCategory('physiology','blood')" data-region="physiology" data-category="blood">Blood & Body Fluids<span class="cat-meta" data-meta="physiology/blood"></span></button><button class="start-box" onclick="openCategory('physiology','immune')" data-region="physiology" data-category="immune">Immunity<span class="cat-meta" data-meta="physiology/immune"></span></button><button class="start-box" onclick="openCategory('physiology','cardio')" data-region="physiology" data-category="cardio">Cardiovascular<span class="cat-meta" data-meta="physiology/cardio"></span></button><button class="start-box" onclick="openCategory('physiology','resp')" data-region="physiology" data-category="resp">Respiratory<span class="cat-meta" data-meta="physiology/resp"></span></button><button class="start-box" onclick="openCategory('physiology','renal')" data-region="physiology" data-category="renal">Renal & Acid-Base<span class="cat-meta" data-meta="physiology/renal"></span></button><button class="start-box" onclick="openCategory('physiology','git')" data-region="physiology" data-category="git">Gastrointestinal<span class="cat-meta" data-meta="physiology/git"></span></button><button class="start-box" onclick="openCategory('physiology','endocrine')" data-region="physiology" data-category="endocrine">Endocrine<span class="cat-meta" data-meta="physiology/endocrine"></span></button><button class="start-box" onclick="openCategory('physiology','repro')" data-region="physiology" data-category="repro">Reproductive<span class="cat-meta" data-meta="physiology/repro"></span></button></div>
+    </div>
+
+    <!-- QUIZ VIEW -->
+    <div id="view-quiz" class="view" style="display:none;">
+        <button class="back-section" onclick="goBack()">&#8592; Back</button>
+        <h2 class="section-title">Quiz Bank</h2>
+        <p class="section-note">MCQs by system, split into levels that unlock as you finish. The clinical half covers the subjects you meet on the wards.</p>
+        <div class="track-tabs">
+            <button class="track-tab active" data-track="basic" onclick="setQuizTrack('basic', this)">Basic Sciences</button>
+            <button class="track-tab" data-track="clinical" onclick="setQuizTrack('clinical', this)">Clinical</button>
+        </div>
+        <div id="quiz-grid" class="cat-grid"></div>
+    </div>
+
+    <!-- VIDEO TUTORIALS VIEW -->
+    <div id="view-videos" class="view" style="display:none;">
+        <button class="back-section" onclick="goBack()">&#8592; Back</button>
+        <h2 class="section-title">Video Tutorials</h2>
+        <div class="track-tabs">
+            <button class="track-tab active" data-track="basic" onclick="setVideoTrack('basic', this)">Basic Sciences</button>
+            <button class="track-tab" data-track="clinical" onclick="setVideoTrack('clinical', this)">Clinical</button>
+        </div>
+        <div id="videos-root"></div>
+    </div>
+
+    <!-- ABOUT VIEW -->
+    <div id="view-about" class="view" style="display:none;">
+        <button class="back-section" onclick="goBack()">&#8592; Back</button>
+        <h2 class="section-title">About</h2>
+        <div class="about-box"><p>Yazan's Medplat is a free medical study platform built for medical students, by a medical student. Everything for the pre-clinical and clinical years in one place, split into a basic-sciences half and a clinical half:</p><ul><li><b>PBL Simulator</b> - 1,106 clinical cases organised by body system: musculoskeletal, development, general pathology and every physiology system, with up to 4 difficulty levels and progress tracking.</li><li><b>Quiz Bank</b> - 270 MCQs. Basic sciences cover anatomy, physiology, histology, biochemistry, pathology, pharmacology, microbiology and immunology by system; the clinical half covers internal medicine, surgery, paediatrics, obstetrics and gynaecology, and psychiatry. Three levels each.</li><li><b>Video Tutorials</b> - 1,199 lectures, Arabic first and English underneath: Dr Ayman Khanfour and Ninja Nerd for anatomy and histology, Dr Nagi Iskandar and Ninja Nerd for physiology, Dr Hesham Esmat for biochemistry, Dr Abdelmoteal Foda for pharmacology, plus Dr Iman Nabil, Osmosis, Zero To Finals, Dr Matt &amp; Dr Mike and Dirty Medicine.</li></ul><p>The platform is designed by a medical student who knows exactly what studying feels like, so everything here is built to make learning faster, easier and more effective.</p></div>
+    </div>
+
+    <!-- CONTACT VIEW -->
+    <div id="view-contact" class="view" style="display:none;">
+        <button class="back-section" onclick="goBack()">&#8592; Back</button>
+        <h2 class="section-title">Contact Me</h2>
+        <p class="section-note">Questions, feedback, or suggestions? Reach out any time.</p>
+        <a href="mailto:yazan.w.q7@icloud.com" class="contact-badge" style="margin-top:18px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-right:8px;">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            yazan.w.q7@icloud.com
+        </a>
+    </div>
+
+    <!-- SIMULATOR SCREEN -->
+    <div id="simulator-screen" class="simulator-container">
+        <button class="back-btn" onclick="goHome()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back
+        </button>
+        <div id="level-track" class="level-track">
+            <span id="level-pill" class="level-pill"></span>
+            <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+            <span id="level-count" class="level-count"></span>
+        </div>
+        <h2 id="sim-title" class="sim-header">&#9889; Clinical PBL Simulator</h2>
+        <div id="case-text" class="clinical-history"></div>
+        <div id="diagnostic-text" class="diagnostic-viewer"></div>
+        <div id="options-container" class="options-grid"></div>
+        <div id="feedback-box" class="feedback"></div>
+        <button id="next-button" class="next-btn" onclick="nextCase()">Next Case</button>
+        <div id="summary-view" class="summary-box" style="display:none;">
+            <h2 id="summary-title" class="sim-header">Level Complete</h2>
+            <div id="summary-stats" class="summary-stats"></div>
+            <div class="actions-row">
+                <button class="btn-secondary" onclick="retryLevel()">Retry Level</button>
+                <button id="next-level-btn" class="btn-secondary" onclick="goNextLevel()">Next Level</button>
+                <button class="btn-secondary" onclick="goLanding()">Back to Home</button>
+            </div>
+        </div>
+        <div id="end-view" class="summary-box" style="display:none;">
+            <h2 class="sim-header">Section Completed</h2>
+            <div id="end-stats" class="summary-stats"></div>
+            <div class="actions-row">
+                <button class="btn-secondary" onclick="resetSection()">Retry Section</button>
+                <button class="btn-secondary" onclick="goLanding()">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIDEO PLAYER MODAL -->
+    <div id="video-player-overlay" class="video-player-overlay">
+        <div class="video-player-box">
+            <div class="video-player-head">
+                <div id="video-player-title" class="video-player-title"></div>
+                <button class="video-player-close" onclick="closeVideoPlayer()" title="Close">&times;</button>
+            </div>
+            <div class="video-player-frame" id="video-player-frame"></div>
+            <div class="video-player-links">
+                <a id="video-player-watch" href="#" target="_blank" rel="noopener">Watch on YouTube &#8599;</a>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+// ============ Yazan's Medplat engine ============
+const casesData = __CASES__
+const VIDEO_DATA = __VIDEOS__
+const REGION_TITLES = __REGION_TITLES__
+const CATEGORY_TITLES = __CATEGORY_TITLES__
+const CAT_META = __CAT_META__
+const LEVEL_LABELS = ['Easy', 'Moderate', 'Advanced', 'Expert'];
+const SAVE_KEY = 'yazan-medplat-v3';
+
+const genders = [{ id: 'male', pro: 'He', pos: 'his' }, { id: 'female', pro: 'She', pos: 'her' }];
+const occupations = ['software engineer', 'medical student', 'construction worker', 'teacher', 'professional athlete',
+  'barista', 'mechanic', 'carpenter', 'nurse', 'delivery driver'];
+const sides = ['right', 'left'];
+const TRACKS = __TRACKS__;
+
+let SAVE = loadSave();
+let current = null;
+let lastRegion = null;
+let lastCategory = null;
+
+// ============ Yazan's Medplat engine ============
+const SUBJECT_LABELS = {
+  anatomy: 'Gross Anatomy', embryology: 'Embryology', histology: 'Histology',
+  physiology: 'Physiology', biochemistry: 'Biochemistry', pathology: 'Pathology',
+  pharmacology: 'Pharmacology', microbiology: 'Microbiology', immunology: 'Immunology',
+  medicine: 'Internal Medicine', surgery: 'Surgery', pediatrics: 'Pediatrics',
+  obgyn: 'Obstetrics & Gynaecology', psychiatry: 'Psychiatry'
+};
+
+function $(id) { return document.getElementById(id); }
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function loadSave() {
+  try { const raw = localStorage.getItem(SAVE_KEY); return raw ? JSON.parse(raw) : {}; }
+  catch (e) { return {}; }
+}
+function persist() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(SAVE)); } catch (e) {} }
+function catKey(region, category) { return region + '/' + category; }
+function totalLevels(region, category) { return Object.keys(casesData[region][category]).length; }
+function levelCases(region, category, lvl) { return casesData[region][category][String(lvl)] || []; }
+function stateOf(region, category) {
+  const k = catKey(region, category);
+  if (!SAVE[k]) SAVE[k] = { level: 1, completed: {}, done: {}, correct: 0, wrong: 0 };
+  return SAVE[k];
+}
+function nextLevel(region, category) {
+  const st = stateOf(region, category);
+  for (let lvl = 1; lvl <= totalLevels(region, category); lvl++) {
+    if (!st.completed[lvl] && levelCases(region, category, lvl).length) return lvl;
+  }
+  return null;
+}
+
+// ---------- navigation with a real back stack ----------
+const NAV = [];
+let currentView = 'landing';
+
+function viewTarget(name) { return name === 'pbl' ? 'home-screen' : 'view-' + name; }
+
+function paint(name) {
+  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  const el = document.getElementById(viewTarget(name));
+  if (el) el.style.display = 'flex';
+  $('app-header').style.display = 'flex';
+  $('simulator-screen').style.display = 'none';
+  currentView = name;
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector('.nav-btn[data-view="' + name + '"]');
+  if (btn) btn.classList.add('active');
+  if (name === 'quiz') { renderQuizGrid(); updateHomeStatuses(); }
+  if (name === 'pbl') updateHomeStatuses();
+  if (name === 'videos') renderVideos();
+  window.scrollTo(0, 0);
+}
+
+function showView(name) {
+  if (name !== currentView) NAV.push(currentView);
+  paint(name);
+}
+
+function goBack() {
+  if (currentView === 'videos') {
+    if (vidsState.section) { vidsState.section = null; renderVideos(); return; }
+    if (vidsState.subject) { vidsState.subject = null; renderVideos(); return; }
+  }
+  if (currentView === 'sim') { goHome(); return; }
+  paint(NAV.length ? NAV.pop() : 'landing');
+}
+
+function goHome() {
+  current = null;
+  $('simulator-screen').style.display = 'none';
+  NAV.length = 0;
+  paint(lastRegion === 'quiz' ? 'quiz' : 'pbl');
+}
+function goLanding() { goHome(); paint('landing'); }
+
+// ---------- quiz grid per track ----------
+let quizTrack = 'basic';
+function setQuizTrack(track, btn) {
+  quizTrack = track;
+  document.querySelectorAll('#view-quiz .track-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderQuizGrid();
+}
+function renderQuizGrid() {
+  const grid = $('quiz-grid');
+  if (!grid) return;
+  const cfg = (TRACKS.quiz && TRACKS.quiz[quizTrack]) || { categories: [] };
+  grid.innerHTML = cfg.categories.map(cat => {
+    const titles = (CATEGORY_TITLES.quiz || {});
+    const label = titles[cat] || cat;
+    const meta = CAT_META['quiz/' + cat] || '';
+    return '<button class="start-box" onclick="openCategory(\'quiz\',\'' + cat + '\')" data-region="quiz" data-category="' + cat + '">' +
+      esc(label) + '<span class="cat-meta">' + meta + '</span></button>';
+  }).join('');
+}
+
+// ---------- play a level ----------
+function openCategory(region, category) {
+  lastRegion = region;
+  lastCategory = category;
+  if (region === 'quiz') quizTrack = (TRACKS.quiz.clinical.categories.indexOf(category) >= 0) ? 'clinical' : 'basic';
+  const lvl = nextLevel(region, category);
+  if (lvl === null) { showEnd(region, category); return; }
+  startLevel(region, category, lvl);
+}
+function startLevel(region, category, lvl) {
+  const st = stateOf(region, category);
+  const all = levelCases(region, category, lvl);
+  const pool = all.filter(c => !st.done[c.id]);
+  current = { region, category, level: lvl, total: all.length, pool,
+              runCorrect: 0, runWrong: 0, active: null, optionBtns: [] };
+  if (currentView !== 'sim') NAV.push(currentView);
+  currentView = 'sim';
+  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  $('app-header').style.display = 'none';
+  $('simulator-screen').style.display = 'block';
+  $('summary-view').style.display = 'none';
+  $('end-view').style.display = 'none';
+  $('diagnostic-text').style.display = 'none';
+  $('options-container').style.display = 'grid';
+  $('feedback-box').style.display = 'none';
+  $('next-button').style.display = 'none';
+  renderHeader();
+  if (pool.length === 0) { finishLevel(); return; }
+  showCase();
+}
+function catTitle(region, category) {
+  const byRegion = CATEGORY_TITLES[region];
+  if (byRegion && byRegion[category]) return byRegion[category];
+  return category;
+}
+function renderHeader() {
+  const isQuiz = current.region === 'quiz';
+  $('sim-title').textContent = isQuiz
+    ? 'Quiz: ' + catTitle(current.region, current.category)
+    : '\u26A1 ' + (REGION_TITLES[current.region] || '') + ': ' + catTitle(current.region, current.category);
+  $('level-pill').textContent = 'Level ' + current.level + '/' + totalLevels(current.region, current.category)
+    + ' \u00B7 ' + LEVEL_LABELS[current.level - 1];
+  const doneCount = current.total - current.pool.length;
+  $('level-count').textContent = doneCount + '/' + current.total + ' answered';
+  $('progress-fill').style.width = (current.total ? Math.round(doneCount / current.total * 100) : 0) + '%';
+}
+
+// A bare verb phrase needs a subject in front of it; a phrase that already names
+// someone (or starts with a noun) must be left alone.
+const VERB_START = /^(is|are|was|were|has|had|have|presents|presented|presenting|develops|developed|complains|reports|reported|sustained|suffered|experienced|felt|fell|falls|lands|landed|caught|jammed|pulled|pushed|reached|grabbed|twisted|noticed|started|began|returned|attends|underwent|undergoes|required|received|took|takes|wore|stopped|swallowed|inhaled|drank|ate|comes|arrived|sits|tripped|slipped|collapsed|woke|walks|becomes|describes)\b/i;
+const NOUN_START = /^(patient|man|woman|boy|girl|child|infant|baby|elderly|student|athlete|runner|cyclist|swimmer|dancer|mechanic|shopper|worker|driver|farmer|carpenter|teacher|nurse)\b/i;
+const LIMB_WORD = /(arm|hand|wrist|elbow|shoulder|leg|knee|ankle|foot|heel|hip|thigh|calf|shin|forearm|finger|thumb|toe|limb)/i;
+
+function buildVignette(tpl, isLimb) {
+  let sentence = (tpl.mechanism || '').trim();
+  if (/^is an? /i.test(sentence)) sentence = sentence.replace(/^is /i, '');
+  let prefix = '';
+  if (NOUN_START.test(sentence) && !/^a |^an |^the /i.test(sentence)) {
+    prefix = 'A ';
+  } else if (VERB_START.test(sentence)) {
+    if (isLimb) {
+      const age = 18 + Math.floor(Math.random() * 52);
+      const g = genders[Math.floor(Math.random() * genders.length)];
+      const occ = occupations[Math.floor(Math.random() * occupations.length)];
+      prefix = 'A ' + age + '-year-old ' + g.id + ' ' + occ + ' ';
+    } else {
+      prefix = 'A patient ';
+    }
+  }
+  sentence = prefix + sentence;
+  if (!prefix) sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+  sentence = sentence.replace(/\.+\s*$/, '');
+  if (/\?$/.test(sentence)) return sentence;
+  if (isLimb && LIMB_WORD.test(sentence) && !/bilateral|both |\b(right|left)\b/i.test(sentence)) {
+    sentence += ' on the ' + sides[Math.floor(Math.random() * sides.length)] + ' side';
+  }
+  return sentence + '. On examination, ' + (tpl.exam || '');
+}
+
+function showCase() {
+  const idx = Math.floor(Math.random() * current.pool.length);
+  const tpl = current.pool.splice(idx, 1)[0];
+  current.active = tpl;
+  current.optionBtns = [];
+  const isQuestion = !!tpl.stem;
+  if (isQuestion) {
+    $('case-text').innerHTML = '<strong>Question:</strong><br><br>' + tpl.stem;
+    $('diagnostic-text').style.display = 'none';
+  } else {
+    const isLimb = current.region === 'msk';
+    $('case-text').innerHTML = '<strong>Patient File:</strong><br><br>' + buildVignette(tpl, isLimb);
+    $('diagnostic-text').innerHTML = tpl.diagnostic || '';
+    $('diagnostic-text').style.display = 'block';
+  }
+  $('feedback-box').style.display = 'none';
+  $('next-button').style.display = 'none';
+  const oc = $('options-container');
+  oc.innerHTML = '';
+  const order = tpl.options.map((t, i) => ({ t, i })).sort(() => Math.random() - 0.5);
+  order.forEach(({ t, i }) => {
+    const b = document.createElement('button');
+    b.className = 'option-btn';
+    b.innerText = t;
+    b.onclick = () => checkAnswer(i, b);
+    oc.appendChild(b);
+    current.optionBtns.push({ btn: b, orig: i });
+  });
+  renderHeader();
+}
+function checkAnswer(selIdx, btn) {
+  const tpl = current.active;
+  if (!tpl) return;
+  const correct = selIdx === tpl.answer;
+  document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+  current.optionBtns.forEach(({ btn: b, orig }) => {
+    if (orig === tpl.answer) { b.style.background = '#27ae60'; b.style.borderColor = '#2ecc71'; }
+  });
+  if (!correct) { btn.style.background = '#c0392b'; btn.style.borderColor = '#e74c3c'; }
+  const fb = $('feedback-box');
+  fb.className = correct ? 'feedback correct-feedback' : 'feedback incorrect-feedback';
+  fb.innerHTML = '<strong>' + (correct ? 'Spot On.' : 'Incorrect Answer.') + '</strong><br><br>' + tpl.explanation;
+  fb.style.display = 'block';
+  const st = stateOf(current.region, current.category);
+  st.done[tpl.id] = correct ? 'c' : 'w';
+  if (correct) { st.correct++; current.runCorrect++; } else { st.wrong++; current.runWrong++; }
+  persist();
+  $('next-button').style.display = 'block';
+}
+function nextCase() {
+  if (current.pool.length === 0) { finishLevel(); return; }
+  showCase();
+}
+function finishLevel() {
+  const st = stateOf(current.region, current.category);
+  st.completed[current.level] = true;
+  persist();
+  const nxt = nextLevel(current.region, current.category);
+  if (nxt === null) { showEnd(current.region, current.category); return; }
+  $('diagnostic-text').style.display = 'none';
+  $('options-container').style.display = 'none';
+  $('feedback-box').style.display = 'none';
+  $('next-button').style.display = 'none';
+  $('summary-view').style.display = 'block';
+  const totalRun = current.runCorrect + current.runWrong;
+  const acc = totalRun ? Math.round(current.runCorrect / totalRun * 100) : 0;
+  $('summary-title').textContent = 'Level ' + current.level + ' Complete \u2014 ' + LEVEL_LABELS[current.level - 1];
+  $('summary-stats').innerHTML =
+    '<span class="stat-correct">Correct: ' + current.runCorrect + '</span> \u00B7 ' +
+    '<span class="stat-wrong">Wrong: ' + current.runWrong + '</span> \u00B7 Accuracy: ' + acc + '%' +
+    '<br><span style="color:#8c9ba5">Overall: ' + st.correct + ' correct \u00B7 ' + st.wrong + ' wrong</span>';
+  $('next-level-btn').textContent = 'Next Level (' + LEVEL_LABELS[nxt - 1] + ')';
+}
+function goNextLevel() {
+  const nxt = nextLevel(current.region, current.category);
+  if (nxt) startLevel(current.region, current.category, nxt);
+}
+function retryLevel() {
+  const st = stateOf(current.region, current.category);
+  levelCases(current.region, current.category, current.level).forEach(c => { delete st.done[c.id]; });
+  delete st.completed[current.level];
+  persist();
+  startLevel(current.region, current.category, current.level);
+}
+function showEnd(region, category) {
+  const st = stateOf(region, category);
+  if (currentView !== 'sim') NAV.push(currentView);
+  current = { region, category, level: 1 };
+  currentView = 'sim';
+  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  $('app-header').style.display = 'none';
+  $('simulator-screen').style.display = 'block';
+  $('summary-view').style.display = 'none';
+  $('end-view').style.display = 'block';
+  $('diagnostic-text').style.display = 'none';
+  $('options-container').style.display = 'none';
+  $('feedback-box').style.display = 'none';
+  $('next-button').style.display = 'none';
+  $('sim-title').textContent = region === 'quiz'
+    ? 'Quiz: ' + catTitle(region, category)
+    : '\u26A1 ' + (REGION_TITLES[region] || '') + ': ' + catTitle(region, category);
+  $('level-pill').textContent = 'Section Completed';
+  $('level-count').textContent = '';
+  $('progress-fill').style.width = '100%';
+  $('end-stats').innerHTML =
+    '<span class="stat-correct">Correct: ' + st.correct + '</span> \u00B7 ' +
+    '<span class="stat-wrong">Wrong: ' + st.wrong + '</span>' +
+    '<br>Total answered: ' + (st.correct + st.wrong);
+  current = null;
+}
+function resetSection() {
+  delete SAVE[catKey(lastRegion, lastCategory)];
+  persist();
+  startLevel(lastRegion, lastCategory, 1);
+}
+
+// ============ Video library ============
+const VIDEO_INDEX = {};
+Object.keys(VIDEO_DATA).forEach(subj => {
+  Object.keys(VIDEO_DATA[subj]).forEach(sec => {
+    const s = VIDEO_DATA[subj][sec];
+    (s.ar || []).concat(s.en || []).forEach(v => {
+      VIDEO_INDEX[v[0]] = { title: v[1], channel: v[2], lang: v[3], sec: s.name, subject: subj };
+    });
+  });
+});
+
+function openVideoPlayer(vid, title) {
+  document.getElementById('video-player-title').textContent = title;
+  document.getElementById('video-player-frame').innerHTML =
+    '<iframe src="https://www.youtube.com/embed/' + vid + '?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  document.getElementById('video-player-watch').href = 'https://www.youtube.com/watch?v=' + vid;
+  document.getElementById('video-player-overlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeVideoPlayer() {
+  document.getElementById('video-player-overlay').style.display = 'none';
+  document.getElementById('video-player-frame').innerHTML = '';
+  document.body.style.overflow = '';
+}
+function playVideo(id) {
+  const v = VIDEO_INDEX[id];
+  if (v) openVideoPlayer(id, v.title);
+}
+document.addEventListener('DOMContentLoaded', function () {
+  var ov = document.getElementById('video-player-overlay');
+  if (ov) ov.addEventListener('click', function (e) { if (e.target === this) closeVideoPlayer(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideoPlayer(); });
+});
+
+let vidsState = { track: 'basic', subject: null, section: null };
+
+function setVideoTrack(track, btn) {
+  vidsState = { track: track, subject: null, section: null };
+  document.querySelectorAll('#view-videos .track-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderVideos();
+}
+
+function subjectLabel(key) { return SUBJECT_LABELS[key] || key; }
+
+function videoCard(v) {
+  const id = v[0], title = esc(v[1]), ch = esc(v[2]), lang = v[3], exp = v[4];
+  const chip = lang === 'ar' ? '<span class="chip chip-ar">AR</span>' : '<span class="chip chip-en">EN</span>';
+  const expBadge = exp ? ' <span class="chip chip-exp">EXPLANATION</span>' : '';
+  return '<a class="video-card" href="javascript:void(0)" onclick="playVideo(\'' + id + '\')">' +
+    '<span class="video-thumb-wrap"><img class="video-thumb" loading="lazy" src="https://i.ytimg.com/vi/' + id +
+    '/hqdefault.jpg" alt="" onerror="this.src=\'https://i.ytimg.com/vi/' + id + '/mqdefault.jpg\'">' +
+    '<span class="vid-play-badge">&#9654;</span></span>' +
+    '<div class="video-title">' + title + '</div>' +
+    '<span class="vch">' + ch + ' ' + chip + expBadge + '</span></a>';
+}
+
+function langBlock(cls, label, tag, videos) {
+  if (!videos.length) return '';
+  return '<div class="lang-block"><div class="lang-title ' + cls + '">' + label +
+    ' <span class="lang-tag">' + tag + '</span></div><div class="video-grid">' +
+    videos.map(videoCard).join('') + '</div></div>';
+}
+
+function renderVideos() {
+  const r = $('videos-root');
+  if (!r) return;
+  const cfg = (TRACKS.videos && TRACKS.videos[vidsState.track]) || { subjects: [] };
+
+  if (!vidsState.subject) {
+    if (!cfg.subjects.length) { r.innerHTML = '<p class="vid-note">Nothing here yet.</p>'; return; }
+    r.innerHTML = '<div class="videos-menu">' + cfg.subjects.map(s => {
+      const secs = VIDEO_DATA[s] || {};
+      const n = Object.keys(secs).reduce((a, k) => a + (secs[k].ar || []).length + (secs[k].en || []).length, 0);
+      return '<button class="vid-sub-btn" onclick="videosShow(\'' + s + '\')">' + esc(subjectLabel(s)) +
+        '<span class="vid-count">' + Object.keys(secs).length + ' sections &middot; ' + n + ' videos</span></button>';
+    }).join('') + '</div>';
+    return;
+  }
+
+  const subj = VIDEO_DATA[vidsState.subject] || {};
+  if (!vidsState.section) {
+    let html = '<p class="vid-crumb">' + esc(subjectLabel(vidsState.subject)) + '</p><div class="cat-grid">';
+    Object.keys(subj).forEach(k => {
+      const s = subj[k];
+      const n = (s.ar || []).length + (s.en || []).length;
+      html += '<button class="start-box" onclick="videosSection(\'' + k + '\')">' + esc(s.name) +
+        '<span class="cat-meta">' + n + ' videos &middot; ' + (s.ar || []).length + ' Arabic / ' +
+        (s.en || []).length + ' English</span></button>';
+    });
+    html += '</div>';
+    r.innerHTML = html;
+    return;
+  }
+
+  const sec = subj[vidsState.section];
+  if (!sec) { r.innerHTML = '<p class="vid-note">No videos in this section yet.</p>'; return; }
+  const ar = sec.ar || [], en = sec.en || [];
+  let html = '<p class="vid-crumb">' + esc(subjectLabel(vidsState.subject)) + ' &rsaquo; <b>' + esc(sec.name) + '</b></p>';
+  html += langBlock('lang-ar', 'Arabic lectures', 'AR', ar);
+  html += langBlock('lang-en', 'English lectures', 'EN', en);
+  if (!ar.length && !en.length) html += '<p class="vid-note">No videos in this section yet.</p>';
+  if (!en.length) html += '<p class="vid-empty">No English lectures for this section yet.</p>';
+  if (!ar.length) html += '<p class="vid-empty">No Arabic lectures for this section yet.</p>';
+  r.innerHTML = html;
+}
+
+function videosRoot() { vidsState = { track: vidsState.track || 'basic', subject: null, section: null }; renderVideos(); }
+function videosShow(subject) { vidsState.subject = subject; vidsState.section = null; renderVideos(); }
+function videosSection(sec) { vidsState.section = sec; renderVideos(); }
+function videosBack() {
+  if (vidsState.section) vidsState.section = null;
+  else vidsState.subject = null;
+  renderVideos();
+}
+
+// ---------- home screen statuses and category metadata ----------
+function updateHomeStatuses() {
+  document.querySelectorAll('.start-box[data-region]').forEach(btn => {
+    const region = btn.getAttribute('data-region');
+    const category = btn.getAttribute('data-category');
+    if (!region || !category || !casesData[region] || !casesData[region][category]) return;
+    const meta = CAT_META[catKey(region, category)];
+    const metaSpan = btn.querySelector('.cat-meta');
+    if (metaSpan && meta) metaSpan.textContent = meta.replace('&middot;', '\u00B7');
+    const st = stateOf(region, category);
+    const total = totalLevels(region, category);
+    const lvl = nextLevel(region, category);
+    let status;
+    if (lvl === null) status = '\u2713 Section done \u00B7 retry available';
+    else {
+      const all = levelCases(region, category, lvl);
+      const doneCount = all.filter(c => st.done[c.id]).length;
+      status = 'Level ' + lvl + '/' + total + ' \u00B7 ' + doneCount + '/' + all.length + ' answered';
+    }
+    let span = btn.querySelector('.cat-status');
+    if (!span) { span = document.createElement('span'); span.className = 'cat-status'; btn.appendChild(span); }
+    span.textContent = status;
+  });
+}
+
+renderQuizGrid();
+updateHomeStatuses();
+
+</script>
+
+</body>
+</html>

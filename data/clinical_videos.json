@@ -1,0 +1,1128 @@
+{
+ "medicine": {
+  "cardio": {
+   "name": "Cardiology",
+   "ar": [
+    [
+     "kITEB7p2-9Q",
+     "رسم القلب بالتفصيل الجزء الثانى ECG",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "La0Fydslabs",
+     "التعامل مع الصدمة (SHOCK) فى الطوارئ وانواعها",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "IsMSBNL0i3c",
+     "التهاب وعدوى الطبقة الداخلية وصمامات القلب / Infective endocarditis",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "nHkKDHB1Gds",
+     "ارتفاع الضغط فى العيادة فقط (متلازمة المعطف الابيض) / white coat hypertension",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "juKsziCxS9w",
+     "علاج ارتفاع ضغط الدم فى الحمل والرضاعة / hypertension in pregnancy and lactation",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "bw54hHd5SvI",
+     "Arrhythmia in ER part 2 - hemodynamically stable patients/ اختلال ضربات القلب فى الطوارئ - الجزء 2",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ]
+   ],
+   "en": [
+    [
+     "kVGbMnSaI_g",
+     "Antianginal Drugs",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "VgqbICq8ZZk",
+     "Antiarrhythmic Drugs",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "u7baG79qefY",
+     "Antihypertensive Drugs",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "791ZsLSmCjo",
+     "Cardiovascular - ECG's",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "tRWHm33ZXNw",
+     "Drugs for Heart Failure",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "07N42Ragqas",
+     "Shock - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "ZwHCpl22tLU",
+     "Cardiovascular - ECG Basics",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "-n_ciSV3oDE",
+     "Arrhythmias - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "sNCtvsY3TS8",
+     "Hypertension - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "-Miz9kvrrqk",
+     "Cardiomyopathy - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "lSxD3Vxd2jA",
+     "ECG Interpretation - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "9tx1Dy69Xbk",
+     "Atrial Fibrillation - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ]
+   ]
+  },
+  "resp": {
+   "name": "Respiratory",
+   "ar": [
+    [
+     "NQy7ufCRWXE",
+     "الربو /  asthma",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "KIQa-bjBJYg",
+     "الالتهاب الرئوي البكتيرى / Bacterial pneumonia",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "DmHAOchzdJ0",
+     "Pulmonary embolism / جلطات الشرايين الرئوية (الانصمام الرئوى)",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ]
+   ],
+   "en": [
+    [
+     "lzyUVVOqyS0",
+     "Pneumonia - Overview",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "P7Fkg7_yXL0",
+     "Asthma - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "41rLAXnlVq4",
+     "Lung Cancer - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "Qjo9F6Uuca8",
+     "Tuberculosis - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "zI0A2rF8gbg",
+     "Bronchiectasis - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "G8JXtRMbHzw",
+     "Pneumonia: Part 2 - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "uTOFL7l0zjY",
+     "Pneumonia: Part 1 - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "Tz_kvGImCkI",
+     "Respiratory Failure - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "mNadr6bGEMU",
+     "Respiratory - Spirometry: Lung Volumes & Capacities",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "tuJXHTPvuc4",
+     "Respiratory - Forced Spirometry & Pulmonary Function Test",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "W45U1pslKVI",
+     "Chronic Obstructive Pulmonary Disease (COPD) - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "EAg-hXN8TSs",
+     "Pleural Diseases: Pleural Effusion, Pneumothorax - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ]
+   ]
+  },
+  "endo": {
+   "name": "Endocrinology & Metabolism",
+   "ar": [
+    [
+     "idc3X74fZB4",
+     "مرحلة ما قبل السكرى / Prediabetes",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "qv5iMNMGk1Q",
+     "خمول الغدة الدرقية / hypothyroidism",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "oMkOAW0qkz8",
+     "عقد (كتل ) الغدة الدرقية / thyroid nodules",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "b7oVM4ASCL8",
+     "Diabetic nephropathy / مضاعفات مرض السكر على الكلى",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "72S_toMYJGs",
+     "كيف تعالج ارتفاع الكوليسترول (LDL) / How to treat dyslipidemia (حلقة للاطباء)",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "XQvSJQNmRY4",
+     "التعامل مع مريض السكر قبل اجراء الجراحة / pre-operative assessment of diabetic patient",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ]
+   ],
+   "en": [
+    [
+     "SN-bYAJQJ7Y",
+     "Endocrinology - Prolactin",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "5aq_rxTbtws",
+     "Endocrinology - Thyroid Overview",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "hLNXJWLsjAE",
+     "Hypothyroidism - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "epWJ2v5qy5E",
+     "Hyperthyroidism - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "rh8ycjPCj18",
+     "Diabetes Mellitus - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "njUUXiqbcto",
+     "Endocrinology - Adrenal Gland Overview",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "4PMdr1onCUY",
+     "Pituitary Disorders - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "rk2b3X6CU4w",
+     "Endocrinology - Adrenal Gland: Cortisol",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "e1Ok_Jd3oHo",
+     "Adrenal Insufficiency - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "DQk1LfxcB1U",
+     "Parathyroid Disorders - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "HZhz-7Grux0",
+     "Endocrinology - Adrenal Gland: Aldosterone",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "PdBGkp0UaG0",
+     "Endocrinology - Target Organs of the Thyroid",
+     "Ninja Nerd",
+     "en",
+     ""
+    ]
+   ]
+  }
+ },
+ "surgery": {
+  "general": {
+   "name": "General Surgery",
+   "ar": [
+    [
+     "hnUBzl-tRK4",
+     "التهاب المرارة الحاد / Acute cholecystitis",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "v8vDd6m7RWY",
+     "كيف تصل الى تشخيص ألم البطن / acute abdomen approach",
+     "Internal Medicine (Arabic)",
+     "ar",
+     "exp"
+    ],
+    [
+     "AWQWYxsLVaY",
+     "ازاى تعرف حالة التهاب الزائدة الدودية فى الطوارئ /appendicitis",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ],
+    [
+     "sDP9j2C95Kw",
+     "حصوات المرارة - هل يلزم الجراحة اذا كانت بدون اعراض ؟ / Gallstones - cholelithiasis",
+     "Internal Medicine (Arabic)",
+     "ar",
+     ""
+    ]
+   ],
+   "en": [
+    [
+     "zBFfVT1FoiQ",
+     "Hernias - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "gjakvwkB6Gk",
+     "Appendicitis - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "9j9G3d2gRs4",
+     "Pancreatitis - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "a1Ttvmt-NG8",
+     "Breast Cancer - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "HjIQy8FycKA",
+     "Colorectal Cancer - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "mFOz0C6sI_I",
+     "Stomach Disorders - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "6GhdESRDkqY",
+     "Bowel Obstruction - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "DXPwCphPsmU",
+     "Gastrointestinal - GI Motility of the Esophagus & Stomach",
+     "Ninja Nerd",
+     "en",
+     ""
+    ],
+    [
+     "qjv2hPWvTJo",
+     "Understanding Gallstones",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "HPNJQi_b7NM",
+     "Understanding Pancreatitis",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "rTTAnK3PY4A",
+     "Understanding Appendicitis",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "SoO2OxqHVHA",
+     "Understanding Haemorrhoids",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ]
+   ]
+  },
+  "trauma": {
+   "name": "Trauma & Emergency",
+   "ar": [],
+   "en": [
+    [
+     "al2A_RQIFac",
+     "Understanding Hip Fractures and Hip Surgery",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "u86bMwKzt_0",
+     "Ankle Fractures Made Easy",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "Wr_EHGBKV9s",
+     "Learn The Bones of the Hand & Wrist In 2 Minutes (With Fractures)",
+     "Rhesus Medicine",
+     "en",
+     ""
+    ],
+    [
+     "ZneR9Qe5LVM",
+     "Hemothorax - Trauma - Hypovolemic Shock - Pleural Effusion - Emergency Medicine",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "qwrYKXmjr6Y",
+     "Brain Herniation - Uncal, Tonsillar, Cingulate, Transcalvarial, Trauma, Cerebral herniation - Neuro",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "7lszuQfB6mg",
+     "Brain Trauma - Traumatic Brain Injury (TBI) - Fracture, Contusion, Laceration, Hematoma, Axon injury",
+     "Medicosis",
+     "en",
+     ""
+    ]
+   ]
+  },
+  "urology": {
+   "name": "Urology",
+   "ar": [],
+   "en": [
+    [
+     "YBcBOJbipgs",
+     "Prostate Cancer - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "Dkf8o_zUzd8",
+     "Urinary Catheters",
+     "Zero To Finals",
+     "en",
+     ""
+    ],
+    [
+     "Oh9zdARiwtQ",
+     "Understanding Hydroceles",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "DK9AkAVDoho",
+     "Understanding Kidney Stones",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "emozZmyBrXo",
+     "Understanding Testicular Torsion",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "K88DwDMwjJE",
+     "Benign Prostatic Hyperplasia vs Prostate Cancer",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "Q1Waz7IZGws",
+     "Kidney stones - causes, types & symptoms - in 2 mins!",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "2oCirJY9SYw",
+     "Benign Prostatic Hyperplasia & Prostate Cancer",
+     "Rhesus Medicine",
+     "en",
+     ""
+    ],
+    [
+     "suSvkfDWoNQ",
+     "Hydrocele vs. Varicocele vs. Torsion vs. Epididymitis vs. Tumor",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "k22RkgDi2Go",
+     "Kidney Stones & Urine crystals (Crystalluria)",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "oCpziWp8FG4",
+     "Laminar Flow vs. Turbulent Flow - Blood Flow - Swan Ganz Catheter - PCWP - Central Venous Pressure",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "gxktpVxBEnA",
+     "Benign Prostatic Hyperplasia (BPH), Urinary Tract Infections (UTIs), Micturition -Urology -Pathology",
+     "Medicosis",
+     "en",
+     ""
+    ]
+   ]
+  }
+ },
+ "pediatrics": {
+  "neonatal": {
+   "name": "Neonatology",
+   "ar": [],
+   "en": [
+    [
+     "bXWksu3APic",
+     "Acute Respiratory Distress Syndrome (ARDS) - Clinical Medicine",
+     "Ninja Nerd",
+     "en",
+     "exp"
+    ],
+    [
+     "A4QLD4nD-6g",
+     "APGAR Score Made Easy - Newborn Assessment (APGAR Mnemonic)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "miJQTkH9z7Y",
+     "Infant feeding from birth to one year old and important breastfeeding tips",
+     "Internal Medicine (Arabic)",
+     "en",
+     ""
+    ],
+    [
+     "h9YtvUSYvAg",
+     "Premature Babies - Preterm Neonates - Preemies - Prematurity - Premature birth - Neonatology",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "zSxD9KzBebA",
+     "Necrotizing Enterocolitis (NEC) - Premature Newborns - Pediatric Surgery -GI Pathology- Neonatology",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "4hW1kPMn6w8",
+     "Biliary Atresia - Neonatal Jaundice - Obstructive Jaundice - Cholestatic Jaundice -Pediatric Surgery",
+     "Medicosis",
+     "en",
+     ""
+    ]
+   ]
+  },
+  "resp": {
+   "name": "Paediatric Respiratory",
+   "ar": [],
+   "en": [
+    [
+     "xM2U8tkZgas",
+     "Understanding Bronchiolitis",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "NkwAAnQx68w",
+     "Bronchiolitis vs Viral Induced Wheeze",
+     "Rhesus Medicine",
+     "en",
+     ""
+    ],
+    [
+     "ERwytZVo8_Y",
+     "Croup Explained Clearly in 3 Minutes (With Barking Cough Sound)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "ST5dWYR5alI",
+     "Understanding Cystic Fibrosis (Includes Pathophysiology & Diagnosis)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "rNbWSLBSGL8",
+     "Primary Ciliary Dyskinesia (Kartagener Syndrome) vs. Cystic Fibrosis",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "DsxWUlguorI",
+     "Meconium Ileus - Cystic Fibrosis (CFTR) - Pediatric Surgery - Congenital Anomalies - GI Pathology",
+     "Medicosis",
+     "en",
+     ""
+    ]
+   ]
+  },
+  "growth": {
+   "name": "Growth & Development",
+   "ar": [],
+   "en": [
+    [
+     "eNHA9VNbuhk",
+     "Developmental Milestones Made Easy (With Memory Tool!)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "uHXQwREBfb4",
+     "Marasmus vs. Kwashiorkor (Severe Acute Malnutrition)",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "_yV-pR8Xkl8",
+     "Developmental (Pediatric) Milestones (IN UNDER 5 MINUTES)",
+     "Dirty Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "nlQteDkEMdo",
+     "Marasmus - Total Energy Malnutrition - Gastroenterology - Nutrition",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "dJTM4a6VJt4",
+     "Marasmus vs. Kwashiorkor - Protein Energy Malnutrition - Gastroenterology",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "QJjrhWjLI1c",
+     "Kwashiorkor - Protein Energy Malnutrition - Gastroenterology - Biochemistry",
+     "Medicosis",
+     "en",
+     ""
+    ]
+   ]
+  }
+ },
+ "obgyn": {
+  "obstetrics": {
+   "name": "Obstetrics",
+   "ar": [],
+   "en": [
+    [
+     "8xz1Jbs972U",
+     "Stages of labor - physiology",
+     "Osmosis",
+     "en",
+     "exp"
+    ],
+    [
+     "CRhGx8A7Dqg",
+     "Preeclampsia & eclampsia - causes, symptoms, diagnosis, treatment, pathology",
+     "Osmosis",
+     "en",
+     "exp"
+    ],
+    [
+     "jjEjfeIWqh8",
+     "Stages of Labour Made Easy (Including The 3P's and Cardinal Movements!)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "sn62Mj8wAcU",
+     "Eclampsia, Preeclampsia, Gestational Hypertension, Chronic HTN, MgSO4",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "GFfV2U8gJ4M",
+     "Neural Tube Defects (NTDs) - Folate deficiency- Labor - Prenatal care",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "yb2xmbXBZ_4",
+     "Magnesium Sulfate (MgSO4) - Eclampsia (Seizure), Tocolysis, Torsade de Pointes - Pharmacology",
+     "Medicosis",
+     "en",
+     ""
+    ]
+   ]
+  },
+  "gynaecology": {
+   "name": "Gynaecology",
+   "ar": [],
+   "en": [
+    [
+     "dsKj5hKR9HU",
+     "Understanding Endometriosis",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "0ZCEEY0cecA",
+     "Understanding Infertility Causes and Investigations",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "-qRBHqCTOjE",
+     "Understanding Early Menopause: Premature Ovarian Insufficiency",
+     "Zero To Finals",
+     "en",
+     "exp"
+    ],
+    [
+     "E1toz8WDyds",
+     "Oral Contraceptives - How Does the Pill Work?",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "ZC0_uGeKmb0",
+     "Menopause Physiology - Pre, Peri, and Post-Menopause",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "jQBcw6mCRJc",
+     "I am a Zebra - Lymphangioleiomyomatosis (LAM) disease",
+     "Osmosis",
+     "en",
+     ""
+    ],
+    [
+     "Gkf-mtWO5zw",
+     "Forging a New Approach to Menopause Care - Dr. Anna Barbieri, Founding Physician of Elektra Healt...",
+     "Osmosis",
+     "en",
+     "exp"
+    ],
+    [
+     "miEKAugJVSs",
+     "Ovarian Cancer Explained (Including Subtypes)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "YVQzolMgNp0",
+     "Polycystic Ovary Syndrome Made Easy (PCOS Explained)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "UPBzssvmz5k",
+     "Understanding Pelvic Inflammatory Disease (PID Explained)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "iibTzCLnXD0",
+     "Menopause Explained Clearly (Includes HRT & Perimenopause)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "E9Z1pLKZabk",
+     "Methods of Contraception Made Easy (Contraceptive Methods Explained)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ]
+   ]
+  },
+  "emergencies": {
+   "name": "Obstetric Emergencies",
+   "ar": [],
+   "en": [
+    [
+     "irXbqbOYTHk",
+     "Postpartum hemorrhage - causes, symptoms, diagnosis, treatment, pathology",
+     "Osmosis",
+     "en",
+     "exp"
+    ],
+    [
+     "CGEzd-9PrII",
+     "Ectopic Pregnancy Explained Clearly",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ]
+   ]
+  }
+ },
+ "psychiatry": {
+  "psychotic": {
+   "name": "Psychotic Disorders",
+   "ar": [],
+   "en": [
+    [
+     "0zHU6fiM2KY",
+     "Schizophrenia Explained (Includes DSM-5 Criteria & Delusion Examples)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "NvQRbl9C3hc",
+     "Antipsychotic Drugs - Typical vs Atypical  (Uses, Side Effects, Mechanism)",
+     "Rhesus Medicine",
+     "en",
+     ""
+    ],
+    [
+     "wCtC3LN2Vfc",
+     "Dopamine Pathways, Antipsychotics, and EPS",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "JmiARS9TIj8",
+     "Schizophrenia vs. Schizophreniform vs. Schizoaffective vs. Schizoid vs. Schizotypal",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "GPlZQV2gRuk",
+     "Alcohol Withdrawal Syndromes - Alcoholism, Alcohol Use - Alcohol Hallucination, Delirium Tremens",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "RMdTL1U8aV0",
+     "Neuroleptic Malignant Syndrome (NMS) - Antipsychotics - Muscle Relaxants - Dopamine - Dantrolene",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "fVlwA1r0ejI",
+     "Schizophrenia - Psychosis - Positive vs. Negative Symptoms, Diagnosis, Treatment - Psychopathology",
+     "Medicosis",
+     "en",
+     ""
+    ],
+    [
+     "2krTHTIMbbA",
+     "Psychosis DDx - Schizophreniform, Schizoaffective, Schizophrenia,Delusional Disorder,Brief Psychotic",
+     "Medicosis",
+     "en",
+     ""
+    ]
+   ]
+  },
+  "mood": {
+   "name": "Mood & Anxiety Disorders",
+   "ar": [],
+   "en": [
+    [
+     "fu2PXhIBZLw",
+     "Episode 2 - \"Anxiety\"",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "qIsYTmuMNUQ",
+     "Anti-Anxiety Medication - Anxiolytics",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "m3oDYlVERoc",
+     "Panic disorder",
+     "Osmosis",
+     "en",
+     ""
+    ],
+    [
+     "cZqB2-PN__A",
+     "Social Anxiety Disorder: Causes, Symptoms, Diagnosis & Treatment",
+     "Osmosis",
+     "en",
+     "exp"
+    ],
+    [
+     "L2WNKH21joM",
+     "Bulimia nervosa - causes, symptoms, diagnosis, treatment & pathology",
+     "Osmosis",
+     "en",
+     "exp"
+    ],
+    [
+     "-4ZH0_XwQnk",
+     "Generalized anxiety disorder (GAD) - symptoms, diagnosis, treatment, pathology",
+     "Osmosis",
+     "en",
+     ""
+    ],
+    [
+     "AWKFITL-ke8",
+     "Bipolar and related disorders - causes, symptoms, treatment & pathology (Updated 2024)",
+     "Osmosis",
+     "en",
+     ""
+    ],
+    [
+     "7qir8-ncvBA",
+     "Bipolar Disorder Explained Clearly",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "tJQRsIbD110",
+     "Depression Explained (Major Depressive Disorder)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "ah4Hnrz3CDg",
+     "Understanding Anxiety (Anxiety Disorders Explained)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "FZLolz_nifo",
+     "Obsessive-Compulsive Disorder Explained Clearly (OCD)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ],
+    [
+     "zR0WICLA5xo",
+     "Understanding Bulimia (Bulimia Nervosa Explained Clearly)",
+     "Rhesus Medicine",
+     "en",
+     "exp"
+    ]
+   ]
+  },
+  "pharm": {
+   "name": "Psychopharmacology",
+   "ar": [],
+   "en": [
+    [
+     "qitIPY-JIBw",
+     "SSRIs - Selective Serotonin Reuptake Inhibitors",
+     "Dr Matt & Dr Mike",
+     "en",
+     ""
+    ],
+    [
+     "fFvswwX7Ops",
+     "Mood Stabilizers/Pharmacology",
+     "Dirty Medicine",
+     "en",
+     ""
+    ],
+    [
+     "eNdHaitsVIk",
+     "Major Depression and SSRI's/SNRI's",
+     "Dirty Medicine",
+     "en",
+     ""
+    ]
+   ]
+  }
+ }
+}
