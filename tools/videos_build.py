@@ -341,6 +341,19 @@ def sort_block(videos):
     return out
 
 
+def normalise_labels(out):
+    """One channel, one label."""
+    fix = {"Dr Ayman Khanfour Anatomy Teaching": KHANFOUR,
+           "Internal Medicine (Arabic)": "Internal Medicine (Batenia)",
+           "Osmosis": "Osmosis from Elsevier",
+           "Medicosis": "Medicosis Perfectionalis"}
+    for secs in out.values():
+        for sec in secs.values():
+            for lang in ("ar", "en"):
+                for v in sec.get(lang, []):
+                    v[2] = fix.get(v[2], v[2])
+
+
 def main():
     old = json.load(open(os.path.join(ROOT, "data", "videos.json"), encoding="utf-8"))
     ninja = [(v, t) for v, t in load("ninja")]
@@ -359,6 +372,8 @@ def main():
     clinical_path = os.path.join(ROOT, "data", "clinical_videos.json")
     if os.path.exists(clinical_path):
         out.update(json.load(open(clinical_path, encoding="utf-8")))
+
+    normalise_labels(out)
 
     # one lecture lives in one section: basic subjects win over clinical ones
     order = ["anatomy", "embryology", "histology", "physiology", "biochemistry",
