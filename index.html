@@ -461,6 +461,9 @@
         .osce-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
         .osce-llm { white-space: pre-wrap; background: #17191b; border: 1px solid #2f3438; border-radius: 12px;
             padding: 16px; margin-top: 16px; color: #d7e2ea; font-size: .9rem; line-height: 1.6; }
+        .ai-settings { margin-left: auto; background: #24282c; border: 1px solid #3a4147; color: #9fb3c8;
+            border-radius: 8px; padding: 8px 14px; font-size: .8rem; cursor: pointer; }
+        .ai-settings:hover { border-color: #3498db; color: #fff; }
         .tutor-btn { background: #2d3f52; border: 1px solid #3498db; color: #dceaf7; border-radius: 8px;
             padding: 10px 18px; font-size: .88rem; cursor: pointer; margin-left: 10px; }
     </style>
@@ -619,6 +622,7 @@
         <div class="osce-head">
             <button class="back-btn" onclick="osceLeave()">&#8592; Back</button>
             <h2 id="osce-title"></h2>
+            <button class="ai-settings" onclick="setupLlm()" title="Connect an OpenAI-compatible endpoint">AI settings</button>
         </div>
         <div id="osce-chat" class="osce-chat"></div>
         <div id="osce-panel" class="osce-panel"></div>
@@ -1603,6 +1607,20 @@ function osceLeave() {
   osce = null;
   $('osce-screen').style.display = 'none';
   goHome();
+}
+
+function setupLlm() {
+  const s = llmSettings();
+  const endpoint = prompt('OpenAI-compatible chat endpoint', s.endpoint || 'https://api.openai.com/v1/chat/completions');
+  if (endpoint === null) return;
+  const key = prompt('API key (kept in this browser only)', s.key || '');
+  if (key === null) return;
+  const model = prompt('Model name', s.model || 'gpt-4o-mini');
+  if (model === null) return;
+  saveLlmSettings({ endpoint: endpoint.trim(), key: key.trim(), model: model.trim() });
+  alert(llmReady()
+    ? 'Connected. The virtual patient and the examiner will use your model.'
+    : 'Saved without a key, so the built-in responder is used.');
 }
 
 // ---------- pre-clinical Socratic tutor ----------
