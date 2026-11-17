@@ -391,6 +391,17 @@
         .sim-header { text-align: center; }
         .options-grid { max-width: 980px; margin: 0 auto; }
 
+        .osce-home-grid { width: 100%; max-width: 1250px; }
+        .osce-group { margin-bottom: 22px; }
+        .osce-group h3 { color: #3498db; font-size: 1.1rem; margin: 0 0 10px; border-bottom: 1px solid #3a3a3a;
+            padding-bottom: 6px; }
+        .osce-station { background: #2d2d2d; border: 2px solid #27ae60; color: #f0f2f5; border-radius: 12px;
+            padding: 18px 16px; min-height: 104px; display: flex; flex-direction: column; align-items: center;
+            justify-content: center; gap: 6px; font-size: 1.02rem; font-weight: 700; cursor: pointer;
+            transition: all .2s; text-align: center; }
+        .osce-station:hover { background: #27ae60; color: #fff; transform: translateY(-2px); }
+        .osce-station .station-meta { font-size: .78rem; font-weight: 400; color: #9fb3c8; }
+        .osce-station:hover .station-meta { color: #eafff2; }
         .case-objective { text-align: center; max-width: 780px; margin: 0 auto 10px; color: #8c9ba5;
             font-size: .86rem; letter-spacing: .2px; }
 
@@ -479,7 +490,8 @@
         <nav class="main-nav">
             <button class="nav-btn" data-view="landing" onclick="showView('landing')">Home</button>
             <button class="nav-btn" data-view="videos" onclick="showView('videos')">Video Tutorials</button>
-            <button class="nav-btn" data-view="pbl" onclick="showView('pbl')">PBL Simulator</button>
+            <button class="nav-btn" data-view="pbl" onclick="showView('pbl')">Basic PBL</button>
+            <button class="nav-btn" data-view="osce" onclick="showView('osce')">OSCE Simulator</button>
             <button class="nav-btn" data-view="quiz" onclick="showView('quiz')">Quizzes</button>
             <button class="nav-btn" data-view="about" onclick="showView('about')">About</button>
             <button class="nav-btn" data-view="contact" onclick="showView('contact')">Contact Me</button>
@@ -493,9 +505,10 @@
             <h1 class="main-title">Yazan's Medical Platform</h1>
             <p class="welcome-sub">Clinical PBL cases, a quiz bank and video tutorials for the basic medical years, organised by body system, all in one place.</p>
             <div class="big-buttons">
-                <button class="big-btn" onclick="showView('videos', this)"><span class="big-icon">&#9654;</span><span class="big-label">Video Tutorials</span></button>
-                <button class="big-btn big-btn-primary" onclick="showView('pbl', this)"><span class="big-icon">&#9889;</span><span class="big-label">PBL Simulator</span></button>
-                <button class="big-btn" onclick="showView('quiz', this)"><span class="big-icon">&#10067;</span><span class="big-label">Quiz Bank</span></button>
+                <button class="big-btn" onclick="showView('videos')"><span class="big-icon">&#9654;</span><span class="big-label">Video Tutorials</span></button>
+                <button class="big-btn big-btn-primary" onclick="showView('pbl')"><span class="big-icon">&#9889;</span><span class="big-label">Basic PBL Simulator</span></button>
+                <button class="big-btn big-btn-primary" onclick="showView('osce')"><span class="big-icon">&#129658;</span><span class="big-label">OSCE Simulator</span></button>
+                <button class="big-btn" onclick="showView('quiz')"><span class="big-icon">&#10067;</span><span class="big-label">Quiz Bank</span></button>
             </div>
         </div>
     </div>
@@ -504,11 +517,23 @@
     <div id="home-screen" class="view" style="display:none;">
         <button class="back-section" onclick="goBack()">&#8592; Back</button>
         <div class="top-header-area">
-            <div class="welcome-text">PBL simulator</div>
+            <div class="welcome-text">Basic PBL simulator</div>
             <h1 class="main-title">Choose a System</h1>
+            <p class="section-note">Progressive case triggers, mechanism before diagnosis, progress saved level by level, Socratic hints when you stall.</p>
         </div>
         <div class="limbs-container"><div class="limb-column"><h2>Musculoskeletal System</h2><button class="start-box" onclick="openCategory('msk','nerves')" data-region="msk" data-category="nerves">Nerve Injuries</button><button class="start-box" onclick="openCategory('msk','muscles')" data-region="msk" data-category="muscles">Muscle Injuries</button><button class="start-box" onclick="openCategory('msk','bones')" data-region="msk" data-category="bones">Bone Injuries</button><button class="start-box" onclick="openCategory('msk','general')" data-region="msk" data-category="general">General Injuries</button></div><div class="limb-column"><h2>Development & Embryology</h2><button class="start-box" onclick="openCategory('embryology','level1')" data-region="embryology" data-category="level1">Level 1: Basics & Weeks</button><button class="start-box" onclick="openCategory('embryology','level2')" data-region="embryology" data-category="level2">Level 2: Organogenesis</button><button class="start-box" onclick="openCategory('embryology','level3')" data-region="embryology" data-category="level3">Level 3: Structural Defects</button><button class="start-box" onclick="openCategory('embryology','level4')" data-region="embryology" data-category="level4">Level 4: Advanced Pathology</button></div><div class="limb-column"><h2>General Pathology</h2><button class="start-box" onclick="openCategory('pathology','general')" data-region="pathology" data-category="general">General Pathology - 4 levels</button></div></div>
         <h2 class="block-title">Physiology, by System</h2><div class="cat-grid"><button class="start-box" onclick="openCategory('physiology','cell')" data-region="physiology" data-category="cell">Cell & Membrane<span class="cat-meta" data-meta="physiology/cell"></span></button><button class="start-box" onclick="openCategory('physiology','nerve_muscle')" data-region="physiology" data-category="nerve_muscle">Nerve & Muscle<span class="cat-meta" data-meta="physiology/nerve_muscle"></span></button><button class="start-box" onclick="openCategory('physiology','blood')" data-region="physiology" data-category="blood">Blood & Body Fluids<span class="cat-meta" data-meta="physiology/blood"></span></button><button class="start-box" onclick="openCategory('physiology','immune')" data-region="physiology" data-category="immune">Immunity<span class="cat-meta" data-meta="physiology/immune"></span></button><button class="start-box" onclick="openCategory('physiology','cardio')" data-region="physiology" data-category="cardio">Cardiovascular<span class="cat-meta" data-meta="physiology/cardio"></span></button><button class="start-box" onclick="openCategory('physiology','resp')" data-region="physiology" data-category="resp">Respiratory<span class="cat-meta" data-meta="physiology/resp"></span></button><button class="start-box" onclick="openCategory('physiology','renal')" data-region="physiology" data-category="renal">Renal & Acid-Base<span class="cat-meta" data-meta="physiology/renal"></span></button><button class="start-box" onclick="openCategory('physiology','git')" data-region="physiology" data-category="git">Gastrointestinal<span class="cat-meta" data-meta="physiology/git"></span></button><button class="start-box" onclick="openCategory('physiology','endocrine')" data-region="physiology" data-category="endocrine">Endocrine<span class="cat-meta" data-meta="physiology/endocrine"></span></button><button class="start-box" onclick="openCategory('physiology','repro')" data-region="physiology" data-category="repro">Reproductive<span class="cat-meta" data-meta="physiology/repro"></span></button></div>
+    </div>
+
+    <!-- OSCE SIMULATOR VIEW -->
+    <div id="view-osce" class="view" style="display:none;">
+        <button class="back-section" onclick="goBack()">&#8592; Back</button>
+        <div class="top-header-area">
+            <div class="welcome-text">OSCE simulator</div>
+            <h1 class="main-title">Choose a Station</h1>
+        </div>
+        <p class="section-note">A virtual patient, focused examination, investigations, a differential and a plan. Every station ends with an examiner scorecard out of 100, pass mark 60.</p>
+        <div id="osce-home-grid" class="osce-home-grid"></div>
     </div>
 
     <!-- QUIZ VIEW -->
@@ -538,7 +563,7 @@
     <div id="view-about" class="view" style="display:none;">
         <button class="back-section" onclick="goBack()">&#8592; Back</button>
         <h2 class="section-title">About</h2>
-        <div class="about-box"><p>Yazan's Medplat is a free medical study platform built for medical students, by a medical student. Everything for the pre-clinical and clinical years in one place, split into a basic-sciences half and a clinical half:</p><ul><li><b>PBL Simulator</b> - 1,106 clinical cases organised by body system: musculoskeletal, development, general pathology and every physiology system, with up to 4 difficulty levels and progress tracking. Every case runs in two modes: Pre-clinical PBL, or a scored Clinical OSCE station with a virtual patient, focused examination, investigations and an examiner scorecard.</li><li><b>Quiz Bank</b> - 270 MCQs. Basic sciences cover anatomy, physiology, histology, biochemistry, pathology, pharmacology, microbiology and immunology by system; the clinical half covers internal medicine, surgery, paediatrics, obstetrics and gynaecology, and psychiatry. Three levels each.</li><li><b>Video Tutorials</b> - 1,280 lectures, Arabic first and English underneath: Dr Ayman Khanfour and Ninja Nerd for anatomy and histology, Dr Nagi Iskandar and Ninja Nerd for physiology, Dr Hesham Esmat for biochemistry, Dr Abdelmoteal Foda for pharmacology, plus Dr Iman Nabil, Osmosis, Zero To Finals, Dr Matt &amp; Dr Mike and Dirty Medicine.</li></ul><p>The platform is designed by a medical student who knows exactly what studying feels like, so everything here is built to make learning faster, easier and more effective.</p></div>
+        <div class="about-box"><p>Yazan's Medplat is a free medical study platform built for medical students, by a medical student. Everything for the pre-clinical and clinical years in one place, split into a basic-sciences half and a clinical half:</p><ul><li><b>PBL Simulator</b> - 1,106 clinical cases organised by body system: musculoskeletal, development, general pathology and every physiology system, with up to 4 difficulty levels and progress tracking. It ships as two simulators: the Basic PBL Simulator for progressive pre-clinical cases, and the OSCE Simulator, where the same cases become scored stations with a virtual patient, focused examination, investigations, a differential and an examiner scorecard.</li><li><b>Quiz Bank</b> - 270 MCQs. Basic sciences cover anatomy, physiology, histology, biochemistry, pathology, pharmacology, microbiology and immunology by system; the clinical half covers internal medicine, surgery, paediatrics, obstetrics and gynaecology, and psychiatry. Three levels each.</li><li><b>Video Tutorials</b> - 1,280 lectures, Arabic first and English underneath: Dr Ayman Khanfour and Ninja Nerd for anatomy and histology, Dr Nagi Iskandar and Ninja Nerd for physiology, Dr Hesham Esmat for biochemistry, Dr Abdelmoteal Foda for pharmacology, plus Dr Iman Nabil, Osmosis, Zero To Finals, Dr Matt &amp; Dr Mike and Dirty Medicine.</li></ul><p>The platform is designed by a medical student who knows exactly what studying feels like, so everything here is built to make learning faster, easier and more effective.</p></div>
     </div>
 
     <!-- CONTACT VIEW -->
@@ -593,27 +618,6 @@
                 <button class="btn-secondary" onclick="resetSection()">Retry Section</button>
                 <button class="btn-secondary" onclick="goLanding()">Back to Home</button>
             </div>
-        </div>
-    </div>
-
-    <!-- MODE PICKER -->
-    <div id="mode-picker" class="mode-overlay" style="display:none;">
-        <div class="mode-box">
-            <h2 id="mode-title">Section</h2>
-            <p id="mode-sub"></p>
-            <div class="mode-choices">
-                <button class="mode-card" onclick="chooseMode('pre')">
-                    <span class="mode-icon">&#9889;</span>
-                    <b>Pre-clinical PBL</b>
-                    <span>Progressive case triggers, mechanism before diagnosis, Socratic prompts when you stall.</span>
-                </button>
-                <button class="mode-card mode-card-clinical" onclick="chooseMode('clinical')">
-                    <span class="mode-icon">&#129658;</span>
-                    <b>Clinical OSCE</b>
-                    <span>Virtual patient, focused examination, investigations, differential, then a scored station.</span>
-                </button>
-            </div>
-            <button class="mode-cancel" onclick="closeModePicker()">Cancel</button>
         </div>
     </div>
 
@@ -719,6 +723,7 @@ function paint(name) {
   if (name === 'quiz') { renderQuizGrid(); updateHomeStatuses(); }
   if (name === 'pbl') updateHomeStatuses();
   if (name === 'videos') renderVideos();
+  if (name === 'osce') renderOsceHome();
   window.scrollTo(0, 0);
 }
 
@@ -1304,36 +1309,56 @@ function openCategory(region, category) {
   if (region === 'quiz') {
     quizTrack = (TRACKS.quiz.clinical.categories.indexOf(category) >= 0) ? 'clinical' : 'basic';
   }
-  openModePicker(region, category);
-}
-
-function openModePicker(region, category) {
   const lvl = nextLevel(region, category);
-  const picker = $('mode-picker');
-  $('mode-title').textContent = (REGION_TITLES[region] || '') + ': ' + catTitle(region, category);
-  $('mode-sub').textContent = lvl === null
-    ? 'Every level in this section is finished. Both modes are still open.'
-    : 'Level ' + lvl + ' of ' + totalLevels(region, category) + '. Pick how you want to run it.';
-  picker.style.display = 'flex';
-  picker.dataset.region = region;
-  picker.dataset.category = category;
+  if (lvl === null) { showEnd(region, category); return; }
+  startLevel(region, category, lvl);
 }
 
-function closeModePicker() { $('mode-picker').style.display = 'none'; }
+// ---------- OSCE simulator ----------
+const OSCE_KEY = 'medplat-osce-v1';
+const OSCE_GROUPS = [
+  ['Musculoskeletal System', [['msk', 'nerves'], ['msk', 'muscles'], ['msk', 'bones'], ['msk', 'general']]],
+  ['Development & Embryology', [['embryology', 'level1'], ['embryology', 'level2'], ['embryology', 'level3'], ['embryology', 'level4']]],
+  ['General Pathology', [['pathology', 'general']]],
+  ['Physiology, by System', [['physiology', 'cell'], ['physiology', 'nerve_muscle'], ['physiology', 'blood'], ['physiology', 'immune'], ['physiology', 'cardio'], ['physiology', 'resp'], ['physiology', 'renal'], ['physiology', 'git'], ['physiology', 'endocrine'], ['physiology', 'repro']]]
+];
 
-function chooseMode(mode) {
-  const picker = $('mode-picker');
-  const region = picker.dataset.region;
-  const category = picker.dataset.category;
-  closeModePicker();
-  if (mode === 'clinical') {
-    const lvl = nextLevel(region, category);
-    startOSCE(region, category, lvl === null ? 1 : lvl);
-  } else {
-    const lvl = nextLevel(region, category);
-    if (lvl === null) { showEnd(region, category); return; }
-    startLevel(region, category, lvl);
-  }
+function osceProgress() {
+  try { return JSON.parse(localStorage.getItem(OSCE_KEY) || '{}'); } catch (e) { return {}; }
+}
+function osceMark(region, category) {
+  const p = osceProgress();
+  const k = region + '/' + category;
+  p[k] = (p[k] || 0) + 1;
+  try { localStorage.setItem(OSCE_KEY, JSON.stringify(p)); } catch (e) {}
+}
+function renderOsceHome() {
+  const root = $('osce-home-grid');
+  if (!root) return;
+  const prog = osceProgress();
+  let html = '';
+  OSCE_GROUPS.forEach(group => {
+    html += '<div class="osce-group"><h3>' + group[0] + '</h3><div class="cat-grid">';
+    group[1].forEach(pair => {
+      const region = pair[0], category = pair[1];
+      if (!casesData[region] || !casesData[region][category]) return;
+      const meta = (CAT_META[region + '/' + category] || '');
+      const done = prog[region + '/' + category] || 0;
+      html += '<button class="osce-station" onclick="openStation(\'' + region + '\',\'' + category + '\')">' +
+        esc(catTitle(region, category)) +
+        '<span class="station-meta">' + meta.replace('&middot;', '\u00B7') + ' \u00B7 ' + done + ' station' +
+        (done === 1 ? '' : 's') + ' done</span></button>';
+    });
+    html += '</div></div>';
+  });
+  root.innerHTML = html;
+}
+
+function openStation(region, category) {
+  lastRegion = region;
+  lastCategory = category;
+  const lvl = nextLevel(region, category);
+  startOSCE(region, category, lvl === null ? totalLevels(region, category) : lvl);
 }
 
 function startOSCE(region, category, lvl) {
@@ -1515,6 +1540,7 @@ function osceFinish() {
   if (!osce.finalDx) { alert('Choose a final diagnosis first.'); return; }
   const sc = osceScore();
   osce.scored = sc;
+  osceMark(osce.region, osce.category);
   const s = osce.st;
   const bar = (label, value, max) => '<div class="score-row"><span>' + label + '</span>' +
     '<div class="score-track"><div class="score-fill" style="width:' + Math.round(value / max * 100) + '%"></div></div>' +
@@ -1531,7 +1557,7 @@ function osceFinish() {
     '</ul>';
   html += '<div class="osce-actions"><button class="btn-secondary" onclick="osceRetry()">Retry station</button>' +
     '<button class="btn-secondary" onclick="osceNewPatient()">New patient, same section</button>' +
-    '<button class="btn-secondary" onclick="goHome()">Back to sections</button></div></div>';
+    '<button class="btn-secondary" onclick="osceLeave()">Back to stations</button></div></div>';
   $('osce-panel').innerHTML = html;
   $('osce-chat').style.display = 'none';
 
@@ -1606,7 +1632,8 @@ function renderOscePanel() {
 function osceLeave() {
   osce = null;
   $('osce-screen').style.display = 'none';
-  goHome();
+  NAV.length = 0;
+  paint('osce');
 }
 
 function setupLlm() {
@@ -1645,6 +1672,7 @@ function tutorHint() {
 }
 
 renderQuizGrid();
+renderOsceHome();
 updateHomeStatuses();
 
 </script>
