@@ -253,7 +253,6 @@
         html[dir="rtl"] .big-btn::after { content: "\2190"; }
         .big-btn:hover::after { color: var(--accent); transform: translateX(3px); }
         .big-label { font-weight: 500; font-size: .98rem; }
-        .big-btn-primary { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 
         .stats-band {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -562,7 +561,7 @@
                 <p class="welcome-sub" data-i18n="landing.sub">Clinical PBL cases, an OSCE simulator, terminology flashcards, a quiz bank and video tutorials for the medical years, organised by system in one place.</p>
                 <div class="big-buttons">
                     <button class="big-btn" onclick="showView('pbl')"><span class="big-label" data-i18n="landing.pbl">Basic PBL Simulator</span></button>
-                    <button class="big-btn big-btn-primary" onclick="showView('osce')"><span class="big-label" data-i18n="landing.osce">OSCE Simulator</span></button>
+                    <button class="big-btn" onclick="showView('osce')"><span class="big-label" data-i18n="landing.osce">OSCE Simulator</span></button>
                     <button class="big-btn" onclick="showView('flash')"><span class="big-label" data-i18n="landing.flash">Terminology Flashcards</span></button>
                     <button class="big-btn" onclick="showView('quiz')"><span class="big-label" data-i18n="landing.quiz">Quiz Bank</span></button>
                     <button class="big-btn" onclick="showView('videos')"><span class="big-label" data-i18n="landing.videos">Video Tutorials</span></button>
