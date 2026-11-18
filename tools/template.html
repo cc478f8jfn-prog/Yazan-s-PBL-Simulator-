@@ -620,7 +620,7 @@
 
     <!-- FLASHCARDS VIEW -->
     <div id="view-flash" class="view" style="display:none;">
-        <button class="back-section" onclick="flashBack()">&#8592; <span data-i18n="nav.back">Back</span></button>
+        <button class="back-section" onclick="goBack()">&#8592; <span data-i18n="nav.back">Back</span></button>
         <h2 class="section-title" data-i18n="flash.title">Terminology Flashcards</h2>
         <p class="section-note" data-i18n="flash.note">Medical language in two tracks: basic word building and clinical usage.</p>
         <div class="track-tabs">
@@ -628,6 +628,13 @@
             <button class="track-tab" data-track="clinical" data-i18n="flash.clinical" onclick="setFlashTrack('clinical', this)">Clinical terminology</button>
         </div>
         <div id="flash-root"></div>
+    </div>
+
+    <!-- FLASHCARD LEVEL VIEW -->
+    <div id="view-flash-level" class="view" style="display:none;">
+        <button class="back-section" onclick="flashBack()">&#8592; <span data-i18n="nav.back">Back</span></button>
+        <h2 class="section-title" id="flash-level-title"></h2>
+        <div id="flash-level-root"></div>
     </div>
 
     <!-- SETTINGS VIEW -->
@@ -838,13 +845,14 @@ function paint(name) {
   $('simulator-screen').style.display = 'none';
   currentView = name;
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  const btn = document.querySelector('.nav-btn[data-view="' + name + '"]');
+  const btn = document.querySelector('.nav-btn[data-view="' + (name === 'flash-level' ? 'flash' : name) + '"]');
   if (btn) btn.classList.add('active');
   if (name === 'quiz') { renderQuizGrid(); updateHomeStatuses(); }
   if (name === 'pbl') renderPblHome();
   if (name === 'videos') renderVideos();
   if (name === 'osce') renderOsceHome();
   if (name === 'flash') renderFlash();
+  if (name === 'flash-level') renderFlashLevel();
   if (name === 'settings') renderSettings();
   window.scrollTo(0, 0);
 }
@@ -855,6 +863,7 @@ function showView(name) {
 }
 
 function goBack() {
+  if (currentView === 'flash-level') { flashBack(); return; }
   if (currentView === 'videos') {
     if (vidsState.section) { vidsState.section = null; renderVideos(); return; }
     if (vidsState.subject) { vidsState.subject = null; renderVideos(); return; }
@@ -2188,7 +2197,7 @@ function flashMarkKnown() {
   if (set.has(flashState.idx)) set.delete(flashState.idx); else set.add(flashState.idx);
   store[k] = Array.from(set);
   flashSave(store);
-  renderFlash();
+  renderFlashLevel();
 }
 function setFlashTrack(track, btn) {
   flashState = { track: track, level: null, idx: 0, flipped: false, shuffled: flashState.shuffled, known: {} };
@@ -2200,21 +2209,22 @@ function openFlashLevel(level) {
   flashState.level = level;
   flashState.idx = 0;
   flashState.flipped = false;
-  renderFlash();
+  flashState.shuffled = false;
+  paint('flash-level');
 }
 function flashBack() {
   flashState.level = null;
   flashState.shuffled = false;
-  renderFlash();
+  paint('flash');
 }
-function flashFlip() { flashState.flipped = !flashState.flipped; renderFlash(); }
+function flashFlip() { flashState.flipped = !flashState.flipped; renderFlashLevel(); }
 function flashNext(delta) {
   const set = FLASH[flashState.track][flashState.level];
   if (!set) return;
   const n = set.cards.length;
   flashState.idx = (flashState.idx + delta + n) % n;
   flashState.flipped = false;
-  renderFlash();
+  renderFlashLevel();
 }
 function flashShuffle() {
   const set = FLASH[flashState.track][flashState.level];
@@ -2232,13 +2242,13 @@ function flashShuffle() {
   }
   flashState.idx = 0;
   flashState.flipped = false;
-  renderFlash();
+  renderFlashLevel();
 }
 function flashResetLevel() {
   const store = flashStore();
   delete store[flashState.track + '/' + flashState.level];
   flashSave(store);
-  renderFlash();
+  renderFlashLevel();
 }
 
 function renderFlash() {
@@ -2246,20 +2256,26 @@ function renderFlash() {
   if (!root) return;
   const track = FLASH[flashState.track];
   if (!track) { root.innerHTML = '<p class="vid-note">' + t('flash.empty') + '</p>'; return; }
-  if (!flashState.level) {
-    const store = flashStore();
-    let html = '<div class="flash-grid">';
-    Object.keys(track).forEach(level => {
-      const set = track[level];
-      const known = (store[flashState.track + '/' + level] || []).length;
-      html += '<button class="flash-level" onclick="openFlashLevel(\'' + level + '\')">' +
-        t('flash.level') + ' ' + level.replace('level', '') + ' · ' + esc((LANG === 'ar' && set.name_ar) ? set.name_ar : set.name) +
-        '<span class="flash-count">' + set.cards.length + ' ' + t('flash.cards') + ' · ' + known + ' ' + t('flash.known') + '</span></button>';
-    });
-    root.innerHTML = html + '</div>';
-    return;
-  }
-  const set = track[flashState.level];
+  const store = flashStore();
+  let html = '<div class="flash-grid">';
+  Object.keys(track).forEach(level => {
+    const set = track[level];
+    const known = (store[flashState.track + '/' + level] || []).length;
+    html += '<button class="flash-level" onclick="openFlashLevel(\'' + level + '\')">' +
+      t('flash.level') + ' ' + level.replace('level', '') + ' · ' + esc((LANG === 'ar' && set.name_ar) ? set.name_ar : set.name) +
+      '<span class="flash-count">' + set.cards.length + ' ' + t('flash.cards') + ' · ' + known + ' ' + t('flash.known') + '</span></button>';
+  });
+  root.innerHTML = html + '</div>';
+}
+
+function renderFlashLevel() {
+  const root = $('flash-level-root');
+  if (!root) return;
+  const track = FLASH[flashState.track];
+  const set = track && track[flashState.level];
+  const title = $('flash-level-title');
+  if (title) title.textContent = t('flash.level') + ' ' + (flashState.level || '').replace('level', '') +
+    ' · ' + (set ? ((LANG === 'ar' && set.name_ar) ? set.name_ar : set.name) : '');
   if (!set || !set.cards.length) { root.innerHTML = '<p class="vid-note">' + t('flash.empty') + '</p>'; return; }
   const cards = set.cards;
   const card = cards[flashState.idx] || cards[0];
@@ -2268,13 +2284,11 @@ function renderFlash() {
   const pct = Math.round((known.size / cards.length) * 100);
   root.innerHTML =
     '<div class="flash-card-wrap">' +
-      '<div class="flash-progress"><div class="flash-meta"><span>' + esc((LANG === 'ar' && set.name_ar) ? set.name_ar : set.name) + '</span>' +
-        '<button class="flash-shuffle' + (flashState.shuffled ? ' on' : '') + '" onclick="flashShuffle()" title="' + t('flash.shuffle') + '">' + t('flash.shuffle') + '</button>' +
-        '<span>' + (flashState.idx + 1) + ' / ' + cards.length + ' · ' + known.size + ' ' + t('flash.known') + '</span></div>' +
+      '<div class="flash-progress"><div class="flash-meta"><span>' + (flashState.idx + 1) + ' / ' + cards.length + ' · ' + known.size + ' ' + t('flash.known') + '</span>' +
+        '<button class="flash-shuffle' + (flashState.shuffled ? ' on' : '') + '" onclick="flashShuffle()" title="' + t('flash.shuffle') + '">' + t('flash.shuffle') + '</button></div>' +
         '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%"></div></div></div>' +
       '<div class="flash-card" onclick="flashFlip()">' +
         '<div class="flash-term">' + esc(card.term) + '</div>' +
-        (card.ar ? '<div class="flash-ar">' + esc(card.ar) + '</div>' : '') +
         (flashState.flipped
           ? '<div class="flash-def">' + esc(card.definition) + '</div>'
           : '<div class="flash-hint">' + t('flash.hintFront') + '</div>') +
@@ -2296,6 +2310,7 @@ function refreshAll() {
   if (typeof renderOsceHome === 'function' && currentView === 'osce') renderOsceHome();
   if (typeof renderVideos === 'function' && currentView === 'videos') renderVideos();
   if (typeof renderFlash === 'function' && currentView === 'flash') renderFlash();
+  if (typeof renderFlashLevel === 'function' && currentView === 'flash-level') renderFlashLevel();
   if (typeof renderSettings === 'function' && currentView === 'settings') renderSettings();
   if (typeof renderHeader === 'function' && currentView === 'sim' && current) renderHeader();
 }
