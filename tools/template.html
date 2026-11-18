@@ -460,7 +460,10 @@
         .flash-ar { color: var(--accent-2); font-size: 1.05rem; font-family: 'IBM Plex Sans Arabic', sans-serif; direction: rtl; }
         .flash-def { color: var(--muted); font-size: 1rem; line-height: 1.75; max-width: 52ch; }
         .flash-hint { color: var(--dim); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; position: absolute; bottom: 16px; inset-inline-start: 0; inset-inline-end: 0; text-align: center; }
-        .flash-toolbar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .flash-toolbar { display: flex; gap: 10px; flex-wrap: nowrap; justify-content: space-between; width: 100%; max-width: 420px; }
+        .flash-shuffle { margin-inline-start: auto; background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: .76rem; color: var(--dim); cursor: pointer; }
+        .flash-shuffle:hover { color: var(--text); border-color: var(--accent); }
+        .flash-shuffle.on { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
         .flash-btn { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 18px; color: var(--muted); font-size: .87rem; transition: border-color .15s ease, color .15s ease; }
         .flash-btn:hover { color: var(--text); border-color: var(--accent); }
         .flash-btn.primary { border-color: var(--accent); color: var(--accent); }
@@ -617,7 +620,7 @@
 
     <!-- FLASHCARDS VIEW -->
     <div id="view-flash" class="view" style="display:none;">
-        <button class="back-section" onclick="goBack()">&#8592; <span data-i18n="nav.back">Back</span></button>
+        <button class="back-section" onclick="flashBack()">&#8592; <span data-i18n="nav.back">Back</span></button>
         <h2 class="section-title" data-i18n="flash.title">Terminology Flashcards</h2>
         <p class="section-note" data-i18n="flash.note">Medical language in two tracks: basic word building and clinical usage.</p>
         <div class="track-tabs">
@@ -1265,13 +1268,13 @@ const RED_FLAG_TERMS = [
 ];
 
 const EXAM_SYSTEMS = [
-  { key: 'general', label: 'General inspection', re: /(pallor|jaundice|cyanosis|clubbing|lymph|weight|cachexia|distress|sweat)/i },
-  { key: 'vitals', label: 'Vital signs', re: /(blood pressure|bp\b|pulse|tachycard|bradycard|hypotens|hypertens|fever|temperature|respiratory rate|saturat|shock)/i },
-  { key: 'local', label: 'Local examination', re: /(swelling|lump|tender|tenderness|erythema|warm|deformity|effusion|restrict|range of motion|crepitus|mass|scar)/i },
-  { key: 'neuro', label: 'Neurological examination', re: /(sensat|sensory|numb|reflex|power|weakness|paresis|tone|proprioce|nerve|dermatome|gait|coordination)/i },
-  { key: 'vascular', label: 'Vascular examination', re: /(pulse|pulseless|capillary|venous|arterial|bruit|doppler|ulcer|oedema|edema)/i },
-  { key: 'cardioresp', label: 'Cardiorespiratory examination', re: /(murmur|heart sound|breath sound|crepitation|crackles|wheeze|rub|jvp|pericard|lung|chest)/i },
-  { key: 'abdominal', label: 'Abdominal examination', re: /(abdomen|abdominal|epigastric|hepatomegaly|splenomegaly|guarding|rigidity|bowel sound|distension)/i }
+  { key: 'general', label: 'General inspection', re: /(general|inspection|pallor|jaundice|cyanosis|clubbing|lymph|weight|cachexia|distress|sweat)/i },
+  { key: 'vitals', label: 'Vital signs', re: /(vital|blood pressure|bp\b|pulse|tachycard|bradycard|hypotens|hypertens|fever|temperature|respiratory rate|saturat|shock)/i },
+  { key: 'local', label: 'Local examination', re: /(local|swelling|lump|tender|tenderness|erythema|warm|deformity|effusion|restrict|range of motion|crepitus|mass|scar)/i },
+  { key: 'neuro', label: 'Neurological examination', re: /(neuro|nervous|sensat|sensory|numb|reflex|power|weakness|paresis|tone|proprioce|nerve|dermatome|gait|coordination)/i },
+  { key: 'vascular', label: 'Vascular examination', re: /(vascular|pulse|pulseless|capillary|venous|arterial|bruit|doppler|ulcer|oedema|edema)/i },
+  { key: 'cardioresp', label: 'Cardiorespiratory examination', re: /(cardiovascular|cardio|heart|lung|chest|respir|murmur|heart sound|breath sound|crepitation|crackles|wheeze|rub|jvp|pericard)/i },
+  { key: 'abdominal', label: 'Abdominal examination', re: /(abdom|stomach|liver|gut|epigastric|hepatomegaly|splenomegaly|guarding|rigidity|bowel sound|distension)/i }
 ];
 
 const IX_MENU = [
@@ -1612,6 +1615,46 @@ function osceQuick(key) {
   renderOscePanel();
 }
 
+function osceTypedExam() {
+  const input = $('osce-q');
+  if (!input) return;
+  const q = input.value.trim();
+  if (!q) return;
+  input.value = '';
+  osceSay(q, 'you');
+  const priority = ['cardioresp', 'abdominal', 'neuro', 'vascular', 'vitals', 'general', 'local'];
+  const matches = EXAM_SYSTEMS.filter(x => x.re.test(q));
+  const sys = priority.map(k => matches.find(m => m.key === k)).find(Boolean);
+  if (!sys) {
+    osceSay('Please name the examination you want to perform, for example: examine the cardiovascular system.', 'system');
+    renderOscePanel();
+    return;
+  }
+  osce.examDone[sys.key] = true;
+  const found = osce.st.exam[sys.key] || [];
+  osceSay('Examination: ' + sys.label + '. ' + (found.length ? found.join(' ') : 'No abnormality detected.'), 'system');
+  renderOscePanel();
+}
+
+function osceTypedIx() {
+  const input = $('osce-q');
+  if (!input) return;
+  const q = input.value.trim();
+  if (!q) return;
+  input.value = '';
+  osceSay(q, 'you');
+  const item = IX_MENU.find(x => x.re.test(q));
+  if (!item) {
+    osceSay('Please name the investigation you want, for example: request a CT scan or blood tests.', 'system');
+    renderOscePanel();
+    return;
+  }
+  if (!osce.ixOrdered.some(i => i.key === item.key)) osce.ixOrdered.push({ key: item.key, label: item.label });
+  const hit = osce.st.investigations.find(i => i.key === item.key);
+  osceSay('Investigation: ' + item.label + '. ' + (hit ? hit.result : 'Normal or non-contributory.'), 'system');
+  renderOscePanel();
+}
+
 function osceExamine(key) {
   const sys = EXAM_SYSTEMS.find(x => x.key === key);
   if (!sys) return;
@@ -1762,16 +1805,15 @@ function renderOscePanel() {
   if (step === 'history') {
     html += '<div class="osce-hintrow">' + t('osce.hintHistory') + '</div>' +
       '<div class="osce-inputrow"><input id="osce-q" placeholder="' + t('osce.qPh') + '" onkeydown="if(event.key===\'Enter\')osceAsk()">' +
-      '<button class="osce-send" onclick="osceAsk()">' + t('osce.ask') + '</button></div>' +
-      '<div class="osce-chips">' + OSCE_INTENTS.slice(0, 9).map(i =>
-        '<button class="osce-chip" onclick="osceQuick(\'' + i.key + '\')">' + i.label + '</button>').join('') +
-      '<button class="osce-chip osce-chip-flag" onclick="osceQuick(\'redflags\')">Screen for red flags</button></div>';
+      '<button class="osce-send" onclick="osceAsk()">' + t('osce.ask') + '</button></div>';
   } else if (step === 'exam') {
-    html += '<div class="osce-hintrow">' + t('osce.hintExam') + '</div><div class="osce-chips">' +
-      EXAM_SYSTEMS.map(x => '<button class="osce-chip' + (osce.examDone[x.key] ? ' picked' : '') + '" onclick="osceExamine(\'' + x.key + '\')">' + x.label + '</button>').join('') + '</div>';
+    html += '<div class="osce-hintrow">' + t('osce.hintExam') + '</div>' +
+      '<div class="osce-inputrow"><input id="osce-q" placeholder="' + t('osce.examPh') + '" onkeydown="if(event.key===\'Enter\')osceTypedExam()">' +
+      '<button class="osce-send" onclick="osceTypedExam()">' + t('osce.ask') + '</button></div>';
   } else if (step === 'ix') {
-    html += '<div class="osce-hintrow">' + t('osce.hintIx') + '</div><div class="osce-chips">' +
-      IX_MENU.map(x => '<button class="osce-chip' + (osce.ixOrdered.some(i => i.key === x.key) ? ' picked' : '') + '" onclick="osceOrderIx(\'' + x.key + '\')">' + x.label + '</button>').join('') + '</div>';
+    html += '<div class="osce-hintrow">' + t('osce.hintIx') + '</div>' +
+      '<div class="osce-inputrow"><input id="osce-q" placeholder="' + t('osce.ixPh') + '" onkeydown="if(event.key===\'Enter\')osceTypedIx()">' +
+      '<button class="osce-send" onclick="osceTypedIx()">' + t('osce.ask') + '</button></div>';
   } else if (step === 'ddx') {
     html += '<div class="osce-hintrow">' + t('osce.hintDdx') + '</div><div class="osce-chips">' +
       s.ddx.map(o => '<button class="osce-chip' + (osce.ddx.indexOf(o) >= 0 ? ' picked' : '') + '" onclick="osceToggleDdx(this.dataset.o,this)" data-o="' + esc(o) + '">' + esc(o) + '</button>').join('') +
@@ -1902,7 +1944,7 @@ const I18N = {
     'osce.hintIx': 'Every unnecessary test is named on the scorecard.',
     'osce.hintDdx': 'Pick up to three, most likely first.',
     'osce.hintPlan': 'Commit to one diagnosis and a safe plan.',
-    'osce.qPh': 'Ask the patient a question', 'osce.planPh': 'Management plan: immediate steps, treatment, referral, safety net',
+    'osce.qPh': 'Ask the patient a question', 'osce.examPh': 'Type an examination to perform, for example: examine the heart and lungs', 'osce.ixPh': 'Type an investigation to request, for example: request a CT scan', 'osce.planPh': 'Management plan: immediate steps, treatment, referral, safety net',
     'osce.reasonPh': 'Reasoning (optional)', 'osce.model': 'Model answer', 'osce.safe': 'Safe management',
     'osce.notes': 'Examiner notes', 'osce.clean': 'Nothing missed. Clean station.',
     'osce.pass': 'Pass', 'osce.fail': 'Not yet a pass',
@@ -1987,7 +2029,7 @@ const I18N = {
     'osce.hintIx': 'كل فحص غير ضروري يُسجَّل في بطاقة التقييم.',
     'osce.hintDdx': 'اختر ثلاثة على الأكثر، والأرجح أولاً.',
     'osce.hintPlan': 'التزم بتشخيص واحد وخطة آمنة.',
-    'osce.qPh': 'اسأل المريض سؤالاً', 'osce.planPh': 'خطة التدبير: الإجراءات الفورية، والعلاج، والإحالة، وشبكة الأمان',
+    'osce.qPh': 'اسأل المريض سؤالاً', 'osce.examPh': 'اكتب الفحص الذي تريد إجراءه، مثل: فحص القلب والرئتين', 'osce.ixPh': 'اكتب الفحص المطلوب، مثل: طلب أشعة مقطعية', 'osce.planPh': 'خطة التدبير: الإجراءات الفورية، والعلاج، والإحالة، وشبكة الأمان',
     'osce.reasonPh': 'الاستدلال (اختياري)', 'osce.model': 'الإجابة النموذجية', 'osce.safe': 'تدبير آمن',
     'osce.notes': 'ملاحظات الممتحن', 'osce.clean': 'لم يفتك شيء. محطة نظيفة.',
     'osce.pass': 'ناجح', 'osce.fail': 'لم تصل إلى النجاح بعد',
@@ -2125,7 +2167,7 @@ function resetStore(key) {
 
 // ---------- flashcards ----------
 const FLASH_KEY = 'medplat-flash-v1';
-let flashState = { track: 'basic', level: null, idx: 0, flipped: false, known: {} };
+let flashState = { track: 'basic', level: null, idx: 0, flipped: false, shuffled: false, known: {} };
 
 function flashStore() {
   try { return JSON.parse(localStorage.getItem(FLASH_KEY) || '{}'); } catch (e) { return {}; }
@@ -2149,7 +2191,7 @@ function flashMarkKnown() {
   renderFlash();
 }
 function setFlashTrack(track, btn) {
-  flashState = { track: track, level: null, idx: 0, flipped: false, known: {} };
+  flashState = { track: track, level: null, idx: 0, flipped: false, shuffled: flashState.shuffled, known: {} };
   document.querySelectorAll('#view-flash .track-tab').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   renderFlash();
@@ -2162,6 +2204,7 @@ function openFlashLevel(level) {
 }
 function flashBack() {
   flashState.level = null;
+  flashState.shuffled = false;
   renderFlash();
 }
 function flashFlip() { flashState.flipped = !flashState.flipped; renderFlash(); }
@@ -2176,9 +2219,16 @@ function flashNext(delta) {
 function flashShuffle() {
   const set = FLASH[flashState.track][flashState.level];
   if (!set) return;
-  for (let i = set.cards.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const tmp = set.cards[i]; set.cards[i] = set.cards[j]; set.cards[j] = tmp;
+  if (!set._original) set._original = set.cards.slice();
+  if (!flashState.shuffled) {
+    for (let i = set.cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = set.cards[i]; set.cards[i] = set.cards[j]; set.cards[j] = tmp;
+    }
+    flashState.shuffled = true;
+  } else {
+    set.cards = set._original.slice();
+    flashState.shuffled = false;
   }
   flashState.idx = 0;
   flashState.flipped = false;
@@ -2219,6 +2269,7 @@ function renderFlash() {
   root.innerHTML =
     '<div class="flash-card-wrap">' +
       '<div class="flash-progress"><div class="flash-meta"><span>' + esc((LANG === 'ar' && set.name_ar) ? set.name_ar : set.name) + '</span>' +
+        '<button class="flash-shuffle' + (flashState.shuffled ? ' on' : '') + '" onclick="flashShuffle()" title="' + t('flash.shuffle') + '">' + t('flash.shuffle') + '</button>' +
         '<span>' + (flashState.idx + 1) + ' / ' + cards.length + ' · ' + known.size + ' ' + t('flash.known') + '</span></div>' +
         '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%"></div></div></div>' +
       '<div class="flash-card" onclick="flashFlip()">' +
@@ -2230,13 +2281,9 @@ function renderFlash() {
       '</div>' +
       '<div class="flash-toolbar">' +
         '<button class="flash-btn" onclick="flashNext(-1)">' + t('flash.prev') + '</button>' +
-        '<button class="flash-btn primary" onclick="flashFlip()">' + t('flash.flip') + '</button>' +
         '<button class="flash-btn ' + (isKnown ? 'known' : '') + '" onclick="flashMarkKnown()">' +
           (isKnown ? t('flash.knownDone') : t('flash.markKnown')) + '</button>' +
         '<button class="flash-btn" onclick="flashNext(1)">' + t('flash.next') + '</button>' +
-        '<button class="flash-btn" onclick="flashShuffle()">' + t('flash.shuffle') + '</button>' +
-        '<button class="flash-btn" onclick="flashResetLevel()">' + t('flash.reset') + '</button>' +
-        '<button class="flash-btn" onclick="flashBack()">' + t('flash.back') + '</button>' +
       '</div>' +
     '</div>';
 }
