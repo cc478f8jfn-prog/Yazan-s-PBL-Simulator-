@@ -23,7 +23,11 @@
           var s = localStorage.getItem('medplat-size');
           if (s === 's' || s === 'l') document.documentElement.setAttribute('data-size', s);
           var l = localStorage.getItem('medplat-lang');
-          document.documentElement.lang = l === 'ar' ? 'ar' : 'en';
+          if (l !== 'ar' && l !== 'en') {
+            var nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+            l = /^ar\b/i.test(nav) ? 'ar' : 'en';
+          }
+          document.documentElement.lang = l;
           document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
         } catch (e) {}
       })();
@@ -561,12 +565,7 @@
                     <button class="big-btn" onclick="showView('videos')"><span class="big-label" data-i18n="landing.videos">Video Tutorials</span></button>
                 </div>
             </div>
-            <div class="hero-art">
-                <img class="hero-emblem" src="./icon.png" alt="YazMed emblem">
-                <svg class="hero-ecg" viewBox="0 0 600 46" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M0 32 H120 l14 -18 l10 30 l12 -26 l10 14 H230 l16 -8 l12 8 H340 l14 -22 l12 34 l12 -30 l10 18 H600"></path>
-                </svg>
-            </div>
+
         </div>
         <div class="stats-band">
             <div class="stat"><b>1,106</b><span data-i18n="stats.cases">PBL cases</span></div>
@@ -663,7 +662,7 @@
     <div id="view-about" class="view" style="display:none;">
         <button class="back-section" onclick="goBack()">&#8592; Back</button>
         <h2 class="section-title">About</h2>
-        <div class="about-box"><p>Yazan's Medplat is a free medical study platform built for medical students, by a medical student. Everything for the pre-clinical and clinical years in one place, split into a basic-sciences half and a clinical half:</p><ul><li><b>PBL Simulator</b> - 1,106 clinical cases organised by body system: musculoskeletal, development, general pathology and every physiology system, with up to 4 difficulty levels and progress tracking. It ships as two simulators: the Basic PBL Simulator for progressive pre-clinical cases, and the OSCE Simulator, where the same cases become scored stations with a virtual patient, focused examination, investigations, a differential and an examiner scorecard.</li><li><b>Quiz Bank</b> - 270 MCQs. Basic sciences cover anatomy, physiology, histology, biochemistry, pathology, pharmacology, microbiology and immunology by system; the clinical half covers internal medicine, surgery, paediatrics, obstetrics and gynaecology, and psychiatry. Three levels each.</li><li><b>Video Tutorials</b> - 1,280 lectures, Arabic first and English underneath: Dr Ayman Khanfour and Ninja Nerd for anatomy and histology, Dr Nagi Iskandar and Ninja Nerd for physiology, Dr Hesham Esmat for biochemistry, Dr Abdelmoteal Foda for pharmacology, plus Dr Iman Nabil, Osmosis, Zero To Finals, Dr Matt &amp; Dr Mike and Dirty Medicine.</li></ul><p>The platform is designed by a medical student who knows exactly what studying feels like, so everything here is built to make learning faster, easier and more effective.</p></div>
+        <div class="about-box"><p>YazMed is a free medical study platform built by a medical student for medical students. Everything you need for the pre-clinical and clinical years is in one place, split into a basic-sciences half and a clinical half:</p><ul><li><b>PBL Simulator</b>: 1,106 clinical cases organised by body system: musculoskeletal, development, general pathology and every physiology system, with up to 4 difficulty levels and progress tracking. It ships as two simulators: the Basic PBL Simulator for progressive pre-clinical cases, and the OSCE Simulator, where the same cases become scored stations with a virtual patient, focused examination, investigations, a differential and an examiner scorecard.</li><li><b>Quiz Bank</b>: 270 MCQs. Basic sciences cover anatomy, physiology, histology, biochemistry, pathology, pharmacology, microbiology and immunology by system; the clinical half covers internal medicine, surgery, paediatrics, obstetrics and gynaecology, and psychiatry. Three levels each.</li><li><b>Video Tutorials</b>: 1,280 lectures, Arabic first and English underneath: Dr Ayman Khanfour and Ninja Nerd for anatomy and histology, Dr Nagi Iskandar and Ninja Nerd for physiology, Dr Hesham Esmat for biochemistry, Dr Abdelmoteal Foda for pharmacology, plus Dr Iman Nabil, Osmosis, Zero To Finals, Dr Matt &amp; Dr Mike and Dirty Medicine.</li></ul><p>The platform is designed by a medical student who knows exactly what studying feels like, so everything here is built to make learning faster, easier and more effective.</p></div>
     </div>
 
     <!-- CONTACT VIEW -->
@@ -765,7 +764,7 @@
 
 <script>
 
-// ============ Yazan's Medplat engine ============
+// ============ YazMed engine ============
 const casesData = __CASES__
 const VIDEO_DATA = __VIDEOS__
 const REGION_TITLES = __REGION_TITLES__
@@ -786,7 +785,7 @@ let current = null;
 let lastRegion = null;
 let lastCategory = null;
 
-// ============ Yazan's Medplat engine ============
+// ============ YazMed engine ============
 const SUBJECT_LABELS = {
   anatomy: 'Gross Anatomy', embryology: 'Embryology', histology: 'Histology',
   physiology: 'Physiology', biochemistry: 'Biochemistry', pathology: 'Pathology',
@@ -1919,88 +1918,88 @@ const I18N = {
     'footer.rights': 'Built by a medical student, for medical students.'
   },
   ar: {
-    'nav.home': 'الرئيسية', 'nav.videos': 'مكتبة الفيديو', 'nav.pbl': 'حالات أساسية',
-    'nav.osce': 'محاكي OSCE', 'nav.quiz': 'بنك الأسئلة', 'nav.flash': 'المصطلحات',
+    'nav.home': 'الرئيسية', 'nav.videos': 'شروحات الفيديو', 'nav.pbl': 'PBL الأساسي',
+    'nav.osce': 'محاكي OSCE', 'nav.quiz': 'الاختبارات', 'nav.flash': 'المصطلحات',
     'nav.about': 'عن المنصة', 'nav.contact': 'اتصل بي', 'nav.settings': 'الإعدادات', 'nav.back': 'رجوع',
     'landing.welcome': 'مرحباً بك في',
     'landing.title': 'YazMed',
-    'landing.sub': 'حالات تعلم قائمة على المشكلات، ومحاكي امتحان سريري، وبطاقات مصطلحات، وبنك أسئلة، ومكتبة فيديو لسنوات الطب، مرتبة حسب الأجهزة في مكان واحد.',
-    'landing.videos': 'مكتبة الفيديو', 'landing.pbl': 'محاكي الحالات الأساسية',
+    'landing.sub': 'حالات PBL سريرية، ومحاكي OSCE، وFlashcards للمصطلحات، وبنك أسئلة، وشروحات فيديو لمراحل الدراسة الطبية، مرتبة كلها حسب الجهاز في مكان واحد.',
+    'landing.videos': 'شروحات الفيديو', 'landing.pbl': 'محاكي PBL الأساسي',
     'landing.osce': 'محاكي OSCE', 'landing.quiz': 'بنك الأسئلة',
-    'landing.flash': 'بطاقات المصطلحات',
-    'stats.cases': 'حالة تدريبية', 'stats.stations': 'محطة OSCE', 'stats.mcqs': 'سؤال اختيار',
-    'stats.cards': 'بطاقة مصطلحات', 'stats.videos': 'محاضرة',
-    'path.learn': 'تعلّم', 'path.learnText': 'محاضرات مرتبة حسب الجهاز، عربي أولاً وإنجليزي تحته، مع بطاقات لمصطلحات الطب.',
-    'path.practise': 'تدرّب', 'path.practiseText': 'حالات متتابعة تُلزمك باختيار التشخيص وشرح الميكانيزم.',
-    'path.prove': 'أثبت', 'path.proveText': 'محطات OSCE وأسئلة الأنظمة التي تقيّمك كما يفعل الممتحن.',
-    'pbl.welcome': 'محاكي الحالات الأساسية', 'pbl.title': 'اختر جهازاً',
-    'pbl.note': 'حالات متتابعة، الميكانيزم قبل التشخيص، تقدم محفوظ لكل مستوى، وتلميحات سقراطية عند التعثر.',
-    'osce.welcome': 'محاكي OSCE', 'osce.title': 'اختر محطة',
-    'osce.note': 'مريض افتراضي، فحص موجّه، فحوصات، تشخيص تفريقي وخطة. كل محطة تنتهي ببطاقة تقييم من مئة، والنجاح عند ستين.',
+    'landing.flash': 'Flashcards للمصطلحات',
+    'stats.cases': 'حالة PBL', 'stats.stations': 'محطة OSCE', 'stats.mcqs': 'سؤال MCQ',
+    'stats.cards': 'Flashcard', 'stats.videos': 'محاضرة',
+    'path.learn': 'تعلّم', 'path.learnText': 'محاضرات مرتبة حسب الجهاز، بالعربية أولاً والإنجليزية تحتها، إلى جانب Flashcards لمصطلحات الطب.',
+    'path.practise': 'تدرّب', 'path.practiseText': 'حالات PBL متدرجة تُجبرك على اختيار التشخيص وشرح الآلية التي تقف خلفه.',
+    'path.prove': 'أثبت', 'path.proveText': 'محطات OSCE واختبارات الأنظمة التي تُقيّمك كما يقيّمك الممتحن.',
+    'pbl.welcome': 'محاكي PBL الأساسي', 'pbl.title': 'اختر الجهاز',
+    'pbl.note': 'حالات PBL متدرجة، والآلية قبل التشخيص، وتقدّم محفوظ لكل مستوى، وتلميحات سقراطية عندما تتعثر.',
+    'osce.welcome': 'محاكي OSCE', 'osce.title': 'اختر المحطة',
+    'osce.note': 'مريض افتراضي، وفحص موجّه، وفحوصات، وتشخيص تفريقي، وخطة علاج. تنتهي كل محطة ببطاقة تقييم من 100 درجة، وعلامة النجاح 60.',
     'quiz.title': 'بنك الأسئلة',
-    'quiz.note': 'أسئلة اختيار من متعدد حسب الجهاز، مقسمة إلى مستويات تُفتح بالتتابع. النصف السريري يغطي مواد العنقود السريري.',
-    'quiz.basic': 'العلوم الأساسية', 'quiz.clinical': 'العلوم السريرية',
-    'video.title': 'مكتبة الفيديو', 'video.basic': 'العلوم الأساسية', 'video.clinical': 'العلوم السريرية',
-    'video.ar': 'محاضرات عربية', 'video.en': 'محاضرات إنجليزية', 'video.topics': 'رجوع إلى الموضوعات',
+    'quiz.note': 'أسئلة MCQ مرتبة حسب الجهاز، بمستويات تُفتح واحداً تلو الآخر. والقسم السريري يغطي المواد التي تقابلها في الجناح الطبي.',
+    'quiz.basic': 'العلوم الأساسية', 'quiz.clinical': 'السريرية',
+    'video.title': 'شروحات الفيديو', 'video.basic': 'العلوم الأساسية', 'video.clinical': 'السريرية',
+    'video.ar': 'محاضرات عربية', 'video.en': 'محاضرات إنجليزية', 'video.topics': 'العودة إلى الموضوعات',
     'video.sections': 'أقسام', 'video.videos': 'فيديو',
-    'flash.title': 'بطاقات المصطلحات',
-    'flash.note': 'لغة الطب في مسارين: بناء المصطلح الأساسي والاستخدام السريري. كل مسار من السنة الأولى إلى السنة النهائية.',
+    'flash.title': 'Flashcards للمصطلحات',
+    'flash.note': 'لغة الطب في مسارين: بناء المصطلح من أصوله، والاستخدام السريري. يبدأ كل مسار من السنة الأولى وينتهي بالسنة الأخيرة.',
     'flash.basic': 'المصطلحات الأساسية', 'flash.clinical': 'المصطلحات السريرية',
-    'flash.level': 'المستوى', 'flash.cards': 'بطاقة', 'flash.known': 'محفوظة',
+    'flash.level': 'المستوى', 'flash.cards': 'بطاقات', 'flash.known': 'محفوظة',
     'flash.flip': 'اقلب البطاقة', 'flash.next': 'التالي', 'flash.prev': 'السابق',
     'flash.markKnown': 'حفظتها', 'flash.knownDone': 'محفوظة', 'flash.shuffle': 'خلط',
-    'flash.reset': 'تصفير التقدم', 'flash.back': 'رجوع إلى المستويات',
+    'flash.reset': 'تصفير التقدم', 'flash.back': 'العودة إلى المستويات',
     'flash.hintFront': 'اضغط البطاقة لإظهار التعريف',
     'flash.hintBack': 'اضغط مرة أخرى لإخفاء التعريف',
-    'flash.empty': 'لا توجد بطاقات في هذا المستوى بعد.',
+    'flash.empty': 'لا توجد Flashcards في هذا المستوى بعد.',
     'settings.title': 'الإعدادات',
-    'settings.note': 'اللغة والمظهر وأدوات الدراسة. كل شيء يُحفظ في هذا المتصفح فقط.',
-    'settings.language': 'اللغة', 'settings.langHint': 'لغة الواجهة. نصوص الحالات والأسئلة تبقى بالإنجليزية.',
+    'settings.note': 'اللغة والمظهر وأدوات الدراسة. كل شيء محفوظ في هذا المتصفح وحده.',
+    'settings.language': 'اللغة', 'settings.langHint': 'لغة الواجهة فقط. نصوص الحالات والأسئلة تبقى بالإنجليزية.',
     'settings.theme': 'المظهر', 'settings.themeSystem': 'النظام', 'settings.themeLight': 'فاتح', 'settings.themeDark': 'داكن',
-    'settings.themeHint': 'خيار النظام يتبع إعداد جهازك. الفاتح يستخدم خلفية ورقية دافئة.',
+    'settings.themeHint': 'خيار النظام يتبع إعداد جهازك. والمظهر الفاتح يستخدم خلفية ورقية دافئة.',
     'settings.size': 'حجم الخط', 'settings.sizeS': 'صغير', 'settings.sizeM': 'متوسط', 'settings.sizeL': 'كبير',
-    'settings.sizeHint': 'يُطبق على الموقع كله فوراً.',
-    'settings.ai': 'واجهة الذكاء الاصطناعي للمريض والممتحن',
-    'settings.aiHint': 'اختياري. أي واجهة متوافقة مع OpenAI. إذا تُركت فارغة يعمل الرد المدمج دون إنترنت.',
-    'settings.endpoint': 'الرابط', 'settings.key': 'المفتاح', 'settings.model': 'الموديل',
+    'settings.sizeHint': 'يُطبّق على الموقع كله فوراً.',
+    'settings.ai': 'إعدادات AI لمريض OSCE والممتحن',
+    'settings.aiHint': 'اختياري. نقطة chat متوافقة مع OpenAI. اتركها فارغة ليعمل الرد المدمج دون اتصال بالإنترنت.',
+    'settings.endpoint': 'الرابط', 'settings.key': 'مفتاح API', 'settings.model': 'Model',
     'settings.save': 'حفظ', 'settings.saved': 'تم الحفظ.',
-    'settings.data': 'تقدمك', 'settings.dataHint': 'يمسح ما يحفظه هذا المتصفح عن تقدمك الدراسي.',
-    'settings.resetPbl': 'تصفير الحالات', 'settings.resetOsce': 'تصفير محطات OSCE',
-    'settings.resetFlash': 'تصفير البطاقات', 'settings.resetAll': 'تصفير الكل',
+    'settings.data': 'تقدّمك', 'settings.dataHint': 'يمسح كل ما يحفظه هذا المتصفح عن تقدّمك الدراسي.',
+    'settings.resetPbl': 'تصفير تقدّم PBL', 'settings.resetOsce': 'تصفير محطات OSCE',
+    'settings.resetFlash': 'تصفير Flashcards', 'settings.resetAll': 'تصفير كل شيء',
     'settings.resetDone': 'تم المسح.',
     'case.level': 'المستوى', 'case.answered': 'تمت الإجابة', 'case.correct': 'صحيح', 'case.wrong': 'خطأ',
     'case.accuracy': 'الدقة', 'case.overall': 'الإجمالي', 'case.spotOn': 'إجابة صحيحة.',
     'case.incorrect': 'إجابة خاطئة.', 'case.next': 'الحالة التالية', 'case.tutor': 'اطلب تلميحاً من المدرّس',
-    'case.objective': 'هدف التعلم: اشرح الميكانيزم وراء هذا العرض وبرّر تشخيصك مقابل البدائل.',
-    'case.objectiveQ': 'هدف التعلم: طبّق المبدأ العلمي وراء هذا السؤال لا مجرد حفظ المعلومة.',
-    'case.patientFile': 'ملف المريض', 'case.question': 'سؤال',
+    'case.objective': 'الهدف التعليمي: اشرح الآلية وراء هذا العرض السريري، وبرّر تشخيصك مقابل البدائل الأخرى.',
+    'case.objectiveQ': 'الهدف التعليمي: طبّق المبدأ العلمي الكامن وراء هذا السؤال، لا مجرد معلومة محفوظة.',
+    'case.patientFile': 'ملف المريض', 'case.question': 'السؤال',
     'case.levelComplete': 'اكتمل المستوى', 'case.sectionDone': 'اكتمل القسم',
-    'case.retryLevel': 'إعادة المستوى', 'case.nextLevel': 'المستوى التالي', 'case.backHome': 'رجوع للرئيسية',
+    'case.retryLevel': 'إعادة المستوى', 'case.nextLevel': 'المستوى التالي', 'case.backHome': 'العودة إلى الرئيسية',
     'case.retrySection': 'إعادة القسم', 'case.totalAnswered': 'إجمالي الإجابات',
-    'case.socratic': 'سؤال سقراطي', 'case.reasoning': 'اكشف الاستدلال',
+    'case.socratic': 'سؤال سقراطي', 'case.reasoning': 'إظهار الاستدلال',
     'osce.station': 'محطة OSCE', 'osce.history': 'القصة المرضية', 'osce.exam': 'الفحص',
     'osce.ix': 'الفحوصات', 'osce.ddx': 'التشخيص التفريقي', 'osce.plan': 'التشخيص والخطة',
     'osce.ask': 'اسأل', 'osce.submit': 'إنهاء المحطة', 'osce.retry': 'إعادة المحطة',
-    'osce.newPatient': 'مريض جديد، نفس القسم', 'osce.backStations': 'رجوع إلى المحطات',
-    'osce.aiSettings': 'إعدادات الذكاء', 'osce.pickDx': 'اختر تشخيصك',
-    'osce.hintHistory': 'اسأل بالكتابة أو اختر سؤالاً جاهزاً. فحص العلامات الخطرة هو الخطوة التي ينساها معظم الطلاب.',
+    'osce.newPatient': 'مريض جديد، نفس القسم', 'osce.backStations': 'العودة إلى المحطات',
+    'osce.aiSettings': 'إعدادات AI', 'osce.pickDx': 'اختر تشخيصك',
+    'osce.hintHistory': 'اسأل بالكتابة أو اضغط على سؤال جاهز. فحص علامات الخطر هو الخطوة التي ينساها أغلب الطلاب.',
     'osce.hintExam': 'اطلب فقط الفحوصات التي ستجريها فعلاً.',
-    'osce.hintIx': 'كل فحص غير ضروري يُذكر في التقييم.',
-    'osce.hintDdx': 'اختر حتى ثلاثة، الأرجح أولاً.',
+    'osce.hintIx': 'كل فحص غير ضروري يُسجَّل في بطاقة التقييم.',
+    'osce.hintDdx': 'اختر ثلاثة على الأكثر، والأرجح أولاً.',
     'osce.hintPlan': 'التزم بتشخيص واحد وخطة آمنة.',
-    'osce.qPh': 'اسأل المريض سؤالاً', 'osce.planPh': 'خطة العلاج: الخطوات الفورية، العلاج، الإحالة، وشبكة الأمان',
-    'osce.reasonPh': 'الاستدلال (اختياري)', 'osce.model': 'الإجابة النموذجية', 'osce.safe': 'التدبير الآمن',
-    'osce.notes': 'ملاحظات الممتحن', 'osce.clean': 'لا شيء فاتك. محطة نظيفة.',
+    'osce.qPh': 'اسأل المريض سؤالاً', 'osce.planPh': 'خطة التدبير: الإجراءات الفورية، والعلاج، والإحالة، وشبكة الأمان',
+    'osce.reasonPh': 'الاستدلال (اختياري)', 'osce.model': 'الإجابة النموذجية', 'osce.safe': 'تدبير آمن',
+    'osce.notes': 'ملاحظات الممتحن', 'osce.clean': 'لم يفتك شيء. محطة نظيفة.',
     'osce.pass': 'ناجح', 'osce.fail': 'لم تصل إلى النجاح بعد',
-    'osce.historyCoverage': 'تغطية القصة', 'osce.redflags': 'العلامات الخطرة', 'osce.examination': 'الفحص',
+    'osce.historyCoverage': 'تغطية القصة المرضية', 'osce.redflags': 'علامات الخطر', 'osce.examination': 'الفحص',
     'osce.investigations': 'الفحوصات', 'osce.ddxScore': 'التشخيص التفريقي',
     'osce.dxScore': 'التشخيص النهائي', 'osce.mgmtScore': 'سلامة التدبير',
-    'osce.patientIntro': 'طُلب مني أن آتي وأتحدث معك عمّا يجري.',
-    'osce.note': 'مريض افتراضي، فحص موجّه، فحوصات، تشخيص تفريقي وخطة. كل محطة تنتهي ببطاقة تقييم من مئة، والنجاح عند ستين.',
-    'osce.presNote': 'ملاحظة العرض', 'osce.confused': 'لم أفهم تماماً يا دكتور، هل يمكنك صياغة السؤال بطريقة أخرى؟',
+    'osce.patientIntro': 'طلبوا مني أن آتي وأتحدث معك عمّا يجري معي.',
+    'osce.note': 'مريض افتراضي، وفحص موجّه، وفحوصات، وتشخيص تفريقي، وخطة. تنتهي كل محطة ببطاقة تقييم من 100 درجة، وعلامة النجاح 60.',
+    'osce.presNote': 'ملاحظة العرض', 'osce.confused': 'لم أفهم قصدك تماماً يا دكتور، هل يمكنك إعادة السؤال بصيغة أخرى؟',
     'osce.nothing': 'لا شيء من هذا يا دكتور.', 'osce.nothingElse': 'لا شيء آخر لاحظته.',
     'osce.cannotSay': 'لا أستطيع الجزم يا دكتور.', 'osce.redflagAsk': 'بما أنك سألت: ',
-    'footer.tagline': 'منصة التعلم الطبي',
+    'footer.tagline': 'منصة للتعلّم الطبي',
     'footer.rights': 'بناها طالب طب لطلاب الطب.'
   }
 };
@@ -2041,7 +2040,6 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n-ph]').forEach(el => {
     el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph')));
   });
-  try { localStorage.setItem('medplat-lang', LANG); } catch (e) {}
   if (typeof refreshAll === 'function') refreshAll();
 }
 
@@ -2095,7 +2093,7 @@ function renderSettings() {
       '<button class="danger-btn" onclick="resetStore(\'*\')">' + t('settings.resetAll') + '</button></div></div>';
 }
 
-function setLang(l) { applyLang(l); }
+function setLang(l) { applyLang(l); try { localStorage.setItem('medplat-lang', l === 'ar' ? 'ar' : 'en'); } catch (e) {} }
 function setTheme(v) { applyTheme(v); renderSettings(); }
 function setSize(v) { applySize(v); renderSettings(); }
 function saveAi() {
@@ -2259,7 +2257,12 @@ renderQuizGrid();
 renderOsceHome();
 updateHomeStatuses();
 renderFlash();
-applyLang(localStorage.getItem('medplat-lang') || 'en');
+applyLang((function () {
+  var saved = localStorage.getItem('medplat-lang');
+  if (saved === 'ar' || saved === 'en') return saved;
+  var nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+  return /^ar\b/i.test(nav) ? 'ar' : 'en';
+})());
 applyTheme(localStorage.getItem('medplat-theme') || 'system');
 applySize(localStorage.getItem('medplat-size') || 'm');
 var homeBtn = document.querySelector('.nav-btn[data-view="landing"]');
